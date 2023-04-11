@@ -1,10 +1,146 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on My Portfolio</title>
     <link>http://hayatbakhsh.xyz/tags/</link>
     <description>Recent content in Tags on My Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://hayatbakhsh.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://hayatbakhsh.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java</title>
+      <link>http://hayatbakhsh.xyz/tags/java/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>http://hayatbakhsh.xyz/tags/windows/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>http://hayatbakhsh.xyz/tags/css/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flask</title>
+      <link>http://hayatbakhsh.xyz/tags/flask/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/flask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTML</title>
+      <link>http://hayatbakhsh.xyz/tags/html/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>http://hayatbakhsh.xyz/tags/javascript/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://hayatbakhsh.xyz/tags/python/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQLite</title>
+      <link>http://hayatbakhsh.xyz/tags/sqlite/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/sqlite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>http://hayatbakhsh.xyz/tags/web/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>http://hayatbakhsh.xyz/tags/android/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>http://hayatbakhsh.xyz/tags/c#/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Magicavoxel</title>
+      <link>http://hayatbakhsh.xyz/tags/magicavoxel/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/magicavoxel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Photoshop</title>
+      <link>http://hayatbakhsh.xyz/tags/photoshop/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/photoshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unity3D</title>
+      <link>http://hayatbakhsh.xyz/tags/unity3d/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/unity3d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blender</title>
+      <link>http://hayatbakhsh.xyz/tags/blender/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hayatbakhsh.xyz/tags/blender/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

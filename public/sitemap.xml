@@ -2,10 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://hayatbakhsh.xyz/categories/</loc>
+    <loc>http://hayatbakhsh.xyz/tags/java/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/posts/monster-fighter/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://hayatbakhsh.xyz/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/posts/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://hayatbakhsh.xyz/tags/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/windows/</loc>
+    <lastmod>2022-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/css/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/flask/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/html/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/javascript/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/posts/pen-website/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/python/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/sqlite/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/web/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/android/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/posts/breakout/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/c#/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/magicavoxel/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/photoshop/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/unity3d/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/tags/blender/</loc>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/posts/droid-invasion/</loc>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://hayatbakhsh.xyz/categories/</loc>
   </url>
 </urlset>

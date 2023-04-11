@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>My Portfolio</title>
-    <link>http://hayatbakhsh.xyz/</link>
-    <description>Recent content on My Portfolio</description>
+    <title>Posts on My Portfolio</title>
+    <link>http://hayatbakhsh.xyz/posts/</link>
+    <description>Recent content in Posts on My Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://hayatbakhsh.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://hayatbakhsh.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monster Fighter</title>
       <link>http://hayatbakhsh.xyz/posts/monster-fighter/</link>

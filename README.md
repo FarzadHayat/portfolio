@@ -1,4 +1,6 @@
 # portfolio
 Portfolio Website made with Hugo
 
-TODO: add project screenshots and contact page
+TODO:
+1. add project screenshots
+2. add contact page

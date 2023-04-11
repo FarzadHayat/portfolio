@@ -1,0 +1,4 @@
+baseURL = 'http://hayatbakhsh.xyz/'
+languageCode = 'en-us'
+title = 'My Portfolio'
+theme = 'PaperMod'

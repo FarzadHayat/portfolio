@@ -1,6 +1,6 @@
 # portfolio
-Portfolio Website made with Hugo
+A website to showcase my projects made with [Go Hugo](https://gohugo.io/)
 
 TODO:
-1. add project screenshots
-2. add contact page
+1. add screenshot slideshow to posts
+2. deploy to a server

@@ -3,9 +3,10 @@ title: "Breakout"
 tags: ['Unity3D', 'C#', 'Magicavoxel', 'Photoshop', 'Android']
 date: 2019-10-28
 draft: false
+cover:
+    image: "/images/breakout.webp"
+    hidden: false
 ---
-![Breakout](/images/breakout.webp)
-
 [Demo Video](https://youtu.be/8J8EgPmWjPE)
 
 A third-person adventure game made for Android.  

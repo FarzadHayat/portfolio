@@ -3,9 +3,10 @@ title: "Monster Fighter"
 tags: ['Java', 'Windows']
 date: 2022-05-26
 draft: false
+cover:
+    image: "/images/monster-fighter.webp"
+    hidden: false
 ---
-![Monster Fighter](/images/monster-fighter.webp)
-
 A turn-based player-vs-computer game made for Windows.
 The goal is to fight the enemy monster teams while upgrading yours.
 You have a limited number of days and must aim to achieve the best score by picking your fights carefully.

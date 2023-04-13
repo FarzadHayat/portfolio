@@ -3,9 +3,11 @@ title: "Droid Invasion"
 tags: ['Unity3D', 'C#', 'Blender', 'Photoshop', 'Windows']
 date: 2018-10-19
 draft: false
+myvar: droid-invasion
+cover:
+    image: "/images/droid-invasion.webp"
+    hidden: false
 ---
-![Droid Invasion](/images/droid-invasion.webp)
-
 [Demo Video](https://youtu.be/YfwHRVawtzs)
 
 A first-person shooter game made for Windows.

@@ -14,3 +14,13 @@ This game was made in 2022 as a university course project between Farzad Hayatba
 This game was made using Java and the Swing GUI Toolkit.
 
 [Download Source Code + Java Executable](https://1drv.ms/u/s!AhCA5BqltFh3gXRSnwmdtV2jo2CH?e=8a8Qry)
+
+[Screenshot 1](/images/monster-fighter/1.webp)
+
+[Screenshot 2](/images/monster-fighter/2.webp)
+
+[Screenshot 3](/images/monster-fighter/3.webp)
+
+[Screenshot 4](/images/monster-fighter/4.webp)
+
+[Screenshot 5](/images/monster-fighter/5.webp)

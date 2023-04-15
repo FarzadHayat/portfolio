@@ -6,7 +6,7 @@ draft: false
 myvar: droid-invasion
 cover:
     image: "/images/droid-invasion.webp"
-    hidden: false
+    hidden: true
 ---
 [Demo Video](https://youtu.be/YfwHRVawtzs)
 
@@ -19,12 +19,28 @@ This game was made using Unity3D, C# and Blender.
 
 [Download for Windows](https://1drv.ms/u/s!AhCA5BqltFh3gXOXvPggLfkT9RuL?e=NiBhnZ)
 
-[Screenshot 1](/images/droid-invasion/1.webp)
-
-[Screenshot 2](/images/droid-invasion/2.webp)
-
-[Screenshot 3](/images/droid-invasion/3.webp)
-
-[Screenshot 4](/images/droid-invasion/4.webp)
-
-[Screenshot 5](/images/droid-invasion/5.webp)
+{{< rawhtml >}}
+<table>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/droid-invasion/1.webp" height="50%">}}
+        </td>
+        <td style="border:0px;"> 
+            {{< inTextImg url="/images/droid-invasion/2.webp" height="50%">}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/droid-invasion/3.webp" height="50%">}}
+        </td>
+        <td style="border:0px;"> 
+            {{< inTextImg url="/images/droid-invasion/4.webp" height="50%">}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/droid-invasion/5.webp" height="50%">}}
+        </td>
+    </tr>
+</table>
+{{< /rawhtml >}}

@@ -5,7 +5,7 @@ date: 2022-05-26
 draft: false
 cover:
     image: "/images/monster-fighter.webp"
-    hidden: false
+    hidden: true
 ---
 A turn-based player-vs-computer game made for Windows.
 The goal is to fight the enemy monster teams while upgrading yours.
@@ -15,12 +15,28 @@ This game was made using Java and the Swing GUI Toolkit.
 
 [Download Source Code + Java Executable](https://1drv.ms/u/s!AhCA5BqltFh3gXRSnwmdtV2jo2CH?e=8a8Qry)
 
-[Screenshot 1](/images/monster-fighter/1.webp)
-
-[Screenshot 2](/images/monster-fighter/2.webp)
-
-[Screenshot 3](/images/monster-fighter/3.webp)
-
-[Screenshot 4](/images/monster-fighter/4.webp)
-
-[Screenshot 5](/images/monster-fighter/5.webp)
+{{< rawhtml >}}
+<table>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/monster-fighter/1.webp" height="50%">}}
+        </td>
+        <td style="border:0px;"> 
+            {{< inTextImg url="/images/monster-fighter/2.webp" height="50%">}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/monster-fighter/3.webp" height="50%">}}
+        </td>
+        <td style="border:0px;"> 
+            {{< inTextImg url="/images/monster-fighter/4.webp" height="50%">}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border:0px;">
+            {{< inTextImg url="/images/monster-fighter/5.webp" height="50%">}}
+        </td>
+    </tr>
+</table>
+{{< /rawhtml >}}

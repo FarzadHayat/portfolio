@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Java on Farzad Hayatbakhsh</title>
-    <link>https://hayatbakhsh.xyz/tags/java/</link>
+    <link>https://farzadhayat.gitlab.io/tags/java/</link>
     <description>Recent content in Java on Farzad Hayatbakhsh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hayatbakhsh.xyz/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://farzadhayat.gitlab.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monster Fighter</title>
-      <link>https://hayatbakhsh.xyz/posts/monster-fighter/</link>
+      <link>https://farzadhayat.gitlab.io/posts/monster-fighter/</link>
       <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://hayatbakhsh.xyz/posts/monster-fighter/</guid>
+      <guid>https://farzadhayat.gitlab.io/posts/monster-fighter/</guid>
       <description>A turn-based player-vs-computer game made for Windows. The goal is to fight the enemy monster teams while upgrading yours. You have a limited number of days and must aim to achieve the best score by picking your fights carefully. This game was made in 2022 as a university course project between Farzad Hayatbakhsh and Daniel Cha. This game was made using Java and the Swing GUI Toolkit.
 Download Source Code + Java Executable</description>
     </item>

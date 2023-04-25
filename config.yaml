@@ -1,4 +1,4 @@
-baseURL: https://hayatbakhsh.xyz/
+baseURL: https://farzadhayat.gitlab.io/
 languageCode: en-us
 title: Farzad Hayatbakhsh
 theme: PaperMod
@@ -10,10 +10,10 @@ params:
        I am a second-year student at the **University of Canterbury** studying towards a Bachelor's degree in **Computer Science**.
        I like programming, free and open-source software, motorcycles, and rock climbing."
 
-  socialIcons: # optional
+  socialIcons:
     - name: "Email"
       url: "mailto:farzad.hayatbakhsh@outlook.com"
-    - name: "GitHub"
-      url: "https://github.com/FarzadHayat"
+    - name: "GitLab"
+      url: "https://gitlab.com/FarzadHayat"
     - name: "CV"
       url: "https://1drv.ms/b/s!AhCA5BqltFh3gXi25OdxZf6Lg82i?e=ET68rr"

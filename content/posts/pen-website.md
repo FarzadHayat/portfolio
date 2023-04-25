@@ -4,7 +4,7 @@ tags: ['Python', 'Flask', 'SQLite', 'JavaScript', 'HTML', 'CSS', 'Web']
 date: 2020-11-09
 draft: false
 cover:
-    image: "/images/pen-website.webp"
+    image: "images/pen-website.webp"
     hidden: true
 ---
 A website about pens made in 2020.
@@ -19,26 +19,26 @@ This website was made using Python, Flask, SQLite, HTML/CSS, and JavaScript.
 <table>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="/images/pen-website/1.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/1.webp" height="50%">}}
         </td>
         <td style="border:0px;"> 
-            {{< inTextImg url="/images/pen-website/2.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/2.webp" height="50%">}}
         </td>
     </tr>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="/images/pen-website/3.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/3.webp" height="50%">}}
         </td>
         <td style="border:0px;"> 
-            {{< inTextImg url="/images/pen-website/4.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/4.webp" height="50%">}}
         </td>
     </tr>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="/images/pen-website/5.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/5.webp" height="50%">}}
         </td>
         <td style="border:0px;">
-            {{< inTextImg url="/images/pen-website/6.webp" height="50%">}}
+            {{< inTextImg url="images/pen-website/6.webp" height="50%">}}
         </td>
     </tr>
 </table>

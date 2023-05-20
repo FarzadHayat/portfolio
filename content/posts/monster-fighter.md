@@ -4,7 +4,7 @@ tags: ['Java', 'Windows']
 date: 2022-05-26
 draft: false
 cover:
-    image: "images/monster-fighter.webp"
+    image: "/portfolio/images/monster-fighter.webp"
     hidden: true
 ---
 A turn-based player-vs-computer game made for Windows.
@@ -19,23 +19,23 @@ This game was made using Java and the Swing GUI Toolkit.
 <table>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="images/monster-fighter/1.webp" height="50%">}}
+            {{< inTextImg url="/portfolio/images/monster-fighter/1.webp" height="50%">}}
         </td>
         <td style="border:0px;"> 
-            {{< inTextImg url="images/monster-fighter/2.webp" height="50%">}}
+            {{< inTextImg url="/portfolio/images/monster-fighter/2.webp" height="50%">}}
         </td>
     </tr>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="images/monster-fighter/3.webp" height="50%">}}
+            {{< inTextImg url="/portfolio/images/monster-fighter/3.webp" height="50%">}}
         </td>
         <td style="border:0px;"> 
-            {{< inTextImg url="images/monster-fighter/4.webp" height="50%">}}
+            {{< inTextImg url="/portfolio/images/monster-fighter/4.webp" height="50%">}}
         </td>
     </tr>
     <tr>
         <td style="border:0px;">
-            {{< inTextImg url="images/monster-fighter/5.webp" height="50%">}}
+            {{< inTextImg url="/portfolio/images/monster-fighter/5.webp" height="50%">}}
         </td>
     </tr>
 </table>

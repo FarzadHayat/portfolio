@@ -16,4 +16,6 @@ params:
     - name: "GitLab"
       url: "https://gitlab.com/FarzadHayat"
     - name: "CV"
-      url: "https://1drv.ms/b/s!AhCA5BqltFh3gXi25OdxZf6Lg82i?e=ET68rr"
+      url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/cv.pdf"
+    - name: "Academic Trancript"
+      url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/transcript.pdf"

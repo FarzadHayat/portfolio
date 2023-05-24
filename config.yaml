@@ -7,8 +7,9 @@ params:
   homeInfoParams:
     Title: "Hi there 👋"
     Content: ">
-       I am a second-year student at the **University of Canterbury** studying towards a Bachelor's degree in **Computer Science**.
-       I like programming, free and open-source software, motorcycles, and rock climbing."
+       I am a second-year **Computer Science** student at the **University of Canterbury**.
+       I am seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday.
+       I like programming, free and open-source software, rock climbing, dancing, and motorcycles."
 
   socialIcons:
     - name: "Email"

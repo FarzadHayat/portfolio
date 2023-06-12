@@ -20,5 +20,5 @@ params:
       url: "https://www.linkedin.com/in/farzadhayatbakhsh/"
     - name: "CV"
       url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/cv.pdf"
-    - name: "Academic Trancript"
+    - name: "Academic Transcript"
       url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/transcript.pdf"

@@ -8,14 +8,16 @@ params:
     Title: "Hi there 👋"
     Content: ">
        I am a second-year **Computer Science** student at the **University of Canterbury**.
-       I am seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday.
+       I am seeking a Software Engineering or related internship in the Australia/New Zealand region for the 2023 summer holiday.
        I like programming, free and open-source software, rock climbing, dancing, and motorcycles."
 
   socialIcons:
     - name: "Email"
       url: "mailto:farzad.hayatbakhsh@outlook.com"
     - name: "GitLab"
-      url: "https://gitlab.com/FarzadHayat"
+      url: "https://gitlab.com/FarzadHayat/"
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/farzadhayatbakhsh/"
     - name: "CV"
       url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/cv.pdf"
     - name: "Academic Trancript"

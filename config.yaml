@@ -1,24 +1,22 @@
 baseURL: https://farzadhayat.gitlab.io/portfolio
 languageCode: en-us
-title: Farzad Hayatbakhsh
+title: Farzad Hayat
 theme: PaperMod
 
 params:
   homeInfoParams:
     Title: "Hi there 👋"
     Content: ">
-       I am a second-year **Computer Science** student at **Queensland University of Technology**.
-       I am seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday.
-       I like programming, free and open-source software, rock climbing, dancing, and motorcycles."
+       Second-year **Computer Science** student at **Queensland University of Technology**.
+       Seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday.
+       In my free time, I enjoy exploring open source software, rock climbing, latin dancing, and motorcycling."
 
   socialIcons:
     - name: "Email"
-      url: "mailto:farzad.hayatbakhsh@outlook.com"
+      url: "mailto:farzad.hayat@outlook.com"
     - name: "GitLab"
       url: "https://gitlab.com/FarzadHayat/"
     - name: "LinkedIn"
-      url: "https://www.linkedin.com/in/farzad-hayatbakhsh/"
-    - name: "CV"
-      url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/cv.pdf"
-    - name: "Academic Transcript"
-      url: "https://gitlab.com/FarzadHayat/portfolio/-/tree/master/static/transcript.pdf"
+      url: "https://www.linkedin.com/in/farzad-hayat/"
+    - name: "Resume"
+      url: "https://farzadhayat.gitlab.io/portfolio/cv.pdf"

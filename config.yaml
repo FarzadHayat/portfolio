@@ -14,7 +14,7 @@ params:
   socialIcons:
     - name: "Email"
       url: "mailto:farzad.hayat@outlook.com"
-    - name: "GitLab"
+    - name: "GitHub"
       url: "https://github.com/FarzadHayat/"
     - name: "LinkedIn"
       url: "https://www.linkedin.com/in/farzad-hayat/"

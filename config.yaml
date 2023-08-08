@@ -1,4 +1,4 @@
-baseURL: https://farzadhayat.gitlab.io/portfolio
+baseURL: https://farzadhayat.github.io/portfolio
 languageCode: en-us
 title: Farzad Hayat
 theme: PaperMod
@@ -15,8 +15,8 @@ params:
     - name: "Email"
       url: "mailto:farzad.hayat@outlook.com"
     - name: "GitLab"
-      url: "https://gitlab.com/FarzadHayat/"
+      url: "https://github.com/FarzadHayat/"
     - name: "LinkedIn"
       url: "https://www.linkedin.com/in/farzad-hayat/"
     - name: "Resume"
-      url: "https://farzadhayat.gitlab.io/portfolio/FARZAD_HAYAT_Resume.pdf"
+      url: "https://farzadhayat.github.io/portfolio/FARZAD_HAYAT_Resume.pdf"

@@ -5,7 +5,7 @@ date: 2023-08-31
 draft: false
 cover:
     image: "/portfolio/images/empathese.webp"
-    hidden: true
+    hidden: false
 ---
 
 Empathese is a conversation companion to help you interpret what your loved ones may be trying to say to you.
@@ -30,4 +30,3 @@ Don't hesitate to reach out if you'd like to discuss the project further!
 {{< inTextImg url="/portfolio/images/empathese/3.webp" height="50%">}}
 {{< inTextImg url="/portfolio/images/empathese/4.webp" height="50%">}}
 {{< inTextImg url="/portfolio/images/empathese/5.webp" height="50%">}}
-{{< inTextImg url="/portfolio/images/empathese/6.webp" height="25%">}}

@@ -4,7 +4,7 @@ tags: ['Svelte', 'Tailwind CSS', 'SvelteKit', 'Vercel', 'Vite', 'JavaScript', 'O
 date: 2023-08-31
 draft: false
 cover:
-    image: "/portfolio/images/empathese.webp"
+    image: "/portfolio/images/empathese.gif"
     hidden: false
 ---
 
@@ -24,6 +24,8 @@ This was my first exposure to using the Svelte framework as well as using TypeSc
 
 Feel free to explore various prompts and engage with the [website](https://empathese.vercel.app/).
 Don't hesitate to reach out if you'd like to discuss the project further!
+
+[GitHub Repo](https://github.com/McCorsa/empathese)
 
 {{< inTextImg url="/portfolio/images/empathese/1.webp" height="50%">}}
 {{< inTextImg url="/portfolio/images/empathese/2.webp" height="50%">}}

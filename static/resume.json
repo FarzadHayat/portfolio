@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Farzad Hayat",
+    "label": "Software Engineer",
+    "image": "",
+    "email": "farzad.hayat@outlook.com",
+    "phone": "+61 422 619 437",
+    "url": "https://farzadhayat.github.io/portfolio/",
+    "summary": "Organized and dependable programmer striving to make the world a richer and more connected place. Passionate about open source software and cutting edge technology. Seeking a Software Engineering or related internship for the 2023 summer holiday.\n\n● Strong Collaboration: Passionate about working in diverse and innovative teams.\n\n● Continuous Learning: Commitment to personal and professional growth.\n\n● Responsibility: Strong sense of ownership and accountability for given tasks.",
+    "location": {
+      "countryCode": "AU",
+      "region": "Queensland"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "farzad-hayat",
+        "url": "https://www.linkedin.com/in/farzad-hayat/"
+      }
+    ]
+  },
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Queensland University of Technology",
+      "area": "Bachelor's in Computer Science",
+      "startDate": "2023-07-31",
+      "endDate": "2025-06-30",
+      "score": "",
+      "studyType": "● Member of College of Excellence.\n\n● Committee member of Code Network society.\n\n● Professional development by attending events, workshops, and programs hosted by QUT Entrepreneurship."
+    },
+    {
+      "institution": "University of Canterbury",
+      "area": "Bachelor's in Computer Science",
+      "startDate": "2021-07-31",
+      "endDate": "2023-06-30",
+      "score": "7.5/9.0 GPA",
+      "studyType": "● Interests: Algorithms & Data Structures, Cryptography, Formal Languages & Compilers.\n\n● Participated in competitive programming contests including ANZAC and ICPC."
+    }
+  ],
+  "awards": [
+  	{
+  		"title": "Best Design and Aesthetics",
+  		"date": "2023-07-16",
+  		"awarder": "Code Network",
+  		"summary": "Awarded at 2023 Code Network Hackathon for developing a DRC Marksheet App called in Flutter."
+  	}
+  ],
+  "certificates": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Beginner",
+      "keywords": [
+      	"HTML/CSS",
+      	"JavaScript/TypeScript",
+      	"Svelte/SvelteKit",
+      	"NodeJS",
+      	"Tailwind CSS",
+      	"Flask",
+      	"REST APIs"
+      ]
+    },
+    {
+      "name": "Software Development",
+      "level": "Intermediate",
+      "keywords": [
+      	"Java",
+      	"Python",
+      	"Flutter",
+      	"SQL",
+      	"Unity3D",
+      	"Linux",
+      	"UML",
+      	"OOP",
+      	"Unit Testing",
+      	"Git"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "fluency": "Native Speaker",
+      "language": "English"
+    },
+    {
+      "fluency": "Native Speaker",
+      "language": "Persian"
+    }
+  ],
+  "interests": [
+  	{
+  		"name": "Open Source",
+  		"keywords": []
+  	},
+  	{
+  		"name": "Partner Dancing",
+  		"keywords": []
+  	},
+  	{
+  		"name": "Rock Climbing",
+  		"keywords": []
+  	},
+  	{
+  		"name": "Motorcycling",
+  		"keywords": []
+  	}
+  ],
+  "references": [],
+  "projects": [
+    {
+      "name": "Empathese",
+      "startDate": "2023-08-25",
+      "highlights": [
+  	    "Conversation Interpreter built using OpenAI's Whisper and GPT-4 for 2023 UQCS Hackathon.",
+	      "Developed using SvelteKit, TypeScript, and Tailwind CSS.",
+      	"I was responsible for building the server-side and prompt engineering."
+      ],
+      "url": "https://farzadhayat.github.io/portfolio/posts/empathese/",
+      "endDate": "2023-08-27"
+    },
+    {
+      "name": "Ultimate Earth Championship",
+      "startDate": "2023-03-01",
+      "highlights": [
+      	"Checkers-like player vs computer game made using Java with Swing.",
+      	"Developed over two months as a team of two using an agile development cycle.",
+      	"Utilized JUnit for unit testing and user feedback for acceptance testing."
+    	],
+      "url": "https://farzadhayat.github.io/portfolio/posts/ultimate-earth-championship/",
+      "endDate": "2023-06-30"
+    },
+    {
+      "name": "Breakout",
+      "startDate": "2019-02-01",
+      "highlights": [
+    		"Adventure Android game made using Unity3D, C#, and MagicaVoxel.",
+    		"Rescue the hostages and lead them to the exit.",
+    		"Responsible for programming and level design."
+  		],
+      "url": "https://farzadhayat.github.io/portfolio/posts/breakout/",
+      "endDate": "2019-11-30"
+    }
+  ],
+  "meta": {
+    "version": "v1.0.0",
+    "theme": "even",
+    "canonical": "https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json"
+  }
+}

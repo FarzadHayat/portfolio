@@ -1,4 +1,4 @@
-baseURL = 'https://farzadhayat.vercel.app/'
+baseURL = 'https://farzadhayat.github.io/portfolio'
 languageCode = 'en-us'
 title = 'Farzad Hayat'
 theme = 'PaperMod'
@@ -6,9 +6,7 @@ theme = 'PaperMod'
 [params.homeInfoParams]
 Title = "Hi there 👋"
 Content = """>
-	Second-year **Computer Science** student at **Queensland University of Technology**.
-       	Seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday.
-       	In my free time, I enjoy exploring open source software, rock climbing, latin dancing, and motorcycling."""
+I am a second-year **Computer Science** student at **Queensland University of Technology**. Currently seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday. In my free time, I enjoy exploring open source software, latin dancing, and motorcycling."""
 
 [[params.socialIcons]]
 name = "Email"
@@ -24,6 +22,6 @@ url = "https://www.linkedin.com/in/farzad-hayat/"
 
 [[params.socialIcons]]
 name = "Resume"
-url = "https://farzadhayat.github.io/portfolio/FARZAD_HAYAT_Resume.pdf"
+url = "https://farzadhayat.github.io/portfolio/resume.pdf"
 
 

@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Farzad Hayat",
-    "label": "Software Engineer",
+    "label": "Software Developer",
     "image": "",
     "email": "farzad.hayat@outlook.com",
     "phone": "+61 422 619 437",
     "url": "https://farzadhayat.github.io/portfolio/",
-    "summary": "Organized and dependable programmer striving to make the world a richer and more connected place. Passionate about open source software and cutting edge technology. Seeking a Software Engineering or related internship for the 2023 summer holiday.\n\n● Strong Collaboration: Passionate about working in diverse and innovative teams.\n\n● Continuous Learning: Commitment to personal and professional growth.\n\n● Responsibility: Strong sense of ownership and accountability for given tasks.",
+    "summary": "I am a second-year Computer Science student, dedicated to honing my craft in software development. I am passionate about collaborating with dynamic and innovative teams, committed to personal and professional growth, and I hold a strong sense of ownership for assigned tasks. I am actively seeking a Software Engineering or related internship available starting in November 2023.",
     "location": {
       "countryCode": "AU",
       "region": "Queensland"
@@ -24,7 +24,7 @@
   "education": [
     {
       "institution": "Queensland University of Technology",
-      "area": "Bachelor's in Computer Science",
+      "area": "Bachelor's in Computer Science (transferred)",
       "startDate": "2023-07-31",
       "endDate": "2025-06-30",
       "score": "",
@@ -44,7 +44,7 @@
   		"title": "Best Design and Aesthetics",
   		"date": "2023-07-16",
   		"awarder": "Code Network",
-  		"summary": "Awarded at 2023 Code Network Hackathon for developing a DRC Marksheet App called in Flutter."
+  		"summary": "Awarded at 2023 Code Network Hackathon for developing a DRC Marksheet App called Bots 'n' Bids in Flutter."
   	}
   ],
   "certificates": [],
@@ -80,33 +80,11 @@
       ]
     }
   ],
-  "languages": [
+ "interests": [
     {
-      "fluency": "Native Speaker",
-      "language": "English"
-    },
-    {
-      "fluency": "Native Speaker",
-      "language": "Persian"
+      "name": "",
+      "keywords": ["Open Source", "Latin Dancing", "Rock Climbing", "Motorcycling"]
     }
-  ],
-  "interests": [
-  	{
-  		"name": "Open Source",
-  		"keywords": []
-  	},
-  	{
-  		"name": "Latin Dancing",
-  		"keywords": []
-  	},
-  	{
-  		"name": "Rock Climbing",
-  		"keywords": []
-  	},
-  	{
-  		"name": "Motorcycling",
-  		"keywords": []
-  	}
   ],
   "references": [],
   "projects": [

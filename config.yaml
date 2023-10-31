@@ -7,7 +7,7 @@ params:
   homeInfoParams:
     Title: "Hi there 👋"
     Content: ">
-I am a second-year **Computer Science** student at **Queensland University of Technology**. Currently seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday. In my free time, I enjoy exploring open source software, latin dancing, and motorcycling."
+I am a second-year **Computer Science** student at **Queensland University of Technology**. Currently seeking a Software Engineering or related internship in Australia or New Zealand for the 2023 summer holiday. In my free time, I enjoy exploring open source software and learning dancing."
 
   socialIcons:
     - name: "Email"
@@ -16,5 +16,3 @@ I am a second-year **Computer Science** student at **Queensland University of Te
       url: "https://github.com/FarzadHayat/"
     - name: "LinkedIn"
       url: "https://www.linkedin.com/in/farzad-hayat/"
-    - name: "Resume"
-      url: "https://farzadhayat.github.io/portfolio/Farzad_Hayat_Resume.pdf"

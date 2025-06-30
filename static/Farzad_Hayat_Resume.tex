@@ -1,0 +1,221 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+\usepackage{lmodern}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Farzad Hayat} \\ \vspace{1pt}
+    \small +61 422 619 437 $|$ \href{mailto:farzad.hayat@outlook.com}{\underline{farzad.hayat@outlook.com}} $|$ 
+    \href{https://linkedin.com/in/farzad-hayat}{\underline{linkedin.com/in/farzad-hayat}} $|$
+    \href{https://farzadhayat.github.io/portfolio}{\underline{farzadhayat.github.io/portfolio}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Queensland University of Technology}{Brisbane, AU}
+      {Bachelor of Information Technology, Computer Science major}{July 2021 -- June 2026}
+      \resumeItemListStart
+        \resumeItem{GPA: 6.75 / 7.00}
+        \resumeItem{Interests: Algorithms \& Data Structures, Databases, Machine Learning, Computer Networking, Cloud Computing, Systems Programming}
+        \resumeItem{Improving leadership skills by attending College of Excellence events and workshops}
+        \resumeItem{Accounting and budgeting as the Treasurer for Code Network}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+        {Intern QA Engineer}{December 2023 -- February 2025}
+        {TinyMCE}{Brisbane, AU (Hybrid)}
+        \resumeItemListStart
+            \resumeItem{Performed end-to-end testing, smoke testing, and exploratory testing to ensure software quality.}
+            \resumeItem{Authored comprehensive technical documentation for major, minor, and patch releases, improving clarity and usability for stakeholders.}
+            \resumeItem{Managed bug tracking and project workflows efficiently using Jira and GitHub, streamlining development cycles.}
+            \resumeItem{Utilized TestRail for robust test management, enhancing test coverage and traceability.}
+            \resumeItem{Conducted in-depth browser testing across Chrome, Safari, and Firefox, ensuring cross-browser compatibility and optimal user experience.}
+            \resumeItem{Collaborated effectively with engineers, designers, managers, and other testers in an agile environment, fostering a cohesive team approach.}
+            \resumeItem{Adhered to a flexible Scrum development framework, adapting to evolving project requirements and delivering iterative improvements.}
+            \resumeItem{Engineered and maintained a sandbox testing environment using Kubernetes, utilized for improving testing efficiency and isolation.}
+        \resumeItemListEnd
+
+    \resumeSubheading
+        {Freelance Software Developer}{September 2023 -- Present}
+        {Self-employed}{Brisbane, AU (Remote)}
+        \resumeItemListStart
+            \resumeItem{Designed and developed a comprehensive website for an Australian telehealth startup, leveraging WordPress and PHP.}
+            \resumeItem{Managed the client's server hosting, custom email configurations, and domain management, SEO optimization, ensuring seamless online presence.}
+            \resumeItem{Architected and implemented cloud-based Windows virtual machines for doctors, enabling the use of practice management software and patient engagement platforms.}
+            \resumeItem{Providing continuous support and implementing ongoing improvements for all deployed solutions.}
+        \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+        \resumeProjectHeading
+            {\textbf{Cloud Media Transcription Service} $|$ \emph{AWS, Nginx, Express, Node.js, Terraform}}{2024}
+        \resumeItemListStart
+            \resumeItem{Developed a web application for media transcription, utilizing FFmpeg for audio conversion and Whisper ASR for transcribing audio to text.}
+            \resumeItem{Designed and implemented a microservices architecture for efficient resource allocation and scalability, employing EC2 for the REST API and ECS with auto-scaling for CPU-intensive tasks.}
+            \resumeItem{Utilized Lambda for event-driven tasks, integrated SQS queues for decoupled service communication, and managed user authentication with Cognito.}
+            \resumeItem{Implemented robust security measures including HTTPS for data in transit and encryption at rest for S3 buckets and DocumentDB, securing sensitive information with Secrets Manager and Parameter Store.}
+        \resumeItemListEnd
+          
+    \resumeProjectHeading
+        {\textbf{Ultimate Earth Championship} $|$ \emph{Java, Swing, JUnit, Agile, Git}}{2023}
+        \resumeItemListStart
+            \resumeItem{Engineered a Java-based game featuring character resurrection and melee combat, showcasing strong object-oriented design principles.}
+            \resumeItem{Ensured software quality through rigorous unit and acceptance testing, contributing to a robust and reliable application.}
+            \resumeItem{Applied Agile development methodologies to manage project timelines and deliver key milestones efficiently.}
+        \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+    
+
+
+%-----------EXTRACURRICULAR-----------
+\section{Extracurricular}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Certification}{: working towards CLF-C02 AWS Certified Cloud Practitioner certification with estimated completion in June 2025.}
+    }}
+    \small{\item{
+     \textbf{Best design and aesthetics}{: awarded at 2023 Code Network Hackathon for developing a Droid Racing Marksheet app in Flutter and leading the team to success.}
+     }}
+    \small{\item{
+     \textbf{Competitive programming}{: placed 17 out of 75 teams in the 2023 ANZAC 1 programming contest.}
+    }}
+ \end{itemize}
+ 
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, C, Python, SQL, JavaScript.} \\
+     \textbf{Frameworks}{: React, Express, NodeJS, TensorFlow.} \\
+     \textbf{Tools}{: AWS, Linux, Figma, MongoDB, Terraform.}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
+

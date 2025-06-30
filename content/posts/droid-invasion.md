@@ -3,7 +3,6 @@ title: "Droid Invasion"
 tags: ['Unity3D', 'C#', 'Blender', 'Photoshop', 'Windows']
 date: 2018-10-19
 draft: false
-myvar: droid-invasion
 cover:
     image: "/portfolio/images/droid-invasion.webp"
     hidden: true

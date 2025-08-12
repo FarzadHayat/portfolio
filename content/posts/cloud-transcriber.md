@@ -4,7 +4,7 @@ tags: ['AWS', 'Nginx', 'Express', 'Node.js', 'Terraform', 'Cloud Computing', 'Mi
 date: 2024-11-25
 draft: false
 cover:
-    image: "/portfolio/images/cloud-transcriber.webp"
+    image: "/images/cloud-transcriber.webp"
     hidden: true
 ---
 
@@ -21,7 +21,7 @@ The core functionality of the application involves:
 
 ## Application Architecture
 
-![Application Architecture](/portfolio/images/cloud-transcriber/application-architecture.webp)
+![Application Architecture](/images/cloud-transcriber/application-architecture.webp)
 
 The application is deployed on AWS in the ap-southeast-2 region. Key components and their roles include:
 

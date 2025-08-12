@@ -4,7 +4,7 @@ tags: ['Svelte', 'Tailwind CSS', 'SvelteKit', 'Vercel', 'Vite', 'JavaScript', 'O
 date: 2023-08-31
 draft: false
 cover:
-    image: "/portfolio/images/empathese.gif"
+    image: "/images/empathese.gif"
     hidden: false
 ---
 
@@ -27,8 +27,8 @@ Don't hesitate to reach out if you'd like to discuss the project further!
 
 [GitHub Repo](https://github.com/McCorsa/empathese)
 
-{{< inTextImg url="/portfolio/images/empathese/1.webp" height="50%">}}
-{{< inTextImg url="/portfolio/images/empathese/2.webp" height="50%">}}
-{{< inTextImg url="/portfolio/images/empathese/3.webp" height="50%">}}
-{{< inTextImg url="/portfolio/images/empathese/4.webp" height="50%">}}
-{{< inTextImg url="/portfolio/images/empathese/5.webp" height="50%">}}
+{{< inTextImg url="/images/empathese/1.webp" height="50%">}}
+{{< inTextImg url="/images/empathese/2.webp" height="50%">}}
+{{< inTextImg url="/images/empathese/3.webp" height="50%">}}
+{{< inTextImg url="/images/empathese/4.webp" height="50%">}}
+{{< inTextImg url="/images/empathese/5.webp" height="50%">}}

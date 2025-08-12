@@ -4,7 +4,7 @@ tags: ['Unity3D', 'C#', 'Magicavoxel', 'Photoshop', 'Android']
 date: 2019-10-28
 draft: false
 cover:
-    image: "/portfolio/images/breakout.webp"
+    image: "/images/breakout.webp"
     hidden: false
 ---
 [Demo Video](https://youtu.be/8J8EgPmWjPE)

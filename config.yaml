@@ -5,13 +5,13 @@ theme: PaperMod
 
 params:
   homeInfoParams:
-    Title: "Hi there 👋"
+    Title: "G'day 👋"
     Content: ">
-I am a final-year **Computer Science** student at **Queensland University of Technology**, currently seeking a Software Engineering or related internship in Australia or New Zealand. In my free time, I enjoy exploring open source software, partner dancing, and cooking."
+I am a final-semester **Computer Science** student at **Queensland University of Technology**, currently seeking a Software Engineering internship in Australia or New Zealand. In my free time, I enjoy exploring open source software, partner dancing, and cooking."
 
   socialIcons:
     - name: "Email"
-      url: "mailto:farzad.hayat@outlook.com"
+      url: "mailto:hello@farzadhayat.dev"
     - name: "GitHub"
       url: "https://github.com/FarzadHayat/"
     - name: "LinkedIn"

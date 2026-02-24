@@ -5,7 +5,7 @@
 % License : MIT
 %------------------------
 
-\documentclass[a4,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 \usepackage{lmodern}
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -20,31 +20,13 @@
 \usepackage{tabularx}
 \input{glyphtounicode}
 
-
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
 % Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.5in}
 \addtolength{\textheight}{1.0in}
+\setlength{\footskip}{5pt}
 
 \urlstyle{same}
 
@@ -123,7 +105,7 @@
 \section{Career Summary}
 \begin{itemize}[leftmargin=0.15in, label={}]
   \small{\item{
-    Final-semester Bachelor of Information Technology student at QUT, majoring in Computer Science with a strong academic record and hands-on experience in cloud computing, systems programming, and software testing. Completed 15 months as a QA Engineer and Technical Writer at Tiny Technologies, contributing to high-impact releases. Currently seeking a summer internship for 2025/2026 to apply and expand technical skills in a dynamic, real-world environment.
+    Final-semester Computer Science student at QUT specializing in building cloud-native, AI-powered applications. Professional experience as a Software Engineer Intern at Tanda, where I architected and deployed production Ruby on Rails applications. Backed by 15 months of QA engineering at Tiny Technologies and a strong foundation in AWS microservices. Seeking a Graduate Software Engineer or Full-Time role starting July 2026.
   }}
 \end{itemize}
 
@@ -133,13 +115,10 @@
   \resumeSubHeadingListStart
     \resumeSubheading
       {Queensland University of Technology}{July 2021 -- June 2026}
-      {Bachelor of Information Technology, Computer Science major}{Brisbane, Australia (part-time, online)}
+      {Bachelor of Information Technology, Computer Science major}{Brisbane, Australia}
       \resumeItemListStart
-        \resumeItem{6.67 / 7.00 GPA (Grade Point Average)}
-        \resumeItem{Academic focus: Cloud Computing, Systems Programming, Computer Networking, Machine Learning}
-        \resumeItem{Three-time recipient of QUT Executive Dean’s Commendation for Academic Excellence}
-        \resumeItem{Developed leadership via College of Excellence workshops}
-        \resumeItem{Active member of Code Network university club since 2023}
+        \resumeItem{6.67 / 7.00 GPA; Recipient of 3x QUT Executive Dean’s Commendation for Academic Excellence.}
+        \resumeItem{Academic focus: Cloud Computing, Systems Programming, Computer Networking, Machine Learning.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -149,22 +128,27 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-        {Quality Assurance Engineer}{December 2023 -- February 2025}
-        {Tiny Technologies, TinyMCE}{Brisbane, Australia (part-time, hybrid)}
+        {Software Engineer Intern}{December 2025 -- January 2026}
+        {Tanda}{Brisbane, Australia}
         \resumeItemListStart
-            \resumeItem{Ensured product stability across TinyMCE’s high-traffic codebase (2M+ monthly downloads) by conducting end-to-end, smoke, and exploratory testing.}
-            \resumeItem{Produced stakeholder-oriented technical documentation for 23 releases and 7 new plugins, improving clarity and adoption of new features.}
-            \resumeItem{Streamlined issue traceability by managing bug tracking and development workflows using Jira, GitHub, and TestRail.}
-            \resumeItem{Collaborated in agile sprints with engineers, designers, and testers to deliver iterative improvements and reduce release cycle time.}
+            \resumeItem{Designed and developed the Compliance Document Library using Ruby on Rails, enabling businesses to securely store and manage critical compliance documents.}
+            \resumeItem{Architected the database schema and automated email notification systems, maintaining high code quality through comprehensive testing and peer reviews in a two-person team.}
+        \resumeItemListEnd
+
+    \resumeSubheading
+        {Quality Assurance Engineer}{December 2023 -- February 2025}
+        {Tiny Technologies, TinyMCE}{Brisbane, Australia}
+        \resumeItemListStart
+            \resumeItem{Ensured stability for TinyMCE (2M+ monthly downloads) by conducting end-to-end, smoke, and exploratory testing.}
+            \resumeItem{Produced technical documentation for 23 releases and managed bug tracking workflows using Jira and GitHub.}
         \resumeItemListEnd
 
     \resumeSubheading
         {Freelance IT Consultant}{September 2023 -- present}
-        {Self-employed}{Brisbane, Australia (casual, remote)}
+        {Self-employed}{Remote}
         \resumeItemListStart
-            \resumeItem{Built and deployed a WordPress website for an Australian telehealth startup, enabling over 800 monthly patient interactions.}
-            \resumeItem{Configured server hosting, email infrastructure, and SEO optimization to ensure reliable performance and strong online visibility.}
-            \resumeItem{Provisioned cloud-hosted Windows Server environments to support practice management software and HotDoc integration, improving operational efficiency for medical staff.}
+            \resumeItem{Deployed WordPress solutions and cloud-hosted Windows Server environments for medical startups, supporting 800+ monthly interactions.}
+            \resumeItem{Configured server hosting, email infrastructure, and SEO optimization to ensure reliable performance and visibility.}
         \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -174,22 +158,10 @@
 \section{Projects}
     \resumeSubHeadingListStart
         \resumeProjectHeading
-            {\textbf{\href{https://farzadhayat.dev/posts/cloud-transcriber/}{\underline{Cloud Media Transcriber (Link)}}} $|$ \emph{AWS, Nginx, Express, Node.js, Docker, Terraform}}{2024}
+            {\textbf{\href{https://farzadhayat.dev/posts/cloud-transcriber/}{\underline{Cloud Media Transcriber (Link)}}} $|$ \emph{AWS, Docker, Terraform, Node.js}}{2024}
         \resumeItemListStart
-            \resumeItem{Developed a web application for media transcription, utilizing FFmpeg for audio conversion and Whisper ASR for transcribing audio to text.}
-            \resumeItem{Designed and implemented a microservices architecture for efficient resource allocation and scalability, employing EC2 for the REST API and ECS with auto-scaling for CPU-intensive tasks.}
-            \resumeItem{Utilized Lambda for event-driven tasks, integrated SQS queues for decoupled service communication, and managed user authentication with Cognito.}
-            \resumeItem{Implemented robust security measures including HTTPS for data in transit and encryption at rest for S3 buckets and DocumentDB, securing sensitive information with Secrets Manager and Parameter Store.}
+            \resumeItem{Architected a scalable media transcription pipeline using FFmpeg and Whisper ASR. Orchestrated microservices via ECS/Lambda and managed infrastructure-as-code with Terraform.}
         \resumeItemListEnd
-          
-        \resumeProjectHeading
-            {\textbf{\href{https://farzadhayat.dev/posts/ultimate-earth-championship/}{\underline{Ultimate Earth Championship (Link)}}} $|$ \emph{Java, Swing, JUnit, Agile, Git}}{2023}
-        \resumeItemListStart
-            \resumeItem{Engineered a Java-based game featuring character resurrection and melee combat, showcasing strong object-oriented design principles.}
-            \resumeItem{Ensured software quality through rigorous unit and acceptance testing, contributing to a robust and reliable application.}
-            \resumeItem{Applied Agile development methodologies to manage project timelines and deliver key milestones efficiently.}
-        \resumeItemListEnd
-          
     \resumeSubHeadingListEnd
 
 
@@ -206,29 +178,12 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Java, Python, SQL, JavaScript, Bash, C, C\#.} \\
-     \textbf{Tools \& Frameworks}{: AWS, Linux, NodeJS, React, Terraform, TensorFlow, MongoDB, Figma, Kubernetes.}
+     \textbf{Languages}{: Java, Python, Ruby, TypeScript, JavaScript, SQL, C, C\#, Bash} \\
+     \textbf{Frameworks \& Libraries}{: Ruby on Rails, React, Express, Node.js, Flask, Tailwind CSS, TensorFlow, JUnit} \\
+     \textbf{Cloud \& DevOps}{: AWS (EC2, ECS, Lambda, S3, SQS, Cognito, Route 53), Terraform, Docker, Kubernetes, Nginx, Linux} \\
+     \textbf{Tools \& Databases}{: Claude Code, Git, GitHub, Jira, TestRail, Figma, MongoDB, DocumentDB, SQLite}
     }}
  \end{itemize}
-
-
-%-----------SOFT SKILLS-----------
-\section{Soft Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Communication \& Collaboration}{: Clear stakeholder engagement, agile teamwork, and technical leadership across diverse teams.} \\
-     \textbf{Problem Solving}{: Strategic troubleshooting, systems thinking, and modular design for scalable, maintainable solutions.} \\
-     \textbf{Adaptability}{: Comfortable navigating hybrid work environments, learning new technologies, and balancing technical depth with user experience.}
-    }}
- \end{itemize}
-
-
-%-----------REFEREES-----------
-\section{Referees}
-\begin{itemize}[leftmargin=0.15in, label={}]
-  \small{\item{\textbf{Two referees available upon request}}}
-\end{itemize}
-
 
 %-------------------------------------------
 \end{document}

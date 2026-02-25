@@ -5,7 +5,7 @@ date: 2026-02-25
 draft: false
 cover:
     image: "/images/tanda-internship.webp"
-    hidden: true
+    hidden: false
 ---
 
 Between December 2025 and January 2026, I had the incredible opportunity to work as a Software Engineer Intern at **Tanda** in Brisbane. During this time, I was part of a focused two-person team responsible for architecting and deploying a brand new feature for the Tanda ecosystem.
@@ -45,25 +45,22 @@ I am grateful to the Tanda team for their mentorship and for the opportunity to 
 
 ### Gallery
 
-Below are some snapshots of the work and the environment during my time at Tanda:
+Below are some snapshots of the work during my time at Tanda:
 
 {{< inTextImg url="/images/tanda-internship/1.webp" height="50%" >}}
-*The 2025/2026 Tanda Intern cohort on the rooftop.*
-
-{{< inTextImg url="/images/tanda-internship/2.webp" height="50%" >}}
 *The desktop dashboard for the Compliance Document Library.*
 
-{{< inTextImg url="/images/tanda-internship/3.webp" height="50%" >}}
+{{< inTextImg url="/images/tanda-internship/2.webp" height="50%" >}}
 *Implementing the document editing and management interface.*
 
 <div style="display: flex; justify-content: center; gap: 20px; text-align: center;">
   <div style="flex: 1;">
-    <img src="/images/tanda-internship/4.webp" style="max-width: 100%; height: auto;" />
+    <img src="/images/tanda-internship/3.webp" style="max-width: 100%; height: auto;" />
     <br/>
     <em>Ensuring a seamless mobile experience for document tracking.</em>
   </div>
   <div style="flex: 1;">
-    <img src="/images/tanda-internship/5.webp" style="max-width: 100%; height: auto;" />
+    <img src="/images/tanda-internship/4.webp" style="max-width: 100%; height: auto;" />
     <br/>
     <em>Viewing specific compliance document details on mobile.</em>
   </div>

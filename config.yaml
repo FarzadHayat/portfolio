@@ -21,3 +21,6 @@ params:
       url: "https://github.com/FarzadHayat/"
     - name: "LinkedIn"
       url: "https://www.linkedin.com/in/farzadhayat/"
+
+  assets:
+    favicon: "favicon.svg"

@@ -14,7 +14,7 @@ There are two modes:
 - Helpful Mode: provides positive feedback and polite suggestions.
 - Brutal Mode: added later on as a skit to provide interesting responses and perhaps on what NOT to say.
 
-https://empathese.vercel.app/
+https://empathese.farzadhayat.dev/
 
 This project was developed in a team of two over the weekend of 25-27 Aug 2023 for UQCS Hackathon.
 I was responsible for developing the server-side using SvelteKit and TypeScript, as well as prompt engineering the LLM.
@@ -22,10 +22,10 @@ Whisper and GPT-4 APIs were used for voice dictation and conversation interpreta
 
 This was my first exposure to using the Svelte framework as well as using TypeScript calling APIs, and deploying to a live server. Overall it was an incredible learning experience and I look forward to further exploring modern web development.
 
-Feel free to explore various prompts and engage with the [website](https://empathese.vercel.app/).
+Feel free to explore various prompts and engage with the [website](https://empathese.farzadhayat.dev/).
 Don't hesitate to reach out if you'd like to discuss the project further!
 
-[GitHub Repo](https://github.com/McCorsa/empathese)
+[GitHub Repo](https://github.com/FarzadHayat/empathese)
 
 {{< inTextImg url="/images/empathese/1.webp" height="50%">}}
 {{< inTextImg url="/images/empathese/2.webp" height="50%">}}

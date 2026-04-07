@@ -17,6 +17,10 @@ extraLinks:
     icon: CodeXml
     label: GitHub Repo
     displayOn: both
+  - link: /resume.pdf
+    icon: FileText
+    label: Resume
+    displayOn: both
 showAboutSection: true
 showProjectsSection: true
 showBlogSection: false

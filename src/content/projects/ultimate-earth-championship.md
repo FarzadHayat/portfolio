@@ -1,4 +1,5 @@
 ---
+featured: true
 title: "Ultimate Earth Championship"
 description: "Strategic turn-based battler where humanity's greatest champions fight intergalactic invaders."
 image: "../../assets/projects/ultimate-earth-championship.webp"

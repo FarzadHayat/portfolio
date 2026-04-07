@@ -144,6 +144,7 @@ export default config({
                   label: "Graduation Cap (GraduationCap)",
                   value: "GraduationCap",
                 },
+                { label: "Award (Award)", value: "Award" },
                 { label: "Link (Link)", value: "Link" },
               ],
               defaultValue: "Link",
@@ -188,6 +189,10 @@ export default config({
         }),
         showEducationSection: fields.checkbox({
           label: "Show Education Section",
+          defaultValue: true,
+        }),
+        showCertificationsSection: fields.checkbox({
+          label: "Show Certifications Section",
           defaultValue: true,
         }),
         showHackathonsSection: fields.checkbox({
@@ -346,6 +351,47 @@ export default config({
         content: fields.markdoc({
           label: "Description",
           description: "Education details and achievements",
+          extension: "md",
+        }),
+      },
+    }),
+
+    certifications: collection({
+      label: "Certifications",
+      path: "src/content/certifications/*",
+      slugField: "title",
+      format: {
+        contentField: "content",
+      },
+      schema: {
+        title: fields.slug({
+          name: { label: "Certification Name" },
+        }),
+        subtitle: fields.text({
+          label: "Issuing Organization",
+          description: 'e.g., "Amazon Web Services (AWS)"',
+        }),
+        startDate: fields.date({
+          label: "Issue Date",
+          validation: { isRequired: true },
+        }),
+        endDate: fields.date({
+          label: "Expiration Date",
+          description: "Leave empty if no expiration",
+        }),
+        logo: fields.image({
+          label: "Organization Logo",
+          directory: "src/assets/certifications",
+          publicPath: "@assets/certifications/",
+          description: "Optional organization logo",
+        }),
+        link: fields.url({
+          label: "Credential URL",
+          description: "Link to the certificate or badge",
+        }),
+        content: fields.markdoc({
+          label: "Description",
+          description: "Certification details",
           extension: "md",
         }),
       },

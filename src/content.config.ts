@@ -156,6 +156,7 @@ const general = defineCollection({
     showBlogSection: z.boolean(),
     showWorkSection: z.boolean(),
     showEducationSection: z.boolean(),
+    showCertificationsSection: z.boolean(),
     showHackathonsSection: z.boolean(),
     showContactSection: z.boolean(),
   }),
@@ -175,6 +176,23 @@ const contact = defineCollection({
   }),
 });
 
+// Certifications collection
+const certifications = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx,mdoc,yaml}",
+    base: "./src/content/certifications",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      startDate: z.coerce.date(),
+      endDate: z.coerce.date().optional(),
+      logo: image().optional(),
+      link: z.string().url().optional(),
+    }),
+});
+
 export const collections = {
   hero,
   work,
@@ -185,4 +203,5 @@ export const collections = {
   about,
   general,
   contact,
+  certifications,
 };

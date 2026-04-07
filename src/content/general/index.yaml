@@ -10,7 +10,7 @@ extraLinks:
     label: Resume
     displayOn: both
   - link: https://www.credly.com/badges/4285aee7-9142-4f4a-9ee7-b862166762a9/linked_in_profile
-    icon: Link
+    icon: Award
     label: AWS Cloud Practitioner
     displayOn: both
 showAboutSection: false
@@ -18,5 +18,6 @@ showProjectsSection: true
 showBlogSection: false
 showWorkSection: true
 showEducationSection: true
+showCertificationsSection: true
 showHackathonsSection: false
 showContactSection: false

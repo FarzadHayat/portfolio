@@ -5,7 +5,7 @@ import { ExternalLink } from "@lucide/astro";
 import SkillBadge from "./SkillBadge.astro";
 
 interface Props {
-  collection: "work" | "education";
+  collection: "work" | "education" | "certifications";
   variant: "timeline" | "list";
   color?: string;
   backgroundColor?: string;
@@ -307,9 +307,13 @@ const entriesWithContent = await Promise.all(
                         target="_blank"
                         class="link link-hover"
                       >
-                        {collection === "work"
-                          ? "View Company"
-                          : "View Institution"}
+                        {
+                          collection === "work"
+                            ? "View Company"
+                            : collection === "education"
+                              ? "View Institution"
+                              : "View Credential"
+                        }
                       </a>
                     </div>
                   )}

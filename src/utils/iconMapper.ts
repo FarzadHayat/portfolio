@@ -23,6 +23,7 @@ import {
   Hammer,
   Wrench,
   FolderCode,
+  Award,
 } from "@lucide/astro";
 
 // Social media icon components
@@ -58,6 +59,7 @@ export type IconName =
   | "Hammer"
   | "Wrench"
   | "FolderCode"
+  | "Award"
   | "GitHub"
   | "LinkedIn"
   | "Twitter"
@@ -91,6 +93,7 @@ export const iconMap: Record<IconName, any> = {
   Hammer,
   Wrench,
   FolderCode,
+  Award,
   GitHub,
   LinkedIn,
   Twitter,

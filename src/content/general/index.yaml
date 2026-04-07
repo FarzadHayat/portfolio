@@ -20,4 +20,4 @@ showWorkSection: true
 showEducationSection: true
 showCertificationsSection: true
 showHackathonsSection: true
-showContactSection: true
+showContactSection: false

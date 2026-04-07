@@ -5,7 +5,7 @@ extraLinks:
     icon: CodeXml
     label: GitHub Repo
     displayOn: both
-  - link: /resume.pdf
+  - link: /resume
     icon: FileText
     label: Resume
     displayOn: both

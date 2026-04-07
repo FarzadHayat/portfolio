@@ -115,7 +115,7 @@ extraLinks:
     icon: BookOpen
     label: Guide
     displayOn: both    # Options: both, dock, fab
-  - link: /resume.pdf
+  - link: /resume
     icon: FileText
     label: Resume
     displayOn: fab     # Only show on desktop FAB

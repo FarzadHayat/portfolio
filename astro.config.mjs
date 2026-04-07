@@ -13,6 +13,10 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   integrations: [react(), mdx(), markdoc(), keystatic()],
 
+  redirects: {
+    "/resume": "/resume.pdf",
+  },
+
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {

@@ -145,6 +145,7 @@ const general = defineCollection({
           "User",
           "Briefcase",
           "GraduationCap",
+          "Award",
           "Link",
         ]),
         label: z.string(),

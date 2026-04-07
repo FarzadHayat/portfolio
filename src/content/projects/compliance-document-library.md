@@ -1,7 +1,7 @@
 ---
 title: "Compliance Document Library"
 description: "A secure, centralized Ruby on Rails application for businesses to manage critical compliance documents."
-image: "../../assets/projects/tanda-internship.webp"
+image: "../../assets/projects/compliance-document-library.webp"
 startDate: 2025-12-01
 endDate: 2026-01-31
 skills: ['Ruby on Rails', 'PostgreSQL', 'Full Stack', 'Software Engineering']
@@ -45,14 +45,14 @@ I am grateful to the Tanda team for their mentorship and for the opportunity to 
 
 ### Gallery
 
-![Compliance Library Dashboard](../../assets/projects/tanda-internship/1.webp)
+![Compliance Library Dashboard](../../assets/projects/compliance-document-library/1.webp)
 *The desktop dashboard for the Compliance Document Library.*
 
-![Management Interface](../../assets/projects/tanda-internship/2.webp)
+![Management Interface](../../assets/projects/compliance-document-library/2.webp)
 *Implementing the document editing and management interface.*
 
-![Mobile Tracking](../../assets/projects/tanda-internship/3.webp)
+![Mobile Tracking](../../assets/projects/compliance-document-library/3.webp)
 *Ensuring a seamless mobile experience for document tracking.*
 
-![Mobile Details](../../assets/projects/tanda-internship/4.webp)
+![Mobile Details](../../assets/projects/compliance-document-library/4.webp)
 *Viewing specific compliance document details on mobile.*

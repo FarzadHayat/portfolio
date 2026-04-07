@@ -19,8 +19,8 @@ extraLinks:
     displayOn: both
 showAboutSection: true
 showProjectsSection: true
-showBlogSection: true
+showBlogSection: false
 showWorkSection: true
-showEducationSection: true
-showHackathonsSection: true
-showContactSection: true
+showEducationSection: false
+showHackathonsSection: false
+showContactSection: false

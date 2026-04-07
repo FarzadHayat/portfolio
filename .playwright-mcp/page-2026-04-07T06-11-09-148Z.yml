@@ -1,0 +1,215 @@
+- generic [active] [ref=e1]:
+  - button [ref=e4] [cursor=pointer]:
+    - img [ref=e5]
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - heading "Projects" [level=1] [ref=e13]
+      - paragraph [ref=e14]: A collection of projects I've worked on, showcasing my skills and experience.
+    - link "Back to Home" [ref=e16] [cursor=pointer]:
+      - /url: /
+      - img [ref=e17]
+      - text: Back to Home
+    - generic [ref=e19]:
+      - article [ref=e20]:
+        - link [ref=e21] [cursor=pointer]:
+          - /url: /projects/cloud-transcriber
+          - figure [ref=e22]:
+            - img "Cloud Transcriber" [ref=e23]
+        - generic [ref=e24]:
+          - heading "Cloud Transcriber" [level=3] [ref=e25]:
+            - link "Cloud Transcriber" [ref=e26] [cursor=pointer]:
+              - /url: /projects/cloud-transcriber
+          - time [ref=e27]: Nov 2024 - Present
+          - paragraph [ref=e28]: Web application for media transcription using AWS, Whisper ASR, and Node.js. Scalable and secure architecture.
+          - generic [ref=e29]:
+            - generic [ref=e30]: AWS
+            - generic [ref=e31]: Nginx
+            - generic [ref=e32]: Express
+            - generic [ref=e33]: Node.js
+            - generic [ref=e34]: Terraform
+            - generic [ref=e35]: Cloud Computing
+            - generic [ref=e36]: Microservices
+            - generic [ref=e37]: Whisper ASR
+            - generic [ref=e38]: FFmpeg
+          - generic [ref=e40]:
+            - text: View project details
+            - link [ref=e41] [cursor=pointer]:
+              - /url: /projects/cloud-transcriber
+              - img [ref=e42]
+      - article [ref=e45]:
+        - link [ref=e46] [cursor=pointer]:
+          - /url: /projects/empathese
+          - figure [ref=e47]:
+            - img "Empathese" [ref=e48]
+        - generic [ref=e49]:
+          - heading "Empathese" [level=3] [ref=e50]:
+            - link "Empathese" [ref=e51] [cursor=pointer]:
+              - /url: /projects/empathese
+          - time [ref=e52]: Aug 2023 - Present
+          - paragraph [ref=e53]: AI-powered conversation companion to help interpret loved ones' messages using GPT-4 and Whisper.
+          - generic [ref=e54]:
+            - generic [ref=e55]: Svelte
+            - generic [ref=e56]: Tailwind CSS
+            - generic [ref=e57]: SvelteKit
+            - generic [ref=e58]: OpenAI
+            - generic [ref=e59]: ChatGPT
+            - generic [ref=e60]: Whisper
+            - generic [ref=e61]: TypeScript
+            - generic [ref=e62]: daisyUI
+            - generic [ref=e63]: GPT-4
+          - generic [ref=e64]:
+            - link "Demo" [ref=e65] [cursor=pointer]:
+              - /url: https://empathese.farzadhayat.dev/
+              - img [ref=e66]
+              - text: Demo
+            - link "Source" [ref=e70] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/empathese
+              - img [ref=e71]
+              - text: Source
+            - generic [ref=e73]:
+              - text: View project details
+              - link [ref=e74] [cursor=pointer]:
+                - /url: /projects/empathese
+                - img [ref=e75]
+      - article [ref=e78]:
+        - link [ref=e79] [cursor=pointer]:
+          - /url: /projects/ultimate-earth-championship
+          - figure [ref=e80]:
+            - img "Ultimate Earth Championship" [ref=e81]
+        - generic [ref=e82]:
+          - heading "Ultimate Earth Championship" [level=3] [ref=e83]:
+            - link "Ultimate Earth Championship" [ref=e84] [cursor=pointer]:
+              - /url: /projects/ultimate-earth-championship
+          - time [ref=e85]: Jun 2023 - Present
+          - paragraph [ref=e86]: Strategic turn-based battler where humanity's greatest champions fight intergalactic invaders.
+          - generic [ref=e87]:
+            - generic [ref=e88]: Java
+            - generic [ref=e89]: Windows
+            - generic [ref=e90]: Eclipse
+            - generic [ref=e91]: Swing
+            - generic [ref=e92]: JUnit
+            - generic [ref=e93]: UML
+          - generic [ref=e94]:
+            - link "Source" [ref=e95] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/ultimate-earth-championship
+              - img [ref=e96]
+              - text: Source
+            - generic [ref=e98]:
+              - text: View project details
+              - link [ref=e99] [cursor=pointer]:
+                - /url: /projects/ultimate-earth-championship
+                - img [ref=e100]
+      - article [ref=e103]:
+        - link [ref=e104] [cursor=pointer]:
+          - /url: /projects/monster-fighter
+          - figure [ref=e105]:
+            - img "Monster Fighter" [ref=e106]
+        - generic [ref=e107]:
+          - heading "Monster Fighter" [level=3] [ref=e108]:
+            - link "Monster Fighter" [ref=e109] [cursor=pointer]:
+              - /url: /projects/monster-fighter
+          - time [ref=e110]: May 2022 - Present
+          - paragraph [ref=e111]: Turn-based player-vs-computer game built with Java and Swing GUI Toolkit.
+          - generic [ref=e112]:
+            - generic [ref=e113]: Java
+            - generic [ref=e114]: Windows
+            - generic [ref=e115]: Swing
+          - generic [ref=e116]:
+            - link "Source" [ref=e117] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/monster-fighter
+              - img [ref=e118]
+              - text: Source
+            - generic [ref=e120]:
+              - text: View project details
+              - link [ref=e121] [cursor=pointer]:
+                - /url: /projects/monster-fighter
+                - img [ref=e122]
+      - article [ref=e125]:
+        - link [ref=e126] [cursor=pointer]:
+          - /url: /projects/internet-pen-database
+          - figure [ref=e127]:
+            - img "Internet Pen Database" [ref=e128]
+        - generic [ref=e129]:
+          - heading "Internet Pen Database" [level=3] [ref=e130]:
+            - link "Internet Pen Database" [ref=e131] [cursor=pointer]:
+              - /url: /projects/internet-pen-database
+          - time [ref=e132]: Nov 2020 - Present
+          - paragraph [ref=e133]: A Flask-based web application to store and manage an online database of pens.
+          - generic [ref=e134]:
+            - generic [ref=e135]: Python
+            - generic [ref=e136]: Flask
+            - generic [ref=e137]: SQLite
+            - generic [ref=e138]: JavaScript
+            - generic [ref=e139]: HTML
+            - generic [ref=e140]: CSS
+          - generic [ref=e141]:
+            - link "Source" [ref=e142] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/internet-pen-database
+              - img [ref=e143]
+              - text: Source
+            - generic [ref=e145]:
+              - text: View project details
+              - link [ref=e146] [cursor=pointer]:
+                - /url: /projects/internet-pen-database
+                - img [ref=e147]
+      - article [ref=e150]:
+        - link [ref=e151] [cursor=pointer]:
+          - /url: /projects/breakout
+          - figure [ref=e152]:
+            - img "Breakout" [ref=e153]
+        - generic [ref=e154]:
+          - heading "Breakout" [level=3] [ref=e155]:
+            - link "Breakout" [ref=e156] [cursor=pointer]:
+              - /url: /projects/breakout
+          - time [ref=e157]: Oct 2019 - Present
+          - paragraph [ref=e158]: A third-person adventure game made for Android where you rescue hostages. Made with Unity3D and C#.
+          - generic [ref=e159]:
+            - generic [ref=e160]: Unity3D
+            - generic [ref=e161]: C#
+            - generic [ref=e162]: Magicavoxel
+            - generic [ref=e163]: Photoshop
+            - generic [ref=e164]: Android
+          - generic [ref=e166]:
+            - text: View project details
+            - link [ref=e167] [cursor=pointer]:
+              - /url: /projects/breakout
+              - img [ref=e168]
+      - article [ref=e171]:
+        - link [ref=e172] [cursor=pointer]:
+          - /url: /projects/droid-invasion
+          - figure [ref=e173]:
+            - img "Droid Invasion" [ref=e174]
+        - generic [ref=e175]:
+          - heading "Droid Invasion" [level=3] [ref=e176]:
+            - link "Droid Invasion" [ref=e177] [cursor=pointer]:
+              - /url: /projects/droid-invasion
+          - time [ref=e178]: Oct 2018 - Present
+          - paragraph [ref=e179]: A first-person shooter game for Windows where you survive against waves of enemy droids.
+          - generic [ref=e180]:
+            - generic [ref=e181]: Unity3D
+            - generic [ref=e182]: C#
+            - generic [ref=e183]: Blender
+            - generic [ref=e184]: Photoshop
+            - generic [ref=e185]: Windows
+          - generic [ref=e187]:
+            - text: View project details
+            - link [ref=e188] [cursor=pointer]:
+              - /url: /projects/droid-invasion
+              - img [ref=e189]
+  - generic [ref=e192]:
+    - text: More links
+    - button [ref=e193] [cursor=pointer]:
+      - img [ref=e194]
+  - generic [ref=e199]:
+    - button "Menu" [ref=e200]:
+      - img [ref=e202]
+      - generic: Menu
+    - button "Inspect" [ref=e206]:
+      - img [ref=e208]
+      - generic: Inspect
+    - button "Audit" [ref=e210]:
+      - img [ref=e212]
+      - generic: Audit
+    - button "Settings" [ref=e215]:
+      - img [ref=e217]
+      - generic: Settings

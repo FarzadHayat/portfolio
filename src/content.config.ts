@@ -3,7 +3,7 @@ import { glob } from "astro/loaders";
 
 // Hero singleton
 const hero = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/hero" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/hero" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -32,7 +32,7 @@ const hero = defineCollection({
 
 // Work experience collection
 const work = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/work" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/work" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -49,7 +49,7 @@ const work = defineCollection({
 // Education collection
 const education = defineCollection({
   loader: glob({
-    pattern: "**/*.{md,mdoc,yaml}",
+    pattern: "**/*.{md,mdx,mdoc,yaml}",
     base: "./src/content/education",
   }),
   schema: ({ image }) =>
@@ -66,7 +66,7 @@ const education = defineCollection({
 // Projects collection
 const projects = defineCollection({
   loader: glob({
-    pattern: "**/*.{md,mdoc,yaml}",
+    pattern: "**/*.{md,mdx,mdoc,yaml}",
     base: "./src/content/projects",
   }),
   schema: ({ image }) =>
@@ -86,7 +86,7 @@ const projects = defineCollection({
 // Hackathons collection
 const hackathons = defineCollection({
   loader: glob({
-    pattern: "**/*.{md,mdoc,yaml}",
+    pattern: "**/*.{md,mdx,mdoc,yaml}",
     base: "./src/content/hackathons",
   }),
   schema: ({ image }) =>
@@ -103,7 +103,7 @@ const hackathons = defineCollection({
 
 // Blog collection
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/blog" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/blog" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -117,7 +117,7 @@ const blog = defineCollection({
 
 // About singleton
 const about = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/about" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/about" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -128,7 +128,7 @@ const about = defineCollection({
 
 // General singleton
 const general = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/general" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/general" }),
   schema: z.object({
     enableThemeSelector: z.boolean(),
     extraLinksEnabled: z.boolean(),
@@ -163,7 +163,7 @@ const general = defineCollection({
 
 // Contact singleton
 const contact = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdoc,yaml}", base: "./src/content/contact" }),
+  loader: glob({ pattern: "**/*.{md,mdx,mdoc,yaml}", base: "./src/content/contact" }),
   schema: z.object({
     icon: z.enum(["MessageCircleCode", "Mail", "Phone"]),
     linkUrl: z.string().url(),

@@ -1,0 +1,112 @@
+- generic [active] [ref=e1]:
+  - button [ref=e4] [cursor=pointer]:
+    - img [ref=e5]
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - heading "Projects" [level=1] [ref=e13]
+      - paragraph [ref=e14]: A collection of projects I've worked on, showcasing my skills and experience.
+    - link "Back to Home" [ref=e16] [cursor=pointer]:
+      - /url: /
+      - img [ref=e17]
+      - text: Back to Home
+    - generic [ref=e19]:
+      - article [ref=e20]:
+        - link [ref=e21] [cursor=pointer]:
+          - /url: /projects/ultimate-earth-championship
+          - figure [ref=e22]:
+            - img "Ultimate Earth Championship" [ref=e23]
+        - generic [ref=e24]:
+          - heading "Ultimate Earth Championship" [level=3] [ref=e25]:
+            - link "Ultimate Earth Championship" [ref=e26] [cursor=pointer]:
+              - /url: /projects/ultimate-earth-championship
+          - time [ref=e27]: Jun 2023 - Present
+          - paragraph [ref=e28]: Strategic turn-based battler where humanity's greatest champions fight intergalactic invaders.
+          - generic [ref=e29]:
+            - generic [ref=e30]: Java
+            - generic [ref=e31]: Windows
+            - generic [ref=e32]: Eclipse
+            - generic [ref=e33]: Swing
+            - generic [ref=e34]: JUnit
+            - generic [ref=e35]: UML
+          - generic [ref=e36]:
+            - link "Source" [ref=e37] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/ultimate-earth-championship
+              - img [ref=e38]
+              - text: Source
+            - generic [ref=e40]:
+              - text: View project details
+              - link [ref=e41] [cursor=pointer]:
+                - /url: /projects/ultimate-earth-championship
+                - img [ref=e42]
+      - article [ref=e45]:
+        - link [ref=e46] [cursor=pointer]:
+          - /url: /projects/monster-fighter
+          - figure [ref=e47]:
+            - img "Monster Fighter" [ref=e48]
+        - generic [ref=e49]:
+          - heading "Monster Fighter" [level=3] [ref=e50]:
+            - link "Monster Fighter" [ref=e51] [cursor=pointer]:
+              - /url: /projects/monster-fighter
+          - time [ref=e52]: May 2022 - Present
+          - paragraph [ref=e53]: Turn-based player-vs-computer game built with Java and Swing GUI Toolkit.
+          - generic [ref=e54]:
+            - generic [ref=e55]: Java
+            - generic [ref=e56]: Windows
+            - generic [ref=e57]: Swing
+          - generic [ref=e58]:
+            - link "Source" [ref=e59] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/monster-fighter
+              - img [ref=e60]
+              - text: Source
+            - generic [ref=e62]:
+              - text: View project details
+              - link [ref=e63] [cursor=pointer]:
+                - /url: /projects/monster-fighter
+                - img [ref=e64]
+      - article [ref=e67]:
+        - link [ref=e68] [cursor=pointer]:
+          - /url: /projects/internet-pen-database
+          - figure [ref=e69]:
+            - img "Internet Pen Database" [ref=e70]
+        - generic [ref=e71]:
+          - heading "Internet Pen Database" [level=3] [ref=e72]:
+            - link "Internet Pen Database" [ref=e73] [cursor=pointer]:
+              - /url: /projects/internet-pen-database
+          - time [ref=e74]: Nov 2020 - Present
+          - paragraph [ref=e75]: A Flask-based web application to store and manage an online database of pens.
+          - generic [ref=e76]:
+            - generic [ref=e77]: Python
+            - generic [ref=e78]: Flask
+            - generic [ref=e79]: SQLite
+            - generic [ref=e80]: JavaScript
+            - generic [ref=e81]: HTML
+            - generic [ref=e82]: CSS
+          - generic [ref=e83]:
+            - link "Source" [ref=e84] [cursor=pointer]:
+              - /url: https://github.com/FarzadHayat/internet-pen-database
+              - img [ref=e85]
+              - text: Source
+            - generic [ref=e87]:
+              - text: View project details
+              - link [ref=e88] [cursor=pointer]:
+                - /url: /projects/internet-pen-database
+                - img [ref=e89]
+  - generic [ref=e92]:
+    - text: More links
+    - button [ref=e93] [cursor=pointer]:
+      - img [ref=e94]
+  - generic [ref=e99]:
+    - button "Menu" [ref=e100]:
+      - img [ref=e102]
+      - generic: Menu
+    - button "Inspect" [ref=e106]:
+      - img [ref=e108]
+      - generic: Inspect
+    - button "Audit" [ref=e110]:
+      - generic [ref=e111]:
+        - img [ref=e112]
+        - img [ref=e115]
+      - generic: Audit
+    - button "Settings" [ref=e118]:
+      - img [ref=e120]
+      - generic: Settings

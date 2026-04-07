@@ -7,6 +7,12 @@ endDate: 2026-01-31
 skills: ['Ruby on Rails', 'PostgreSQL', 'Full Stack', 'Software Engineering']
 ---
 
+import { Image } from "astro:assets";
+import img1 from "../../assets/projects/compliance-document-library/1.webp";
+import img2 from "../../assets/projects/compliance-document-library/2.webp";
+import img3 from "../../assets/projects/compliance-document-library/3.webp";
+import img4 from "../../assets/projects/compliance-document-library/4.webp";
+
 Between December 2025 and January 2026, I had the incredible opportunity to work as a Software Engineer Intern at **Tanda** in Brisbane. During this time, I was part of a focused two-person team responsible for architecting and deploying a brand new feature for the Tanda ecosystem.
 
 ## The Project: Compliance Document Library
@@ -44,14 +50,23 @@ I am grateful to the Tanda team for their mentorship and for the opportunity to 
 
 ### Gallery
 
-![Compliance Library Dashboard](../../assets/projects/compliance-document-library/1.webp)
-*The desktop dashboard for the Compliance Document Library.*
+<figure class="mb-8">
+  <Image src={img1} alt="Compliance Library Dashboard" />
+  <figcaption class="text-sm text-center mt-2">*The desktop dashboard for the Compliance Document Library.*</figcaption>
+</figure>
 
-![Management Interface](../../assets/projects/compliance-document-library/2.webp)
-*Implementing the document editing and management interface.*
+<figure class="mb-8">
+  <Image src={img2} alt="Management Interface" />
+  <figcaption class="text-sm text-center mt-2">*Implementing the document editing and management interface.*</figcaption>
+</figure>
 
-![Mobile Tracking](../../assets/projects/compliance-document-library/3.webp)
-*Ensuring a seamless mobile experience for document tracking.*
-
-![Mobile Details](../../assets/projects/compliance-document-library/4.webp)
-*Viewing specific compliance document details on mobile.*
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+  <figure class="flex flex-col">
+    <Image src={img3} alt="Mobile Tracking" />
+    <figcaption class="text-sm text-center mt-2">*Ensuring a seamless mobile experience for document tracking.*</figcaption>
+  </figure>
+  <figure class="flex flex-col">
+    <Image src={img4} alt="Mobile Details" />
+    <figcaption class="text-sm text-center mt-2">*Viewing specific compliance document details on mobile.*</figcaption>
+  </figure>
+</div>

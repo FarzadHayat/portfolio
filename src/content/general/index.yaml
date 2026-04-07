@@ -19,5 +19,5 @@ showBlogSection: false
 showWorkSection: true
 showEducationSection: true
 showCertificationsSection: true
-showHackathonsSection: false
-showContactSection: false
+showHackathonsSection: true
+showContactSection: true

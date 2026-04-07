@@ -2,7 +2,8 @@
 title: "Internet Pen Database"
 description: "A Flask-based web application to store and manage an online database of pens."
 image: "../../assets/projects/internet-pen-database.webp"
-startDate: 2020-11-09
+startDate: 2020-02-01
+endDate: 2020-11-30
 skills: ['Python', 'Flask', 'SQLite', 'JavaScript', 'HTML', 'CSS']
 sourceLink: "https://github.com/FarzadHayat/internet-pen-database"
 ---

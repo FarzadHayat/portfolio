@@ -3,7 +3,8 @@ featured: true
 title: "Ultimate Earth Championship"
 description: "Strategic turn-based battler where humanity's greatest champions fight intergalactic invaders."
 image: "../../assets/projects/ultimate-earth-championship.webp"
-startDate: 2023-06-05
+startDate: 2023-02-27
+endDate: 2023-06-23
 skills: ['Java', 'Windows', 'Eclipse', 'Swing', 'JUnit', 'UML']
 sourceLink: "https://github.com/FarzadHayat/ultimate-earth-championship"
 ---

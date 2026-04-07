@@ -2,7 +2,8 @@
 title: "Monster Fighter"
 description: "Turn-based player-vs-computer game built with Java and Swing GUI Toolkit."
 image: "../../assets/projects/monster-fighter.webp"
-startDate: 2022-05-26
+startDate: 2022-02-21
+endDate: 2022-06-24
 skills: ['Java', 'Windows', 'Swing']
 sourceLink: "https://github.com/FarzadHayat/monster-fighter"
 ---

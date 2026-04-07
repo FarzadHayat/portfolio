@@ -11,6 +11,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://farzadhayat.dev",
   integrations: [react(), mdx(), markdoc(), keystatic()],
 
   redirects: {
@@ -24,7 +25,7 @@ export default defineConfig({
     },
   },
 
-  output: "server",
+  output: "hybrid",
 
   adapter: vercel({
     webAnalytics: {

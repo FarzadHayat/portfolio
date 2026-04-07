@@ -25,9 +25,9 @@
     "daisyui": "^5.3.10",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
   }
 }

@@ -1,19 +1,7 @@
 enableThemeSelector: true
 extraLinksEnabled: true
 extraLinks:
-  - link: /blog/guides/bloomfolio-complete-guide-building-your-portfolio
-    icon: Flower2
-    label: Bloomfolio Guide
-    displayOn: both
-  - link: /blog/guides/content-collections-guide
-    icon: BookOpen
-    label: Content Guide
-    displayOn: both
-  - link: /blog/guides/markdown-guide
-    icon: FileText
-    label: Markdown Guide
-    displayOn: both
-  - link: https://github.com/lauroguedes/bloomfolio
+  - link: https://github.com/FarzadHayat/
     icon: CodeXml
     label: GitHub Repo
     displayOn: both
@@ -21,7 +9,7 @@ extraLinks:
     icon: FileText
     label: Resume
     displayOn: both
-showAboutSection: true
+showAboutSection: false
 showProjectsSection: true
 showBlogSection: false
 showWorkSection: true

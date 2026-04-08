@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Quiz from "../components/Quiz.astro";
+import { getEntry } from "astro:content";
+
+const quizEntry = await getEntry("quiz", "index");
+const questions = quizEntry!.data.questions;
+---
+
+<Layout
+  title="Think You Know Me? — Quiz"
+  description="10 questions about Farzad Hayat. How well do you know him?"
+>
+  <Quiz questions={questions} />
+</Layout>

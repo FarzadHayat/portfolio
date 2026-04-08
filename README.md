@@ -1,126 +1,83 @@
-# Portfolio
+# 🚀 Farzad Hayat | Agentic Software Engineer
 
-Personal portfolio website built with Hugo and the PaperMod theme. Showcases software engineering projects, experience, and professional resume.
+<div align="center">
 
-🌐 **Live Site:** [farzadhayat.dev](https://farzadhayat.dev)
+**Final-semester Computer Science student at QUT**  
+**Brisbane, Australia**  
 
-## Tech Stack
+[🌐 Live Portfolio](https://farzadhayat.dev) | [💼 LinkedIn](https://www.linkedin.com/in/farzadhayat/) | [👨‍💻 GitHub](https://github.com/FarzadHayat/) | [✉️ Email](mailto:hello@farzadhayat.dev)
 
-- **Static Site Generator:** [Hugo](https://gohugo.io/)
-- **Theme:** [PaperMod](https://github.com/adityatelange/hugo-PaperMod) (git submodule)
-- **Deployment:** GitHub Pages via GitHub Actions
-- **Content:** Markdown with YAML frontmatter
-- **Resume:** LaTeX compiled to PDF
+</br>
 
-## Getting Started
+I'm a software engineer specializing in building **cloud-native, AI-powered applications**. Currently seeking Graduate Software Engineer roles starting June 2026.
+
+</div>
+
+---
+
+## 👋 About Me
+
+I am a final-semester Computer Science student at **QUT** with experience as a Software Engineer Intern at **Tanda**. I specialize in building cloud-native, AI-powered applications and am seeking Graduate Software Engineer roles starting June 2026. In my free time, I enjoy partner dancing, cooking, and exploring open-source software.
+
+## 🛠️ Tech Stack (Portfolio)
+
+This portfolio is a showcase of my work and a testament to my engineering practices. Built with a modern, type-safe stack:
+
+- **[Astro 5](https://astro.build)** - High-performance static site generation
+- **[Tailwind CSS 4](https://tailwindcss.com)** - Utility-first styling with modern features
+- **[DaisyUI 5](https://daisyui.com)** - Semantic component library
+- **[Keystatic CMS](https://keystatic.com)** - Local & Git-based visual content management
+- **[TypeScript](https://www.typescriptlang.org/)** - Ensuring stability and developer productivity
+- **[Vercel](https://vercel.com)** - Seamless deployment and analytics
+
+## 🌟 Featured Projects
+
+- **Cloud Transcriber** - A high-performance cloud-native application for automated transcription.
+- **Compliance Document Library** - A secure system for managing regulatory documentation.
+- **Droid Invasion** - A fast-paced, interactive game built with modern web technologies.
+- **Empathese** - An innovative application focused on empathy-driven design.
+
+## 🚀 Local Development
+
+If you'd like to run this project locally:
 
 ### Prerequisites
 
-- [Hugo Extended v0.117.0+](https://gohugo.io/installation/)
-- Git
+- Node.js 18+ or 20+
+- pnpm
 
 ### Installation
 
-1. Clone the repository:
 ```bash
-git clone git@github.com:FarzadHayat/portfolio.git
-cd portfolio
+# Clone the repository
+git clone https://github.com/FarzadHayat/portfolio.git
+
+# Install dependencies
+pnpm install
+
+# Start the development server
+pnpm dev
 ```
 
-2. Initialize the theme submodule:
-```bash
-git submodule update --init --recursive
-```
+Visit `http://localhost:4321` to see the site locally.
 
-### Development
+## 📋 Available Commands
 
-Run the local development server:
-```bash
-hugo server -D
-```
+| Command | Action |
+| :--- | :--- |
+| `pnpm dev` | Start development server at `localhost:4321` |
+| `pnpm build` | Build for production to `./dist/` |
+| `pnpm preview` | Preview production build locally |
+| `pnpm astro check` | Run TypeScript and Astro checks |
 
-The site will be available at [http://localhost:1313](http://localhost:1313) with live reload enabled.
+## 📝 Content Management (Keystatic)
 
-### Build
+I manage all my portfolio content via **Keystatic CMS**.
 
-Generate the production-ready static site:
-```bash
-hugo --gc --minify
-```
+1. Run `pnpm dev`
+2. Navigate to `http://localhost:4321/keystatic`
+3. Edit hero settings, about section, projects, and work experience visually.
 
-Output will be in the `public/` directory.
-
-## Project Structure
-
-```
-.
-├── content/posts/      # Portfolio project posts (Markdown)
-├── layouts/            # Custom template overrides
-│   └── shortcodes/     # Custom Hugo shortcodes
-├── static/             # Static assets
-│   ├── images/         # Post images (prefer .webp)
-│   └── resume.pdf      # Compiled resume
-├── themes/PaperMod/    # Theme submodule (DO NOT EDIT)
-├── config.yaml         # Site configuration
-└── resume.tex          # LaTeX resume source
-```
-
-## Content Management
-
-### Adding a New Post
-
-Create a Markdown file in `content/posts/` with the following frontmatter:
-
-```yaml
----
-title: "Project Title"
-tags: ['Tag1', 'Tag2']
-date: YYYY-MM-DD
-draft: false
-cover:
-    image: "/images/image-name.webp"
-    hidden: false
 ---
 
-Your content here...
-```
-
-### Using Custom Shortcodes
-
-**Centered Image with Custom Height:**
-```markdown
-{{< inTextImg url="/images/example.webp" height="50%" >}}
-```
-
-### Updating the Resume
-
-1. Edit `resume.tex` (LaTeX source)
-2. Compile to PDF:
-   ```bash
-   pdflatex resume.tex
-   ```
-3. Move to static directory:
-   ```bash
-   mv resume.pdf static/resume.pdf
-   ```
-
-## Theme Customization
-
-- **DO NOT** modify files in `themes/PaperMod/` directly
-- Place custom overrides in the top-level `layouts/` directory
-- Configure theme parameters in `config.yaml`
-
-## Deployment
-
-The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch. See `.github/workflows/hugo.yaml` for configuration.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contact
-
-Farzad Hayat
-- Website: [farzadhayat.dev](https://farzadhayat.dev)
-- Email: hello@farzadhayat.dev
-- LinkedIn: [linkedin.com/in/farzad-hayat](https://linkedin.com/in/farzad-hayat)
+Crafted with care 🌻 Based on [Bloomfolio](https://github.com/lauroguedes/bloomfolio) template.

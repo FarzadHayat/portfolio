@@ -239,6 +239,12 @@ const { questions } = Astro.props;
       setTimeout(() => {
         btn.textContent = "Share result";
       }, 2000);
+    }).catch(() => {
+      const btn = el("btn-share");
+      btn.textContent = "Copy failed";
+      setTimeout(() => {
+        btn.textContent = "Share result";
+      }, 2000);
     });
   });
 </script>

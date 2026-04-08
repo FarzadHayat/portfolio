@@ -199,7 +199,7 @@ const certifications = defineCollection({
 
 // Quiz singleton
 const quiz = defineCollection({
-  loader: glob({ pattern: "**/*.{yaml}", base: "./src/content/quiz" }),
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/quiz" }),
   schema: z.object({
     questions: z.array(
       z.object({

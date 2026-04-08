@@ -203,6 +203,21 @@ export default config({
           label: "Show Contact Section",
           defaultValue: true,
         }),
+        showGhostPet: fields.checkbox({
+          label: "Show Ghost Pet",
+          description: "Enable a floating ghost friend that follows you",
+          defaultValue: false,
+        }),
+        showCustomCursor: fields.checkbox({
+          label: "Show Custom Ghost Cursor",
+          description: "Enable a ghostly trail for your mouse",
+          defaultValue: false,
+        }),
+        showSpectralBackground: fields.checkbox({
+          label: "Show Spectral Background",
+          description: "Enable a subtle, moving ghostly background effect",
+          defaultValue: false,
+        }),
       },
     }),
 

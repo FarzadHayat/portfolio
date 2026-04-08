@@ -23,3 +23,6 @@ showHackathonsSection: true
 showSpotifySection: true
 spotifyPlaylistUrl: "https://open.spotify.com/playlist/2JT2QwFoDrInYeZZ4T2DiH?si=hm7Px3_wRrqAZfhQc7r7hQ"
 showContactSection: false
+showGhostPet: false
+showCustomCursor: false
+showSpectralBackground: false

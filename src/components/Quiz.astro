@@ -134,7 +134,7 @@ const { questions } = Astro.props;
     optionsEl.innerHTML = "";
     q.options.forEach((opt, i) => {
       const btn = document.createElement("button");
-      btn.className = "btn btn-outline text-left justify-start";
+      btn.className = "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
       btn.textContent = opt;
       btn.addEventListener("click", () => selectOption(i));
       optionsEl.appendChild(btn);
@@ -151,8 +151,8 @@ const { questions } = Astro.props;
       .forEach((btn, idx) => {
         btn.className =
           idx === i
-            ? "btn btn-primary text-left justify-start"
-            : "btn btn-outline text-left justify-start";
+            ? "btn btn-primary text-left justify-start w-full"
+            : "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
       });
     el("btn-confirm").classList.remove("hidden");
   }

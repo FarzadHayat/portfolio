@@ -63,11 +63,11 @@ questions:
     options:
       - "Software Engineering at UQ"
       - "Information Technology at Griffith"
-      - "Computer Science at QUT"
+      - "Information Technology at QUT"
       - "Data Science at QUT"
     correctIndex: 2
     category: personal
-    funFact: "Farzad is in his final semester of a Bachelor of Computer Science at Queensland University of Technology (QUT)."
+    funFact: "Farzad is completing a Bachelor of Information Technology with a Computer Science major at QUT."
 
   - question: "Which languages does Farzad speak?"
     options:
@@ -84,10 +84,10 @@ questions:
       - "January 2026"
       - "March 2026"
       - "May 2026"
-      - "July 2026"
+      - "June 2026"
     correctIndex: 3
     category: career
-    funFact: "Farzad finishes his final semester at QUT in mid-2026 and is actively seeking Graduate Software Engineer roles from July 2026."
+    funFact: "Farzad finishes his final semester at QUT in mid-2026 and is actively seeking Graduate Software Engineer roles from June 2026."
 
   - question: "What is Farzad's favourite dance style?"
     options:

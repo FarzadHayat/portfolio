@@ -7,6 +7,7 @@ import Dock from "../components/Dock.astro";
 import { ClientRouter } from "astro:transitions";
 import { getEntry } from "astro:content";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 
 // Load general singleton
 const generalEntry = await getEntry("general", "index");
@@ -61,6 +62,9 @@ const origin = Astro.url.origin;
 
     <!-- Speed Insights -->
     <SpeedInsights />
+
+    <!-- Vercel Analytics -->
+    <Analytics />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content={title} />

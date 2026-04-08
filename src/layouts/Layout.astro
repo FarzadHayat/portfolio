@@ -6,6 +6,7 @@ import FabFlower from "../components/FabFlower.astro";
 import Dock from "../components/Dock.astro";
 import { ClientRouter } from "astro:transitions";
 import { getEntry } from "astro:content";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 // Load general singleton
 const generalEntry = await getEntry("general", "index");
@@ -57,6 +58,9 @@ const origin = Astro.url.origin;
 
     <!-- View Transitions -->
     <ClientRouter />
+
+    <!-- Speed Insights -->
+    <SpeedInsights />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content={title} />

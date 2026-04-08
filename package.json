@@ -1,7 +1,9 @@
 {
-  "name": "tmp-bloomfolio",
-  "type": "module",
+  "name": "farzad-hayat-portfolio",
   "version": "0.0.1",
+  "description": "A portfolio website built with Astro, showcasing my work and projects.",
+  "author": "Farzad Hayat",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

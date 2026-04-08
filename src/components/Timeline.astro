@@ -12,6 +12,7 @@ interface Props {
   icon: any; // Pass the icon component directly
   sectionTitle: string;
   sectionSubtitle?: string;
+  expandedByDefault?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   icon,
   sectionTitle,
   sectionSubtitle,
+  expandedByDefault = false,
 } = Astro.props;
 
 // Dynamic component - must be capitalized
@@ -263,7 +265,7 @@ const entriesWithContent = await Promise.all(
         <ul class="list bg-base-100 rounded-box shadow-lg">
           {entriesWithContent.map(({ entry, Content }, index) => (
             <li class="border-b hover:opacity-85 transition-opacity border-base-300 last:border-b-0">
-              <details class="collapse">
+              <details class="collapse" open={expandedByDefault}>
                 <summary class="collapse-title pe-5">
                   <div class="list-row p-0 items-center after:hidden">
                     <div>

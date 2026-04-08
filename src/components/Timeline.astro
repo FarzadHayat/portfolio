@@ -78,6 +78,18 @@ function calculateDuration(startDate: Date, endDate?: Date): string | null {
   }
 }
 
+// Map background color prop to static Tailwind classes
+const bgClasses: Record<string, string> = {
+  "base-100": "bg-base-100",
+  "base-200": "bg-base-200",
+  "base-300": "bg-base-300",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  accent: "bg-accent",
+};
+
+const bgClass = bgClasses[backgroundColor] || "bg-base-200";
+
 // Render markdown content for each entry
 const entriesWithContent = await Promise.all(
   sortedEntries.map(async (entry) => {
@@ -87,7 +99,7 @@ const entriesWithContent = await Promise.all(
 );
 ---
 
-<section id={collection} class={`py-20 px-4 bg-${backgroundColor}`}>
+<section id={collection} class={`py-20 px-4 ${bgClass}`}>
   <div class={`mx-auto ${variant === "timeline" ? "max-w-4xl" : "max-w-4xl"}`}>
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold">{sectionTitle}</h2>
@@ -323,6 +335,7 @@ const entriesWithContent = await Promise.all(
                       <a
                         href={entry.data.link}
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="link link-hover flex items-center gap-1"
                       >
                         {

@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 /* 
-If you want use the ThemeToggle component,
-and chose the themes to light and dard,
-move the --default and --prefersdark to the themes you want
-and then update the the darkThemeName and lightThemeName
-variables on ThemeToggle component with the new theme names.
-The name should be the same as the theme name below.
+If you want to use the ThemeToggle component
+and choose the light or dark themes,
+move --default and --prefersdark to your desired themes.
+Then update darkThemeName and lightThemeName
+variables in the ThemeToggle component with the new theme names.
+The name should match the theme name below.
 */
 @plugin "daisyui" {
   themes:

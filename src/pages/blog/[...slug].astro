@@ -10,7 +10,10 @@ const entry = await getEntry("blog", slug as string);
 
 // If entry doesn't exist, return 404
 if (!entry) {
-  return Astro.redirect("/404");
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
 }
 
 const { Content } = await render(entry);

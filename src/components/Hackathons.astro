@@ -47,11 +47,12 @@ function formatPeriod(startDate: Date, endDate?: Date) {
               <div class="flex items-start gap-4">
                 {
                   hackathon.data.logo ? (
-                    <div class="avatar flex-shrink-0">
-                      <div class="w-16 h-16 rounded overflow-hidden">
+                    <div class="flex-shrink-0">
+                      <div class="w-32 h-auto flex items-start justify-center rounded">
                         <Image
                           src={hackathon.data.logo}
                           alt={hackathon.data.title}
+                          class="object-contain w-full rounded max-h-32"
                           inferSize={true}
                         />
                       </div>

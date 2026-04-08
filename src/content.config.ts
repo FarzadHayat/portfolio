@@ -159,6 +159,8 @@ const general = defineCollection({
     showEducationSection: z.boolean(),
     showCertificationsSection: z.boolean(),
     showHackathonsSection: z.boolean(),
+    showSpotifySection: z.boolean(),
+    spotifyPlaylistUrl: z.string().url(),
     showContactSection: z.boolean(),
   }),
 });

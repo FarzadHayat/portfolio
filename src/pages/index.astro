@@ -6,6 +6,7 @@ import Timeline from "../components/Timeline.astro";
 import Projects from "../components/Projects.astro";
 import Blog from "../components/Blog.astro";
 import Hackathons from "../components/Hackathons.astro";
+import SpotifySection from "../components/SpotifySection.astro";
 import Contact from "../components/Contact.astro";
 import { Briefcase, GraduationCap, Award } from "@lucide/astro";
 import { getEntry, render } from "astro:content";
@@ -95,6 +96,13 @@ const general = generalEntry.data;
 
       <!-- Hackathons Section -->
       {general.showHackathonsSection && <Hackathons />}
+
+      <!-- Spotify Section -->
+      {
+        general.showSpotifySection && (
+          <SpotifySection url={general.spotifyPlaylistUrl} />
+        )
+      }
 
       <!-- Contact Section -->
       {general.showContactSection && <Contact />}

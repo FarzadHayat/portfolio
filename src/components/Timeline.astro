@@ -90,6 +90,20 @@ const bgClasses: Record<string, string> = {
 
 const bgClass = bgClasses[backgroundColor] || "bg-base-200";
 
+// Map text color prop to static Tailwind classes
+const textClasses: Record<string, string> = {
+  primary: "text-primary",
+  secondary: "text-secondary",
+  accent: "text-accent",
+  neutral: "text-neutral",
+  info: "text-info",
+  success: "text-success",
+  warning: "text-warning",
+  error: "text-error",
+};
+
+const textColorClass = textClasses[color] || "text-primary";
+
 // Render markdown content for each entry
 const entriesWithContent = await Promise.all(
   sortedEntries.map(async (entry) => {
@@ -100,7 +114,7 @@ const entriesWithContent = await Promise.all(
 ---
 
 <section id={collection} class={`py-20 px-4 ${bgClass}`}>
-  <div class={`mx-auto ${variant === "timeline" ? "max-w-4xl" : "max-w-4xl"}`}>
+  <div class="mx-auto max-w-4xl">
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold">{sectionTitle}</h2>
       {
@@ -118,10 +132,10 @@ const entriesWithContent = await Promise.all(
               <li>
                 {index > 0 && <hr class="bg-base-100" />}
                 <div class="timeline-middle">
-                  <IconComponent class={`size-5 text-${color} mx-3 my-1`} />
+                  <IconComponent class={`size-5 ${textColorClass} mx-3 my-1`} />
                 </div>
                 <div
-                  class={`timeline-${index % 2 === 0 ? "start" : "end"} max-w-2xs pt-3 mb-10`}
+                  class={`${index % 2 === 0 ? "timeline-start" : "timeline-end"} max-w-2xs pt-3 mb-10`}
                 >
                   <time
                     class={`font-mono text-sm text-base-content/70 block italic ${index % 2 === 0 ? "text-end" : ""}`}
@@ -163,7 +177,7 @@ const entriesWithContent = await Promise.all(
                         }
                         <div class="flex-1">
                           <h3 class="card-title">{entry.data.title}</h3>
-                          <p class={`text-${color} font-semibold`}>
+                          <p class={`${textColorClass} font-semibold`}>
                             {entry.data.subtitle}
                           </p>
                           {entry.data.location && (
@@ -210,7 +224,7 @@ const entriesWithContent = await Promise.all(
                   )}
                   <div>
                     <h3 class="font-bold text-xl">{entry.data.title}</h3>
-                    <p class={`text-${color} font-semibold`}>
+                    <p class={`${textColorClass} font-semibold`}>
                       {entry.data.subtitle}
                     </p>
                     {entry.data.location && (
@@ -304,7 +318,7 @@ const entriesWithContent = await Promise.all(
 
                     <div>
                       <h3 class="font-bold text-lg">{entry.data.title}</h3>
-                      <p class={`text-${color} font-semibold text-sm`}>
+                      <p class={`${textColorClass} font-semibold text-sm`}>
                         {entry.data.subtitle}
                       </p>
                     </div>

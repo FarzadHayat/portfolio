@@ -203,6 +203,14 @@ export default config({
           label: "Show Contact Section",
           defaultValue: true,
         }),
+        showSpotifySection: fields.checkbox({
+          label: "Show Spotify Section",
+          defaultValue: false,
+        }),
+        spotifyPlaylistUrl: fields.url({
+          label: "Spotify Playlist URL",
+          description: "Full Spotify playlist URL (e.g. https://open.spotify.com/playlist/...)",
+        }),
         showQuizCta: fields.checkbox({
           label: "Show Quiz CTA in Hero",
           description: 'Show "Think you know me? →" button in the Hero section',

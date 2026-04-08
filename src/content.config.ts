@@ -205,7 +205,7 @@ const quiz = defineCollection({
       z.object({
         question: z.string(),
         options: z.array(z.string()).length(4),
-        correctIndex: z.number().min(0).max(3),
+        correctIndex: z.number().int().min(0).max(3),
         category: z.enum(["tech", "personal", "career"]),
         funFact: z.string().optional(),
       })

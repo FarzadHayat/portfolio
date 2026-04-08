@@ -25,7 +25,7 @@ const { questions } = Astro.props;
       <div class="text-6xl">🧠</div>
       <h1 class="card-title text-2xl">Think You Know Me?</h1>
       <p class="text-base-content/70 max-w-sm">
-        10 questions across tech, projects, and personal facts. How well do you
+        10 questions across tech, personal, and career facts. How well do you
         really know Farzad?
       </p>
       <p class="text-sm text-base-content/40">~2 minutes</p>
@@ -44,7 +44,7 @@ const { questions } = Astro.props;
         id="q-progress"
         class="progress progress-primary w-full"
         value="0"
-        max="10"
+        max={questions.length}
       ></progress>
       <p id="q-text" class="text-lg font-semibold mt-2"></p>
       <div id="q-options" class="flex flex-col gap-2"></div>
@@ -127,7 +127,7 @@ const { questions } = Astro.props;
     };
     el("q-category").textContent = labels[q.category] ?? q.category;
 
-    (el("q-progress") as HTMLProgressElement).value = state.index;
+    (el("q-progress") as HTMLProgressElement).value = state.index + 1;
     el("q-text").textContent = q.question;
 
     const optionsEl = el("q-options");
@@ -233,18 +233,15 @@ const { questions } = Astro.props;
     const label =
       SCORE_LABELS.find((l) => state.score <= l.max)?.label ?? "Are you Farzad?";
     const text = `I scored ${state.score}/${total} on Farzad's portfolio quiz! "${label}" 🧠\nTry it: ${window.location.href}`;
-    navigator.clipboard.writeText(text).then(() => {
+    const showBtnText = (msg: string) => {
       const btn = el("btn-share");
-      btn.textContent = "Copied!";
-      setTimeout(() => {
-        btn.textContent = "Share result";
-      }, 2000);
-    }).catch(() => {
-      const btn = el("btn-share");
-      btn.textContent = "Copy failed";
-      setTimeout(() => {
-        btn.textContent = "Share result";
-      }, 2000);
-    });
+      btn.textContent = msg;
+      setTimeout(() => { btn.textContent = "Share result"; }, 2000);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => showBtnText("Copied!")).catch(() => showBtnText("Copy failed"));
+    } else {
+      showBtnText("Copy failed");
+    }
   });
 </script>

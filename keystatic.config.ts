@@ -203,6 +203,19 @@ export default config({
           label: "Show Contact Section",
           defaultValue: true,
         }),
+        showSpotifySection: fields.checkbox({
+          label: "Show Spotify Section",
+          defaultValue: false,
+        }),
+        spotifyPlaylistUrl: fields.url({
+          label: "Spotify Playlist URL",
+          description: "Full Spotify playlist URL (e.g. https://open.spotify.com/playlist/...)",
+        }),
+        showQuizCta: fields.checkbox({
+          label: "Show Quiz CTA in Hero",
+          description: 'Show "Think you know me? →" button in the Hero section',
+          defaultValue: true,
+        }),
       },
     }),
 
@@ -260,6 +273,52 @@ export default config({
           label: "Footer Link URL",
           description: "URL for footer credit link",
         }),
+      },
+    }),
+
+    quiz: singleton({
+      label: "Quiz",
+      path: "src/content/quiz/",
+      schema: {
+        questions: fields.array(
+          fields.object({
+            question: fields.text({
+              label: "Question",
+              validation: { isRequired: true },
+            }),
+            options: fields.array(
+              fields.text({ label: "Option", validation: { isRequired: true } }),
+              {
+                label: "Options",
+                description: "Exactly 4 options required",
+                itemLabel: (props) => props.value || "Option",
+              }
+            ),
+            correctIndex: fields.integer({
+              label: "Correct Answer Index (0–3)",
+              description: "0 = first option, 1 = second, 2 = third, 3 = fourth",
+              validation: { isRequired: true, min: 0, max: 3 },
+            }),
+            category: fields.select({
+              label: "Category",
+              options: [
+                { label: "🛠 Tech", value: "tech" },
+                { label: "🎯 Personal", value: "personal" },
+                { label: "💼 Career", value: "career" },
+              ],
+              defaultValue: "personal",
+            }),
+            funFact: fields.text({
+              label: "Fun Fact",
+              multiline: true,
+              description: "Shown after the answer is revealed (optional)",
+            }),
+          }),
+          {
+            label: "Questions",
+            itemLabel: (props) => props.fields.question.value || "New Question",
+          }
+        ),
       },
     }),
   },

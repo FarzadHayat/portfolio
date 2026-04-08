@@ -1,0 +1,247 @@
+---
+type QuizQuestion = {
+  question: string;
+  options: string[];
+  correctIndex: number;
+  category: "tech" | "personal" | "career";
+  funFact?: string;
+};
+
+interface Props {
+  questions: QuizQuestion[];
+}
+
+const { questions } = Astro.props;
+---
+
+<div class="min-h-screen bg-base-200 flex items-center justify-center p-4">
+  <div
+    id="quiz-root"
+    class="card bg-base-100 shadow-xl w-full max-w-lg"
+    data-questions={JSON.stringify(questions)}
+  >
+    <!-- Screen: Intro -->
+    <div id="screen-intro" class="card-body items-center text-center gap-4 py-12">
+      <div class="text-6xl">🧠</div>
+      <h1 class="card-title text-2xl">Think You Know Me?</h1>
+      <p class="text-base-content/70 max-w-sm">
+        10 questions across tech, personal, and career facts. How well do you
+        really know Farzad?
+      </p>
+      <p class="text-sm text-base-content/40">~2 minutes</p>
+      <button id="btn-start" class="btn btn-primary btn-wide mt-2">
+        Start Quiz →
+      </button>
+    </div>
+
+    <!-- Screen: Question -->
+    <div id="screen-question" class="card-body gap-4 hidden">
+      <div class="flex justify-between items-center">
+        <span id="q-counter" class="text-sm text-base-content/60"></span>
+        <span id="q-category" class="badge badge-primary"></span>
+      </div>
+      <progress
+        id="q-progress"
+        class="progress progress-primary w-full"
+        value="0"
+        max={questions.length}
+      ></progress>
+      <p id="q-text" class="text-lg font-semibold mt-2"></p>
+      <div id="q-options" class="flex flex-col gap-2"></div>
+      <button id="btn-confirm" class="btn btn-primary mt-2 hidden">
+        Confirm →
+      </button>
+    </div>
+
+    <!-- Screen: Reveal -->
+    <div id="screen-reveal" class="card-body gap-4 hidden">
+      <p id="reveal-indicator" class="text-center text-2xl font-bold"></p>
+      <div id="reveal-correct" class="alert"></div>
+      <p id="reveal-fact" class="text-sm text-base-content/70 italic hidden"></p>
+      <button id="btn-next" class="btn btn-primary mt-2"></button>
+    </div>
+
+    <!-- Screen: Results -->
+    <div id="screen-results" class="card-body items-center text-center gap-4 py-10 hidden">
+      <div class="text-5xl">🏆</div>
+      <h2 class="text-2xl font-bold">
+        You scored <span id="r-score"></span>
+      </h2>
+      <div id="r-stars" class="text-3xl"></div>
+      <div id="r-label" class="badge badge-secondary badge-lg py-4"></div>
+      <div class="flex gap-2 flex-wrap justify-center mt-2">
+        <button id="btn-share" class="btn btn-info btn-sm">Share result</button>
+        <button id="btn-retry" class="btn btn-ghost btn-sm">Try again</button>
+        <a href="/" class="btn btn-ghost btn-sm">← Portfolio</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- Types ----
+  type Question = {
+    question: string;
+    options: string[];
+    correctIndex: number;
+    category: string;
+    funFact?: string;
+  };
+
+  // ---- State ----
+  const root = document.getElementById("quiz-root") as HTMLElement;
+  const questions: Question[] = JSON.parse(root.dataset.questions!);
+  const state = { index: 0, score: 0, selected: null as number | null };
+
+  // ---- Helpers ----
+  const SCREENS = ["screen-intro", "screen-question", "screen-reveal", "screen-results"];
+
+  function showOnly(id: string) {
+    SCREENS.forEach((s) =>
+      document.getElementById(s)!.classList.toggle("hidden", s !== id)
+    );
+  }
+
+  function el<T extends HTMLElement>(id: string): T {
+    return document.getElementById(id) as T;
+  }
+
+  // ---- Intro ----
+  el("btn-start").addEventListener("click", () => {
+    state.index = 0;
+    state.score = 0;
+    renderQuestion();
+  });
+
+  // ---- Question ----
+  function renderQuestion() {
+    const q = questions[state.index];
+    state.selected = null;
+
+    el("q-counter").textContent = `Question ${state.index + 1} of ${questions.length}`;
+
+    const labels: Record<string, string> = {
+      tech: "🛠 Tech",
+      personal: "🎯 Personal",
+      career: "💼 Career",
+    };
+    el("q-category").textContent = labels[q.category] ?? q.category;
+
+    (el("q-progress") as HTMLProgressElement).value = state.index + 1;
+    el("q-text").textContent = q.question;
+
+    const optionsEl = el("q-options");
+    optionsEl.innerHTML = "";
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
+      btn.textContent = opt;
+      btn.addEventListener("click", () => selectOption(i));
+      optionsEl.appendChild(btn);
+    });
+
+    el("btn-confirm").classList.add("hidden");
+    showOnly("screen-question");
+  }
+
+  function selectOption(i: number) {
+    state.selected = i;
+    el("q-options")
+      .querySelectorAll("button")
+      .forEach((btn, idx) => {
+        btn.className =
+          idx === i
+            ? "btn btn-primary text-left justify-start w-full"
+            : "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
+      });
+    el("btn-confirm").classList.remove("hidden");
+  }
+
+  el("btn-confirm").addEventListener("click", () => {
+    if (state.selected === null) return;
+    const q = questions[state.index];
+    const correct = state.selected === q.correctIndex;
+    if (correct) state.score++;
+    renderReveal(correct, q);
+  });
+
+  // ---- Reveal ----
+  function renderReveal(correct: boolean, q: Question) {
+    el("reveal-indicator").textContent = correct ? "✓ Correct!" : "✗ Wrong";
+    el("reveal-indicator").className = `text-center text-2xl font-bold ${
+      correct ? "text-success" : "text-error"
+    }`;
+
+    el("reveal-correct").className = `alert ${
+      correct ? "alert-success" : "alert-error"
+    }`;
+    el("reveal-correct").textContent = `The answer is: ${q.options[q.correctIndex]}`;
+
+    const factEl = el("reveal-fact");
+    if (q.funFact) {
+      factEl.textContent = q.funFact;
+      factEl.classList.remove("hidden");
+    } else {
+      factEl.classList.add("hidden");
+    }
+
+    const isLast = state.index === questions.length - 1;
+    el("btn-next").textContent = isLast ? "See Results →" : "Next →";
+
+    showOnly("screen-reveal");
+  }
+
+  el("btn-next").addEventListener("click", () => {
+    state.index++;
+    if (state.index >= questions.length) {
+      renderResults();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  // ---- Results ----
+  const SCORE_LABELS = [
+    { max: 3, label: "Who are you?" },
+    { max: 6, label: "Getting there…" },
+    { max: 9, label: "Practically a stalker" },
+    { max: 10, label: "Are you Farzad?" },
+  ];
+
+  function getStars(score: number, total: number): string {
+    const stars = Math.round((score / total) * 5);
+    return "⭐".repeat(stars) + "☆".repeat(5 - stars);
+  }
+
+  function renderResults() {
+    const total = questions.length;
+    el("r-score").textContent = `${state.score} / ${total}`;
+    el("r-stars").textContent = getStars(state.score, total);
+    el("r-label").textContent =
+      SCORE_LABELS.find((l) => state.score <= l.max)?.label ?? "Are you Farzad?";
+    showOnly("screen-results");
+  }
+
+  el("btn-retry").addEventListener("click", () => {
+    state.index = 0;
+    state.score = 0;
+    renderQuestion();
+  });
+
+  el("btn-share").addEventListener("click", () => {
+    const total = questions.length;
+    const label =
+      SCORE_LABELS.find((l) => state.score <= l.max)?.label ?? "Are you Farzad?";
+    const text = `I scored ${state.score}/${total} on Farzad's portfolio quiz! "${label}" 🧠\nTry it: ${window.location.href}`;
+    const showBtnText = (msg: string) => {
+      const btn = el("btn-share");
+      btn.textContent = msg;
+      setTimeout(() => { btn.textContent = "Share result"; }, 2000);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => showBtnText("Copied!")).catch(() => showBtnText("Copy failed"));
+    } else {
+      showBtnText("Copy failed");
+    }
+  });
+</script>

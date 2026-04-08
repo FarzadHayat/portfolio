@@ -162,6 +162,7 @@ const general = defineCollection({
     showSpotifySection: z.boolean(),
     spotifyPlaylistUrl: z.string().url(),
     showContactSection: z.boolean(),
+    showQuizCta: z.boolean().default(false),
   }),
 });
 
@@ -196,6 +197,22 @@ const certifications = defineCollection({
     }),
 });
 
+// Quiz singleton
+const quiz = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/quiz" }),
+  schema: z.object({
+    questions: z.array(
+      z.object({
+        question: z.string(),
+        options: z.array(z.string()).length(4),
+        correctIndex: z.number().int().min(0).max(3),
+        category: z.enum(["tech", "personal", "career"]),
+        funFact: z.string().optional(),
+      })
+    ),
+  }),
+});
+
 export const collections = {
   hero,
   work,
@@ -207,4 +224,5 @@ export const collections = {
   general,
   contact,
   certifications,
+  quiz,
 };

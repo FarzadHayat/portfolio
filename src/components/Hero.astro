@@ -16,9 +16,10 @@ interface Props {
       label: string;
     }>;
   };
+  showQuizCta?: boolean;
 }
 
-const { hero } = Astro.props;
+const { hero, showQuizCta } = Astro.props;
 ---
 
 <section class="hero min-h-screen">
@@ -81,6 +82,15 @@ const { hero } = Astro.props;
           })
         }
       </div>
+      {
+        showQuizCta && (
+          <div class="mt-4">
+            <a href="/quiz" class="btn btn-outline btn-accent">
+              Think you know me? →
+            </a>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>

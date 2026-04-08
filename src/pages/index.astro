@@ -29,7 +29,7 @@ const general = generalEntry.data;
 >
   <main>
     <!-- Hero Section (Always visible) -->
-    <Hero hero={heroEntry.data} />
+    <Hero hero={heroEntry.data} showQuizCta={general.showQuizCta} />
 
     <!-- All other sections hidden on mobile -->
     <div class="hidden lg:block">

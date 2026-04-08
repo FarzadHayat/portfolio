@@ -20,6 +20,9 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      chunkSizeWarningLimit: 3000,
+    },
     optimizeDeps: {
       include: ["@keystatic/core", "@keystatic/astro"],
     },

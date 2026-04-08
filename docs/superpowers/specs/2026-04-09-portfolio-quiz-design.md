@@ -134,25 +134,22 @@ All state lives in a single JS object; no framework needed.
 
 ---
 
-## Starter Questions (10)
+## Questions (10)
 
-The correct answer and its index are listed below. The 3 plausible distractors for each question are defined in `src/content/quiz/index.yaml` during implementation — they should be believable wrong answers from the same domain (e.g. other frameworks, other cities, other roles).
+Full options and correct answers (0-indexed):
 
-### Tech (4)
-1. "What framework is this portfolio built with?" → Astro (correctIndex: 1) — e.g. distractors: Next.js, Nuxt, SvelteKit
-2. "What AWS certification does Farzad hold?" → Cloud Practitioner (correctIndex: 0)
-3. "What is Farzad's area of specialisation?" → Cloud-native, AI-powered applications (correctIndex: 2)
-4. "Which company did Farzad intern at as a Software Engineer?" → Tanda (correctIndex: 3)
-
-### Personal (3)
-5. "What hobby does Farzad enjoy outside of coding?" → Partner dancing (correctIndex: 1)
-6. "Where is Farzad based?" → Brisbane, Australia (correctIndex: 0)
-7. "What degree is Farzad completing?" → Computer Science at QUT (correctIndex: 2)
-
-### Career (3)
-8. "What role is Farzad seeking?" → Graduate Software Engineer (correctIndex: 1)
-9. "When is Farzad available to start?" → July 2026 (correctIndex: 3)
-10. "What does 'Agentic Software Engineer' mean in Farzad's context?" → Building AI agents and LLM-powered systems (correctIndex: 0)
+| # | Question | Options (0→3) | correctIndex | Category |
+|---|----------|---------------|--------------|----------|
+| 1 | What is Farzad's current GPA? | 5.9 / 6.2 / 6.4 / 6.7 | 3 | personal |
+| 2 | What AWS certification does Farzad hold? | Cloud Practitioner / Solutions Architect / Developer Associate / SysOps Administrator | 0 | tech |
+| 3 | How many countries has Farzad travelled to? | 5 / 7 / 10 / 15 | 2 | personal |
+| 4 | Which company did Farzad intern at? | Atlassian / Canva / Xero / Tanda | 3 | tech |
+| 5 | What hobby does Farzad enjoy outside coding? | Skateboarding / Partner dancing / Playing guitar / Photography | 1 | personal |
+| 6 | Where did Farzad grow up? | Brisbane, Australia / Sydney, Australia / Auckland, NZ / Christchurch, New Zealand | 3 | personal |
+| 7 | What degree is Farzad completing? | Software Engineering at UQ / IT at Griffith / Computer Science at QUT / Data Science at QUT | 2 | personal |
+| 8 | Which languages does Farzad speak? | English and Mandarin / English and Farsi / English and Spanish / English and French | 1 | personal |
+| 9 | When is Farzad available to start? | January 2026 / March 2026 / May 2026 / July 2026 | 3 | career |
+| 10 | What is Farzad's favourite dance style? | Salsa / Tango / Bachata / Lambada | 3 | personal |
 
 ---
 

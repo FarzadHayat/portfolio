@@ -18,6 +18,12 @@ export default defineConfig({
     "/resume": "/resume.pdf",
   },
 
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
@@ -25,7 +31,7 @@ export default defineConfig({
     },
   },
 
-  output: "static",
+  output: "server",
 
   adapter: vercel({
     webAnalytics: {

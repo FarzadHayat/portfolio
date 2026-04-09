@@ -4,6 +4,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import ThemeSelector from "../components/ThemeSelector.astro";
 import FabFlower from "../components/FabFlower.astro";
 import Dock from "../components/Dock.astro";
+import PetGhost from "../components/PetGhost.astro";
 import { ClientRouter } from "astro:transitions";
 import { getEntry } from "astro:content";
 import SpeedInsights from "@vercel/speed-insights/astro";
@@ -105,6 +106,8 @@ const origin = Astro.url.origin;
         </>
       )
     }
+
+    <PetGhost />
 
     <!-- Smooth Scroll -->
     <style is:global>

@@ -48,9 +48,6 @@ const { questions } = Astro.props;
       ></progress>
       <p id="q-text" class="text-lg font-semibold mt-2"></p>
       <div id="q-options" class="flex flex-col gap-2"></div>
-      <button id="btn-confirm" class="btn btn-primary rounded-full mt-2 hidden">
-        Confirm →
-      </button>
     </div>
 
     <!-- Screen: Reveal -->
@@ -140,30 +137,16 @@ const { questions } = Astro.props;
       optionsEl.appendChild(btn);
     });
 
-    el("btn-confirm").classList.add("hidden");
     showOnly("screen-question");
   }
 
   function selectOption(i: number) {
     state.selected = i;
-    el("q-options")
-      .querySelectorAll("button")
-      .forEach((btn, idx) => {
-        btn.className =
-          idx === i
-            ? "btn btn-primary rounded-2xl text-left justify-start w-full"
-            : "btn btn-ghost rounded-2xl border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
-      });
-    el("btn-confirm").classList.remove("hidden");
-  }
-
-  el("btn-confirm").addEventListener("click", () => {
-    if (state.selected === null) return;
     const q = questions[state.index];
-    const correct = state.selected === q.correctIndex;
+    const correct = i === q.correctIndex;
     if (correct) state.score++;
     renderReveal(correct, q);
-  });
+  }
 
   // ---- Reveal ----
   function renderReveal(correct: boolean, q: Question) {

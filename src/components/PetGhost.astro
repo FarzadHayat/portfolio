@@ -5,7 +5,7 @@
 
 <div
   id="pet-ghost"
-  class="fixed bottom-6 left-6 z-50 hidden lg:flex flex-col items-center gap-2"
+  class="fixed bottom-6 left-6 z-50 hidden lg:block"
 >
   <div
     id="ghost-bubble"
@@ -42,21 +42,29 @@
     padding: 6px 12px;
     border-radius: 999px;
     white-space: nowrap;
+    max-width: calc(100vw - 3rem);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-    position: relative;
-    opacity: 0;
+    /*
+     * Fixed to the viewport — same left anchor as the ghost (left-6 = 1.5rem),
+     * tall enough above so the tail never touches the emoji.
+     * bottom = ghost-bottom(1.5rem) + emoji-height(2.5rem) + gap(1rem) = 5rem
+     */
+    position: fixed;
+    bottom: 5.5rem;
+    left: 2rem;
     transform: translateY(-4px);
+    opacity: 0;
     transition:
       opacity 0.25s ease,
       transform 0.25s ease;
   }
 
-  /* downward tail */
+  /* downward tail — points at the ghost emoji center (half of 2.5rem font-size) */
   .ghost-bubble::after {
     content: '';
     position: absolute;
     bottom: -5px;
-    left: 50%;
+    left: 1.25rem;
     transform: translateX(-50%);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;

@@ -39,14 +39,14 @@
   --color-neutral-content: oklch(97% 0.01 285);
 }
 
-/* Gradient accent — applied to primary buttons, except circle buttons */
-.btn-primary:not(.btn-circle) {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+/* Gradient accent — applied to solid primary buttons (not circle, not outline) */
+.btn-primary:not(.btn-circle):not(.btn-outline) {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-color: transparent;
   color: var(--color-primary-content);
 }
-.btn-primary:not(.btn-circle):hover {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+.btn-primary:not(.btn-circle):not(.btn-outline):hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   filter: brightness(1.1);
   border-color: transparent;
 }

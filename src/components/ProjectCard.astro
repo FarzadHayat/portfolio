@@ -23,7 +23,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
 }
 ---
 
-<article class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+<article class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
   <a
     class="hover:opacity-80 transition-opacity"
     href={`/projects/${project.id}`}
@@ -56,7 +56,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
             href={project.data.demoLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-sm btn-soft gap-1"
+            class="btn btn-sm btn-soft rounded-full gap-1"
           >
             <ExternalLink class="size-4" />
             Demo
@@ -69,7 +69,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
             href={project.data.sourceLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-sm btn-soft gap-1"
+            class="btn btn-sm btn-soft rounded-full gap-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
         )
       }
       <div class="tooltip" data-tip="View project details">
-        <a href={`/projects/${project.id}`} class="btn btn-sm btn-primary">
+        <a href={`/projects/${project.id}`} class="btn btn-sm btn-primary btn-circle">
           <Eye class="size-4" />
         </a>
       </div>

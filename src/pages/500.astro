@@ -46,18 +46,18 @@ if (error instanceof Error) {
 
       <!-- Action Buttons -->
       <div class="flex gap-4 justify-center flex-wrap mt-8">
-        <a href="/" class="btn btn-primary gap-2">
+        <a href="/" class="btn btn-primary rounded-full gap-2">
           <House class="size-5" />
           Go Home
         </a>
-        <button onclick="history.back()" class="btn btn-outline gap-2">
+        <button onclick="history.back()" class="btn btn-outline rounded-full gap-2">
           <ArrowLeft class="size-5" />
           Go Back
         </button>
       </div>
 
       <!-- Note about SSR -->
-      <div class="mt-12 p-4 bg-base-200 rounded-lg">
+      <div class="mt-12 p-6 bg-base-200 rounded-2xl">
         <p class="text-sm text-base-content/60">
           <strong>Note:</strong> This error page is only active when using Server-Side
           Rendering (SSR). Currently, Bloomfolio is configured for static generation.

@@ -113,9 +113,9 @@ const entriesWithContent = await Promise.all(
 );
 ---
 
-<section id={collection} class={`py-20 px-4 ${bgClass}`}>
+<section id={collection} class={`py-28 px-6 ${bgClass}`}>
   <div class="mx-auto max-w-4xl">
-    <div class="text-center mb-12">
+    <div class="text-center mb-16">
       <h2 class="text-4xl font-bold">{sectionTitle}</h2>
       {
         sectionSubtitle && (
@@ -153,7 +153,7 @@ const entriesWithContent = await Promise.all(
                       </span>
                     )}
                   </time>
-                  <div class="card bg-base-100 shadow-xl mt-2">
+                  <div class="card bg-base-100 rounded-3xl shadow-soft mt-2">
                     <div class="card-body">
                       <div class="flex items-center gap-4">
                         {
@@ -189,7 +189,7 @@ const entriesWithContent = await Promise.all(
                       </div>
                       <div class="card-actions justify-end mt-2">
                         <button
-                          class="btn btn-ghost btn-sm"
+                          class="btn btn-ghost btn-sm rounded-full"
                           onclick={`document.getElementById('modal-${entry.id}').showModal()`}
                         >
                           Read more
@@ -208,7 +208,7 @@ const entriesWithContent = await Promise.all(
           {/* Modals for timeline entries */}
           {entriesWithContent.map(({ entry, Content }) => (
             <dialog id={`modal-${entry.id}`} class="modal">
-              <div class="modal-box max-w-2xl">
+              <div class="modal-box max-w-2xl rounded-3xl">
                 {/* Modal Header */}
                 <div class="flex items-center gap-4 mb-4">
                   {entry.data.logo && (
@@ -270,14 +270,14 @@ const entriesWithContent = await Promise.all(
                       href={entry.data.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="btn btn-ghost gap-2"
+                      class="btn btn-ghost rounded-full gap-2"
                     >
                       View Company
                       <ExternalLink class="size-4" />
                     </a>
                   )}
                   <form method="dialog">
-                    <button class="btn">Close</button>
+                    <button class="btn rounded-full px-6">Close</button>
                   </form>
                 </div>
               </div>
@@ -288,13 +288,13 @@ const entriesWithContent = await Promise.all(
           ))}
         </>
       ) : (
-        <ul class="list bg-base-100 rounded-box shadow-lg">
+        <ul class="flex flex-col gap-4">
           {entriesWithContent.map(({ entry, Content }, index) => (
-            <li class="border-b hover:opacity-85 transition-opacity border-base-300 last:border-b-0">
-              <details class="collapse" open={expandedByDefault}>
-                <summary class="collapse-title pe-5">
-                  <div class="list-row p-0 items-center after:hidden">
-                    <div>
+            <li class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg transition-all duration-300">
+              <details class="collapse collapse-arrow" open={expandedByDefault}>
+                <summary class="collapse-title">
+                  <div class="flex items-center gap-4">
+                    <div class="shrink-0">
                       {
                         entry.data.logo ? (
                           <div class="avatar">
@@ -316,14 +316,14 @@ const entriesWithContent = await Promise.all(
                       }
                     </div>
 
-                    <div>
-                      <h3 class="font-bold text-lg">{entry.data.title}</h3>
+                    <div class="flex-1 min-w-0">
+                      <h3 class="font-bold text-lg leading-tight">{entry.data.title}</h3>
                       <p class={`${textColorClass} font-semibold text-sm`}>
                         {entry.data.subtitle}
                       </p>
                     </div>
 
-                    <div class="text-sm text-base-content/70 font-mono whitespace-nowrap">
+                    <div class="text-sm text-base-content/70 font-mono whitespace-nowrap shrink-0 mr-6">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
                       {calculateDuration(
                         entry.data.startDate,
@@ -345,12 +345,12 @@ const entriesWithContent = await Promise.all(
                     <Content />
                   </div>
                   {entry.data.link && (
-                    <div class="flex justify-end">
+                    <div class="flex justify-end mt-3">
                       <a
                         href={entry.data.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="link link-hover flex items-center gap-1"
+                        class="btn btn-sm btn-ghost btn-outline rounded-full gap-1"
                       >
                         {
                           collection === "work"
@@ -378,7 +378,7 @@ const entriesWithContent = await Promise.all(
             href={aboutLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-primary btn-outline"
+            class="btn btn-primary btn-outline rounded-full px-8"
           >
             More my Work Experience
           </a>

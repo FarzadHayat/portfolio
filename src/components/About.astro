@@ -13,9 +13,9 @@ interface Props {
 const { title, photo, Content, link } = Astro.props;
 ---
 
-<section id="about" class="py-20 px-4">
+<section id="about" class="py-28 px-6">
   <div class="max-w-4xl mx-auto">
-    <div class="card card-side bg-base-200 shadow-sm">
+    <div class="card card-side bg-base-200 rounded-3xl shadow-soft">
       {
         photo && (
           <figure class="shrink-0 w-48">
@@ -42,7 +42,7 @@ const { title, photo, Content, link } = Astro.props;
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="btn btn-primary"
+                  class="btn btn-primary btn-circle"
                 >
                   <Plus class="size-5" />
                 </a>

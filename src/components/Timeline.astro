@@ -127,7 +127,7 @@ const entriesWithContent = await Promise.all(
     {
       variant === "timeline" ? (
         <>
-          <ul class="timeline timeline-vertical timeline-compact lg:timeline-snap-icon">
+          <ul class="timeline timeline-vertical timeline-compact timeline-snap-icon">
             {entriesWithContent.map(({ entry, Content }, index) => (
               <li>
                 {index > 0 && <hr class="bg-base-100" />}
@@ -135,10 +135,10 @@ const entriesWithContent = await Promise.all(
                   <IconComponent class={`size-5 ${textColorClass} mx-3 my-1`} />
                 </div>
                 <div
-                  class={`${index % 2 === 0 ? "lg:timeline-start" : "lg:timeline-end"} timeline-end w-full lg:max-w-2xs pt-3 mb-10`}
+                  class={`${index % 2 === 0 ? "timeline-end timeline-even-item" : "timeline-end"} w-full lg:max-w-2xs pt-3 mb-10`}
                 >
                   <time
-                    class={`font-mono text-sm text-base-content/70 block italic ${index % 2 === 0 ? "lg:text-end" : ""}`}
+                    class={`font-mono text-sm text-base-content/70 block italic timeline-item-date`}
                   >
                     {formatPeriod(entry.data.startDate, entry.data.endDate)}
                     {calculateDuration(
@@ -401,3 +401,20 @@ const entriesWithContent = await Promise.all(
     }
   </div>
 </section>
+
+<style is:global>
+  @media (min-width: 1024px) {
+    /* Restore left column width for rows containing an even item */
+    .timeline-vertical li:has(.timeline-even-item) {
+      --timeline-col-start: minmax(0, 1fr);
+    }
+    /* Place even items in the left column, matching timeline-start behaviour */
+    .timeline-vertical .timeline-even-item {
+      grid-area: 1 / 1 / 4 / 2;
+      place-self: center flex-end;
+    }
+    .timeline-even-item .timeline-item-date {
+      text-align: end;
+    }
+  }
+</style>

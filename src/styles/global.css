@@ -39,16 +39,17 @@
   --color-neutral-content: oklch(97% 0.01 285);
 }
 
-/* Gradient accent — applied to solid primary buttons (not circle, not outline) */
+/* Gradient accent — applied to solid primary buttons (not circle, not outline).
+   --btn-color is set to the gradient midpoint so DaisyUI's derived shadow/border
+   use a neutral blend instead of pure primary (which caused edge colour artifacts). */
 .btn-primary:not(.btn-circle):not(.btn-outline) {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  --btn-color: color-mix(in oklch, var(--color-primary), var(--color-accent));
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-color: transparent;
   color: var(--color-primary-content);
 }
 .btn-primary:not(.btn-circle):not(.btn-outline):hover {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   filter: brightness(1.1);
-  border-color: transparent;
 }
 
 /* Soft / claymorphism shadow utilities */

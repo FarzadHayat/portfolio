@@ -35,8 +35,8 @@
 
   /* ── Speech bubble ──────────────────────────────────── */
   .ghost-bubble {
-    background: white;
-    color: #1e1e2e;
+    background: oklch(var(--b1));
+    color: oklch(var(--bc));
     font-size: 0.8rem;
     font-weight: 600;
     padding: 6px 12px;
@@ -60,13 +60,12 @@
     transform: translateX(-50%);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid white;
+    border-top: 6px solid oklch(var(--b1));
   }
 
   .ghost-bubble.visible {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: none;
   }
 
   /* ── Animations ─────────────────────────────────────── */
@@ -87,7 +86,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ghost-emoji {
+    .ghost-emoji,
+    .ghost-emoji.bouncing {
       animation: none;
     }
   }
@@ -135,7 +135,12 @@
   }
 
   // ── Section observer ───────────────────────────────────
+  let currentObserver: IntersectionObserver | null = null;
+
   function observeSections() {
+    // Disconnect previous observer to avoid accumulation across View Transitions
+    if (currentObserver) currentObserver.disconnect();
+
     // hero has no id — target by class
     const heroEl = document.querySelector('section.hero');
     const namedEls = Object.keys(SECTION_QUIPS)
@@ -147,7 +152,7 @@
     if (heroEl) targets.push({ el: heroEl, quip: SECTION_QUIPS.hero });
     namedEls.forEach((el) => targets.push({ el, quip: SECTION_QUIPS[el.id] }));
 
-    const observer = new IntersectionObserver(
+    currentObserver = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -159,7 +164,7 @@
       { threshold: 0.3 }
     );
 
-    targets.forEach(({ el }) => observer.observe(el));
+    targets.forEach(({ el }) => currentObserver!.observe(el));
   }
 
   // ── Click handler ──────────────────────────────────────

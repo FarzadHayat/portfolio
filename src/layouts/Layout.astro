@@ -6,6 +6,7 @@ import FabFlower from "../components/FabFlower.astro";
 import Dock from "../components/Dock.astro";
 import GhostPet from "../components/GhostPet.astro";
 import CustomCursor from "../components/CustomCursor.astro";
+import SpectralBackground from "../components/SpectralBackground.astro";
 import { ClientRouter } from "astro:transitions";
 import { getEntry } from "astro:content";
 import SpeedInsights from "@vercel/speed-insights/astro";
@@ -13,7 +14,7 @@ import Analytics from "@vercel/analytics/astro";
 
 // Load general singleton
 const generalEntry = await getEntry("general", "index");
-const general = generalEntry.data;
+const general = generalEntry!.data;
 
 interface Props {
   title?: string;
@@ -110,6 +111,7 @@ const origin = Astro.url.origin;
 
     {general.showGhostPet && <GhostPet />}
     {general.showCustomCursor && <CustomCursor />}
+    {general.showSpectralBackground && <SpectralBackground />}
 
     <!-- Smooth Scroll -->
     <style is:global>

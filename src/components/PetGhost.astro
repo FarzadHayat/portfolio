@@ -9,7 +9,7 @@
 >
   <div
     id="ghost-bubble"
-    class="ghost-bubble opacity-0 pointer-events-none"
+    class="ghost-bubble pointer-events-none"
     aria-live="polite"
   >
     Welcome, mortal 👻
@@ -44,6 +44,7 @@
     white-space: nowrap;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
     position: relative;
+    opacity: 0;
     transform: translateY(-4px);
     transition:
       opacity 0.25s ease,
@@ -63,7 +64,7 @@
   }
 
   .ghost-bubble.visible {
-    opacity: 1 !important;
+    opacity: 1;
     transform: translateY(0);
     pointer-events: none;
   }
@@ -84,6 +85,12 @@
   .ghost-emoji.bouncing {
     animation: ghost-bounce 0.4s ease forwards;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ghost-emoji {
+      animation: none;
+    }
+  }
 </style>
 
 <script>
@@ -99,6 +106,8 @@
     spotify:        'This human has great taste in music 🎵',
     about:          'A human with good taste!',
     blog:           'Wise words from beyond the grave 📖',
+    // Note: Contact component renders a <footer>, not <section id="contact">.
+    // Add id="contact" to Contact.astro's root element when re-enabling this section.
     contact:        'Go on... say hello 👋',
   };
 
@@ -111,7 +120,6 @@
   ];
 
   // ── DOM refs ───────────────────────────────────────────
-  const ghost   = document.getElementById('pet-ghost')!;
   const bubble  = document.getElementById('ghost-bubble')!;
   const emoji   = document.getElementById('ghost-emoji')!;
 
@@ -174,6 +182,7 @@
   });
 
   // ── Init ───────────────────────────────────────────────
-  // Use 'astro:page-load' to support Astro's View Transitions
+  // Safe to add once: Astro bundles and deduplicates <script> modules,
+  // so this runs only once per page lifetime regardless of View Transitions.
   document.addEventListener('astro:page-load', observeSections);
 </script>

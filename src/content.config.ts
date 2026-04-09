@@ -162,6 +162,9 @@ const general = defineCollection({
     showSpotifySection: z.boolean(),
     spotifyPlaylistUrl: z.string().url(),
     showContactSection: z.boolean(),
+    showGhostPet: z.boolean().optional().default(false),
+    showCustomCursor: z.boolean().optional().default(false),
+    showSpectralBackground: z.boolean().optional().default(false),
   }),
 });
 

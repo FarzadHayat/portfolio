@@ -1,0 +1,136 @@
+---
+---
+<div id="spectral-bg-container" class="fixed inset-0 z-[-1] pointer-events-none hidden lg:block overflow-hidden bg-base-100">
+  <canvas id="spectral-bg" class="opacity-30"></canvas>
+</div>
+
+<script>
+  function initSpectralBackground() {
+    const canvas = document.getElementById('spectral-bg') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    let mouse = { x: width / 2, y: height / 2 };
+    let lastMove = Date.now();
+
+    interface Point {
+      x: number;
+      y: number;
+      originX: number;
+      originY: number;
+      vx: number;
+      vy: number;
+    }
+
+    const points: Point[] = [];
+    const spacing = 120;
+
+    for (let x = 0; x < width + spacing; x += spacing) {
+      for (let y = 0; y < height + spacing; y += spacing) {
+        points.push({
+          x,
+          y,
+          originX: x,
+          originY: y,
+          vx: 0,
+          vy: 0
+        });
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      lastMove = Date.now();
+    });
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+
+    function getThemeColor() {
+      const styles = getComputedStyle(document.documentElement);
+      const primary = styles.getPropertyValue('--p').trim();
+      if (!primary) return 'rgba(147, 197, 253, 0.2)'; // Fallback blue
+      
+      // DaisyUI 5 / Tailwind 4 colors are often in OKLCH or hex
+      // We'll wrap it in a CSS color function that canvas can interpret
+      return `oklch(${primary} / 0.15)`;
+    }
+
+    function animate() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      
+      const time = Date.now() * 0.001;
+      const isIdle = Date.now() - lastMove > 3000;
+      const color = getThemeColor();
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1;
+
+      points.forEach((p) => {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 250) {
+          const force = (250 - dist) / 250;
+          p.vx -= dx * force * 0.01;
+          p.vy -= dy * force * 0.01;
+        }
+
+        // Return to origin with easing
+        p.vx += (p.originX - p.x) * 0.03;
+        p.vy += (p.originY - p.y) * 0.03;
+
+        // Idle breathing effect
+        if (isIdle) {
+          p.vx += Math.sin(time + p.originX * 0.01) * 0.1;
+          p.vy += Math.cos(time + p.originY * 0.01) * 0.1;
+        }
+
+        // Friction
+        p.vx *= 0.92;
+        p.vy *= 0.92;
+        
+        p.x += p.vx;
+        p.y += p.vy;
+      });
+
+      // Draw the spectral mesh
+      ctx.beginPath();
+      for (let i = 0; i < points.length; i++) {
+        const p1 = points[i];
+        // Only check a subset of points for performance
+        for (let j = i + 1; j < points.length; j++) {
+          const p2 = points[j];
+          const distSq = (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2;
+          if (distSq < (spacing * 1.6) ** 2) {
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+          }
+        }
+      }
+      ctx.stroke();
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+  initSpectralBackground();
+  // Support Astro View Transitions
+  document.addEventListener('astro:after-swap', initSpectralBackground);
+</script>

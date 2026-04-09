@@ -79,6 +79,16 @@ const origin = Astro.url.origin;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${origin}/images/og_home.png`} />
+
+    <!-- Theme FOUC prevention: set data-theme before first paint -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const theme = saved ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "specter" : "wisp");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body class="min-h-screen">
     <!-- Theme Controls - Fixed Position -->

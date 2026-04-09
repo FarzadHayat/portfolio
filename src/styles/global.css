@@ -1,21 +1,55 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-/*
-If you want to use the ThemeToggle component
-and choose the light or dark themes,
-move --default and --prefersdark to your desired themes.
-Then update darkThemeName and lightThemeName
-variables in the ThemeToggle component with the new theme names.
-The name should match the theme name below.
-*/
+
 @plugin "daisyui" {
-  themes:
-    light --default,
-    dark --prefersdark,
-    synthwave,
-    retro,
-    valentine,
-    dim;
+  themes: wisp --default, specter --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "specter";
+  color-scheme: dark;
+  --color-base-100: oklch(8% 0.025 270);
+  --color-base-200: oklch(11% 0.03 270);
+  --color-base-300: oklch(15% 0.04 270);
+  --color-base-content: oklch(80% 0.1 285);
+  --color-primary: oklch(52% 0.22 285);
+  --color-primary-content: oklch(94% 0.02 285);
+  --color-secondary: oklch(55% 0.19 264);
+  --color-secondary-content: oklch(93% 0.02 264);
+  --color-accent: oklch(58% 0.12 192);
+  --color-accent-content: oklch(97% 0.01 192);
+  --color-neutral: oklch(18% 0.04 270);
+  --color-neutral-content: oklch(75% 0.08 270);
+}
+
+@plugin "daisyui/theme" {
+  name: "wisp";
+  color-scheme: light;
+  --color-base-100: oklch(97% 0.01 285);
+  --color-base-200: oklch(93% 0.015 285);
+  --color-base-300: oklch(88% 0.025 285);
+  --color-base-content: oklch(20% 0.07 270);
+  --color-primary: oklch(50% 0.19 264);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(52% 0.22 285);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(58% 0.12 192);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(28% 0.1 270);
+  --color-neutral-content: oklch(97% 0.01 285);
+}
+
+/* Gradient accent — applied to solid primary buttons (not circle, not outline).
+   --btn-color is set to the gradient midpoint so DaisyUI's derived shadow/border
+   use a neutral blend instead of pure primary (which caused edge colour artifacts). */
+.btn-primary:not(.btn-circle):not(.btn-outline) {
+  --btn-color: color-mix(in oklch, var(--color-primary), var(--color-accent));
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-color: transparent;
+  color: var(--color-primary-content);
+}
+.btn-primary:not(.btn-circle):not(.btn-outline):hover {
+  filter: brightness(1.1);
 }
 
 /* Soft / claymorphism shadow utilities */

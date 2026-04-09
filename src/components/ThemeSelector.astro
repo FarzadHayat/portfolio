@@ -2,12 +2,8 @@
 import { Palette } from "@lucide/astro";
 
 const themes = [
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
-  { value: "synthwave", label: "Synthwave" },
-  { value: "retro", label: "Retro" },
-  { value: "valentine", label: "Valentine" },
-  { value: "dim", label: "Dim" },
+  { value: "wisp", label: "Wisp (Light)" },
+  { value: "specter", label: "Specter (Dark)" },
 ];
 ---
 
@@ -46,8 +42,8 @@ const themes = [
     // If no saved theme, use system preference
     if (!theme) {
       theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+        ? "specter"
+        : "wisp";
     }
 
     // Apply theme to document

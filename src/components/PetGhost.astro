@@ -1,0 +1,179 @@
+---
+// PetGhost — friendly Casper-style pet for the portfolio
+// Desktop only (hidden lg:flex). No props, no dependencies.
+---
+
+<div
+  id="pet-ghost"
+  class="fixed bottom-6 left-6 z-50 hidden lg:flex flex-col items-center gap-2"
+>
+  <div
+    id="ghost-bubble"
+    class="ghost-bubble opacity-0 pointer-events-none"
+    aria-live="polite"
+  >
+    Welcome, mortal 👻
+  </div>
+  <span id="ghost-emoji" class="ghost-emoji cursor-pointer select-none" role="img" aria-label="Pet ghost">
+    👻
+  </span>
+</div>
+
+<style>
+  /* ── Layout ─────────────────────────────────────────── */
+  .ghost-emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+    display: block;
+    animation: ghost-float 3s ease-in-out infinite;
+    transition: filter 0.2s ease;
+  }
+
+  .ghost-emoji:hover {
+    filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.6));
+  }
+
+  /* ── Speech bubble ──────────────────────────────────── */
+  .ghost-bubble {
+    background: white;
+    color: #1e1e2e;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    transform: translateY(-4px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  /* downward tail */
+  .ghost-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white;
+  }
+
+  .ghost-bubble.visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+    pointer-events: none;
+  }
+
+  /* ── Animations ─────────────────────────────────────── */
+  @keyframes ghost-float {
+    0%, 100% { transform: translateY(0px) rotate(-3deg); }
+    50%       { transform: translateY(-10px) rotate(3deg); }
+  }
+
+  @keyframes ghost-bounce {
+    0%   { transform: scale(1) rotate(0deg); }
+    30%  { transform: scale(1.4) rotate(-10deg); }
+    60%  { transform: scale(0.9) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  .ghost-emoji.bouncing {
+    animation: ghost-bounce 0.4s ease forwards;
+  }
+</style>
+
+<script>
+  // ── Section quips ──────────────────────────────────────
+  // Inactive sections are included for when they get re-enabled.
+  const SECTION_QUIPS: Record<string, string> = {
+    hero:           'Welcome, mortal 👻',
+    projects:       'These projects are to die for 💀',
+    work:           'Impressive résumé for a living person',
+    education:      'Still smarter than me 🎓',
+    certifications: 'Certified haunted engineer 🏅',
+    hackathons:     'Hacking the afterlife since forever',
+    spotify:        'This human has great taste in music 🎵',
+    about:          'A human with good taste!',
+    blog:           'Wise words from beyond the grave 📖',
+    contact:        'Go on... say hello 👋',
+  };
+
+  const CLICK_MESSAGES = [
+    'Boo! 👀',
+    'You found me!',
+    'Pet accepted ✅',
+    'Hehe 👻',
+    "Stop that... actually don't",
+  ];
+
+  // ── DOM refs ───────────────────────────────────────────
+  const ghost   = document.getElementById('pet-ghost')!;
+  const bubble  = document.getElementById('ghost-bubble')!;
+  const emoji   = document.getElementById('ghost-emoji')!;
+
+  let bubbleTimer: ReturnType<typeof setTimeout> | null = null;
+  let clickCooldown = false;
+
+  // ── Bubble helpers ─────────────────────────────────────
+  function showBubble(text: string, durationMs = 4000) {
+    if (bubbleTimer) clearTimeout(bubbleTimer);
+    bubble.textContent = text;
+    bubble.classList.add('visible');
+    bubbleTimer = setTimeout(() => bubble.classList.remove('visible'), durationMs);
+  }
+
+  // ── Section observer ───────────────────────────────────
+  function observeSections() {
+    // hero has no id — target by class
+    const heroEl = document.querySelector('section.hero');
+    const namedEls = Object.keys(SECTION_QUIPS)
+      .filter((k) => k !== 'hero')
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    const targets: Array<{ el: Element; quip: string }> = [];
+    if (heroEl) targets.push({ el: heroEl, quip: SECTION_QUIPS.hero });
+    namedEls.forEach((el) => targets.push({ el, quip: SECTION_QUIPS[el.id] }));
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const target = targets.find((t) => t.el === entry.target);
+          if (target) showBubble(target.quip);
+          obs.unobserve(entry.target); // fire once per section per page load
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    targets.forEach(({ el }) => observer.observe(el));
+  }
+
+  // ── Click handler ──────────────────────────────────────
+  emoji.addEventListener('click', () => {
+    if (clickCooldown) return;
+    clickCooldown = true;
+
+    const msg = CLICK_MESSAGES[Math.floor(Math.random() * CLICK_MESSAGES.length)];
+    showBubble(msg, 2000);
+
+    emoji.classList.remove('bouncing');
+    // Force reflow so re-adding the class restarts the animation
+    void (emoji as HTMLElement).offsetWidth;
+    emoji.classList.add('bouncing');
+
+    setTimeout(() => {
+      emoji.classList.remove('bouncing');
+      clickCooldown = false;
+    }, 2000);
+  });
+
+  // ── Init ───────────────────────────────────────────────
+  // Use 'astro:page-load' to support Astro's View Transitions
+  document.addEventListener('astro:page-load', observeSections);
+</script>

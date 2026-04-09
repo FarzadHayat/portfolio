@@ -43,46 +43,47 @@ function formatPeriod(startDate: Date, endDate?: Date) {
       {
         sortedHackathons.map((hackathon) => (
           <div class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
-            {hackathon.data.logo && (
-              <figure class="rounded-t-3xl overflow-hidden h-48">
-                <Image
-                  src={hackathon.data.logo}
-                  alt={hackathon.data.title}
-                  class="w-full h-full object-cover"
-                  inferSize={true}
-                />
-              </figure>
-            )}
-            <div class="card-body">
-              {!hackathon.data.logo && (
-                <div class="flex justify-center mb-2">
+            <div class="flex flex-col sm:flex-row">
+              {hackathon.data.logo ? (
+                <figure class="rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none overflow-hidden sm:w-56 shrink-0">
+                  <Image
+                    src={hackathon.data.logo}
+                    alt={hackathon.data.title}
+                    class="w-full h-48 object-cover sm:h-auto sm:object-contain"
+                    inferSize={true}
+                  />
+                </figure>
+              ) : (
+                <div class="flex sm:flex-col justify-center items-center p-6 sm:w-32 shrink-0">
                   <div class="bg-neutral text-neutral-content w-16 h-16 rounded-2xl flex items-center justify-center">
                     <Rocket class="size-8" />
                   </div>
                 </div>
               )}
-              <time class="text-sm text-base-content/60">
-                {formatPeriod(hackathon.data.startDate, hackathon.data.endDate)}
-              </time>
-              <h3 class="card-title mt-1">{hackathon.data.title}</h3>
-              <p class="text-sm text-primary font-semibold">
-                {hackathon.data.location}
-              </p>
-              <p class="text-base-content/80 mt-3">
-                {hackathon.data.description}
-              </p>
-              {hackathon.data.sourceLink && (
-                <div class="card-actions mt-4">
-                  <a
-                    href={hackathon.data.sourceLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-sm btn-outline btn-primary rounded-full"
-                  >
-                    View Project
-                  </a>
-                </div>
-              )}
+              <div class="card-body">
+                <time class="text-sm text-base-content/60">
+                  {formatPeriod(hackathon.data.startDate, hackathon.data.endDate)}
+                </time>
+                <h3 class="card-title mt-1">{hackathon.data.title}</h3>
+                <p class="text-sm text-primary font-semibold">
+                  {hackathon.data.location}
+                </p>
+                <p class="text-base-content/80 mt-3">
+                  {hackathon.data.description}
+                </p>
+                {hackathon.data.sourceLink && (
+                  <div class="card-actions mt-4">
+                    <a
+                      href={hackathon.data.sourceLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-outline btn-primary rounded-full"
+                    >
+                      View Project
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))

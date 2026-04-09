@@ -1,4 +1,4 @@
-enableThemeSelector: true
+enableThemeSelector: false
 extraLinksEnabled: true
 extraLinks:
   - link: https://github.com/FarzadHayat/

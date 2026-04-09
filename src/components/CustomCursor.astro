@@ -1,0 +1,138 @@
+---
+---
+<div id="custom-cursor-container" class="hidden lg:block pointer-events-none fixed inset-0 z-[9999]">
+  <div id="custom-cursor-glow" class="fixed w-16 h-16 rounded-full bg-primary/30 blur-xl -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out will-change-transform"></div>
+  <div id="custom-cursor-dot" class="fixed w-2 h-2 rounded-full bg-primary -translate-x-1/2 -translate-y-1/2 will-change-transform"></div>
+</div>
+
+<script>
+  function initCustomCursor() {
+    const container = document.getElementById('custom-cursor-container') as HTMLElement;
+    const glow = document.getElementById('custom-cursor-glow') as HTMLElement;
+    const dot = document.getElementById('custom-cursor-dot') as HTMLElement;
+
+    if (!container || !glow || !dot) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let glowX = -100;
+    let glowY = -100;
+    let dotX = -100;
+    let dotY = -100;
+
+    const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const createSparkle = (x: number, y: number) => {
+      const sparkle = document.createElement('div');
+      // Using bg-primary/40 for sparkles
+      sparkle.className = 'fixed w-1 h-1 bg-primary/40 rounded-full pointer-events-none z-[9998]';
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      sparkle.style.transform = 'translate(-50%, -50%)';
+      container.appendChild(sparkle);
+
+      const animation = sparkle.animate([
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+        { opacity: 0, transform: `translate(-50%, -50%) scale(0) translate(${(Math.random() - 0.5) * 40}px, ${(Math.random() - 0.5) * 40}px)` }
+      ], {
+        duration: 800,
+        easing: 'ease-out'
+      });
+
+      animation.onfinish = () => sparkle.remove();
+    };
+
+    let lastSparkleTime = 0;
+
+    function animate() {
+      // Smooth follow for glow
+      glowX = lerp(glowX, mouseX, 0.1);
+      glowY = lerp(glowY, mouseY, 0.1);
+      
+      // Snappier follow for dot
+      dotX = lerp(dotX, mouseX, 0.25);
+      dotY = lerp(dotY, mouseY, 0.25);
+
+      glow.style.left = `${glowX}px`;
+      glow.style.top = `${glowY}px`;
+      
+      dot.style.left = `${dotX}px`;
+      dot.style.top = `${dotY}px`;
+
+      // Sparkles trail - only when moving
+      const now = Date.now();
+      const dist = Math.sqrt(Math.pow(mouseX - dotX, 2) + Math.pow(mouseY - dotY, 2));
+      if (now - lastSparkleTime > 40 && dist > 5) {
+        createSparkle(dotX, dotY);
+        lastSparkleTime = now;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const interactiveElements = 'a, button, [role="button"], .interactive, input, textarea, select';
+    
+    const onMouseEnter = () => {
+      glow.classList.add('glow-expand');
+    };
+    
+    const onMouseLeave = () => {
+      glow.classList.remove('glow-expand');
+    };
+
+    const attachListeners = () => {
+      document.querySelectorAll(interactiveElements).forEach(el => {
+        el.addEventListener('mouseenter', onMouseEnter);
+        el.addEventListener('mouseleave', onMouseLeave);
+      });
+    };
+
+    attachListeners();
+    
+    // Cleanup function
+    return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }
+
+  // Initial load
+  let cleanup = initCustomCursor();
+
+  // Re-run on transition
+  document.addEventListener('astro:page-load', () => {
+      if (cleanup) cleanup();
+      cleanup = initCustomCursor();
+  });
+</script>
+
+<style>
+  #custom-cursor-glow.glow-expand {
+    transform: translate(-50%, -50%) scale(2.5);
+    background-color: color-mix(in oklch, var(--color-primary, oklch(var(--p))), transparent 60%);
+    animation: cursor-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes cursor-pulse {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(2.5); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(3); }
+  }
+
+  /* Ensure standard cursor is hidden when custom one is active */
+  @media (min-width: 1024px) {
+    :global(html), :global(body) {
+      cursor: none !important;
+    }
+    :global(a), :global(button), :global([role="button"]), :global(.interactive) {
+      cursor: none !important;
+    }
+  }
+</style>

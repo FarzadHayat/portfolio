@@ -19,7 +19,7 @@ const { extraLinks } = Astro.props;
   <div
     tabindex="0"
     role="button"
-    class="btn btn-lg btn-accent btn-circle tooltip tooltip-top"
+    class="fab-trigger btn btn-lg btn-accent btn-circle tooltip tooltip-top"
     data-tip="More links"
   >
     <Link class="size-6" />
@@ -44,3 +44,9 @@ const { extraLinks } = Astro.props;
     })
   }
 </div>
+
+<style>
+  .fab-flower:focus-within > .fab-trigger {
+    rotate: 0deg;
+  }
+</style>

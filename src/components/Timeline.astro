@@ -404,8 +404,8 @@ const entriesWithContent = await Promise.all(
 
 <style is:global>
   @media (min-width: 1024px) {
-    /* Restore left column width for rows containing an even item */
-    .timeline-vertical li:has(.timeline-even-item) {
+    /* Restore symmetric columns for all rows (compact collapses left column to 0) */
+    .timeline-vertical.timeline-compact > li {
       --timeline-col-start: minmax(0, 1fr);
     }
     /* Place even items in the left column, matching timeline-start behaviour */

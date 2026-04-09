@@ -31,8 +31,6 @@ const general = generalEntry.data;
     <!-- Hero Section (Always visible) -->
     <Hero hero={heroEntry.data} showQuizCta={general.showQuizCta} />
 
-    <!-- All other sections hidden on mobile -->
-    <div class="hidden lg:block">
       <!-- About Section -->
       {
         general.showAboutSection && (
@@ -106,6 +104,5 @@ const general = generalEntry.data;
 
       <!-- Contact Section -->
       {general.showContactSection && <Contact />}
-    </div>
   </main>
 </Layout>

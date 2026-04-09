@@ -18,12 +18,12 @@ function formatDate(date: Date) {
 }
 ---
 
-<div class="card image-full shadow-xl hover:shadow-2xl transition-shadow">
+<div class="card image-full rounded-3xl overflow-hidden shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
   <figure class="aspect-video">
     <Image src={post.data.image} alt={post.data.title} />
   </figure>
   <div
-    class="card-body rounded-lg justify-end bg-linear-to-b from-primary/80 to-transparent"
+    class="card-body rounded-b-3xl justify-end bg-linear-to-t from-black/70 to-transparent"
   >
     <h3
       class="card-title text-base-100-content hover:text-primary-content transition-colors"

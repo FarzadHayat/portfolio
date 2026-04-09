@@ -24,7 +24,7 @@ function formatDate(date: Date) {
   title="Blog - Bloomfolio"
   description="Read my latest blog posts and articles"
 >
-  <main class="max-w-6xl mx-auto px-4 py-20">
+  <main class="max-w-6xl mx-auto px-6 py-28">
     <!-- Header -->
     <div class="text-center mb-16">
       <h1 class="text-5xl font-bold mb-4">Blog</h1>
@@ -35,7 +35,7 @@ function formatDate(date: Date) {
 
     <!-- Back to Home -->
     <div class="mb-8">
-      <a href="/" class="btn btn-ghost btn-sm">
+      <a href="/" class="btn btn-ghost btn-sm rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -64,7 +64,7 @@ function formatDate(date: Date) {
       ) : (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedPosts.map((post) => (
-            <article class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <article class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
               <figure class="aspect-video">
                 <Image
                   src={post.data.image}
@@ -90,7 +90,7 @@ function formatDate(date: Date) {
                   </div>
                 )}
                 <div class="card-actions justify-end mt-4">
-                  <a href={`/blog/${post.id}`} class="btn btn-primary btn-sm">
+                  <a href={`/blog/${post.id}`} class="btn btn-primary btn-sm rounded-full">
                     Read More
                   </a>
                 </div>

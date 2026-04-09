@@ -27,9 +27,9 @@ function formatPeriod(startDate: Date, endDate?: Date) {
 }
 ---
 
-<section id="hackathons" class="py-20 px-4">
+<section id="hackathons" class="py-28 px-6">
   <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
+    <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-4">I like building things</h2>
       <p class="text-lg text-base-content/70">
         During my time in university, I attended multiple hackathons. People
@@ -42,7 +42,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
     <div class="space-y-6">
       {
         sortedHackathons.map((hackathon) => (
-          <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+          <div class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
             <div class="card-body">
               <div class="flex items-start gap-4">
                 {
@@ -85,7 +85,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
                         href={hackathon.data.sourceLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="btn btn-sm btn-outline btn-primary"
+                        class="btn btn-sm btn-outline btn-primary rounded-full"
                       >
                         View Project
                       </a>

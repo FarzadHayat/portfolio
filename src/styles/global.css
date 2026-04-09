@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-/* 
+/*
 If you want to use the ThemeToggle component
 and choose the light or dark themes,
 move --default and --prefersdark to your desired themes.
@@ -16,4 +16,12 @@ The name should match the theme name below.
     retro,
     valentine,
     dim;
+}
+
+/* Soft / claymorphism shadow utilities */
+@utility shadow-soft {
+  box-shadow: 0 4px 24px -4px rgb(0 0 0 / 0.10), 0 2px 8px -2px rgb(0 0 0 / 0.06);
+}
+@utility shadow-soft-lg {
+  box-shadow: 0 8px 40px -6px rgb(0 0 0 / 0.14), 0 4px 14px -3px rgb(0 0 0 / 0.08);
 }

@@ -17,7 +17,7 @@ const { questions } = Astro.props;
 <div class="min-h-screen bg-base-200 flex items-center justify-center p-4">
   <div
     id="quiz-root"
-    class="card bg-base-100 shadow-xl w-full max-w-lg"
+    class="card bg-base-100 rounded-3xl shadow-soft w-full max-w-lg"
     data-questions={JSON.stringify(questions)}
   >
     <!-- Screen: Intro -->
@@ -29,7 +29,7 @@ const { questions } = Astro.props;
         really know Farzad?
       </p>
       <p class="text-sm text-base-content/40">~2 minutes</p>
-      <button id="btn-start" class="btn btn-primary btn-wide mt-2">
+      <button id="btn-start" class="btn btn-primary btn-wide rounded-full mt-2">
         Start Quiz →
       </button>
     </div>
@@ -38,7 +38,7 @@ const { questions } = Astro.props;
     <div id="screen-question" class="card-body gap-4 hidden">
       <div class="flex justify-between items-center">
         <span id="q-counter" class="text-sm text-base-content/60"></span>
-        <span id="q-category" class="badge badge-primary"></span>
+        <span id="q-category" class="badge badge-primary rounded-full"></span>
       </div>
       <progress
         id="q-progress"
@@ -48,7 +48,7 @@ const { questions } = Astro.props;
       ></progress>
       <p id="q-text" class="text-lg font-semibold mt-2"></p>
       <div id="q-options" class="flex flex-col gap-2"></div>
-      <button id="btn-confirm" class="btn btn-primary mt-2 hidden">
+      <button id="btn-confirm" class="btn btn-primary rounded-full mt-2 hidden">
         Confirm →
       </button>
     </div>
@@ -58,7 +58,7 @@ const { questions } = Astro.props;
       <p id="reveal-indicator" class="text-center text-2xl font-bold"></p>
       <div id="reveal-correct" class="alert"></div>
       <p id="reveal-fact" class="text-sm text-base-content/70 italic hidden"></p>
-      <button id="btn-next" class="btn btn-primary mt-2"></button>
+      <button id="btn-next" class="btn btn-primary rounded-full mt-2"></button>
     </div>
 
     <!-- Screen: Results -->
@@ -68,11 +68,11 @@ const { questions } = Astro.props;
         You scored <span id="r-score"></span>
       </h2>
       <div id="r-stars" class="text-3xl"></div>
-      <div id="r-label" class="badge badge-secondary badge-lg py-4"></div>
+      <div id="r-label" class="badge badge-secondary badge-lg rounded-full py-4"></div>
       <div class="flex gap-2 flex-wrap justify-center mt-2">
-        <button id="btn-share" class="btn btn-info btn-sm">Share result</button>
-        <button id="btn-retry" class="btn btn-ghost btn-sm">Try again</button>
-        <a href="/" class="btn btn-ghost btn-sm">← Portfolio</a>
+        <button id="btn-share" class="btn btn-info btn-sm rounded-full">Share result</button>
+        <button id="btn-retry" class="btn btn-ghost btn-sm rounded-full">Try again</button>
+        <a href="/" class="btn btn-ghost btn-sm rounded-full">← Portfolio</a>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@ const { questions } = Astro.props;
     optionsEl.innerHTML = "";
     q.options.forEach((opt, i) => {
       const btn = document.createElement("button");
-      btn.className = "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
+      btn.className = "btn btn-ghost rounded-2xl border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
       btn.textContent = opt;
       btn.addEventListener("click", () => selectOption(i));
       optionsEl.appendChild(btn);
@@ -151,8 +151,8 @@ const { questions } = Astro.props;
       .forEach((btn, idx) => {
         btn.className =
           idx === i
-            ? "btn btn-primary text-left justify-start w-full"
-            : "btn btn-ghost border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
+            ? "btn btn-primary rounded-2xl text-left justify-start w-full"
+            : "btn btn-ghost rounded-2xl border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
       });
     el("btn-confirm").classList.remove("hidden");
   }

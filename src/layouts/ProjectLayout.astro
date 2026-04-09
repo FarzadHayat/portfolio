@@ -61,7 +61,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
   <article class="max-w-4xl mx-auto px-4 py-20">
     <!-- Back button -->
     <div class="mb-8">
-      <a href="/projects" class="btn btn-ghost btn-sm">
+      <a href="/projects" class="btn btn-ghost btn-sm rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -83,7 +83,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
     <!-- TODO: Future Enhancement - Support multiple images/project gallery -->
     {
       image && (
-        <figure class="mb-8 rounded-2xl overflow-hidden">
+        <figure class="mb-8 rounded-3xl overflow-hidden">
           <Image
             src={image}
             alt={title}
@@ -125,7 +125,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
                 href={demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-primary gap-2"
+                class="btn btn-primary rounded-full gap-2"
               >
                 <ExternalLink class="size-5" />
                 Live Demo
@@ -136,7 +136,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
                 href={sourceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-soft gap-2"
+                class="btn btn-soft rounded-full gap-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
     <!-- Tech Stack Showcase -->
     {
       skills && skills.length > 0 && (
-        <div class="card bg-base-200 mb-8">
+        <div class="card bg-base-200 rounded-3xl shadow-soft mb-8">
           <div class="card-body">
             <h2 class="card-title text-lg mb-3">Tech Stack</h2>
             <div class="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
 
     <!-- Back to projects link -->
     <div class="text-center mt-8">
-      <a href="/projects" class="btn btn-primary"> View All Projects </a>
+      <a href="/projects" class="btn btn-primary rounded-full px-8"> View All Projects </a>
     </div>
   </article>
 </Layout>

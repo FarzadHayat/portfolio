@@ -24,7 +24,8 @@ export default defineConfig({
       chunkSizeWarningLimit: 3000,
     },
     optimizeDeps: {
-      include: ["@keystatic/core", "@keystatic/astro"],
+      include: ["@keystatic/core"],
+      exclude: ["@keystatic/astro"],
     },
   },
 

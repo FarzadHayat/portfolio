@@ -64,6 +64,7 @@
     let lastMove = Date.now();
     let isIdle = false;
     let isFlipping = false;
+    let rafId: number;
 
     const ghostContainer = document.getElementById('ghost-pet') as HTMLElement;
     const ghostSvg = document.getElementById('ghost-svg') as HTMLElement;
@@ -71,7 +72,7 @@
 
     if (!ghostContainer || !ghostSvg || !ghostEyes) return;
 
-    window.addEventListener('mousemove', (e) => {
+    const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       lastMove = Date.now();
@@ -80,9 +81,9 @@
         isIdle = false;
         ghostSvg.classList.remove('idle');
       }
-    });
+    };
 
-    ghostSvg.addEventListener('click', () => {
+    const onClick = () => {
       if (isFlipping) return;
       isFlipping = true;
       ghostSvg.classList.add('flipping');
@@ -91,7 +92,10 @@
         ghostSvg.classList.remove('flipping');
         isFlipping = false;
       }, 600);
-    });
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    ghostSvg.addEventListener('click', onClick);
 
     function animate() {
       const distX = mouseX - ghostX;
@@ -105,26 +109,38 @@
       ghostX += (targetX - ghostX) * 0.05;
       ghostY += (targetY - ghostY) * 0.05;
 
-      ghostContainer.style.transform = `translate(${ghostX - 30}px, ${ghostY - 30}px)`;
+      if (ghostContainer) {
+        ghostContainer.style.transform = `translate(${ghostX - 30}px, ${ghostY - 30}px)`;
+      }
 
-      if (!isIdle && !isFlipping) {
+      if (!isIdle && !isFlipping && ghostEyes) {
         const eyeDist = 3;
         const eyeX = Math.cos(angle) * eyeDist;
         const eyeY = Math.sin(angle) * eyeDist;
         ghostEyes.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
       }
 
-      if (Date.now() - lastMove > 5000 && !isIdle) {
+      if (Date.now() - lastMove > 5000 && !isIdle && ghostSvg) {
         isIdle = true;
         ghostSvg.classList.add('idle');
       }
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     }
 
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      ghostSvg.removeEventListener('click', onClick);
+      cancelAnimationFrame(rafId);
+    };
   }
 
-  initGhost();
-  document.addEventListener('astro:after-swap', initGhost);
+  let cleanup: (() => void) | undefined;
+
+  document.addEventListener('astro:page-load', () => {
+    if (cleanup) cleanup();
+    cleanup = initGhost();
+  });
 </script>

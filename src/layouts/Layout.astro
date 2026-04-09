@@ -14,7 +14,10 @@ import Analytics from "@vercel/analytics/astro";
 
 // Load general singleton
 const generalEntry = await getEntry("general", "index");
-const general = generalEntry!.data;
+if (!generalEntry) {
+  throw new Error("Could not find 'general' content entry. Please check src/content/general/index.yaml");
+}
+const general = generalEntry.data;
 
 interface Props {
   title?: string;

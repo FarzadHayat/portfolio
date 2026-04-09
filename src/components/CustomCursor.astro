@@ -19,6 +19,7 @@
     let glowY = -100;
     let dotX = -100;
     let dotY = -100;
+    let rafId: number;
 
     const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
 
@@ -31,7 +32,6 @@
 
     const createSparkle = (x: number, y: number) => {
       const sparkle = document.createElement('div');
-      // Using bg-primary/40 for sparkles
       sparkle.className = 'fixed w-1 h-1 bg-primary/40 rounded-full pointer-events-none z-[9998]';
       sparkle.style.left = `${x}px`;
       sparkle.style.top = `${y}px`;
@@ -52,11 +52,9 @@
     let lastSparkleTime = 0;
 
     function animate() {
-      // Smooth follow for glow
       glowX = lerp(glowX, mouseX, 0.1);
       glowY = lerp(glowY, mouseY, 0.1);
       
-      // Snappier follow for dot
       dotX = lerp(dotX, mouseX, 0.25);
       dotY = lerp(dotY, mouseY, 0.25);
 
@@ -66,7 +64,6 @@
       dot.style.left = `${dotX}px`;
       dot.style.top = `${dotY}px`;
 
-      // Sparkles trail - only when moving
       const now = Date.now();
       const dist = Math.sqrt(Math.pow(mouseX - dotX, 2) + Math.pow(mouseY - dotY, 2));
       if (now - lastSparkleTime > 40 && dist > 5) {
@@ -74,40 +71,33 @@
         lastSparkleTime = now;
       }
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     }
 
-    animate();
+    rafId = requestAnimationFrame(animate);
 
-    const interactiveElements = 'a, button, [role="button"], .interactive, input, textarea, select';
+    const interactiveSelector = 'a, button, [role="button"], .interactive, input, textarea, select';
     
-    const onMouseEnter = () => {
-      glow.classList.add('glow-expand');
-    };
-    
-    const onMouseLeave = () => {
-      glow.classList.remove('glow-expand');
-    };
-
-    const attachListeners = () => {
-      document.querySelectorAll(interactiveElements).forEach(el => {
-        el.addEventListener('mouseenter', onMouseEnter);
-        el.addEventListener('mouseleave', onMouseLeave);
-      });
+    const onMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest(interactiveSelector)) {
+        glow.classList.add('glow-expand');
+      } else {
+        glow.classList.remove('glow-expand');
+      }
     };
 
-    attachListeners();
+    window.addEventListener('mouseover', onMouseOver);
     
-    // Cleanup function
     return () => {
         window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseover', onMouseOver);
+        cancelAnimationFrame(rafId);
     };
   }
 
-  // Initial load
-  let cleanup = initCustomCursor();
+  let cleanup: (() => void) | undefined;
 
-  // Re-run on transition
   document.addEventListener('astro:page-load', () => {
       if (cleanup) cleanup();
       cleanup = initCustomCursor();
@@ -128,10 +118,9 @@
 
   /* Ensure standard cursor is hidden when custom one is active */
   @media (min-width: 1024px) {
-    :global(html), :global(body) {
-      cursor: none !important;
-    }
-    :global(a), :global(button), :global([role="button"]), :global(.interactive) {
+    :global(html), :global(body),
+    :global(a), :global(button), :global([role="button"]), :global(.interactive),
+    :global(input), :global(textarea), :global(select) {
       cursor: none !important;
     }
   }

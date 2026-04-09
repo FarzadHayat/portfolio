@@ -321,9 +321,23 @@ const entriesWithContent = await Promise.all(
                       <p class={`${textColorClass} font-semibold text-sm`}>
                         {entry.data.subtitle}
                       </p>
+                      <p class="text-sm text-base-content/70 font-mono mt-0.5 md:hidden">
+                        {formatPeriod(entry.data.startDate, entry.data.endDate)}
+                        {calculateDuration(
+                          entry.data.startDate,
+                          entry.data.endDate,
+                        ) && (
+                          <span class="ml-1 text-base-content/50">
+                            {calculateDuration(
+                              entry.data.startDate,
+                              entry.data.endDate,
+                            )}
+                          </span>
+                        )}
+                      </p>
                     </div>
 
-                    <div class="text-sm text-base-content/70 font-mono whitespace-nowrap shrink-0 mr-6">
+                    <div class="hidden md:block text-sm text-base-content/70 font-mono whitespace-nowrap shrink-0 mr-6">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
                       {calculateDuration(
                         entry.data.startDate,

@@ -43,56 +43,46 @@ function formatPeriod(startDate: Date, endDate?: Date) {
       {
         sortedHackathons.map((hackathon) => (
           <div class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
+            {hackathon.data.logo && (
+              <figure class="rounded-t-3xl overflow-hidden h-48">
+                <Image
+                  src={hackathon.data.logo}
+                  alt={hackathon.data.title}
+                  class="w-full h-full object-cover"
+                  inferSize={true}
+                />
+              </figure>
+            )}
             <div class="card-body">
-              <div class="flex items-start gap-4">
-                {
-                  hackathon.data.logo ? (
-                    <div class="flex-shrink-0">
-                      <div class="w-32 h-auto flex items-start justify-center rounded">
-                        <Image
-                          src={hackathon.data.logo}
-                          alt={hackathon.data.title}
-                          class="object-contain w-full rounded max-h-32"
-                          inferSize={true}
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <div class="avatar placeholder flex-shrink-0">
-                      <div class="bg-neutral text-neutral-content w-16 h-16 rounded flex items-center justify-center">
-                        <Rocket class="size-8" />
-                      </div>
-                    </div>
-                  )
-                }
-                <div class="flex-1">
-                  <time class="text-sm text-base-content/60">
-                    {formatPeriod(
-                      hackathon.data.startDate,
-                      hackathon.data.endDate
-                    )}
-                  </time>
-                  <h3 class="card-title mt-1">{hackathon.data.title}</h3>
-                  <p class="text-sm text-primary font-semibold">
-                    {hackathon.data.location}
-                  </p>
-                  <p class="text-base-content/80 mt-3">
-                    {hackathon.data.description}
-                  </p>
-                  {hackathon.data.sourceLink && (
-                    <div class="card-actions mt-4">
-                      <a
-                        href={hackathon.data.sourceLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-sm btn-outline btn-primary rounded-full"
-                      >
-                        View Project
-                      </a>
-                    </div>
-                  )}
+              {!hackathon.data.logo && (
+                <div class="flex justify-center mb-2">
+                  <div class="bg-neutral text-neutral-content w-16 h-16 rounded-2xl flex items-center justify-center">
+                    <Rocket class="size-8" />
+                  </div>
                 </div>
-              </div>
+              )}
+              <time class="text-sm text-base-content/60">
+                {formatPeriod(hackathon.data.startDate, hackathon.data.endDate)}
+              </time>
+              <h3 class="card-title mt-1">{hackathon.data.title}</h3>
+              <p class="text-sm text-primary font-semibold">
+                {hackathon.data.location}
+              </p>
+              <p class="text-base-content/80 mt-3">
+                {hackathon.data.description}
+              </p>
+              {hackathon.data.sourceLink && (
+                <div class="card-actions mt-4">
+                  <a
+                    href={hackathon.data.sourceLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-sm btn-outline btn-primary rounded-full"
+                  >
+                    View Project
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         ))

@@ -14,9 +14,9 @@
   >
     Welcome, mortal 👻
   </div>
-  <span id="ghost-emoji" class="ghost-emoji cursor-pointer select-none" role="img" aria-label="Pet ghost">
+  <button id="ghost-emoji" type="button" class="ghost-emoji cursor-pointer select-none" aria-label="Pet ghost">
     👻
-  </span>
+  </button>
 </div>
 
 <style>
@@ -25,6 +25,10 @@
     font-size: 2.5rem;
     line-height: 1;
     display: block;
+    /* reset button styles */
+    background: none;
+    border: none;
+    padding: 0;
     animation: ghost-float 3s ease-in-out infinite;
     transition: filter 0.2s ease;
   }
@@ -47,7 +51,7 @@
     /*
      * Fixed to the viewport — same left anchor as the ghost (left-6 = 1.5rem),
      * tall enough above so the tail never touches the emoji.
-     * bottom = ghost-bottom(1.5rem) + emoji-height(2.5rem) + gap(1rem) = 5rem
+     * bottom = ghost-bottom(1.5rem) + emoji-height(2.5rem) + gap(1.5rem) = 5.5rem
      */
     position: fixed;
     bottom: 5.5rem;
@@ -98,6 +102,10 @@
     .ghost-emoji.bouncing {
       animation: none;
     }
+    .ghost-bubble {
+      transition: none;
+      transform: none !important;
+    }
   }
 </style>
 
@@ -127,29 +135,27 @@
     "Stop that... actually don't",
   ];
 
-  // ── DOM refs ───────────────────────────────────────────
-  const bubble  = document.getElementById('ghost-bubble')!;
-  const emoji   = document.getElementById('ghost-emoji')!;
-
   let bubbleTimer: ReturnType<typeof setTimeout> | null = null;
   let clickCooldown = false;
+  let currentObserver: IntersectionObserver | null = null;
 
   // ── Bubble helpers ─────────────────────────────────────
-  function showBubble(text: string, durationMs = 4000) {
+  function showBubble(bubble: HTMLElement, text: string, durationMs = 4000) {
     if (bubbleTimer) clearTimeout(bubbleTimer);
     bubble.textContent = text;
     bubble.classList.add('visible');
     bubbleTimer = setTimeout(() => bubble.classList.remove('visible'), durationMs);
   }
 
-  // ── Section observer ───────────────────────────────────
-  let currentObserver: IntersectionObserver | null = null;
+  // ── Per-page init — re-queries DOM so refs are never stale after View Transitions ──
+  function init() {
+    const bubble = document.getElementById('ghost-bubble') as HTMLElement | null;
+    const emoji  = document.getElementById('ghost-emoji')  as HTMLElement | null;
+    if (!bubble || !emoji) return;
 
-  function observeSections() {
-    // Disconnect previous observer to avoid accumulation across View Transitions
+    // ── Section observer ─────────────────────────────────
     if (currentObserver) currentObserver.disconnect();
 
-    // hero has no id — target by class
     const heroEl = document.querySelector('section.hero');
     const namedEls = Object.keys(SECTION_QUIPS)
       .filter((k) => k !== 'hero')
@@ -165,37 +171,36 @@
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const target = targets.find((t) => t.el === entry.target);
-          if (target) showBubble(target.quip);
+          if (target) showBubble(bubble, target.quip);
           obs.unobserve(entry.target); // fire once per section per page load
         });
       },
       { threshold: 0.3 }
     );
-
     targets.forEach(({ el }) => currentObserver!.observe(el));
-  }
 
-  // ── Click handler ──────────────────────────────────────
-  emoji.addEventListener('click', () => {
-    if (clickCooldown) return;
-    clickCooldown = true;
+    // ── Click handler ────────────────────────────────────
+    // Fresh element on each navigation — no duplicate listener risk.
+    emoji.addEventListener('click', () => {
+      if (clickCooldown) return;
+      clickCooldown = true;
 
-    const msg = CLICK_MESSAGES[Math.floor(Math.random() * CLICK_MESSAGES.length)];
-    showBubble(msg, 2000);
+      const msg = CLICK_MESSAGES[Math.floor(Math.random() * CLICK_MESSAGES.length)];
+      showBubble(bubble, msg, 2000);
 
-    emoji.classList.remove('bouncing');
-    // Force reflow so re-adding the class restarts the animation
-    void (emoji as HTMLElement).offsetWidth;
-    emoji.classList.add('bouncing');
-
-    setTimeout(() => {
       emoji.classList.remove('bouncing');
-      clickCooldown = false;
-    }, 2000);
-  });
+      void emoji.offsetWidth; // force reflow to restart animation
+      emoji.classList.add('bouncing');
+
+      setTimeout(() => {
+        emoji.classList.remove('bouncing');
+        clickCooldown = false;
+      }, 2000);
+    });
+  }
 
   // ── Init ───────────────────────────────────────────────
   // Safe to add once: Astro bundles and deduplicates <script> modules,
   // so this runs only once per page lifetime regardless of View Transitions.
-  document.addEventListener('astro:page-load', observeSections);
+  document.addEventListener('astro:page-load', init);
 </script>

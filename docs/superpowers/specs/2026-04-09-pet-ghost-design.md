@@ -71,7 +71,7 @@ Clicking the ghost emoji plays a CSS bounce animation (`scale → overshoot → 
 ## Visual Design
 
 - **Ghost element:** `👻` emoji at `text-4xl`. No external assets or SVGs.
-- **Positioning:** `fixed bottom-6 left-6 z-50 hidden lg:flex flex-col items-center gap-2`
+- **Positioning:** Container `fixed bottom-6 left-6 z-50 hidden lg:block`; speech bubble `position: fixed; bottom: 5.5rem; left: 2rem` (viewport-anchored to prevent screen-edge clipping)
 - **No DaisyUI classes on the ghost itself** — keeps it theme-independent.
 
 ### CSS Animations

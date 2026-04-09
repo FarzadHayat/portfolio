@@ -1,0 +1,130 @@
+---
+---
+<div id="ghost-container" class="fixed top-0 left-0 w-screen h-screen pointer-events-none z-[100] hidden lg:block overflow-hidden">
+  <div id="ghost-pet" class="absolute pointer-events-none will-change-transform translate-x-[-100px] translate-y-[-100px]">
+    <div class="ghost-float">
+      <svg 
+        id="ghost-svg" 
+        width="60" 
+        height="60" 
+        viewBox="0 0 100 100" 
+        class="pointer-events-auto cursor-pointer text-base-content/80 transition-opacity duration-500 origin-center"
+      >
+        <!-- Ghost Body -->
+        <path 
+          d="M20,80 Q20,20 50,20 Q80,20 80,80 Q70,70 60,80 Q50,70 40,80 Q30,70 20,80 Z" 
+          fill="currentColor" 
+        />
+        <!-- Eyes -->
+        <g id="ghost-eyes" class="transition-transform duration-200">
+          <circle cx="40" cy="45" r="4" fill="black" class="eye brightness-0" />
+          <circle cx="60" cy="45" r="4" fill="black" class="eye brightness-0" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ghost-float {
+    animation: float 3s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  #ghost-svg.idle {
+    opacity: 0.6;
+    animation-duration: 6s;
+  }
+
+  #ghost-svg.idle #ghost-eyes {
+    transform: scaleY(0.1) translateY(4px) !important;
+  }
+
+  @keyframes flip {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .flipping {
+    animation: flip 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  }
+</style>
+
+<script>
+  function initGhost() {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ghostX = mouseX;
+    let ghostY = mouseY;
+    let lastMove = Date.now();
+    let isIdle = false;
+    let isFlipping = false;
+
+    const ghostContainer = document.getElementById('ghost-pet') as HTMLElement;
+    const ghostSvg = document.getElementById('ghost-svg') as HTMLElement;
+    const ghostEyes = document.getElementById('ghost-eyes') as HTMLElement;
+
+    if (!ghostContainer || !ghostSvg || !ghostEyes) return;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      lastMove = Date.now();
+      
+      if (isIdle) {
+        isIdle = false;
+        ghostSvg.classList.remove('idle');
+      }
+    });
+
+    ghostSvg.addEventListener('click', () => {
+      if (isFlipping) return;
+      isFlipping = true;
+      ghostSvg.classList.add('flipping');
+      
+      setTimeout(() => {
+        ghostSvg.classList.remove('flipping');
+        isFlipping = false;
+      }, 600);
+    });
+
+    function animate() {
+      const distX = mouseX - ghostX;
+      const distY = mouseY - ghostY;
+      
+      const angle = Math.atan2(distY, distX);
+      const followDist = 80;
+      const targetX = mouseX - Math.cos(angle) * followDist;
+      const targetY = mouseY - Math.sin(angle) * followDist;
+
+      ghostX += (targetX - ghostX) * 0.05;
+      ghostY += (targetY - ghostY) * 0.05;
+
+      ghostContainer.style.transform = `translate(${ghostX - 30}px, ${ghostY - 30}px)`;
+
+      if (!isIdle && !isFlipping) {
+        const eyeDist = 3;
+        const eyeX = Math.cos(angle) * eyeDist;
+        const eyeY = Math.sin(angle) * eyeDist;
+        ghostEyes.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
+      }
+
+      if (Date.now() - lastMove > 5000 && !isIdle) {
+        isIdle = true;
+        ghostSvg.classList.add('idle');
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  initGhost();
+  document.addEventListener('astro:after-swap', initGhost);
+</script>

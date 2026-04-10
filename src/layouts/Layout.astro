@@ -12,7 +12,7 @@ import Analytics from "@vercel/analytics/astro";
 
 // Load general singleton
 const generalEntry = await getEntry("general", "index");
-const general = generalEntry.data;
+const general = generalEntry!.data;
 
 interface Props {
   title?: string;

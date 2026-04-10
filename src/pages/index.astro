@@ -16,29 +16,29 @@ const heroEntry = await getEntry("hero", "index");
 
 // Load About singleton
 const aboutEntry = await getEntry("about", "index");
-const { Content: AboutContent } = await render(aboutEntry);
+const { Content: AboutContent } = await render(aboutEntry!);
 
 // Load General singleton
 const generalEntry = await getEntry("general", "index");
-const general = generalEntry.data;
+const general = generalEntry!.data;
 ---
 
 <Layout
-  title={`${heroEntry.data.name} - Portfolio`}
-  description={heroEntry.data.description}
+  title={`${heroEntry!.data.name} - Portfolio`}
+  description={heroEntry!.data.description}
 >
   <main>
     <!-- Hero Section (Always visible) -->
-    <Hero hero={heroEntry.data} showQuizCta={general.showQuizCta} />
+    <Hero hero={heroEntry!.data} showQuizCta={general.showQuizCta} />
 
     <!-- About Section -->
     {
       general.showAboutSection && (
         <About
-          title={aboutEntry.data.title}
-          photo={aboutEntry.data.photo}
+          title={aboutEntry!.data.title}
+          photo={aboutEntry!.data.photo}
           Content={AboutContent}
-          link={aboutEntry.data.link}
+          link={aboutEntry!.data.link}
         />
       )
     }

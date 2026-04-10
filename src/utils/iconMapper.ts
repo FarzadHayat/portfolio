@@ -4,7 +4,7 @@ import {
   FileText,
   CodeXml,
   Mail,
-  Home,
+  House as Home,
   User,
   Briefcase,
   GraduationCap,

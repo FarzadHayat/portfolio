@@ -1,7 +1,7 @@
 enableThemeSelector: true
 extraLinksEnabled: true
 extraLinks:
-  - link: https://github.com/FarzadHayat/
+  - link: https://github.com/FarzadHayat/portfolio
     icon: CodeXml
     label: GitHub Repo
     displayOn: both

@@ -60,37 +60,35 @@ const { hero, showQuizCta } = Astro.props;
       <p class="text-lg leading-relaxed mb-6">
         {hero.description}
       </p>
-      <div
-        class="grid grid-cols-4 gap-2 justify-items-center lg:flex lg:gap-4 lg:justify-start"
-      >
+      <div class="flex items-center gap-2 w-full">
+        <div class="flex gap-2 items-center flex-wrap justify-center lg:justify-start">
+          {
+            hero.socialLinks.map((link) => {
+              const IconComponent = getIcon(link.icon as any);
+              return (
+                <div class="tooltip tooltip-top" data-tip={link.label}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-circle btn-primary lg:btn-ghost"
+                    aria-label={link.label}
+                  >
+                    <IconComponent class="size-6" />
+                  </a>
+                </div>
+              );
+            })
+          }
+        </div>
         {
-          hero.socialLinks.map((link) => {
-            const IconComponent = getIcon(link.icon as any);
-            return (
-              <div class="tooltip tooltip-top" data-tip={link.label}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-circle btn-primary lg:btn-ghost"
-                  aria-label={link.label}
-                >
-                  <IconComponent class="size-6" />
-                </a>
-              </div>
-            );
-          })
-        }
-      </div>
-      {
-        showQuizCta && (
-          <div class="mt-4">
-            <a href="/quiz" class="btn btn-outline btn-accent rounded-full">
+          showQuizCta && (
+            <a href="/quiz" class="btn btn-outline btn-accent rounded-full ml-auto shrink-0">
               Think you know me? →
             </a>
-          </div>
-        )
-      }
+          )
+        }
+      </div>
     </div>
   </div>
 </section>

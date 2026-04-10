@@ -45,7 +45,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
           <div class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300">
             <div class="flex flex-col sm:flex-row">
               {hackathon.data.logo ? (
-                <figure class="rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none overflow-hidden sm:w-56 shrink-0">
+                <figure class="rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none overflow-hidden sm:w-56 sm:max-h-64 shrink-0">
                   <Image
                     src={hackathon.data.logo}
                     alt={hackathon.data.title}

@@ -108,7 +108,8 @@ const textColorClass = textClasses[color] || "text-primary";
 const entriesWithContent = await Promise.all(
   sortedEntries.map(async (entry) => {
     const { Content } = await render(entry);
-    return { entry, Content };
+    const duration = calculateDuration(entry.data.startDate, entry.data.endDate);
+    return { entry, Content, duration };
   }),
 );
 ---
@@ -128,7 +129,7 @@ const entriesWithContent = await Promise.all(
       variant === "timeline" ? (
         <>
           <ul class="timeline timeline-vertical timeline-compact timeline-snap-icon">
-            {entriesWithContent.map(({ entry, Content }, index) => (
+            {entriesWithContent.map(({ entry, Content, duration }, index) => (
               <li>
                 {index > 0 && <hr class="bg-base-100" />}
                 <div class="timeline-middle">
@@ -141,15 +142,9 @@ const entriesWithContent = await Promise.all(
                     class={`font-mono text-sm text-base-content/70 block italic timeline-item-date`}
                   >
                     {formatPeriod(entry.data.startDate, entry.data.endDate)}
-                    {calculateDuration(
-                      entry.data.startDate,
-                      entry.data.endDate,
-                    ) && (
+                    {duration && (
                       <span class="ml-1 text-base-content/50">
-                        {calculateDuration(
-                          entry.data.startDate,
-                          entry.data.endDate,
-                        )}
+                        {duration}
                       </span>
                     )}
                   </time>
@@ -206,7 +201,7 @@ const entriesWithContent = await Promise.all(
           </ul>
 
           {/* Modals for timeline entries */}
-          {entriesWithContent.map(({ entry, Content }) => (
+          {entriesWithContent.map(({ entry, Content, duration }) => (
             <dialog id={`modal-${entry.id}`} class="modal">
               <div class="modal-box max-w-2xl rounded-3xl">
                 {/* Modal Header */}
@@ -234,15 +229,9 @@ const entriesWithContent = await Promise.all(
                     )}
                     <p class="text-sm text-base-content/70 font-mono italic mt-1">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
-                      {calculateDuration(
-                        entry.data.startDate,
-                        entry.data.endDate,
-                      ) && (
+                      {duration && (
                         <span class="ml-1 text-base-content/50">
-                          {calculateDuration(
-                            entry.data.startDate,
-                            entry.data.endDate,
-                          )}
+                          {duration}
                         </span>
                       )}
                     </p>
@@ -289,7 +278,7 @@ const entriesWithContent = await Promise.all(
         </>
       ) : (
         <ul class="flex flex-col gap-4">
-          {entriesWithContent.map(({ entry, Content }, index) => (
+          {entriesWithContent.map(({ entry, Content, duration }, index) => (
             <li class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg transition-all duration-300">
               <details class="collapse collapse-arrow" open={expandedByDefault}>
                 <summary class="collapse-title">
@@ -323,15 +312,9 @@ const entriesWithContent = await Promise.all(
                       </p>
                       <p class="text-sm text-base-content/70 font-mono mt-0.5 md:hidden">
                         {formatPeriod(entry.data.startDate, entry.data.endDate)}
-                        {calculateDuration(
-                          entry.data.startDate,
-                          entry.data.endDate,
-                        ) && (
+                        {duration && (
                           <span class="ml-1 text-base-content/50">
-                            {calculateDuration(
-                              entry.data.startDate,
-                              entry.data.endDate,
-                            )}
+                            {duration}
                           </span>
                         )}
                       </p>
@@ -339,15 +322,9 @@ const entriesWithContent = await Promise.all(
 
                     <div class="hidden md:block text-sm text-base-content/70 font-mono whitespace-nowrap shrink-0 mr-6">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
-                      {calculateDuration(
-                        entry.data.startDate,
-                        entry.data.endDate,
-                      ) && (
+                      {duration && (
                         <span class="ml-1 text-base-content/50">
-                          {calculateDuration(
-                            entry.data.startDate,
-                            entry.data.endDate,
-                          )}
+                          {duration}
                         </span>
                       )}
                     </div>
@@ -402,18 +379,21 @@ const entriesWithContent = await Promise.all(
   </div>
 </section>
 
-<style is:global>
+<style>
   @media (min-width: 1024px) {
-    /* Restore symmetric columns for all rows (compact collapses left column to 0) */
-    .timeline-vertical.timeline-compact > li {
+    /*
+     * timeline-compact collapses the left column to 0 on mobile (single-column).
+     * Restore symmetric columns at desktop so even items can occupy the left side.
+     */
+    :global(.timeline-vertical.timeline-compact > li) {
       --timeline-col-start: minmax(0, 1fr);
     }
     /* Place even items in the left column, matching timeline-start behaviour */
-    .timeline-vertical .timeline-even-item {
+    :global(.timeline-vertical .timeline-even-item) {
       grid-area: 1 / 1 / 4 / 2;
       place-self: center flex-end;
     }
-    .timeline-even-item .timeline-item-date {
+    :global(.timeline-even-item .timeline-item-date) {
       text-align: end;
     }
   }

@@ -80,6 +80,7 @@ const projects = defineCollection({
       skills: z.array(z.string()),
       demoLink: z.string().url().optional(),
       sourceLink: z.string().url().optional(),
+      downloadLink: z.string().url().optional(),
     }),
 });
 

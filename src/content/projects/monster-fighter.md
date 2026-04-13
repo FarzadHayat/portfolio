@@ -6,14 +6,13 @@ startDate: 2022-02-21
 endDate: 2022-06-24
 skills: ['Java', 'Windows', 'Swing']
 sourceLink: "https://github.com/FarzadHayat/monster-fighter"
+downloadLink: "https://github.com/FarzadHayat/monster-fighter/releases/download/v1.0.0/MonsterFighter.zip"
 ---
 
 A turn-based player-vs-computer game made for Windows.
 The goal is to fight the enemy monster teams while upgrading yours.
 You have a limited number of days and must aim to achieve the best score by picking your fights carefully.
 Made using Java and the Swing GUI Toolkit.
-
-[Download Source Code + Java Executable](https://1drv.ms/u/s!AhCA5BqltFh3gXRSnwmdtV2jo2CH?e=8a8Qry)
 
 ![Screenshot 1](../../assets/projects/monster-fighter/1.webp)
 ![Screenshot 2](../../assets/projects/monster-fighter/2.webp)

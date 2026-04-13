@@ -7,6 +7,7 @@ startDate: 2023-02-27
 endDate: 2023-06-23
 skills: ['Java', 'Windows', 'Eclipse', 'Swing', 'JUnit', 'UML']
 sourceLink: "https://github.com/FarzadHayat/ultimate-earth-championship"
+downloadLink: "https://github.com/FarzadHayat/ultimate-earth-championship/releases/download/v1.0.0/UltimateEarthChampionship.zip"
 ---
 
 A turn-based player-vs-computer game made for Windows.

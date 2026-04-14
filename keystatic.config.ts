@@ -502,6 +502,10 @@ export default config({
           label: "Demo Link",
           description: "Live demo URL (optional)",
         }),
+        slidesLink: fields.url({
+          label: "Slides Link",
+          description: "Presentation slides URL (optional)",
+        }),
         sourceLink: fields.url({
           label: "Source Code Link",
           description: "GitHub or repository URL (optional)",

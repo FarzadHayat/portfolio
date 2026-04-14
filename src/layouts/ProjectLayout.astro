@@ -2,7 +2,7 @@
 import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
 import SkillBadge from "../components/SkillBadge.astro";
-import { ExternalLink } from "@lucide/astro";
+import { ExternalLink, Presentation } from "@lucide/astro";
 
 interface Props {
   title: string;
@@ -12,6 +12,7 @@ interface Props {
   image: any;
   skills: string[];
   demoLink?: string;
+  slidesLink?: string;
   sourceLink?: string;
   downloadLink?: string;
 }
@@ -24,6 +25,7 @@ const {
   image,
   skills,
   demoLink,
+  slidesLink,
   sourceLink,
   downloadLink,
 } = Astro.props;
@@ -120,7 +122,7 @@ function calculateDuration(startDate: Date, endDate?: Date) {
 
       <!-- Prominent Action Buttons -->
       {
-        (demoLink || sourceLink || downloadLink) && (
+        (demoLink || slidesLink || sourceLink || downloadLink) && (
           <div class="flex flex-wrap gap-3 mb-6">
             {demoLink && (
               <a
@@ -131,6 +133,17 @@ function calculateDuration(startDate: Date, endDate?: Date) {
               >
                 <ExternalLink class="size-5" />
                 Live Demo
+              </a>
+            )}
+            {slidesLink && (
+              <a
+                href={slidesLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-soft rounded-full gap-2"
+              >
+                <Presentation class="size-5" />
+                Slides
               </a>
             )}
             {sourceLink && (

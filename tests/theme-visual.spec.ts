@@ -30,11 +30,13 @@ for (const theme of themes) {
     });
 
     test('page background uses correct base-100 color (not pure white or black)', async ({ page }) => {
-      const bg = await computedStyle(page, 'body', 'background-color');
-      console.log(`[${theme}] body background-color: ${bg}`);
-      // Should not be transparent or inherit
-      expect(bg).not.toBe('');
+      const bg = await computedStyle(page, 'html', 'background-color');
+      console.log(`[${theme}] html background-color: ${bg}`);
       expect(bg).not.toBeNull();
+      expect(bg).not.toBe('');
+      expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+      expect(bg).not.toBe('rgb(255, 255, 255)');
+      expect(bg).not.toBe('rgb(0, 0, 0)');
     });
 
     test('data-theme attribute is set correctly', async ({ page }) => {
@@ -54,7 +56,7 @@ for (const theme of themes) {
         }));
       });
       console.log(`[${theme}] badge backgrounds:`, JSON.stringify(badges, null, 2));
-      // All badges should have a non-transparent background
+      expect(badges.length, 'No .badge elements found on page').toBeGreaterThan(0);
       for (const badge of badges) {
         expect(badge.bg, `Badge "${badge.text}" has no background`).not.toBe('rgba(0, 0, 0, 0)');
         expect(badge.bg, `Badge "${badge.text}" has no background`).not.toBe('transparent');
@@ -69,6 +71,7 @@ for (const theme of themes) {
         }));
       });
       console.log(`[${theme}] card backgrounds:`, JSON.stringify(cards, null, 2));
+      expect(cards.length, 'No .card elements found on page').toBeGreaterThan(0);
       for (const card of cards) {
         expect(card.bg).not.toBe('rgba(0, 0, 0, 0)');
       }
@@ -87,10 +90,7 @@ for (const theme of themes) {
     });
 
     test('screenshot', async ({ page }) => {
-      await page.screenshot({
-        path: `tests/screenshots/${theme}-homepage.png`,
-        fullPage: true,
-      });
+      await expect(page).toHaveScreenshot(`${theme}-homepage.png`, { fullPage: true });
     });
   });
 }
@@ -101,6 +101,10 @@ for (const theme of themes) {
     await setTheme(page, theme);
     await page.goto('/projects');
     await page.waitForLoadState('networkidle');
+    // Wait for all images to finish loading to prevent flaky snapshots
+    await page.waitForFunction(() =>
+      Array.from(document.images).every((img) => img.complete)
+    );
 
     const badges = await page.evaluate(() => {
       const els = Array.from(document.querySelectorAll('.badge'));
@@ -110,15 +114,12 @@ for (const theme of themes) {
       }));
     });
     console.log(`[${theme}] /projects badge backgrounds:`, JSON.stringify(badges, null, 2));
-
+    expect(badges.length, 'No .badge elements found on /projects').toBeGreaterThan(0);
     for (const badge of badges) {
       expect(badge.bg, `Badge "${badge.text}" transparent on /projects`).not.toBe('rgba(0, 0, 0, 0)');
     }
 
-    await page.screenshot({
-      path: `tests/screenshots/${theme}-projects.png`,
-      fullPage: true,
-    });
+    await expect(page).toHaveScreenshot(`${theme}-projects.png`, { fullPage: true, maxDiffPixelRatio: 0.02 });
   });
 }
 
@@ -139,16 +140,10 @@ for (const theme of themes) {
     });
     console.log(`[${theme}] /blog btn-primary backgrounds:`, JSON.stringify(btnBg, null, 2));
 
-    if (btnBg.length > 0) {
-      const gradientBtns = btnBg.filter((b) => b.backgroundImage.includes('gradient'));
-      expect(gradientBtns.length, `Expected gradient on primary buttons, got: ${JSON.stringify(btnBg)}`).toBeGreaterThan(0);
-    } else {
-      console.log(`[${theme}] No non-circle non-outline btn-primary on /blog`);
-    }
+    expect(btnBg.length, 'No .btn-primary (non-circle, non-outline) elements found on /blog').toBeGreaterThan(0);
+    const gradientBtns = btnBg.filter((b) => b.backgroundImage.includes('gradient'));
+    expect(gradientBtns.length, `Expected gradient on primary buttons, got: ${JSON.stringify(btnBg)}`).toBeGreaterThan(0);
 
-    await page.screenshot({
-      path: `tests/screenshots/${theme}-blog.png`,
-      fullPage: true,
-    });
+    await expect(page).toHaveScreenshot(`${theme}-blog.png`, { fullPage: true });
   });
 }

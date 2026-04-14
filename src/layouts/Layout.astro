@@ -82,8 +82,9 @@ const origin = Astro.url.origin;
     <!-- Theme FOUC prevention: set data-theme before first paint -->
     <script is:inline>
       (function () {
-        const saved = localStorage.getItem("theme");
-        const theme = saved ||
+        var saved;
+        try { saved = localStorage.getItem("theme"); } catch (e) { saved = null; }
+        var theme = saved ||
           (window.matchMedia("(prefers-color-scheme: dark)").matches ? "specter" : "wisp");
         document.documentElement.setAttribute("data-theme", theme);
       })();

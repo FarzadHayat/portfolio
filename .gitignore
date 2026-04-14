@@ -26,3 +26,8 @@ pnpm-debug.log*
 .idea/
 .vercel
 .worktrees/
+
+# LaTeX build artifacts
+resume.aux
+resume.log
+resume.out

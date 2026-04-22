@@ -6,6 +6,7 @@ image: "../../assets/projects/project-pyro-simulation-fire.webp"
 startDate: 2026-04-10
 endDate: 2026-04-12
 skills: ['React', 'Python', 'FastAPI', 'Leaflet', 'Tailwind CSS']
+demoLink: "https://pyro.farzadhayat.dev"
 slidesLink: "https://canva.link/f5gsoxjf8d373jw"
 sourceLink: "https://github.com/adynsydeez/enviro-vision"
 ---

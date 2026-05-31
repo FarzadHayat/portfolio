@@ -1,0 +1,16 @@
+name: G'day 👋 I'm Farzad Hayat
+title: Agentic Software Engineer
+description: >-
+  I am a recent Computer Science graduate from QUT (6.67 GPA) with hands-on experience as a Software Engineer Intern at Tanda, where I architected and shipped production Ruby on Rails applications. Backed by 15 months of QA engineering and technical documentation at Tiny Technologies, alongside practical expertise with AWS microservices, I am seeking Software Engineer or QA Engineer roles. In my free time, I enjoy Latin dancing, cooking, and exploring new technologies.
+avatar: '@assets/hero/profile.webp'
+location: 🇦🇺 Brisbane, Australia
+socialLinks:
+  - url: mailto:hello@farzadhayat.dev
+    icon: Email
+    label: Email
+  - url: https://github.com/FarzadHayat/
+    icon: GitHub
+    label: GitHub
+  - url: https://www.linkedin.com/in/farzadhayat/
+    icon: LinkedIn
+    label: LinkedIn

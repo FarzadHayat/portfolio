@@ -1,0 +1,26 @@
+enableThemeSelector: true
+extraLinksEnabled: true
+extraLinks:
+  - link: https://github.com/FarzadHayat/portfolio
+    icon: CodeXml
+    label: GitHub Repo
+    displayOn: both
+  - link: /resume
+    icon: FileText
+    label: Resume
+    displayOn: both
+  - link: https://www.credly.com/badges/4285aee7-9142-4f4a-9ee7-b862166762a9/linked_in_profile
+    icon: Award
+    label: AWS Cloud Practitioner
+    displayOn: both
+showAboutSection: false
+showProjectsSection: true
+showBlogSection: false
+showWorkSection: true
+showEducationSection: true
+showCertificationsSection: true
+showHackathonsSection: true
+showSpotifySection: true
+spotifyPlaylistUrl: "https://open.spotify.com/playlist/2JT2QwFoDrInYeZZ4T2DiH?si=hm7Px3_wRrqAZfhQc7r7hQ"
+showContactSection: false
+showQuizCta: true

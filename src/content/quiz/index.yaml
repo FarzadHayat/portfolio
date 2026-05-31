@@ -1,0 +1,100 @@
+questions:
+  - question: "What is Farzad's current GPA?"
+    options:
+      - "5.9"
+      - "6.2"
+      - "6.4"
+      - "6.7"
+    correctIndex: 3
+    category: personal
+    funFact: "Farzad is studying Computer Science at QUT and maintains a GPA of 6.7 out of 7."
+
+  - question: "What AWS certification does Farzad hold?"
+    options:
+      - "Cloud Practitioner"
+      - "Solutions Architect"
+      - "Developer Associate"
+      - "SysOps Administrator"
+    correctIndex: 0
+    category: tech
+    funFact: "Farzad earned the AWS Certified Cloud Practitioner certification, demonstrating foundational cloud knowledge."
+
+  - question: "How many countries has Farzad travelled to?"
+    options:
+      - "5"
+      - "7"
+      - "10"
+      - "15"
+    correctIndex: 2
+    category: personal
+    funFact: "Farzad has travelled to 10 countries — exploring the world is one of his favourite things to do."
+
+  - question: "Which company did Farzad intern at?"
+    options:
+      - "Atlassian"
+      - "Canva"
+      - "Xero"
+      - "Tanda"
+    correctIndex: 3
+    category: tech
+    funFact: "Farzad completed a Software Engineer internship at Tanda, a workforce management platform based in Brisbane."
+
+  - question: "What hobby does Farzad enjoy outside coding?"
+    options:
+      - "Skateboarding"
+      - "Partner dancing"
+      - "Playing guitar"
+      - "Photography"
+    correctIndex: 1
+    category: personal
+    funFact: "Farzad is a partner dancer — he enjoys the social and creative aspects of dancing as a break from screens."
+
+  - question: "Where did Farzad grow up?"
+    options:
+      - "Brisbane, Australia"
+      - "Sydney, Australia"
+      - "Auckland, New Zealand"
+      - "Christchurch, New Zealand"
+    correctIndex: 3
+    category: personal
+    funFact: "Farzad grew up in Christchurch, New Zealand before moving to Brisbane, Australia to study."
+
+  - question: "What degree is Farzad completing?"
+    options:
+      - "Software Engineering at UQ"
+      - "Information Technology at Griffith"
+      - "Information Technology at QUT"
+      - "Data Science at QUT"
+    correctIndex: 2
+    category: personal
+    funFact: "Farzad is completing a Bachelor of Information Technology with a Computer Science major at QUT."
+
+  - question: "Which languages does Farzad speak?"
+    options:
+      - "English and Mandarin"
+      - "English and Farsi"
+      - "English and Spanish"
+      - "English and French"
+    correctIndex: 1
+    category: personal
+    funFact: "Farzad speaks English and Farsi (Persian) natively, and is currently learning Portuguese as a third language."
+
+  - question: "When is Farzad available to start?"
+    options:
+      - "January 2026"
+      - "March 2026"
+      - "May 2026"
+      - "June 2026"
+    correctIndex: 3
+    category: career
+    funFact: "Farzad finishes his final semester at QUT in mid-2026 and is actively seeking Graduate Software Engineer roles from June 2026."
+
+  - question: "What is Farzad's favourite dance style?"
+    options:
+      - "Salsa"
+      - "Tango"
+      - "Bachata"
+      - "Lambada"
+    correctIndex: 3
+    category: personal
+    funFact: "Lambada is Farzad's favourite — it's a Brazilian partner dance known for its expressive, flowing movements."

@@ -1,0 +1,57 @@
+{
+  "$ref": "#/definitions/contact",
+  "definitions": {
+    "contact": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string",
+          "enum": [
+            "MessageCircleCode",
+            "Mail",
+            "Phone"
+          ]
+        },
+        "linkUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "linkText": {
+          "type": "string"
+        },
+        "footerIcon": {
+          "type": "string",
+          "enum": [
+            "Pickaxe",
+            "Hammer",
+            "Heart"
+          ]
+        },
+        "footerText": {
+          "type": "string"
+        },
+        "footerLinkText": {
+          "type": "string"
+        },
+        "footerLinkUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "linkUrl",
+        "linkText",
+        "footerIcon",
+        "footerText",
+        "footerLinkText",
+        "footerLinkUrl"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

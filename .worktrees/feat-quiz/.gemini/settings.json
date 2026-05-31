@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "astro-docs": {
+      "httpUrl": "https://mcp.docs.astro.build/mcp",
+      "description": "Astro Documentation MCP Server (Real-time search)"
+    }
+  }
+}

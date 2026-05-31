@@ -1,0 +1,116 @@
+{
+  "$ref": "#/definitions/general",
+  "definitions": {
+    "general": {
+      "type": "object",
+      "properties": {
+        "enableThemeSelector": {
+          "type": "boolean"
+        },
+        "extraLinksEnabled": {
+          "type": "boolean"
+        },
+        "extraLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "link": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string",
+                "enum": [
+                  "Flower2",
+                  "BookOpen",
+                  "FileText",
+                  "CodeXml",
+                  "Mail",
+                  "Home",
+                  "User",
+                  "Briefcase",
+                  "GraduationCap",
+                  "Award",
+                  "Link"
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "displayOn": {
+                "type": "string",
+                "enum": [
+                  "both",
+                  "dock",
+                  "fab"
+                ],
+                "default": "both"
+              }
+            },
+            "required": [
+              "link",
+              "icon",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "showAboutSection": {
+          "type": "boolean"
+        },
+        "showProjectsSection": {
+          "type": "boolean"
+        },
+        "showBlogSection": {
+          "type": "boolean"
+        },
+        "showWorkSection": {
+          "type": "boolean"
+        },
+        "showEducationSection": {
+          "type": "boolean"
+        },
+        "showCertificationsSection": {
+          "type": "boolean"
+        },
+        "showHackathonsSection": {
+          "type": "boolean"
+        },
+        "showSpotifySection": {
+          "type": "boolean"
+        },
+        "spotifyPlaylistUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "showContactSection": {
+          "type": "boolean"
+        },
+        "showQuizCta": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "enableThemeSelector",
+        "extraLinksEnabled",
+        "extraLinks",
+        "showAboutSection",
+        "showProjectsSection",
+        "showBlogSection",
+        "showWorkSection",
+        "showEducationSection",
+        "showCertificationsSection",
+        "showHackathonsSection",
+        "showSpotifySection",
+        "spotifyPlaylistUrl",
+        "showContactSection"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

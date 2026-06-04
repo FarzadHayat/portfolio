@@ -84,10 +84,10 @@ questions:
       - "January 2026"
       - "March 2026"
       - "May 2026"
-      - "June 2026"
+      - "Immediately"
     correctIndex: 3
     category: career
-    funFact: "Farzad finishes his final semester at QUT in mid-2026 and is actively seeking Graduate Software Engineer roles from June 2026."
+    funFact: "Farzad has finished his final semester at QUT in mid-2026 and is actively seeking Graduate Software Engineer roles, available immediately."
 
   - question: "What is Farzad's favourite dance style?"
     options:

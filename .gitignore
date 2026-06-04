@@ -31,3 +31,6 @@ pnpm-debug.log*
 resume.aux
 resume.log
 resume.out
+
+# Superpowers
+docs/superpowers/

@@ -1,0 +1,49 @@
+---
+featured: true
+title: "AI E2E Test-Bench"
+description: "A benchmark dataset and evaluation framework for AI agents generating Playwright end-to-end tests."
+image: "../../assets/projects/ai-test-bench.png"
+startDate: 2025-07-01
+endDate: 2026-06-01
+skills: ['Python', 'Playwright', 'Harbor Framework', 'Docker', 'QA Automation', 'LLMs', 'GitHub Copilot', 'Claude Code']
+---
+
+This project represents the Capstone project completed in partnership with Antero Software. As the QA Lead for the team, my core objective was to investigate the effectiveness of AI agents in automating Quality Assurance workflows and to establish a rigorous evaluation framework.
+
+## Automated Test Generation Workflow
+
+In the first phase of the project, I focused on researching GitHub Copilot and other AI tools. I built a prototype VS Code Copilot workflow (acting as an extension of the editor) that integrated directly with Jira using the Atlassian MCP server. 
+
+This prototype demonstrated how to:
+- Automatically extract user story details and acceptance criteria from Jira tickets.
+- Expand those requirements into comprehensive test cases with defined preconditions.
+- Post the generated test cases directly back to the Jira ticket.
+- Generate complete, runnable Cypress and Playwright test code.
+
+This effectively eliminated manual context-switching and significantly reduced the cognitive load required to translate requirements into automation scripts.
+
+## The Benchmark Evaluation Framework
+
+While my teammates built a custom TestGen CLI tool, my role was to rigorously evaluate how well different AI agents write Playwright E2E tests. I utilized a custom benchmark dataset running on the **Harbor framework**. 
+
+The dataset features ten distinct tasks representing real-world web application patterns, such as:
+- Multi-step checkout flows
+- Complex form validations
+- Drag-and-drop interactions
+- GitHub API mocking and network interception
+
+### Scoring Methodology
+
+Instead of relying on simple pass/fail metrics, I designed a multi-metric reward model to score the AI-generated test code across several quality dimensions:
+
+1. **Functional Correctness:** Does the test suite pass reliably?
+2. **Selector Quality:** Does the agent use DOM-resilient, semantic locators (e.g., `getByRole`, `getByText`)?
+3. **Auto-Waiting:** Are best practices followed for state waiting instead of hardcoded timeouts?
+4. **DRY Code Quality:** Is the code modularized, avoiding duplicated magic strings and repetitive action blocks?
+5. **POM Usage:** Does the agent correctly implement and utilize the Page Object Model design pattern?
+6. **Mutation Score:** Evaluated using Stryker to ensure the generated tests actually catch regressions.
+7. **Flakiness Detection:** Ensures generated tests do not produce inconsistent results across multiple runs.
+
+## Results and Impact
+
+The benchmark compared Anthropic's Claude Code, our team's custom TestGen CLI tool, and an Oracle baseline. The resulting report provided Antero Software with empirical data on the current capabilities and limitations of AI in test automation, paving the way for safer and more efficient integration of AI into their enterprise QA pipelines.

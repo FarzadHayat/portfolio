@@ -1,0 +1,54 @@
+---
+featured: false
+title: "SoulCert"
+description: "Decentralised verifiable credential registry using consensual soul-bound tokens on Ethereum, with encrypted IPFS storage and role-based verification."
+image: "../../assets/projects/soulcert.webp"
+startDate: 2026-02-01
+endDate: 2026-06-30
+skills: ['Solidity', 'Hardhat', 'React', 'ethers.js', 'IPFS', 'OpenZeppelin', 'Smart Contracts', 'TypeScript']
+---
+
+import { Image } from "astro:assets";
+import img1 from "../../assets/projects/soulcert/1.webp";
+
+SoulCert is a decentralised verifiable credential registry built for **QUT IFB452 Blockchain Technology**. Academic and professional qualifications usually live in institution-controlled databases that are slow to verify and hard to trust long term. SoulCert issues credentials as **consensual soul-bound tokens** on Ethereum: they are non-transferable, tamper-evident, and only created after the holder explicitly accepts.
+
+## Architecture
+
+The system uses a **Manager / Ledger** pattern to separate business logic from token storage:
+
+- **AttestationManager** — the single entry point for all stakeholders; handles proposals, acceptance, revocation, and verification
+- **CredentialRegistry** — stores soul-bound tokens and enforces that they cannot be transferred; only the manager can write to it
+- **IPFS** — holds encrypted credential data off-chain; only a content reference and hash appear on-chain
+
+Four stakeholders interact through the system:
+
+| Role | Responsibility |
+|------|----------------|
+| **Owner** | Deploys the system and authorises issuers |
+| **Issuer** | Proposes credentials to holders |
+| **Holder** | Accepts or rejects proposals; can revoke per policy |
+| **Verifier** | Validates a credential against on-chain records |
+
+## Credential lifecycle
+
+**Issuance** — an issuer proposes a credential to a holder, who must accept before a token is minted. Rejection discards the proposal with nothing created.
+
+**Revocation** — an authorised party can burn a token when the burn policy agreed at issuance allows it.
+
+**Verification** — a verifier checks that a credential hash matches what is stored on-chain and that the token is still held by the expected wallet. The holder shares the credential document off-chain; verification itself happens on-chain.
+
+**Privacy** — full credential content never touches the blockchain. Holders decrypt their documents locally using keys derived from their wallet.
+
+## What I built
+
+A React DApp with separate views for issuers, holders, and verifiers, connected to the smart contracts via MetaMask on a local Hardhat network. The project includes a full test suite covering issuance, rejection, revocation, and verification.
+
+---
+
+### Gallery
+
+<figure class="mb-8">
+  <Image src={img1} alt="Issue Credential dialog" />
+  <figcaption class="text-sm text-center mt-2">*Issuers propose credentials to a holder through the web interface.*</figcaption>
+</figure>

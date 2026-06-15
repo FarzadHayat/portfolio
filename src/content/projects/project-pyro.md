@@ -1,5 +1,5 @@
 ---
-featured: true
+featured: false
 title: "Project Pyro"
 description: "Browser-based wildfire simulation platform where players fight real Queensland bushfires on satellite maps using a physically-grounded cellular automata fire spread model."
 image: "../../assets/projects/project-pyro-simulation-fire.webp"

@@ -10,6 +10,10 @@ skills: ['Solidity', 'Hardhat', 'React', 'ethers.js', 'IPFS', 'OpenZeppelin', 'S
 
 import { Image } from "astro:assets";
 import img1 from "../../assets/projects/soulcert/1.webp";
+import img2 from "../../assets/projects/soulcert/2.webp";
+import img3 from "../../assets/projects/soulcert/3.webp";
+import img4 from "../../assets/projects/soulcert/4.webp";
+import img5 from "../../assets/projects/soulcert/5.webp";
 
 SoulCert is a decentralised verifiable credential registry built for **QUT IFB452 Blockchain Technology**. Academic and professional qualifications usually live in institution-controlled databases that are slow to verify and hard to trust long term. SoulCert issues credentials as **consensual soul-bound tokens** on Ethereum: they are non-transferable, tamper-evident, and only created after the holder explicitly accepts.
 
@@ -51,4 +55,24 @@ A React DApp with separate views for issuers, holders, and verifiers, connected 
 <figure class="mb-8">
   <Image src={img1} alt="Issue Credential dialog" />
   <figcaption class="text-sm text-center mt-2">*Issuers propose credentials to a holder through the web interface.*</figcaption>
+</figure>
+
+<figure class="mb-8">
+  <Image src={img2} alt="Issuer dashboard" />
+  <figcaption class="text-sm text-center mt-2">*The issuer dashboard tracks issued credentials and pending proposals awaiting holder acceptance.*</figcaption>
+</figure>
+
+<figure class="mb-8">
+  <Image src={img3} alt="Unlock vault signature request" />
+  <figcaption class="text-sm text-center mt-2">*Holders sign a message with MetaMask to derive encryption keys and unlock their credential vault.*</figcaption>
+</figure>
+
+<figure class="mb-8">
+  <Image src={img4} alt="Holder dashboard" />
+  <figcaption class="text-sm text-center mt-2">*The holder dashboard shows pending proposals to accept or reject, alongside active soul-bound credentials.*</figcaption>
+</figure>
+
+<figure class="mb-8">
+  <Image src={img5} alt="Verify credential result" />
+  <figcaption class="text-sm text-center mt-2">*Verifiers confirm a credential is valid and belongs to the expected holder by checking on-chain records.*</figcaption>
 </figure>

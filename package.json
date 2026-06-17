@@ -13,12 +13,6 @@
   "engines": {
     "node": "22.x"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
-  },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
     "@astrojs/markdoc": "^0.15.10",

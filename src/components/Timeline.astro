@@ -89,6 +89,10 @@ const bgClasses: Record<string, string> = {
 };
 
 const bgClass = bgClasses[backgroundColor] || "bg-base-200";
+const cardBgClass =
+  backgroundColor === "base-100" ? "bg-base-200" : "bg-base-100";
+const timelineHrClass =
+  backgroundColor === "base-100" ? "bg-base-200" : "bg-base-100";
 
 // Map text color prop to static Tailwind classes
 const textClasses: Record<string, string> = {
@@ -131,7 +135,7 @@ const entriesWithContent = await Promise.all(
           <ul class="timeline timeline-vertical timeline-compact timeline-snap-icon">
             {entriesWithContent.map(({ entry, duration }, index) => (
               <li>
-                {index > 0 && <hr class="bg-base-100" />}
+                {index > 0 && <hr class={timelineHrClass} />}
                 <div class="timeline-middle">
                   <IconComponent class={`size-5 ${textColorClass} mx-3 my-1`} />
                 </div>
@@ -148,7 +152,7 @@ const entriesWithContent = await Promise.all(
                       </span>
                     )}
                   </time>
-                  <div class="card bg-base-100 rounded-3xl shadow-soft mt-2">
+                  <div class={`card ${cardBgClass} rounded-3xl shadow-soft mt-2`}>
                     <div class="card-body">
                       <div class="flex items-center gap-4">
                         {
@@ -194,7 +198,7 @@ const entriesWithContent = await Promise.all(
                   </div>
                 </div>
                 {index < entriesWithContent.length - 1 && (
-                  <hr class="bg-base-100" />
+                  <hr class={timelineHrClass} />
                 )}
               </li>
             ))}
@@ -279,7 +283,7 @@ const entriesWithContent = await Promise.all(
       ) : (
         <ul class="flex flex-col gap-4">
           {entriesWithContent.map(({ entry, Content, duration }) => (
-            <li class="card bg-base-100 rounded-3xl shadow-soft hover:shadow-soft-lg transition-all duration-300">
+            <li class={`card ${cardBgClass} rounded-3xl shadow-soft hover:shadow-soft-lg transition-all duration-300`}>
               <details class="collapse collapse-arrow" open={expandedByDefault}>
                 <summary class="collapse-title">
                   <div class="flex items-center gap-4">

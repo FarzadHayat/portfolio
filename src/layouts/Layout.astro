@@ -14,15 +14,22 @@ import Analytics from "@vercel/analytics/astro";
 const generalEntry = await getEntry("general", "index");
 const general = generalEntry!.data;
 
+const siteName = "Farzad Hayat";
+
 interface Props {
   title?: string;
   description?: string;
 }
 
 const {
-  title = "Farzad Hayat",
+  title: pageTitle = siteName,
   description = "A modern portfolio template built with Astro and DaisyUI",
 } = Astro.props;
+
+const title =
+  pageTitle === siteName || pageTitle.includes(siteName)
+    ? pageTitle
+    : `${pageTitle} | ${siteName}`;
 
 // Custom blur-fade animation configuration
 const blurFadeAnimation = {

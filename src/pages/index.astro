@@ -23,10 +23,7 @@ const generalEntry = await getEntry("general", "index");
 const general = generalEntry!.data;
 ---
 
-<Layout
-  title={`${heroEntry!.data.name} - Portfolio`}
-  description={heroEntry!.data.description}
->
+<Layout description={heroEntry!.data.description}>
   <main>
     <!-- Hero Section (Always visible) -->
     <Hero hero={heroEntry!.data} showQuizCta={general.showQuizCta} />

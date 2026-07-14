@@ -1,5 +1,5 @@
 ---
-title: "Software Engineer Intern"
+title: "Software Engineering Intern"
 subtitle: "Tanda"
 location: "Brisbane, Australia"
 startDate: 2025-12-01

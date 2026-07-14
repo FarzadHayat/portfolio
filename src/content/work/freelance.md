@@ -1,5 +1,5 @@
 ---
-title: "Freelance IT Consultant (Casual)"
+title: "Freelance IT Consultant"
 subtitle: "Self-employed"
 location: "Remote"
 startDate: 2023-09-01

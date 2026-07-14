@@ -17,7 +17,7 @@ I'm a software engineer specializing in building **cloud-native, AI-powered appl
 
 ## 👋 About Me
 
-I am a recent Computer Science graduate from **QUT** (6.67 GPA) with hands-on experience as a Software Engineer Intern at **Tanda**, where I architected and shipped production Ruby on Rails applications. Backed by 15 months of QA engineering at **Tiny Technologies** and practical expertise with AWS microservices, I am seeking Graduate Software Engineer roles and am available now. In my free time, I enjoy Latin dancing, cooking, and exploring new technologies.
+I am a recent Computer Science graduate from **QUT** (6.67 GPA) with hands-on experience as a Software Engineering Intern at **Tanda**, where I architected and shipped production Ruby on Rails applications. Backed by 15 months of QA engineering at **Tiny Technologies** and practical expertise with AWS microservices, I am seeking Graduate Software Engineer roles and am available now. In my free time, I enjoy Latin dancing, cooking, and exploring new technologies.
 
 ## 🛠️ Tech Stack (Portfolio)
 

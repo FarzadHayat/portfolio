@@ -37,7 +37,7 @@ questions:
       - "Tanda"
     correctIndex: 3
     category: tech
-    funFact: "Farzad completed a Software Engineer internship at Tanda, a workforce management platform based in Brisbane."
+    funFact: "Farzad completed a Software Engineering internship at Tanda, a workforce management platform based in Brisbane."
 
   - question: "What hobby does Farzad enjoy outside coding?"
     options:

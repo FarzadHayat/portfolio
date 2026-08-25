@@ -1,0 +1,49 @@
+---
+featured: true
+title: "Danzeira"
+description: "A dance event ticketing and community platform built for partner dancers. Free for organisers, transparent for dancers."
+image: "../../assets/projects/danzeira.png"
+startDate: 2026-02-01
+link: "https://danzeira.com"
+skills: ['Ruby on Rails', 'PostgreSQL', 'SQLite', 'Stripe', 'AWS S3', 'Heroku', 'Cloudflare', 'Hotwire', 'Tailwind CSS', 'Solid Queue', 'Resend', 'Sentry', 'Playwright', 'Full Stack']
+---
+
+Danzeira is a live dance event ticketing and community platform built from the ground up for the partner dance scene (Brazilian Zouk, Lambada, Salsa, and beyond). Organisers publish and sell tickets for free, keeping 100% of their revenue. Dancers pay a single, transparent 5% booking fee at checkout with no stacked surcharges or fine print.
+
+## The Problem
+
+Generic ticketing platforms treat a Zouk social like a conference. They take large cuts from organiser revenue, bury fees in checkout, and offer nothing tailored to how partner dance events actually work. The leader/follower ratio matters, community trust is everything, and event discovery is scattered across Facebook groups, Instagram posts, and a dozen different websites.
+
+After hundreds of events as a dancer, I kept wishing something better existed. So I built it.
+
+## Key Features
+
+- **Leader/follower role balancing:** ticket tiers with configurable caps for leaders and followers, ensuring a balanced ratio on the floor.
+- **QR code check-in:** organisers scan tickets at the door from their phone.
+- **Push notifications:** keep attendees informed about event updates and reminders.
+- **iCalendar exports:** one-tap "Add to Calendar" for any event.
+- **Community organiser vetting:** every organiser is reviewed before they can publish, keeping the scene safe and trustworthy.
+- **Stripe Connect:** each organiser connects their own Stripe account; payments go directly to them, not through Danzeira.
+- **Hotwire Native (Android):** a native Android shell wrapping the Rails app for a mobile-native experience.
+- **Event discovery:** a single place to find what's on near you, replacing the scattered Facebook/Instagram hunt.
+
+## Pricing Model
+
+| Who | Cost |
+|---|---|
+| Organisers | $0 setup, $0 monthly, $0 for free events. Keep 100% of ticket price. |
+| Dancers | 5% booking fee on paid tickets. One clear line item, no hidden surcharges. |
+
+## Tech Stack
+
+- **Backend:** Ruby on Rails, PostgreSQL (production), SQLite (development)
+- **Frontend:** Hotwire (Turbo + Stimulus), Tailwind CSS
+- **Payments:** Stripe Checkout + Stripe Connect
+- **File Storage:** AWS S3 (Active Storage)
+- **Background Jobs:** Solid Queue
+- **Email:** Resend
+- **Error Monitoring:** Sentry
+- **Networking:** Cloudflare (DNS, tunnels)
+- **Deployment:** Heroku (web + worker dynos, Thruster TLS proxy)
+- **Testing:** Minitest + Playwright E2E
+- **Mobile:** Hotwire Native (Android)

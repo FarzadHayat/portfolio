@@ -215,6 +215,27 @@ const quiz = defineCollection({
   }),
 });
 
+// Referrals collection
+const referrals = defineCollection({
+  loader: glob({
+    pattern: "**/*.yaml",
+    base: "./src/content/referrals",
+  }),
+  schema: z
+    .object({
+      name: z.string(),
+      category: z.string(),
+      benefit: z.string(),
+      code: z.string().optional(),
+      url: z.string().url().optional(),
+      keywords: z.array(z.string()).optional(),
+      active: z.boolean().default(true),
+    })
+    .refine((data) => Boolean(data.code?.trim() || data.url?.trim()), {
+      message: "At least one of code or url is required",
+    }),
+});
+
 export const collections = {
   hero,
   work,
@@ -227,4 +248,5 @@ export const collections = {
   contact,
   certifications,
   quiz,
+  referrals,
 };

@@ -13,6 +13,10 @@ extraLinks:
     icon: Award
     label: AWS Cloud Practitioner
     displayOn: both
+  - link: /referrals
+    icon: Link
+    label: Referrals
+    displayOn: both
 showAboutSection: false
 showProjectsSection: true
 showBlogSection: false

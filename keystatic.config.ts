@@ -670,5 +670,46 @@ export default config({
         }),
       },
     }),
+
+    referrals: collection({
+      label: "Referrals",
+      path: "src/content/referrals/*",
+      slugField: "name",
+      format: { data: "yaml" },
+      schema: {
+        name: fields.slug({
+          name: { label: "Service Name" },
+        }),
+        category: fields.text({
+          label: "Category",
+          description: 'e.g., "Travel", "Finance", "Dev Tools"',
+          validation: { isRequired: true },
+        }),
+        benefit: fields.text({
+          label: "Benefit",
+          multiline: true,
+          description: "What the visitor gets when using this referral",
+          validation: { isRequired: true },
+        }),
+        code: fields.text({
+          label: "Referral Code",
+          description: "Optional code to copy",
+        }),
+        url: fields.url({
+          label: "Deep Link / Signup URL",
+          description: "Optional referral or signup link",
+        }),
+        keywords: fields.array(fields.text({ label: "Keyword" }), {
+          label: "Keywords",
+          itemLabel: (props) => props.value,
+          description: "Extra search terms",
+        }),
+        active: fields.checkbox({
+          label: "Active",
+          description: "Uncheck to hide without deleting",
+          defaultValue: true,
+        }),
+      },
+    }),
   },
 });

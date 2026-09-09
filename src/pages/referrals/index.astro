@@ -1,0 +1,65 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ReferralsIndex from "../../components/ReferralsIndex";
+import { getCollection } from "astro:content";
+
+const referrals = await getCollection("referrals");
+
+const items = referrals
+  .filter((entry) => entry.data.active !== false)
+  .map((entry) => ({
+    id: entry.id,
+    name: entry.data.name,
+    category: entry.data.category,
+    benefit: entry.data.benefit,
+    code: entry.data.code,
+    url: entry.data.url,
+    keywords: entry.data.keywords,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout
+  title="Referrals"
+  description="Referral codes and signup links for services I use. Copy a code or open a link, and report anything that is broken."
+>
+  <main class="max-w-3xl mx-auto px-6 py-28">
+    <div class="mb-10">
+      <a href="/" class="btn btn-ghost btn-sm rounded-full mb-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Back to Home
+      </a>
+
+      <h1 class="text-5xl font-bold mb-4">Referrals</h1>
+      <p class="text-xl text-base-content/70">
+        Codes and signup links for things I actually use. Search the list, copy
+        a code or open a link, and report anything that stops working.
+      </p>
+    </div>
+
+    {
+      items.length === 0 ? (
+        <div class="text-center py-20">
+          <p class="text-2xl text-base-content/60">
+            No referrals yet. Check back soon!
+          </p>
+        </div>
+      ) : (
+        <ReferralsIndex client:load items={items} />
+      )
+    }
+  </main>
+</Layout>

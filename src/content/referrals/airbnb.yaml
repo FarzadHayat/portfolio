@@ -1,0 +1,9 @@
+name: Airbnb
+category: Travel
+benefit: Credit toward your first booking when you sign up with this link.
+url: https://www.airbnb.com/c/example
+keywords:
+  - stays
+  - holiday
+  - accommodation
+active: true

@@ -8,11 +8,12 @@ import mdx from "@astrojs/mdx";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 import vercel from "@astrojs/vercel";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://farzadhayat.dev",
-  integrations: [react(), mdx(), markdoc(), keystatic()],
+  integrations: [react(), mdx(), markdoc(), keystatic(), sitemap()],
 
   redirects: {
     "/resume": "/resume.pdf",

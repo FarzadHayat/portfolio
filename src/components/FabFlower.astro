@@ -21,6 +21,7 @@ const { extraLinks } = Astro.props;
     role="button"
     class="fab-trigger btn btn-lg btn-accent btn-circle tooltip tooltip-top"
     data-tip="More links"
+    aria-label="More links"
   >
     <Link class="size-6" />
   </div>
@@ -36,7 +37,7 @@ const { extraLinks } = Astro.props;
       const IconComponent = getIcon(link.icon as any);
       return (
         <div class="tooltip tooltip-left" data-tip={link.label}>
-          <a href={link.link} class="btn btn-lg btn-circle">
+          <a href={link.link} class="btn btn-lg btn-circle" aria-label={link.label}>
             <IconComponent class="size-5" />
           </a>
         </div>

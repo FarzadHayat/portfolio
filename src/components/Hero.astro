@@ -29,9 +29,9 @@ const { hero, showQuizCta } = Astro.props;
       <figure class="max-w-100 w-48 lg:w-64 mask mask-squircle">
         {
           typeof hero.avatar === "string" ? (
-            <img src={hero.avatar} alt={hero.name} />
+            <img src={hero.avatar} alt={hero.name} loading="eager" fetchpriority="high" />
           ) : (
-            <Image src={hero.avatar} alt={hero.name} />
+            <Image src={hero.avatar} alt={hero.name} loading="eager" fetchpriority="high" />
           )
         }
       </figure>

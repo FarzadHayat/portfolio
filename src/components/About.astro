@@ -20,7 +20,7 @@ const { title, photo, Content, link } = Astro.props;
         photo && (
           <figure class="shrink-0 w-48">
             {typeof photo === "string" ? (
-              <img src={photo} alt={title} />
+              <img src={photo} alt={title} loading="lazy" />
             ) : (
               <Image src={photo} alt={title} />
             )}
@@ -43,6 +43,7 @@ const { title, photo, Content, link } = Astro.props;
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-primary btn-circle"
+                  aria-label="More about me"
                 >
                   <Plus class="size-5" />
                 </a>

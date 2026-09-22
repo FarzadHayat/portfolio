@@ -122,23 +122,6 @@ const origin = Astro.url.origin;
         scroll-behavior: smooth;
       }
 
-      /* Initial Page Load Blur-Fade Animation */
-      @keyframes pageLoadBlurFade {
-        0% {
-          opacity: 0;
-          filter: blur(8px);
-        }
-        100% {
-          opacity: 1;
-          filter: blur(0px);
-        }
-      }
-
-      html {
-        animation: pageLoadBlurFade 0.3s ease-in-out;
-        animation-fill-mode: both;
-      }
-
       /* Blur Fade View Transitions (for page-to-page navigation) */
       @keyframes blurFadeIn {
         0% {

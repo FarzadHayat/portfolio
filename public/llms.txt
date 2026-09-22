@@ -1,0 +1,12 @@
+# Farzad Hayat - Portfolio
+> A personal portfolio and blog of Farzad Hayat, a software engineer and web developer.
+
+## Navigation
+- [Home](https://farzadhayat.dev/): The main portfolio page featuring work experience, projects, and education.
+- [Blog](https://farzadhayat.dev/blog): Technical articles, tutorials, and insights.
+- [Projects](https://farzadhayat.dev/projects): A showcase of technical projects and open-source work.
+- [Resume](https://farzadhayat.dev/resume.pdf): Downloadable PDF resume.
+
+## Connect
+- [GitHub](https://github.com/FarzadHayat)
+- [LinkedIn](https://linkedin.com/in/farzadhayat)

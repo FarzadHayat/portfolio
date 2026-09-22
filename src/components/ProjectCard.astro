@@ -85,7 +85,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
         )
       }
       <div class="tooltip" data-tip="View project details">
-        <a href={`/projects/${project.id}`} class="btn btn-sm btn-primary btn-circle">
+        <a href={`/projects/${project.id}`} class="btn btn-sm btn-primary btn-circle" aria-label={`View project details for ${project.data.title}`}>
           <Eye class="size-4" />
         </a>
       </div>

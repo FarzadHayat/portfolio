@@ -1,0 +1,43 @@
+---
+featured: true
+title: "Rational Time System"
+description: "A conceptual redesign of the global calendar and timekeeping structure, visualizing a mathematically elegant 13-month, 28-day year."
+image: "../../assets/projects/rational-time-system.png"
+startDate: 2026-09-01
+endDate: 2026-09-22
+skills: ['System Design', 'Information Architecture', 'UX Design', 'React', 'Three.js']
+---
+
+The Rational Time System (RTS) is a conceptual redesign of global timekeeping. It throws out the chaotic, historically-patched Gregorian calendar in favor of absolute mathematical consistency. I designed this system and built an interactive dashboard to visualize how seamless and elegant a highly logical calendar could be.
+
+## The Flaws of the Status Quo
+
+Our current Gregorian calendar is a logistical nightmare:
+- Months vary arbitrarily between 28, 29, 30, and 31 days.
+- The 1st of the month shifts its weekday every single month, making scheduling unpredictable.
+- Quarters are uneven, complicating financial and business cycles.
+- Our daily time is built on archaic base-12 and base-60 math.
+
+## The Rational Solution
+
+The RTS solves this by structuring time around simple, predictable math:
+
+### 13 Months, 28 Days
+Every month is exactly four 7-day weeks (28 days). The 1st of every month is always a Monday. The 28th is always a Sunday. If you know the date, you immediately know the day of the week without checking a calendar. 
+
+### Universal Days of Rest
+A 13x28 grid yields exactly 364 days. The 365th day (and 366th on leap years) are designated as "Global Holidays" — they sit entirely outside of the month and week structure. They are days outside of time; universal days of rest for the entire planet. 
+
+### Decimal Time
+A day is divided into 10 hours, 100 minutes per hour, and 100 seconds per minute. This yields exactly 100,000 seconds per day. Time-based math becomes effortless base-10 arithmetic, aligning perfectly with the metric system used across the rest of global science and commerce.
+
+## Designing the Dashboard
+
+To make this concept tangible, I built a functional dashboard that models the RTS in real-time. 
+
+- **The Converter Interface:** A live clock that continuously syncs with the user's standard UTC time and translates it into Decimal Time and the RTS calendar date.
+- **The Calendar Grid:** An interactive, mathematically perfect calendar. Because every month is identical, the UI remains perfectly stable and highly readable, completely eliminating the shifting layouts required by traditional digital calendars.
+- **Visualizing the Global Holidays:** I designed bespoke, visually distinct panels for "Year Day" and "Leap Day" to emphasize their special nature as days existing entirely outside the standard flow of time.
+- **The Daylight Globe:** A centerpiece interactive 3D globe tracks the real-time day/night terminator line across the Earth, reinforcing the universal, planetary scale of the time system.
+
+The UI aesthetic is heavily inspired by modern sci-fi interfaces and aerospace dashboards — deep space gradients, glassmorphism, dark frosted panels, and mono-spaced fonts. The goal was to make this alternative time system feel official, precise, and inevitable.

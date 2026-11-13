@@ -59,6 +59,7 @@ export default config({
                 { label: "Instagram", value: "Instagram" },
                 { label: "YouTube", value: "YouTube" },
                 { label: "Email", value: "Email" },
+                { label: "Sponsor (Heart)", value: "Sponsor" },
                 { label: "CodeTips (Folder)", value: "FolderCode" },
               ],
               defaultValue: "GitHub",

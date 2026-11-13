@@ -14,3 +14,6 @@ socialLinks:
   - url: https://www.linkedin.com/in/farzadhayat/
     icon: LinkedIn
     label: LinkedIn
+  - url: https://github.com/sponsors/FarzadHayat
+    icon: Sponsor
+    label: Sponsor on GitHub

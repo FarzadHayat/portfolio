@@ -66,7 +66,8 @@ export type IconName =
   | "Bluesky"
   | "Instagram"
   | "YouTube"
-  | "Email";
+  | "Email"
+  | "Sponsor";
 
 export const iconMap: Record<IconName, any> = {
   Flower2,
@@ -101,6 +102,7 @@ export const iconMap: Record<IconName, any> = {
   Instagram,
   YouTube,
   Email: Mail,
+  Sponsor: Heart,
 };
 
 export function getIcon(iconName: IconName) {

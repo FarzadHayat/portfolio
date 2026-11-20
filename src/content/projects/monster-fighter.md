@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "Monster Fighter"
 description: "Turn-based player-vs-computer game built with Java and Swing GUI Toolkit."
 image: "../../assets/projects/monster-fighter.webp"

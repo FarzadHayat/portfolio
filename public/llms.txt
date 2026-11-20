@@ -1,5 +1,5 @@
 # Farzad Hayat - Portfolio
-> A personal portfolio and blog of Farzad Hayat, a software engineer and web developer.
+> A personal portfolio and blog of Farzad Hayat, an agent-native software engineer in Brisbane, Australia. He builds with AI coding agents (Claude Code, Cursor, Grok Bot, T3 Code) and builds for them: his platform Danzeira has a remote MCP server at https://danzeira.com/mcp.
 
 ## Navigation
 - [Home](https://farzadhayat.dev/): The main portfolio page featuring work experience, projects, and education.

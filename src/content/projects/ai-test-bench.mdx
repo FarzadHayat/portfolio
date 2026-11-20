@@ -10,7 +10,7 @@ skills: ['Python', 'Playwright', 'Harbor Framework', 'Docker', 'QA Automation', 
 
 This was my Capstone project, done with Antero Software. I was the QA Lead. My goal was to find out how well AI agents can automate QA work, and to build a way to measure it.
 
-First I researched GitHub Copilot and other AI tools. I built a prototype Copilot workflow in VS Code that connects to Jira through the Atlassian MCP server. It pulls user story details and acceptance criteria from Jira tickets, expands them into test cases with preconditions, posts the test cases back to the ticket and generates runnable Cypress and Playwright tests. This removed a lot of switching between tools, and made it easier to turn requirements into automation scripts.
+First I researched GitHub Copilot and other AI tools. I built a prototype Copilot workflow in VS Code that connects to Jira through the Atlassian MCP server. It pulls user story details and acceptance criteria from Jira tickets. It expands them into test cases with preconditions and posts the test cases back to the ticket. It also generates runnable Cypress and Playwright tests. This removed a lot of switching between tools, and made it easier to turn requirements into automation scripts.
 
 My teammates built a custom TestGen CLI tool. My job was to evaluate how well different AI agents write Playwright E2E tests. I used a custom benchmark dataset that runs on the **Harbor framework**. It has ten tasks based on common web app patterns, such as multi-step checkout flows, complex form validations, drag-and-drop interactions and GitHub API mocking.
 

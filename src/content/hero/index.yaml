@@ -1,7 +1,7 @@
 name: G'day 👋 I'm Farzad Hayat
-title: Founder @ Danzeira | Software Engineer | CS Graduate @ QUT
+title: Agent-Native Software Engineer | Founder @ Danzeira
 description: >-
-  I'm a recent Computer Science graduate from QUT (6.67 GPA) and the founder of Danzeira, a dance event management platform for dance communities. I was a Software Engineer Intern at Tanda, where I built and shipped production Ruby on Rails features. Before that I spent 15 months in QA engineering and technical documentation at Tiny Technologies. I have also worked with AWS microservices. Outside work I enjoy partner dancing, martial arts, cooking and travelling.
+  I build software with AI coding agents. I plan each change, agents write the code, and I review and test it before it ships. That is how I built Danzeira, a dance event platform, on my own. It has 200+ merged pull requests since February 2026 and an MCP server, so organisers can run events from Claude or Cursor. I'm a QUT Computer Science graduate (6.67 GPA). I shipped production Rails features as an intern at Tanda and spent 15 months in QA at Tiny Technologies. Outside work I enjoy partner dancing, martial arts, cooking and travelling.
 avatar: '@assets/hero/profile.webp'
 location: 🇦🇺 Brisbane, Australia
 socialLinks:

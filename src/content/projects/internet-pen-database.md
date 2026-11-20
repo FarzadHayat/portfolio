@@ -1,4 +1,5 @@
 ---
+archived: true
 title: "Internet Pen Database"
 description: "A Flask-based web application to store and manage an online database of pens."
 image: "../../assets/projects/internet-pen-database.webp"

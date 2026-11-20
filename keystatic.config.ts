@@ -471,6 +471,11 @@ export default config({
           description: "Show this project on the homepage",
           defaultValue: false,
         }),
+        archived: fields.checkbox({
+          label: "Archived Project",
+          description: "Move this project to the Archive on the projects page",
+          defaultValue: false,
+        }),
         title: fields.slug({
           name: { label: "Project Name" },
         }),

@@ -1,0 +1,32 @@
+---
+featured: false
+title: "Rational Time System"
+description: "A redesign of the calendar and the clock: 13 months of 28 days, and a decimal day. I built a live dashboard to show how it works."
+image: "../../assets/projects/rational-time-system.webp"
+startDate: 2026-09-01
+endDate: 2026-09-22
+skills: ['System Design', 'Information Architecture', 'UX Design', 'React', 'Next.js', 'Three.js', 'Tailwind CSS']
+demoLink: "https://rts.farzadhayat.dev"
+sourceLink: "https://github.com/FarzadHayat/rational-time-system"
+---
+
+The Rational Time System (RTS) is my redesign of how we keep time. It replaces the Gregorian calendar and the 24-hour clock with rules that follow simple math. I designed the system and built a live dashboard to show it.
+
+The Gregorian calendar has problems. Months have 28, 29, 30 or 31 days. The 1st of the month falls on a different weekday each month, so you have to check a calendar to plan anything. Quarters are uneven, which makes business and financial cycles harder. And daily time still uses base-12 and base-60 math.
+
+RTS fixes the calendar first. A year has 13 months, and every month has 28 days, which is exactly four weeks. The 1st is always a Monday and the 28th is always a Sunday. If you know the date, you know the weekday.
+
+Thirteen months of 28 days gives 364 days. The 365th day, and the 366th in a leap year, are Global Holidays. They sit outside every month and every week, as days of rest for the whole planet. I call them Year Day and Leap Day.
+
+RTS then fixes the clock. A day has 10 hours, an hour has 100 minutes, and a minute has 100 seconds. That is 100,000 seconds per day. Time math becomes base-10 math, the same as the metric system.
+
+The dashboard makes the idea concrete:
+
+- **Converter:** a live clock that reads your standard UTC time and shows it as decimal time and an RTS date.
+- **Calendar grid:** every month has the same shape, so the layout never moves. Normal digital calendars shift every month.
+- **Holiday panels:** Year Day and Leap Day get their own panels, to show that they sit outside the normal flow of time.
+- **Daylight globe:** a 3D globe shows the real-time line between day and night across the Earth. It is a reminder that RTS is one time for the whole planet.
+
+The look takes ideas from sci-fi and aerospace dashboards: deep space gradients, dark frosted glass panels and monospaced fonts. I wanted the system to feel official and precise.
+
+You can [try it live](https://rts.farzadhayat.dev).

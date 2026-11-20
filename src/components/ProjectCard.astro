@@ -19,6 +19,8 @@ function formatPeriod(startDate: Date, endDate?: Date) {
   const end = endDate
     ? endDate.toLocaleDateString("en-US", options)
     : "Present";
+  // Same start and end month: show a single date
+  if (endDate && start === end) return start;
   return `${start} - ${end}`;
 }
 ---
@@ -47,7 +49,7 @@ function formatPeriod(startDate: Date, endDate?: Date) {
     </time>
     <p class="text-base-content/80">{project.data.description}</p>
     <div class="flex flex-wrap gap-2 mt-2">
-      {project.data.skills.map((skill) => <SkillBadge skill={skill} />)}
+      {project.data.skills.slice(0, 5).map((skill) => <SkillBadge skill={skill} />)}
     </div>
     <div class="card-actions justify-end mt-4 gap-2">
       {

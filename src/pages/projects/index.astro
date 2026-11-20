@@ -2,13 +2,14 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
+import { sortProjects } from "../../utils/sortProjects";
 
 const projects = await getCollection("projects");
 
-// Sort by start date, most recent first
-const sortedProjects = projects.sort(
-  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
-);
+// Ongoing projects first, then by end date
+const sortedProjects = sortProjects(projects);
+const currentProjects = sortedProjects.filter((p) => !p.data.archived);
+const archivedProjects = sortedProjects.filter((p) => p.data.archived);
 ---
 
 <Layout
@@ -47,7 +48,7 @@ const sortedProjects = projects.sort(
 
     <!-- Projects Grid -->
     {
-      sortedProjects.length === 0 ? (
+      currentProjects.length === 0 ? (
         <div class="text-center py-20">
           <p class="text-2xl text-base-content/60">
             No projects yet. Check back soon!
@@ -55,10 +56,25 @@ const sortedProjects = projects.sort(
         </div>
       ) : (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedProjects.map((project) => (
+          {currentProjects.map((project) => (
             <ProjectCard project={project} />
           ))}
         </div>
+      )
+    }
+
+    {
+      archivedProjects.length > 0 && (
+        <details class="mt-20">
+          <summary class="btn btn-ghost rounded-full">
+            Archive: earlier projects ({archivedProjects.length})
+          </summary>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            {archivedProjects.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </details>
       )
     }
   </main>

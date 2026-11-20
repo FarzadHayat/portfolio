@@ -39,6 +39,8 @@ function formatPeriod(startDate: Date, endDate?: Date) {
   const end = endDate
     ? endDate.toLocaleDateString("en-US", options)
     : "Present";
+  // Same start and end month: show a single date
+  if (endDate && start === end) return start;
   return `${start} - ${end}`;
 }
 

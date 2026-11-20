@@ -8,15 +8,10 @@ logo: "../../assets/hackathons/code-network-winter-hackathon-2023.jpg"
 sourceLink: "https://github.com/FarzadHayat/bots-n-bids"
 ---
 
-Developed by team **Bot Babes** for **QUT Robotics** competitions, specifically the **Droid Racing Challenge**. 
+Developed by team **Bot Babes** for **QUT Robotics** competitions, specifically the **Droid Racing Challenge**.
 
-**Bots 'n' Bids** is a Flutter mobile and web application designed to gamify robot competitions. It allows users to track live scores, judge performances, and place virtual bids on competing teams using a "coin" system.
+**Bots 'n' Bids** is a Flutter mobile and web app that gamifies robot competitions. Users track live scores and lap times on a real-time dashboard, judge performances and place virtual bids on competing teams with a "coin" system. Spectators and judges each get their own interface. It is built with **Flutter (Dart)** and **Firebase** for authentication and data sync.
 
-### Key Features:
-- **Real-time Scoring:** A live dashboard to track team names and lap times.
-- **Bidding System:** A virtual economy where spectators can place bids on their favorite teams.
-- **Role-based Access:** Dedicated interfaces for `Spectators` and `Judges`.
-- **Tech Stack:** Built using **Flutter (Dart)** and **Firebase** for authentication and core data synchronization.
-- **Award-winning Design:** The project received the **"Best Design and Aesthetics"** award, featuring a tech-focused dark theme with high-contrast accents and the *Tektur* font family.
+The project won **"Best Design and Aesthetics"**. It has a dark theme with high-contrast accents and the *Tektur* font.
 
 Team members: Ryan, Farzad, Bahrva, Atticus, Shreya, and Zach.

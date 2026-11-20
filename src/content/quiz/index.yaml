@@ -27,7 +27,7 @@ questions:
       - "15"
     correctIndex: 2
     category: personal
-    funFact: "Farzad has travelled to 10 countries — exploring the world is one of his favourite things to do."
+    funFact: "Farzad has travelled to 10 countries. Exploring the world is one of his favourite things to do."
 
   - question: "Which company did Farzad intern at?"
     options:
@@ -47,7 +47,7 @@ questions:
       - "Photography"
     correctIndex: 1
     category: personal
-    funFact: "Farzad is a partner dancer — he enjoys the social and creative aspects of dancing as a break from screens."
+    funFact: "Farzad is a partner dancer. He enjoys the social and creative side of dancing as a break from screens."
 
   - question: "Where did Farzad grow up?"
     options:
@@ -97,4 +97,4 @@ questions:
       - "Lambada"
     correctIndex: 3
     category: personal
-    funFact: "Lambada is Farzad's favourite — it's a Brazilian partner dance known for its expressive, flowing movements."
+    funFact: "Lambada is Farzad's favourite. It's a Brazilian partner dance known for its expressive, flowing movements."

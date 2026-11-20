@@ -12,12 +12,12 @@ downloadLink: "https://github.com/FarzadHayat/ultimate-earth-championship/releas
 
 A turn-based player-vs-computer game made for Windows.
 
-Aliens have invaded Earth and ressurected the greatest of humanity back to life to battle each other in the intergalactic sports tournament.
+Aliens have invaded Earth. They resurrected the greatest of humanity to battle each other in an intergalactic sports tournament.
 You are to create a team of up to 9 champions, provide them with weapons, and fight against other teams in a checkered style battle arena.
 The other teams intelligently fight each other and make purchases from the market in the background to create a realistic battling system.
 
 Made using Java with the Swing GUI Toolkit in the Eclipse IDE.
-We utilized JUnit for unit testing and UML diagrams for planning.
+We used JUnit for unit testing and UML diagrams for planning.
 
 ### Folder Index
  - **UltimateEarthChampionship/** - Contains Eclipse project source code including unit tests

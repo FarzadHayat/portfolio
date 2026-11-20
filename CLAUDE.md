@@ -81,6 +81,14 @@ pdflatex resume.tex
 mv resume.pdf public/resume.pdf
 ```
 
+## Writing Content
+
+- Use the `/asd-ste100` skill (STE-flavored mode) together with the owner's writing style for all article and project text.
+- Voice: plain, short, direct sentences, first person, honest. No hype, no marketing adjectives, no AI cliches, no em dashes.
+- Prefer plain paragraphs. Use headings and bullets only when they are justified, such as a long list of parallel items or a step sequence. Overuse reads as AI slop.
+- Keep each article to one page of text, excluding media and diagrams (about 400 words max).
+- Edit the original wording lightly. Keep every fact, and do not add claims.
+
 ## Development Notes
 
 - All pages must be wrapped in `Layout.astro`.

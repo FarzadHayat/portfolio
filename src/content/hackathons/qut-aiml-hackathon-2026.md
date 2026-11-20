@@ -8,4 +8,4 @@ logo: "../../assets/hackathons/qut-aiml-hackathon-2026.jpg"
 sourceLink: "https://github.com/adynsydeez/enviro-vision"
 ---
 
-Built **Project Pyro**, a browser-based wildfire simulation platform where players fight real Queensland bushfires on satellite maps using a physically-grounded cellular automata fire spread model. Won the **Best Community Project Award**, judged by a panel of industry experts.
+Built **Project Pyro**, a browser-based wildfire simulation where players fight real Queensland bushfires on satellite maps. It uses a cellular automata fire spread model. Won the **Best Community Project Award**, judged by a panel of industry experts.

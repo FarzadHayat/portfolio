@@ -1,0 +1,46 @@
+---
+// Parallax: dusk over the Glass House Mountains, north of Brisbane.
+// Back to front: sky, stars, setting sun, the mountains, the D'Aguilar
+// range, low hills, and a line of gum trees. Each layer has its own
+// travel distance; theme.css (or script.ts as a fallback) moves the
+// layers up at different speeds during the first screen of scroll.
+// The parent .theme-decor is aria-hidden and ignores pointer events.
+---
+
+<div class="px-scene">
+  <div class="px-sky"></div>
+
+  <div class="px-layer px-stars" style="--travel: 1vh" data-travel="1">
+    <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMin slice" focusable="false">
+      <g fill="#fff">
+        <circle cx="910" cy="366" r="0.9" opacity="0.69"/><circle cx="194" cy="208" r="1.2" opacity="0.87"/><circle cx="694" cy="78" r="0.7" opacity="0.7"/><circle cx="751" cy="235" r="1.1" opacity="0.52"/><circle cx="1081" cy="10" r="0.8" opacity="0.42"/><circle cx="1041" cy="122" r="0.8" opacity="0.56"/><circle cx="108" cy="324" r="1.7" opacity="0.85"/><circle cx="980" cy="402" r="0.6" opacity="0.66"/><circle cx="155" cy="35" r="0.6" opacity="0.87"/><circle cx="276" cy="56" r="0.8" opacity="0.45"/><circle cx="657" cy="417" r="1" opacity="0.76"/><circle cx="571" cy="174" r="0.6" opacity="0.78"/><circle cx="1403" cy="64" r="1.3" opacity="0.37"/><circle cx="302" cy="253" r="0.6" opacity="0.46"/><circle cx="931" cy="233" r="1.3" opacity="0.35"/><circle cx="131" cy="98" r="1.6" opacity="0.76"/><circle cx="629" cy="359" r="1.7" opacity="0.7"/><circle cx="823" cy="146" r="0.9" opacity="0.6"/><circle cx="817" cy="303" r="1.2" opacity="0.74"/><circle cx="1273" cy="354" r="1.2" opacity="0.59"/><circle cx="1271" cy="297" r="1.6" opacity="0.77"/><circle cx="298" cy="100" r="0.7" opacity="0.85"/><circle cx="1152" cy="266" r="1.1" opacity="0.57"/><circle cx="1255" cy="236" r="0.9" opacity="0.71"/><circle cx="1294" cy="345" r="0.9" opacity="0.83"/><circle cx="572" cy="9" r="1.5" opacity="0.4"/><circle cx="305" cy="397" r="0.8" opacity="0.37"/><circle cx="902" cy="6" r="1.3" opacity="0.75"/><circle cx="184" cy="139" r="1.6" opacity="0.63"/><circle cx="846" cy="326" r="1.3" opacity="0.66"/><circle cx="361" cy="93" r="1.1" opacity="0.79"/><circle cx="1140" cy="277" r="0.7" opacity="0.85"/><circle cx="721" cy="345" r="1.1" opacity="0.77"/><circle cx="222" cy="52" r="1.9" opacity="0.33"/><circle cx="398" cy="83" r="0.6" opacity="0.64"/><circle cx="63" cy="39" r="1" opacity="0.78"/><circle cx="1048" cy="214" r="1" opacity="0.67"/><circle cx="1389" cy="323" r="1.6" opacity="0.66"/><circle cx="1155" cy="71" r="0.7" opacity="0.69"/><circle cx="620" cy="228" r="0.9" opacity="0.37"/><circle cx="921" cy="52" r="0.6" opacity="0.8"/><circle cx="1252" cy="18" r="0.9" opacity="0.54"/><circle cx="925" cy="179" r="0.6" opacity="0.75"/><circle cx="1085" cy="104" r="1.6" opacity="0.49"/><circle cx="661" cy="125" r="0.9" opacity="0.82"/><circle cx="976" cy="209" r="1.6" opacity="0.79"/><circle cx="467" cy="362" r="0.8" opacity="0.7"/><circle cx="1175" cy="196" r="1.5" opacity="0.33"/><circle cx="903" cy="358" r="1.6" opacity="0.42"/><circle cx="745" cy="161" r="0.8" opacity="0.72"/><circle cx="1351" cy="238" r="0.9" opacity="0.64"/><circle cx="480" cy="266" r="1.4" opacity="0.53"/><circle cx="500" cy="167" r="0.6" opacity="0.33"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="px-layer px-sun" style="--travel: 3vh" data-travel="3"></div>
+
+  <div class="px-layer px-ridge px-ridge--peaks" style="--travel: 6vh" data-travel="6">
+    <svg viewBox="0 -40 1440 280" preserveAspectRatio="xMidYMax slice" focusable="false">
+      <path d="M0 214C140 208 240 204 300 202L318 186Q330 166 342 182L350 178Q362 160 376 184L400 200C420 199 435 197 450 195L470 160C476 120 500 100 524 104C548 108 562 136 578 176L596 192L628 188C638 160 643 118 648 84C651 70 660 70 662 86C667 120 672 158 686 184L712 180C726 120 752 44 792 34C834 26 858 76 870 124C878 152 888 170 906 184L950 190C966 170 984 160 998 164C1012 168 1020 182 1036 192C1120 196 1200 192 1260 186C1300 182 1330 184 1360 190C1400 196 1420 200 1440 202V240H0Z"/>
+    </svg>
+  </div>
+
+  <div class="px-layer px-ridge px-ridge--range" style="--travel: 14vh" data-travel="14">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none" focusable="false">
+      <path d="M0 90C120 60 200 50 300 70C400 90 470 40 580 45C690 50 740 95 860 85C980 75 1040 30 1160 38C1280 46 1360 80 1440 70V160H0Z"/>
+    </svg>
+  </div>
+
+  <div class="px-layer px-ridge px-ridge--hills" style="--travel: 22vh" data-travel="22">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none" focusable="false">
+      <path d="M0 60C160 100 260 30 420 50C560 68 640 110 780 96C920 82 1000 40 1140 52C1260 62 1350 100 1440 90V140H0Z"/>
+    </svg>
+  </div>
+
+  <div class="px-layer px-ridge px-ridge--trees" style="--travel: 32vh" data-travel="32">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="xMidYMax slice" focusable="false">
+      <path d="M0 130V96Q8 79 16 95Q24 80 32 98Q46 81 60 95Q71 84 82 93Q92 83 101 95Q118 77 135 95Q146 83 156 97Q170 78 184 94Q196 73 207 91Q217 70 227 74Q236 57 244 62Q257 51 271 70Q290 78 308 92Q316 84 325 97Q343 77 362 94Q378 84 395 99Q414 81 433 98Q444 76 455 96Q473 80 492 98Q509 83 527 92Q545 84 564 96Q577 81 591 98Q609 74 627 80Q644 55 661 84Q670 79 678 89Q688 81 697 94Q709 77 721 95Q733 82 745 93Q759 77 773 99Q792 85 811 99Q825 86 839 94Q855 79 870 96Q884 87 897 94Q912 77 926 99Q936 84 945 99Q957 80 968 98Q985 82 1003 95Q1014 85 1024 91Q1042 79 1059 77Q1071 53 1083 62Q1091 36 1099 52Q1113 54 1127 75Q1139 77 1150 92Q1164 76 1177 97Q1192 78 1207 95Q1218 83 1229 95Q1242 81 1255 94Q1269 83 1283 92Q1299 79 1316 81Q1327 60 1337 80Q1346 69 1355 91Q1366 85 1376 95Q1388 86 1400 93Q1418 78 1435 97Q1437 79 1440 93V130Z"/>
+    </svg>
+  </div>
+</div>

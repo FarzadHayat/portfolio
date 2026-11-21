@@ -1,0 +1,67 @@
+---
+import { Palette, Shuffle, X, Check } from "@lucide/astro";
+import { themes, getTheme } from "../themes/registry";
+
+const active = getTheme(Astro.locals.design);
+---
+
+<div class="theme-dock" role="group" aria-label="Theme">
+  <button
+    type="button"
+    class="theme-dock__open"
+    command="show-modal"
+    commandfor="theme-picker"
+    aria-haspopup="dialog"
+  >
+    <Palette aria-hidden="true" />
+    <span class="sr-only">Change theme. Current theme:</span>
+    <span data-theme-name>{active?.name ?? "Themes"}</span>
+  </button>
+  <button type="button" class="theme-dock__shuffle" data-theme-shuffle aria-label="Random theme">
+    <Shuffle aria-hidden="true" />
+  </button>
+</div>
+
+<dialog id="theme-picker" class="theme-picker" closedby="any" aria-labelledby="theme-picker-title">
+  <div class="theme-picker__inner">
+    <div class="theme-picker__head">
+      <h2 id="theme-picker-title" class="theme-picker__title">Themes</h2>
+      <form method="dialog">
+        <button class="icon-btn" aria-label="Close" autofocus>
+          <X aria-hidden="true" />
+        </button>
+      </form>
+    </div>
+    <ul class="theme-picker__grid">
+      {
+        themes.map((t) => (
+          <li>
+            <button
+              type="button"
+              class="theme-option"
+              data-theme-option={t.id}
+              aria-pressed={t.id === active?.id ? "true" : "false"}
+              style={`--sw-bg:${t.preview.bg};--sw-surface:${t.preview.surface};--sw-accent:${t.preview.accent};--sw-text:${t.preview.text}`}
+            >
+              <span class="theme-option__thumb" aria-hidden="true">
+                <span class="theme-option__check">
+                  <Check />
+                </span>
+              </span>
+              <span class="theme-option__name">{t.name}</span>
+              <span class="theme-option__tagline">{t.tagline}</span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="theme-picker__foot">
+      <button type="button" class="btn btn--primary" data-theme-shuffle>
+        <Shuffle aria-hidden="true" />
+        Random theme
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<p class="sr-only" aria-live="polite" data-theme-status></p>

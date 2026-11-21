@@ -5,22 +5,19 @@ interface Props {
 
 const { url } = Astro.props;
 
-// Convert Spotify URL to embed URL
+// Convert a Spotify URL to its embed URL
 let embedUrl = url;
-if (url.includes('open.spotify.com') && !url.includes('/embed/')) {
-  embedUrl = url.replace('open.spotify.com/', 'open.spotify.com/embed/');
+if (url.includes("open.spotify.com") && !url.includes("/embed/")) {
+  embedUrl = url.replace("open.spotify.com/", "open.spotify.com/embed/");
 }
 ---
 
-<div class="spotify-embed my-6 rounded-xl overflow-hidden">
+<div class="embed-frame embed-frame--spotify">
   <iframe
     src={embedUrl}
-    title="Spotify embed"
-    width="100%"
+    title="Spotify playlist"
     height="352"
-    allowtransparency="true"
     allow="encrypted-media"
     loading="lazy"
-    class="rounded-xl"
   ></iframe>
 </div>

@@ -1,0 +1,29 @@
+---
+const isHome = Astro.url.pathname === "/";
+const base = isHome ? "" : "/";
+const links = [
+  { href: `${base}#projects`, label: "Projects" },
+  { href: `${base}#experience`, label: "Experience" },
+  { href: `${base}#hackathons`, label: "Hackathons" },
+  { href: "/resume", label: "Resume" },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="/">Farzad Hayat</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul class="site-nav__list">
+        {
+          links.map((link) => (
+            <li>
+              <a class="site-nav__link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

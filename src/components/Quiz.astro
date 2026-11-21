@@ -14,62 +14,43 @@ interface Props {
 const { questions } = Astro.props;
 ---
 
-<div class="min-h-screen bg-base-200 flex items-center justify-center p-4">
-  <div
-    id="quiz-root"
-    class="card bg-base-100 rounded-3xl shadow-soft w-full max-w-lg"
-    data-questions={JSON.stringify(questions)}
-  >
-    <!-- Screen: Intro -->
-    <div id="screen-intro" class="card-body items-center text-center gap-4 py-12">
-      <div class="text-6xl">🧠</div>
-      <h1 class="card-title text-2xl">Think You Know Me?</h1>
-      <p class="text-base-content/70 max-w-sm">
-        10 questions across tech, personal, and career facts. How well do you
-        really know Farzad?
+<div class="container quiz">
+  <div id="quiz-root" class="panel quiz__card" data-questions={JSON.stringify(questions)}>
+    <div id="screen-intro" class="quiz__screen quiz__screen--center">
+      <p class="quiz__emoji" aria-hidden="true">🧠</p>
+      <h1 class="quiz__title">Think you know me?</h1>
+      <p class="quiz__lead">
+        {questions.length} questions about tech, life and career. How well do you know Farzad?
       </p>
-      <p class="text-sm text-base-content/40">~2 minutes</p>
-      <button id="btn-start" class="btn btn-primary btn-wide rounded-full mt-2">
-        Start Quiz →
-      </button>
+      <button id="btn-start" class="btn btn--primary">Start quiz</button>
     </div>
 
-    <!-- Screen: Question -->
-    <div id="screen-question" class="card-body gap-4 hidden">
-      <div class="flex justify-between items-center">
-        <span id="q-counter" class="text-sm text-base-content/60"></span>
-        <span id="q-category" class="badge badge-primary rounded-full"></span>
+    <div id="screen-question" class="quiz__screen" hidden>
+      <div class="quiz__top">
+        <span id="q-counter" class="quiz__counter"></span>
+        <span id="q-category" class="badge"></span>
       </div>
-      <progress
-        id="q-progress"
-        class="progress progress-primary w-full"
-        value="0"
-        max={questions.length}
-      ></progress>
-      <p id="q-text" class="text-lg font-semibold mt-2"></p>
-      <div id="q-options" class="flex flex-col gap-2"></div>
+      <progress id="q-progress" class="quiz__progress" value="0" max={questions.length} aria-label="Progress"></progress>
+      <h2 id="q-text" class="quiz__question"></h2>
+      <div id="q-options" class="quiz__options"></div>
     </div>
 
-    <!-- Screen: Reveal -->
-    <div id="screen-reveal" class="card-body gap-4 hidden">
-      <p id="reveal-indicator" class="text-center text-2xl font-bold"></p>
-      <div id="reveal-correct" class="alert"></div>
-      <p id="reveal-fact" class="text-sm text-base-content/70 italic hidden"></p>
-      <button id="btn-next" class="btn btn-primary rounded-full mt-2"></button>
+    <div id="screen-reveal" class="quiz__screen" hidden>
+      <p id="reveal-indicator" class="quiz__verdict" aria-live="polite"></p>
+      <p id="reveal-correct" class="quiz__answer"></p>
+      <p id="reveal-fact" class="quiz__fact" hidden></p>
+      <button id="btn-next" class="btn btn--primary"></button>
     </div>
 
-    <!-- Screen: Results -->
-    <div id="screen-results" class="card-body items-center text-center gap-4 py-10 hidden">
-      <div class="text-5xl">🏆</div>
-      <h2 class="text-2xl font-bold">
-        You scored <span id="r-score"></span>
-      </h2>
-      <div id="r-stars" class="text-3xl"></div>
-      <div id="r-label" class="badge badge-secondary badge-lg rounded-full py-4"></div>
-      <div class="flex gap-2 flex-wrap justify-center mt-2">
-        <button id="btn-share" class="btn btn-info btn-sm rounded-full">Share result</button>
-        <button id="btn-retry" class="btn btn-ghost btn-sm rounded-full">Try again</button>
-        <a href="/" class="btn btn-ghost btn-sm rounded-full">← Portfolio</a>
+    <div id="screen-results" class="quiz__screen quiz__screen--center" hidden>
+      <p class="quiz__emoji" aria-hidden="true">🏆</p>
+      <h2 class="quiz__title">You scored <span id="r-score"></span></h2>
+      <p id="r-stars" class="quiz__stars"></p>
+      <p id="r-label" class="badge quiz__label"></p>
+      <div class="quiz__actions">
+        <button id="btn-share" class="btn btn--sm btn--primary">Share result</button>
+        <button id="btn-retry" class="btn btn--sm">Try again</button>
+        <a href="/" class="btn btn--sm btn--ghost">Back to portfolio</a>
       </div>
     </div>
   </div>
@@ -95,8 +76,13 @@ const { questions } = Astro.props;
 
   function showOnly(id: string) {
     SCREENS.forEach((s) =>
-      document.getElementById(s)!.classList.toggle("hidden", s !== id)
+      (document.getElementById(s)!.hidden = s !== id)
     );
+    const heading = document.querySelector<HTMLElement>(`#${id} h1, #${id} h2, #${id} .quiz__verdict`);
+    if (heading && id !== "screen-intro") {
+      heading.tabIndex = -1;
+      heading.focus();
+    }
   }
 
   function el<T extends HTMLElement>(id: string): T {
@@ -131,7 +117,8 @@ const { questions } = Astro.props;
     optionsEl.innerHTML = "";
     q.options.forEach((opt, i) => {
       const btn = document.createElement("button");
-      btn.className = "btn btn-ghost rounded-2xl border border-base-content/20 hover:border-primary hover:bg-base-200 text-left justify-start w-full";
+      btn.className = "quiz__option";
+      btn.type = "button";
       btn.textContent = opt;
       btn.addEventListener("click", () => selectOption(i));
       optionsEl.appendChild(btn);
@@ -150,26 +137,22 @@ const { questions } = Astro.props;
 
   // ---- Reveal ----
   function renderReveal(correct: boolean, q: Question) {
-    el("reveal-indicator").textContent = correct ? "✓ Correct!" : "✗ Wrong";
-    el("reveal-indicator").className = `text-center text-2xl font-bold ${
-      correct ? "text-success" : "text-error"
-    }`;
+    el("reveal-indicator").textContent = correct ? "✓ Correct" : "✗ Not quite";
+    el("reveal-indicator").dataset.result = correct ? "correct" : "wrong";
 
-    el("reveal-correct").className = `alert ${
-      correct ? "alert-success" : "alert-error"
-    }`;
+    el("reveal-correct").dataset.result = correct ? "correct" : "wrong";
     el("reveal-correct").textContent = `The answer is: ${q.options[q.correctIndex]}`;
 
     const factEl = el("reveal-fact");
     if (q.funFact) {
       factEl.textContent = q.funFact;
-      factEl.classList.remove("hidden");
+      factEl.hidden = false;
     } else {
-      factEl.classList.add("hidden");
+      factEl.hidden = true;
     }
 
     const isLast = state.index === questions.length - 1;
-    el("btn-next").textContent = isLast ? "See Results →" : "Next →";
+    el("btn-next").textContent = isLast ? "See results" : "Next question";
 
     showOnly("screen-reveal");
   }

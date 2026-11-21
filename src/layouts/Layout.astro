@@ -1,16 +1,14 @@
 ---
 import "../styles/global.css";
-import ThemeToggle from "../components/ThemeToggle.astro";
-import ThemeSelector from "../components/ThemeSelector.astro";
-import FabFlower from "../components/FabFlower.astro";
-import Dock from "../components/Dock.astro";
-import PetGhost from "../components/PetGhost.astro";
-import { ClientRouter } from "astro:transitions";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ThemeDock from "../components/ThemeDock.astro";
+import ThemeDecor from "../components/ThemeDecor.astro";
 import { getEntry } from "astro:content";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
+import { themes, getTheme, THEME_COOKIE } from "../themes/registry";
 
-// Load general singleton
 const generalEntry = await getEntry("general", "index");
 const general = generalEntry!.data;
 
@@ -23,7 +21,7 @@ interface Props {
 
 const {
   title: pageTitle = siteName,
-  description = "A modern portfolio template built with Astro and DaisyUI",
+  description = "Farzad Hayat, agent-native software engineer in Brisbane.",
 } = Astro.props;
 
 const title =
@@ -31,119 +29,96 @@ const title =
     ? pageTitle
     : `${pageTitle} | ${siteName}`;
 
-// Custom blur-fade animation configuration
-const blurFadeAnimation = {
-  old: {
-    name: "blurFadeOut",
-    duration: "0.3s",
-    easing: "ease-in-out",
-    fillMode: "forwards",
-  },
-  new: {
-    name: "blurFadeIn",
-    duration: "0.3s",
-    easing: "ease-in-out",
-    fillMode: "backwards",
-  },
-};
-
-const pageTransition = {
-  forwards: blurFadeAnimation,
-  backwards: blurFadeAnimation,
-};
-
 const origin = Astro.url.origin;
+
+// Set by src/middleware.ts on server-rendered pages. Prerendered pages leave
+// it empty and the boot script below picks the theme before first paint.
+const theme = getTheme(Astro.locals.design);
+
+const bootData = {
+  cookie: THEME_COOKIE,
+  themes: themes.map((t) => ({ id: t.id, scheme: t.scheme, fonts: t.fonts ?? "", bg: t.preview.bg })),
+};
 ---
 
 <!doctype html>
-<html lang="en" transition:animate={pageTransition}>
+<html
+  lang="en"
+  data-design={theme?.id}
+  data-scheme={theme?.scheme}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content={theme?.preview.bg ?? "#f7f7f8"} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <!-- View Transitions -->
-    <ClientRouter />
+    <script is:inline define:vars={{ bootData }}>
+      // Prerendered pages: choose the theme before first paint.
+      (function () {
+        var root = document.documentElement;
+        if (root.dataset.design) return;
+        var list = bootData.themes;
+        var find = function (id) {
+          for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+        };
+        var param = new URLSearchParams(location.search).get("theme");
+        var match = document.cookie.match(new RegExp("(?:^|; )" + bootData.cookie + "=([^;]*)"));
+        var t = find(param) || find(match && match[1]);
+        if (!t) {
+          t = list[Math.floor(Math.random() * list.length)];
+          document.cookie = bootData.cookie + "=" + t.id + "; path=/; samesite=lax";
+        }
+        root.dataset.design = t.id;
+        root.dataset.scheme = t.scheme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", t.bg);
+        if (t.fonts) {
+          var link = document.createElement("link");
+          link.id = "theme-fonts";
+          link.rel = "stylesheet";
+          link.href = t.fonts;
+          document.head.appendChild(link);
+        }
+      })();
+    </script>
 
-    <!-- Speed Insights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {theme?.fonts && <link id="theme-fonts" rel="stylesheet" href={theme.fonts} />}
+
     <SpeedInsights />
-
-    <!-- Vercel Analytics -->
     <Analytics />
 
-    <!-- Open Graph / Social Media -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:image" content={`${origin}/images/og_home.png`} />
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${origin}/images/og_home.png`} />
   </head>
-  <body class="min-h-screen">
-    <!-- Theme Controls - Fixed Position -->
-    <div class="fixed top-4 right-4 z-50">
-      {general.enableThemeSelector ? <ThemeSelector /> : <ThemeToggle />}
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <ThemeDecor />
+      <SiteHeader />
+      <main id="main" class="page__main" tabindex="-1">
+        <slot />
+      </main>
+      <SiteFooter />
     </div>
 
-    <slot />
+    {general.enableThemeSelector && <ThemeDock />}
 
-    {
-      general.extraLinksEnabled && (
-        <>
-          {/* FabFlower for desktop - show 'both' and 'fab' items */}
-          <FabFlower
-            extraLinks={general.extraLinks.filter(
-              (link) => link.displayOn !== "dock"
-            )}
-          />
-          {/* Dock for mobile - show 'both' and 'dock' items */}
-          <Dock
-            extraLinks={general.extraLinks.filter(
-              (link) => link.displayOn !== "fab"
-            )}
-          />
-        </>
-      )
-    }
-
-    <PetGhost />
-
-    <!-- Smooth Scroll -->
-    <style is:global>
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Blur Fade View Transitions (for page-to-page navigation) */
-      @keyframes blurFadeIn {
-        0% {
-          opacity: 0;
-          filter: blur(10px);
-        }
-        100% {
-          opacity: 1;
-          filter: blur(0px);
-        }
-      }
-
-      @keyframes blurFadeOut {
-        0% {
-          opacity: 1;
-          filter: blur(0px);
-        }
-        100% {
-          opacity: 0;
-          filter: blur(10px);
-        }
-      }
-    </style>
+    <script is:inline type="application/json" id="theme-data" set:html={JSON.stringify(themes)} />
+    <script>
+      import "../scripts/theme";
+    </script>
   </body>
 </html>

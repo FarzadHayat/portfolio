@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Tech Stack
 
 - **Framework:** Astro 5.x (server output, Vercel adapter)
-- **Styling:** Tailwind CSS 4.x + DaisyUI 5.x
+- **Styling:** Tailwind CSS 4.x + a token-based theme system (12 themes, see `src/themes/README.md`)
 - **CMS:** Keystatic (Git-based headless CMS)
 - **Content:** Markdown, MDX, Markdoc
 - **Icons:** Lucide Astro
@@ -68,8 +68,9 @@ src/
 
 ## Styling
 
-- Tailwind utilities > DaisyUI components > scoped `<style>` tags.
-- DaisyUI themes: light (default), dark, synthwave, retro, valentine, dim.
+- Shared markup uses semantic classes styled in `src/styles/global.css`; Tailwind is for small utilities only.
+- Each theme lives in `src/themes/<id>/` and only overrides tokens and classes under `html[data-design="<id>"]`. Read `src/themes/README.md` before adding or changing a theme.
+- Visitors get a random theme per browser session (`src/middleware.ts`); `?theme=<id>` shows a specific one.
 - Only import `global.css` once (in `Layout.astro`).
 
 ## Resume Workflow

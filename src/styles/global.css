@@ -1420,3 +1420,15 @@
   --tw-prose-td-borders: var(--border);
   max-width: 70ch;
 }
+
+/* Phones: the dock shows icons only so it covers less content. */
+@media (max-width: 30rem) {
+  .theme-dock .theme-dock__open [data-theme-name] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

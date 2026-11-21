@@ -779,7 +779,8 @@ html[data-design="neoclassical"] .theme-picker__title {
   letter-spacing: 0.12em;
 }
 html[data-design="neoclassical"] .theme-picker__grid {
-  padding-inline: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem), 1fr));
+  padding-inline: clamp(0.75rem, 4vw, 1.5rem);
 }
 html[data-design="neoclassical"] .theme-picker__foot {
   padding: 0.85rem 1.5rem 1.35rem;

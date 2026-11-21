@@ -182,12 +182,6 @@
     overflow: clip;
   }
 
-  .container {
-    width: 100%;
-    max-width: var(--page-max);
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-  }
 
   /* ---------- Header ---------- */
   .site-header {
@@ -402,7 +396,7 @@
     gap: 0.75rem;
     margin-top: 2rem;
   }
-  .hero__links {
+  .hero .hero__links {
     margin-top: 1.25rem;
   }
   .hero__portrait {
@@ -923,26 +917,6 @@
   }
 
   /* Long-form text */
-  .prose {
-    --tw-prose-body: var(--text);
-    --tw-prose-headings: var(--text);
-    --tw-prose-lead: var(--text-muted);
-    --tw-prose-links: var(--link);
-    --tw-prose-bold: var(--text);
-    --tw-prose-counters: var(--text-muted);
-    --tw-prose-bullets: var(--accent);
-    --tw-prose-hr: var(--border);
-    --tw-prose-quotes: var(--text);
-    --tw-prose-quote-borders: var(--accent);
-    --tw-prose-captions: var(--text-muted);
-    --tw-prose-code: var(--text);
-    --tw-prose-pre-code: var(--text);
-    --tw-prose-pre-bg: var(--surface-2);
-    --tw-prose-th-borders: var(--border);
-    --tw-prose-td-borders: var(--border);
-    max-width: 70ch;
-    font-size: 1rem;
-  }
   .prose :where(h1, h2, h3, h4):not(:where(.not-prose *)) {
     font-family: var(--font-display);
   }
@@ -1413,4 +1387,36 @@
     line-height: 1.35;
     color: var(--text-muted);
   }
+}
+
+/*
+  Unlayered on purpose: Tailwind's own .container utility and the typography
+  plugin's .prose colors would otherwise win over the components layer.
+  Themes still override these, since their selectors are more specific.
+*/
+.container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prose {
+  --tw-prose-body: var(--text);
+  --tw-prose-headings: var(--text);
+  --tw-prose-lead: var(--text-muted);
+  --tw-prose-links: var(--link);
+  --tw-prose-bold: var(--text);
+  --tw-prose-counters: var(--text-muted);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--text);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--text-muted);
+  --tw-prose-code: var(--text);
+  --tw-prose-pre-code: var(--text);
+  --tw-prose-pre-bg: var(--surface-2);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+  max-width: 70ch;
 }

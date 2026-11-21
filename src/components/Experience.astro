@@ -29,8 +29,7 @@ const items = await Promise.all(
                 <summary class="timeline__summary">
                   <span class="timeline__role">{d.title}</span>
                   <span class="timeline__org">
-                    {d.subtitle}
-                    {d.location && <span class="timeline__place">, {d.location}</span>}
+                    {d.subtitle}{d.location && <span class="timeline__place">, {d.location}</span>}
                   </span>
                   <span class="timeline__date">
                     {formatPeriod(d.startDate, d.endDate)}

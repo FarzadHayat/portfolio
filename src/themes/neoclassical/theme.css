@@ -1,12 +1,822 @@
-/* Neoclassical theme. Every rule is scoped to html[data-design="neoclassical"]. */
+/*
+  Neoclassical. Carrara marble, gilt bronze and Wedgwood jasper.
+  Display: Cinzel (Roman inscriptional capitals). Text: EB Garamond.
+  Signature moves: the portrait as a jasper cameo in a gilt laurel wreath,
+  and the name set as a gilded inscription. Greek key friezes mark sections;
+  the experience timeline is a fluted column; a pediment crowns the footer.
+  Every rule is scoped to html[data-design="neoclassical"].
+*/
 html[data-design="neoclassical"] {
   color-scheme: light;
-  --bg: #f3efe6;
-  --bg-alt: color-mix(in oklab, #f3efe6 92%, #2a2723);
-  --surface: #fbf8f1;
-  --surface-2: color-mix(in oklab, #fbf8f1 90%, #2a2723);
-  --text: #2a2723;
-  --text-muted: color-mix(in oklab, #2a2723 68%, #f3efe6);
-  --border: color-mix(in oklab, #2a2723 18%, #f3efe6);
-  --accent: #8a6d2f;
+
+  /* Marble, basalt, gilt bronze, jasper */
+  --marble: #ebeae6;
+  --gold: #a2802f; /* decorative lines only */
+  --gold-soft: #d6c595;
+  --gilt-hi: #c9a24a;
+  --jasper: #6f8fae;
+  --jasper-deep: #3d5a77;
+
+  --bg: var(--marble);
+  --bg-alt: rgb(221 218 211 / 0.6);
+  --surface: #f8f7f4;
+  --surface-2: #e7e4de;
+  --text: #23252a;
+  --text-muted: #555960;
+  --border: #cdc8bc;
+  --accent: #7a5a16;
+  --accent-ink: #fffdf7;
+  --accent-2: var(--jasper-deep);
+  --link: #7a5a16;
+  --focus: var(--jasper-deep);
+  --selection: rgb(201 162 74 / 0.32);
+
+  --font-body: "EB Garamond", Garamond, "Times New Roman", serif;
+  --font-display: "Cinzel", "Trajan Pro", "EB Garamond", serif;
+  --body-size: 1.1875rem;
+  --body-leading: 1.7;
+  --display-weight: 600;
+  --display-tracking: 0.06em;
+  --display-leading: 1.08;
+  --display-case: none;
+  --heading-weight: 600;
+
+  --border-width: 1px;
+  --radius-lg: 3px;
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-pill: 2px;
+  --shadow: 0 1px 0 rgb(255 255 255 / 0.8), 0 10px 22px -14px rgb(38 34 26 / 0.38);
+  --shadow-lg: 0 1px 0 rgb(255 255 255 / 0.8), 0 22px 40px -18px rgb(38 34 26 / 0.45);
+
+  /* Tablets: polished marble with a carved inner fillet */
+  --card-bg: var(--surface);
+  --card-border: 1px solid var(--border);
+  --card-radius: 2px;
+  --card-shadow: inset 0 0 0 6px var(--surface), inset 0 0 0 7px #e2ddd1, var(--shadow);
+  --btn-bg: transparent;
+  --btn-ink: var(--text);
+  --btn-border: 1px solid #7f7b71;
+  --btn-radius: 2px;
+  --btn-shadow: none;
+  --btn-primary-bg: linear-gradient(180deg, #8f6c22, #6e5112);
+  --btn-primary-ink: var(--accent-ink);
+  --chip-bg: rgb(255 255 255 / 0.55);
+  --chip-ink: var(--text);
+  --chip-border: 1px solid var(--gold-soft);
+  --chip-radius: 2px;
+
+  --page-max: 70rem;
+  --text-max: 38rem;
+  --section-space: clamp(4.5rem, 10vw, 8rem);
+  --ease: cubic-bezier(0.25, 0.6, 0.2, 1);
+}
+
+html[data-design="neoclassical"] body {
+  background: var(--bg);
+  font-feature-settings: "kern", "liga", "onum";
+}
+
+/* ---------- Marble ---------- */
+html[data-design="neoclassical"] .neo-marble {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Header: centred entablature ---------- */
+html[data-design="neoclassical"] .site-header__inner {
+  justify-content: center;
+  padding-block: 1.25rem 0.25rem;
+}
+html[data-design="neoclassical"] .site-header__brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding-block: 0.6rem;
+}
+@media (min-width: 48rem) {
+  html[data-design="neoclassical"] .site-header__inner {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  html[data-design="neoclassical"] .site-nav {
+    border-block: 3px double var(--gold-soft);
+    padding-inline: 1rem;
+  }
+}
+html[data-design="neoclassical"] .site-nav__list {
+  gap: 0.5rem;
+}
+html[data-design="neoclassical"] .site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  background: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 50% 78%;
+  background-size: 0 1px;
+  transition: background-size 0.25s var(--ease);
+}
+html[data-design="neoclassical"] .site-nav__link:hover {
+  background: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 50% 78%;
+  background-size: 60% 1px;
+  color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+html[data-design="neoclassical"] .btn {
+  min-height: 2.75rem;
+  padding: 0.65rem 1.4rem 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+html[data-design="neoclassical"] .btn:hover {
+  background: rgb(255 255 255 / 0.6);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+html[data-design="neoclassical"] .btn--primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
+  border: 1px solid #5c430e;
+  box-shadow: inset 0 1px 0 rgb(255 236 180 / 0.45), 0 6px 14px -8px rgb(70 50 10 / 0.6);
+}
+html[data-design="neoclassical"] .btn--primary:hover {
+  background: linear-gradient(180deg, #7d5d1a, #5c430e);
+  color: var(--accent-ink);
+  border-color: #4a360b;
+}
+html[data-design="neoclassical"] .btn--ghost {
+  border-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--gold-soft);
+  text-underline-offset: 0.35em;
+}
+html[data-design="neoclassical"] .btn--ghost:hover {
+  background: transparent;
+  border-color: transparent;
+  text-decoration-color: var(--accent);
+}
+html[data-design="neoclassical"] .btn--sm {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.74rem;
+}
+
+/* Social links: struck bronze coins */
+html[data-design="neoclassical"] .icon-btn {
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: radial-gradient(circle at 35% 30%, #fbfaf6, #e4dfd2 75%);
+  color: var(--text);
+  box-shadow: inset 0 0 0 3px #f6f3ec, inset 0 0 0 4px var(--gold-soft), 0 3px 8px -4px rgb(38 34 26 / 0.4);
+}
+html[data-design="neoclassical"] .icon-btn:hover {
+  background: radial-gradient(circle at 35% 30%, #fff8e6, #e2cf9b 80%);
+  color: #4a360b;
+}
+
+/* ---------- Chips ---------- */
+html[data-design="neoclassical"] .chip {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+html[data-design="neoclassical"] .badge {
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  background: var(--accent);
+}
+
+/* ---------- Hero: cameo, wreath, inscription ---------- */
+html[data-design="neoclassical"] .hero {
+  padding-block: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+}
+html[data-design="neoclassical"] .hero__inner {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: clamp(1.75rem, 3vw, 2.25rem);
+  text-align: center;
+}
+html[data-design="neoclassical"] .hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 48rem;
+}
+html[data-design="neoclassical"] .hero__greeting {
+  margin: 0 0 0.35rem;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+html[data-design="neoclassical"] .hero__name {
+  position: relative;
+  padding-block: 0.3em 0.22em;
+  font-size: clamp(2.4rem, 8vw, 5.25rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  /* Gilt lettering. The lightest stop keeps 3.3:1 on marble. */
+  color: #6e5112;
+  background: linear-gradient(100deg, #5e440d 0%, #8a6820 30%, #9c7a2a 46%, #6e5112 60%, #5e440d 100%);
+  background-size: 250% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.9));
+}
+/* Architrave rules above and below the inscription */
+html[data-design="neoclassical"] .hero__name::before,
+html[data-design="neoclassical"] .hero__name::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: min(100%, 26rem);
+  height: 4px;
+  translate: -50% 0;
+  border-block: 1px solid var(--gold);
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .hero__name::before {
+  top: 0;
+}
+html[data-design="neoclassical"] .hero__name::after {
+  bottom: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-design="neoclassical"] .hero__name {
+    animation: neo-gild 2.4s 0.3s var(--ease) both;
+  }
+}
+@keyframes neo-gild {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+html[data-design="neoclassical"] .hero__title {
+  justify-content: center;
+  gap: 0.25rem 0;
+  margin-top: 1.1rem;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 500;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.05em;
+}
+html[data-design="neoclassical"] .hero__role + .hero__role {
+  color: var(--text);
+}
+html[data-design="neoclassical"] .hero__role + .hero__role::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin: 0 0.9em 0.18em;
+  rotate: 45deg;
+  background: var(--gold);
+}
+html[data-design="neoclassical"] .hero__location {
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+html[data-design="neoclassical"] .hero__bio {
+  max-width: 36rem;
+  margin-top: 1.25rem;
+  font-size: 1.2rem;
+  /* Book setting: justified, hyphenated, last line centred */
+  text-align: justify;
+  text-align-last: center;
+  hyphens: auto;
+}
+@media (max-width: 40rem) {
+  html[data-design="neoclassical"] .hero__title {
+    flex-direction: column;
+    align-items: center;
+  }
+  html[data-design="neoclassical"] .hero__role + .hero__role::before {
+    display: none;
+  }
+  html[data-design="neoclassical"] .hero__bio {
+    font-size: 1.125rem;
+    text-align: left;
+    text-align-last: auto;
+  }
+}
+html[data-design="neoclassical"] .hero__actions,
+html[data-design="neoclassical"] .hero .hero__links {
+  justify-content: center;
+}
+html[data-design="neoclassical"] .hero__actions {
+  margin-top: 1.75rem;
+}
+
+/* The cameo: jasper oval, pearl beading, gilt rim, laurel wreath */
+html[data-design="neoclassical"] .hero__portrait {
+  order: -1;
+  position: relative;
+  justify-self: center;
+  width: clamp(9rem, 20vw, 11rem);
+  margin: 1.25rem 0 1rem;
+  padding: clamp(0.6rem, 1.4vw, 0.8rem);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 30%, #8aa6c2, var(--jasper) 55%, #56748f);
+  box-shadow:
+    0 0 0 2px #fbf8ef,
+    0 0 0 4px var(--gilt-hi),
+    0 0 0 5px #6e5112,
+    0 18px 30px -12px rgb(30 40 55 / 0.45);
+}
+html[data-design="neoclassical"] .hero__portrait::before {
+  content: "";
+  position: absolute;
+  inset: -17% -23% -12%;
+  z-index: -1;
+  background: url("/themes/neoclassical/laurel.svg") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .hero__portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0.2rem;
+  border: 3px dotted rgb(255 255 255 / 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .hero__photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #f4f1ea;
+}
+
+/* ---------- Sections ---------- */
+html[data-design="neoclassical"] .section--alt {
+  background: var(--bg-alt);
+  border-block: 3px double var(--gold-soft);
+}
+html[data-design="neoclassical"] .section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+/* Greek key frieze above each section title */
+html[data-design="neoclassical"] .section__head::before {
+  content: "";
+  display: block;
+  width: min(14rem, 70%);
+  height: 0.9rem;
+  margin-bottom: 1.25rem;
+  background: url("/themes/neoclassical/meander.svg") center / auto 100% repeat-x;
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .section__title {
+  font-size: clamp(1.85rem, 4.6vw, 2.9rem);
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+html[data-design="neoclassical"] .section__intro {
+  margin-inline: auto;
+  font-style: italic;
+  font-size: 1.15rem;
+}
+html[data-design="neoclassical"] .section__more {
+  display: flex;
+  justify-content: center;
+}
+
+/* About panel */
+html[data-design="neoclassical"] .panel {
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+}
+html[data-design="neoclassical"] .about .section__title {
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  margin-bottom: 0.75rem;
+}
+html[data-design="neoclassical"] .about__photo {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #fbf8ef, 0 0 0 4px var(--gilt-hi), 0 0 0 5px #6e5112;
+}
+
+/* ---------- Projects: framed reliefs ---------- */
+html[data-design="neoclassical"] .project-card {
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+html[data-design="neoclassical"] .project-card:hover {
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 6px var(--surface), inset 0 0 0 7px var(--gold-soft), var(--shadow-lg);
+}
+html[data-design="neoclassical"] .project-card__media {
+  margin: 0.7rem 0.7rem 0;
+  border: 1px solid #d9d3c4;
+}
+html[data-design="neoclassical"] .project-card__body {
+  padding: 1.15rem 1.5rem 1.5rem;
+}
+html[data-design="neoclassical"] .project-card__title {
+  font-size: 1.22rem;
+  letter-spacing: 0.04em;
+}
+html[data-design="neoclassical"] .project-card__title a:hover {
+  color: var(--accent);
+}
+html[data-design="neoclassical"] .project-card__meta,
+html[data-design="neoclassical"] .hackathon__meta,
+html[data-design="neoclassical"] .entry__date,
+html[data-design="neoclassical"] .timeline__date {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+html[data-design="neoclassical"] .project-card__desc {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+@media (min-width: 48rem) {
+  html[data-design="neoclassical"] .project-card--lead .project-card__media {
+    margin: 0.7rem 0 0.7rem 0.7rem;
+  }
+  html[data-design="neoclassical"] .project-card--lead .project-card__title {
+    font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  }
+}
+
+/* ---------- Experience: a fluted column ---------- */
+html[data-design="neoclassical"] .timeline {
+  padding-left: 3.25rem;
+  gap: 1.25rem;
+}
+html[data-design="neoclassical"] .timeline::before {
+  left: 0.35rem;
+  top: 1.1rem;
+  bottom: 0.2rem;
+  width: 1.4rem;
+  border-inline: 1px solid #bdb7a9;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.1), transparent 35%, rgb(255 255 255 / 0.5) 55%, rgb(0 0 0 / 0.12)),
+    repeating-linear-gradient(90deg, #f4f2ed 0 3.5px, #cfc9bc 3.5px 4.5px);
+  pointer-events: none;
+}
+/* Capital */
+html[data-design="neoclassical"] .timeline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.1rem;
+  height: 1.1rem;
+  border: 1px solid #bdb7a9;
+  border-radius: 2px 2px 0 0;
+  background:
+    linear-gradient(#bdb7a9, #bdb7a9) 0 62% / 100% 1px no-repeat,
+    linear-gradient(#f6f4ef, #ddd8cc);
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .timeline__marker {
+  left: calc(-3.25rem + 0.42rem);
+  top: 1.55rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: radial-gradient(circle at 35% 30%, #f0d998, var(--gilt-hi) 45%, #7a5a16);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--gold);
+}
+html[data-design="neoclassical"] .timeline__summary {
+  padding: 1.25rem 1.5rem;
+  min-height: 2.75rem;
+}
+html[data-design="neoclassical"] .timeline__role {
+  font-size: 1.12rem;
+  letter-spacing: 0.04em;
+}
+html[data-design="neoclassical"] .timeline__toggle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--gold-soft);
+  background: var(--surface);
+  color: var(--accent);
+}
+html[data-design="neoclassical"] .timeline__body {
+  padding: 0 1.5rem 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  html[data-design="neoclassical"] .timeline {
+    padding-left: 2.1rem;
+  }
+  html[data-design="neoclassical"] .timeline::before {
+    left: 0.2rem;
+    width: 0.85rem;
+  }
+  html[data-design="neoclassical"] .timeline::after {
+    width: 1.25rem;
+    height: 0.8rem;
+  }
+  html[data-design="neoclassical"] .timeline__marker {
+    left: calc(-2.1rem + 0.15rem);
+    width: 1rem;
+    height: 1rem;
+  }
+  html[data-design="neoclassical"] .timeline__summary,
+  html[data-design="neoclassical"] .timeline__body {
+    padding-inline: 1.15rem;
+  }
+}
+
+/* ---------- Education and certifications ---------- */
+html[data-design="neoclassical"] .entry {
+  padding: 1.6rem 1.6rem 1.5rem;
+}
+html[data-design="neoclassical"] .entry__kind {
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+html[data-design="neoclassical"] .entry__title {
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Hackathons ---------- */
+html[data-design="neoclassical"] .hackathon__media {
+  margin: 0.7rem;
+  border: 1px solid #d9d3c4;
+  overflow: hidden;
+}
+@media (min-width: 40rem) {
+  html[data-design="neoclassical"] .hackathon__media {
+    margin-right: 0;
+  }
+}
+html[data-design="neoclassical"] .hackathon__body {
+  padding: 1.4rem 1.6rem 1.5rem;
+}
+html[data-design="neoclassical"] .hackathon__title {
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+html[data-design="neoclassical"] .embed-frame {
+  padding: 0.6rem;
+  background: var(--surface);
+}
+
+/* ---------- Footer: a pediment ---------- */
+html[data-design="neoclassical"] .site-footer {
+  border-top: 0;
+  padding-top: calc(clamp(1.5rem, 4vw, 2.5rem) + min(100vw - 2rem, 38rem) * 0.1875 + 1.25rem);
+  text-align: center;
+}
+html[data-design="neoclassical"] .site-footer::before {
+  content: "";
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 2.5rem);
+  left: 50%;
+  width: min(100% - 2rem, 38rem);
+  aspect-ratio: 640 / 120;
+  translate: -50% 0;
+  background: url("/themes/neoclassical/pediment.svg") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+html[data-design="neoclassical"] .site-footer__inner {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 1.5rem;
+}
+html[data-design="neoclassical"] .site-footer__title {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  letter-spacing: 0.1em;
+}
+html[data-design="neoclassical"] .site-footer__email {
+  font-style: italic;
+  font-size: 1.25rem;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--gold-soft);
+}
+html[data-design="neoclassical"] .site-footer__links {
+  justify-content: center;
+}
+html[data-design="neoclassical"] .site-footer__meta {
+  font-style: italic;
+}
+
+/* ---------- Subpages ---------- */
+html[data-design="neoclassical"] .page-head__title {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  letter-spacing: 0.06em;
+}
+html[data-design="neoclassical"] .page-head__intro {
+  font-style: italic;
+  font-size: 1.25rem;
+}
+html[data-design="neoclassical"] .page-head__title::after {
+  content: "";
+  display: block;
+  width: 9rem;
+  height: 0.8rem;
+  margin-top: 1.1rem;
+  background: url("/themes/neoclassical/meander.svg") left center / auto 100% repeat-x;
+}
+html[data-design="neoclassical"] .back-link {
+  min-height: 2.75rem;
+  font-style: italic;
+}
+html[data-design="neoclassical"] .back-link:hover {
+  color: var(--accent);
+}
+html[data-design="neoclassical"] .cover-image {
+  padding: 0.7rem;
+  background: var(--surface);
+}
+html[data-design="neoclassical"] .cover-image img {
+  border: 1px solid #d9d3c4;
+}
+html[data-design="neoclassical"] .stack-panel__title {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+html[data-design="neoclassical"] .error-page__code {
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+/* Long-form text */
+html[data-design="neoclassical"] .prose {
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+}
+html[data-design="neoclassical"] .prose :where(h1, h2, h3, h4):not(:where(.not-prose *)) {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+html[data-design="neoclassical"] .prose :where(a):not(:where(.not-prose *)) {
+  text-decoration-color: var(--gold-soft);
+  text-underline-offset: 0.2em;
+}
+html[data-design="neoclassical"] .prose :where(a):not(:where(.not-prose *)):hover {
+  text-decoration-color: var(--accent);
+}
+html[data-design="neoclassical"] .prose :where(blockquote):not(:where(.not-prose *)) {
+  border-left-color: var(--gold);
+  font-style: italic;
+}
+
+/* Forms */
+html[data-design="neoclassical"] .field {
+  background: var(--surface);
+  border-color: #7f7b71;
+}
+html[data-design="neoclassical"] .field:focus-visible {
+  border-color: var(--jasper-deep);
+}
+
+/* Focus: jasper blue, clear on marble and gilt */
+html[data-design="neoclassical"] :focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+html[data-design="neoclassical"] .icon-btn:focus-visible {
+  border-radius: 50%;
+}
+
+/* ---------- Referrals ---------- */
+html[data-design="neoclassical"] .referrals__controls {
+  background: rgb(235 234 230 / 0.94);
+  border-bottom: 3px double var(--gold-soft);
+}
+html[data-design="neoclassical"] .referral__name {
+  font-size: 1.12rem;
+  letter-spacing: 0.04em;
+}
+html[data-design="neoclassical"] .referral__category {
+  font-style: italic;
+}
+
+/* ---------- Quiz ---------- */
+html[data-design="neoclassical"] .quiz__title {
+  letter-spacing: 0.06em;
+}
+html[data-design="neoclassical"] .quiz__question {
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+html[data-design="neoclassical"] .quiz__option {
+  min-height: 3rem;
+  border-color: var(--border);
+  background: var(--surface);
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 4px #e8e3d8;
+}
+html[data-design="neoclassical"] .quiz__option:hover {
+  border-color: var(--gold);
+  background: #fbf8ef;
+}
+html[data-design="neoclassical"] .quiz__answer {
+  border-left-color: var(--gold);
+  border-radius: 2px;
+}
+html[data-design="neoclassical"] .quiz__progress {
+  accent-color: var(--accent);
+}
+
+/* ---------- Theme dock and picker ---------- */
+html[data-design="neoclassical"] .theme-dock {
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: rgb(248 247 244 / 0.96);
+  box-shadow: inset 0 0 0 3px rgb(248 247 244), inset 0 0 0 4px var(--gold-soft), var(--shadow-lg);
+  padding: 0.4rem;
+}
+html[data-design="neoclassical"] .theme-dock__open {
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+html[data-design="neoclassical"] .theme-dock__shuffle {
+  border-radius: 2px;
+}
+html[data-design="neoclassical"] .theme-dock__open:hover,
+html[data-design="neoclassical"] .theme-dock__shuffle:hover {
+  background: #efe6cf;
+  color: #4a360b;
+}
+html[data-design="neoclassical"] .theme-picker {
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 6px var(--surface), inset 0 0 0 7px var(--gold-soft), var(--shadow-lg);
+}
+html[data-design="neoclassical"] .theme-picker::backdrop {
+  background: rgb(35 37 42 / 0.45);
+}
+html[data-design="neoclassical"] .theme-picker__head {
+  padding: 1.25rem 1.25rem 0.75rem 1.5rem;
+}
+html[data-design="neoclassical"] .theme-picker__title {
+  font-size: 1.3rem;
+  letter-spacing: 0.12em;
+}
+html[data-design="neoclassical"] .theme-picker__grid {
+  padding-inline: 1.5rem;
+}
+html[data-design="neoclassical"] .theme-picker__foot {
+  padding: 0.85rem 1.5rem 1.35rem;
+  border-top: 3px double var(--gold-soft);
+}
+html[data-design="neoclassical"] .theme-option {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #f1efea;
+}
+html[data-design="neoclassical"] .theme-option:hover {
+  border-color: var(--gold);
+  background: #fbf8ef;
+}
+html[data-design="neoclassical"] .theme-option[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+html[data-design="neoclassical"] .theme-option__thumb {
+  border-radius: 1px;
+}
+html[data-design="neoclassical"] .theme-option__name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+html[data-design="neoclassical"] .theme-option__tagline {
+  margin-top: -0.15rem;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-design="neoclassical"] *,
+  html[data-design="neoclassical"] *::before,
+  html[data-design="neoclassical"] *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,12 +1,607 @@
-/* Sketchbook theme. Every rule is scoped to html[data-design="sketch"]. */
+/*
+  Sketchbook theme. A designer's concept sketch on dot-grid paper.
+  - Text stays crisp. The hand-drawn wobble (SVG filters #sk-rough and
+    #sk-rough-2, defined in Decor.astro) goes only on frames and ornaments.
+  - Signature moves: ink-line frames with pencil-hatch shading, and a
+    highlighter swipe under headings (drawn in once on the hero name).
+  Every rule is scoped to html[data-design="sketch"].
+*/
 html[data-design="sketch"] {
   color-scheme: light;
-  --bg: #fbfaf4;
-  --bg-alt: color-mix(in oklab, #fbfaf4 92%, #2a2a2a);
+
+  --bg: #fafaf6;
+  --bg-alt: #f2f4f5;
   --surface: #ffffff;
-  --surface-2: color-mix(in oklab, #ffffff 90%, #2a2a2a);
-  --text: #2a2a2a;
-  --text-muted: color-mix(in oklab, #2a2a2a 68%, #fbfaf4);
-  --border: color-mix(in oklab, #2a2a2a 18%, #fbfaf4);
-  --accent: #2f5fd0;
+  --surface-2: #f3f3ee;
+  --text: #24272d;
+  --text-muted: #545862;
+  --border: #c9ccd2;
+  --accent: #263aa8;
+  --accent-ink: #ffffff;
+  --accent-2: #c23a2b;
+  --link: var(--accent);
+  --focus: var(--accent);
+  --selection: #ffe96b;
+
+  --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Kalam", "Segoe Print", "Bradley Hand", cursive;
+  --body-size: 1.0625rem;
+  --body-leading: 1.65;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --display-leading: 1.05;
+  --heading-weight: 700;
+
+  --border-width: 2px;
+  --radius-lg: 14px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: none;
+  --shadow-lg: 0 1px 2px rgb(36 39 45 / 0.12), 0 14px 28px -14px rgb(36 39 45 / 0.35);
+
+  --card-bg: var(--surface);
+  --card-border: 2px solid var(--sk-ink);
+  --card-radius: var(--sk-r-card);
+  --card-shadow: none;
+  --btn-bg: var(--surface);
+  --btn-ink: var(--text);
+  --btn-border: 2px solid var(--sk-ink);
+  --btn-radius: var(--sk-r-btn);
+  --btn-primary-bg: var(--accent);
+  --btn-primary-ink: var(--accent-ink);
+  --chip-bg: transparent;
+  --chip-ink: var(--text);
+  --chip-border: 1.5px solid #9a9fa8;
+  --chip-radius: 12px 4px 10px 5px / 5px 10px 4px 12px;
+
+  /* Theme-only tokens */
+  --sk-ink: #24272d;
+  --sk-hl: #ffe45e;
+  --sk-red: #c23a2b;
+  --sk-tape: rgb(232 225 192 / 0.8);
+  --sk-r-btn: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --sk-r-card: 14px 5px 16px 6px / 6px 16px 5px 14px;
+  --sk-hatch: repeating-linear-gradient(-45deg, rgb(36 39 45 / 0.42) 0 1px, transparent 1px 6px);
+  --sk-dots: radial-gradient(circle, rgb(60 82 125 / 0.24) 1px, transparent 1.6px);
+}
+
+/* ---------- Paper ---------- */
+html[data-design="sketch"] body {
+  background-color: var(--bg);
+  background-image: var(--sk-dots);
+  background-size: 22px 22px;
+}
+html[data-design="sketch"] .sk-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+html[data-design="sketch"] .section--alt {
+  background-color: var(--bg-alt);
+  background-image:
+    linear-gradient(rgb(64 110 180 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(64 110 180 / 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+html[data-design="sketch"] :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---------- Headings in marker, with a highlighter swipe ---------- */
+html[data-design="sketch"] :is(.hero__name, .section__title, .page-head__title, .site-footer__title, .quiz__title, .theme-picker__title) {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+html[data-design="sketch"] :is(.hero__name, .section__title, .page-head__title, .site-footer__title, .quiz__title, .theme-picker__title)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.18em;
+  right: -0.22em;
+  bottom: 0.12em;
+  height: 0.42em;
+  border-radius: 0.3em 0.08em 0.35em 0.12em;
+  background: var(--sk-hl);
+  transform: rotate(-1.4deg);
+  transform-origin: left center;
+  filter: url(#sk-rough-2);
+  pointer-events: none;
+}
+html[data-design="sketch"] .quiz__title {
+  margin-inline: auto;
+}
+html[data-design="sketch"] .section__title {
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+}
+html[data-design="sketch"] :is(.project-card__title, .timeline__role, .entry__title, .hackathon__title, .referral__name, .stack-panel__title, .quiz__question, .error-page__code) {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+html[data-design="sketch"] .prose :where(h1, h2, h3, h4):not(:where(.not-prose *)) {
+  font-weight: 700;
+}
+html[data-design="sketch"] .prose a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+html[data-design="sketch"] :is(.prose a, .site-footer__email, .entry__title a):hover {
+  background: var(--sk-hl);
+  color: var(--text);
+}
+
+/* ---------- Header ---------- */
+html[data-design="sketch"] .site-header__brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+html[data-design="sketch"] .site-nav__link {
+  padding: 0.5rem 0.85rem;
+  border: 2px solid transparent;
+  border-radius: var(--sk-r-btn);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+html[data-design="sketch"] .site-nav__link:hover {
+  background: transparent;
+  border-color: var(--sk-ink);
+}
+
+/* ---------- Buttons, chips, fields ---------- */
+html[data-design="sketch"] .btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  padding: 0.6rem 1.2rem 0.5rem;
+  transition: transform 0.15s var(--ease), background-color 0.15s var(--ease);
+}
+html[data-design="sketch"] .btn:hover {
+  background: var(--sk-hl);
+}
+html[data-design="sketch"] .btn--primary {
+  border-color: var(--sk-ink);
+}
+html[data-design="sketch"] .btn--primary:hover {
+  background: #1b2a85;
+}
+html[data-design="sketch"] .btn--ghost {
+  border-color: transparent;
+}
+html[data-design="sketch"] .btn--ghost:hover {
+  border-color: var(--sk-ink);
+  background: transparent;
+}
+html[data-design="sketch"] .btn--sm {
+  min-height: 2.75rem;
+  padding: 0.45rem 0.95rem 0.35rem;
+  font-size: 1rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-design="sketch"] :is(.btn, .icon-btn):hover {
+    transform: rotate(-1.5deg);
+  }
+}
+html[data-design="sketch"] .icon-btn {
+  border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
+}
+html[data-design="sketch"] .icon-btn:hover {
+  background: var(--sk-hl);
+}
+html[data-design="sketch"] .chip {
+  font-size: 0.82rem;
+}
+html[data-design="sketch"] .badge {
+  border: 1.5px solid var(--sk-ink);
+  border-radius: 10px 3px 9px 4px / 4px 9px 3px 10px;
+  background: var(--sk-hl);
+  color: var(--text);
+  font-weight: 700;
+}
+html[data-design="sketch"] .field {
+  border: 2px solid var(--sk-ink);
+  border-radius: var(--sk-r-card);
+}
+
+/* ---------- Frames: wobbly ink outline on paper, pencil hatch below ---------- */
+html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame) {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: var(--sk-r-card);
+  box-shadow: none;
+}
+html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame)::before,
+html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--sk-r-card);
+  pointer-events: none;
+}
+html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame)::before {
+  z-index: -1;
+  background: var(--surface);
+  border: 2px solid var(--sk-ink);
+  filter: url(#sk-rough);
+}
+html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame)::after {
+  z-index: -2;
+  background: var(--sk-hatch);
+  transform: translate(7px, 7px);
+  filter: url(#sk-rough-2);
+  transition: transform 0.2s var(--ease);
+}
+html[data-design="sketch"] .project-card:hover {
+  box-shadow: none;
+}
+html[data-design="sketch"] .project-card:hover::after {
+  transform: translate(11px, 11px);
+}
+html[data-design="sketch"] .project-card:has(.project-card__title a:focus-visible) {
+  outline-offset: 6px;
+}
+html[data-design="sketch"] .project-card__media,
+html[data-design="sketch"] .hackathon__media {
+  margin: 0.6rem 0.6rem 0;
+  border: 1.5px solid var(--sk-ink);
+  border-radius: 3px;
+  overflow: hidden;
+}
+html[data-design="sketch"] .project-card__title {
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+html[data-design="sketch"] .project-card__title a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+}
+html[data-design="sketch"] .project-card__desc {
+  color: var(--text);
+}
+@media (min-width: 48rem) {
+  html[data-design="sketch"] .project-card--lead .project-card__media {
+    margin: 0.6rem 0 0.6rem 0.6rem;
+  }
+  html[data-design="sketch"] .project-card--lead .project-card__title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+  }
+}
+html[data-design="sketch"] .hackathon__media {
+  margin: 0.6rem;
+  align-self: start;
+}
+html[data-design="sketch"] .hackathon__title {
+  font-size: 1.4rem;
+}
+html[data-design="sketch"] .embed-frame {
+  padding: 6px;
+}
+html[data-design="sketch"] .embed-frame iframe {
+  border-radius: 8px;
+}
+
+/* ---------- Experience timeline ---------- */
+html[data-design="sketch"] .timeline {
+  gap: 1.35rem;
+}
+html[data-design="sketch"] .timeline::before {
+  width: 0;
+  background: none;
+  border-left: 2px dashed #8b909a;
+}
+html[data-design="sketch"] .timeline__marker {
+  border: 2px solid var(--sk-ink);
+  border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
+  background: var(--sk-hl);
+  box-shadow: none;
+}
+html[data-design="sketch"] .timeline__role {
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+html[data-design="sketch"] .timeline__summary {
+  border-radius: var(--sk-r-card);
+}
+html[data-design="sketch"] .timeline__toggle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 2px solid var(--sk-ink);
+  border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
+  background: transparent;
+}
+html[data-design="sketch"] .timeline__summary:hover .timeline__toggle {
+  background: var(--sk-hl);
+}
+
+/* ---------- Education ---------- */
+html[data-design="sketch"] .entry__kind {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--accent);
+}
+html[data-design="sketch"] .entry__title {
+  font-size: 1.3rem;
+}
+
+/* ---------- Hero ---------- */
+html[data-design="sketch"] .hero__greeting {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: var(--accent);
+}
+html[data-design="sketch"] .hero__name {
+  font-size: clamp(3rem, 9vw, 6.25rem);
+  line-height: 1;
+}
+html[data-design="sketch"] .hero__name::after {
+  height: 0.36em;
+  bottom: 0.08em;
+}
+html[data-design="sketch"] .hero__role:first-child {
+  font-weight: 700;
+}
+html[data-design="sketch"] .hero__portrait {
+  position: relative;
+  padding: 0.7rem 0.7rem 2.4rem;
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(36 39 45 / 0.15), 0 16px 30px -16px rgb(36 39 45 / 0.45);
+  transform: rotate(2deg);
+}
+html[data-design="sketch"] .hero__photo,
+html[data-design="sketch"] .cover-image img {
+  border-radius: 0;
+}
+
+/* Washi tape strips holding photos to the page */
+html[data-design="sketch"] :is(.hero__portrait, .cover-image)::before,
+html[data-design="sketch"] :is(.hero__portrait, .cover-image)::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 6.5rem;
+  height: 1.75rem;
+  background: var(--sk-tape);
+  clip-path: polygon(3% 0, 97% 6%, 100% 30%, 96% 55%, 100% 80%, 97% 100%, 2% 94%, 0 70%, 4% 45%, 0 20%);
+  pointer-events: none;
+}
+html[data-design="sketch"] .hero__portrait::before {
+  top: -0.85rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+}
+html[data-design="sketch"] .hero__portrait::after {
+  right: -0.9rem;
+  bottom: 1.4rem;
+  transform: rotate(-58deg);
+  width: 4.5rem;
+}
+
+/* ---------- Subpages ---------- */
+html[data-design="sketch"] .page-head__title {
+  line-height: 1.1;
+}
+html[data-design="sketch"] .back-link {
+  min-height: 2.75rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+html[data-design="sketch"] .cover-image {
+  position: relative;
+  overflow: visible;
+  padding: 0.6rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(36 39 45 / 0.15), 0 16px 30px -16px rgb(36 39 45 / 0.45);
+}
+html[data-design="sketch"] .cover-image::before {
+  top: -0.7rem;
+  left: -1.2rem;
+  transform: rotate(-32deg);
+}
+html[data-design="sketch"] .cover-image::after {
+  top: -0.7rem;
+  right: -1.2rem;
+  transform: rotate(30deg);
+}
+html[data-design="sketch"] .about__photo {
+  padding: 0.5rem;
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(36 39 45 / 0.15), 0 12px 24px -12px rgb(36 39 45 / 0.4);
+  transform: rotate(-2deg);
+}
+html[data-design="sketch"] .referrals__controls {
+  background: color-mix(in oklab, var(--bg) 94%, transparent);
+}
+
+/* ---------- Quiz ---------- */
+html[data-design="sketch"] .quiz__option {
+  border: 2px solid var(--sk-ink);
+  border-radius: var(--sk-r-card);
+  background: var(--surface);
+}
+html[data-design="sketch"] .quiz__option:hover {
+  border-color: var(--sk-ink);
+  background: var(--sk-hl);
+}
+html[data-design="sketch"] .quiz__answer {
+  border: 2px dashed var(--sk-ink);
+  border-radius: var(--sk-r-card);
+  background: color-mix(in oklab, var(--sk-hl) 30%, var(--surface));
+}
+html[data-design="sketch"] .quiz__verdict {
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+/* ---------- Footer: a pencil squiggle instead of a rule ---------- */
+html[data-design="sketch"] .site-footer {
+  border-top: 0;
+}
+html[data-design="sketch"] .site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 12px;
+  max-width: calc(var(--page-max) - 2 * var(--gutter));
+  margin-inline: auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 7c6-6 12-6 18 0s12 6 18 0 9-5 12-3' fill='none' stroke='%23a3a8b0' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 48px 14px;
+  pointer-events: none;
+}
+html[data-design="sketch"] .site-footer__email {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+/* ---------- Hero margin doodles (HeroDecor.astro) ---------- */
+html[data-design="sketch"] .sk-hero {
+  position: absolute;
+  inset: 0;
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+html[data-design="sketch"] .sk-hero svg {
+  position: absolute;
+  overflow: visible;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html[data-design="sketch"] .sk-hero__arrow {
+  display: none;
+  left: 50%;
+  bottom: 22%;
+  width: 9.5rem;
+  stroke: var(--sk-red);
+}
+html[data-design="sketch"] .sk-hero__arrow text {
+  fill: var(--sk-red);
+  stroke: none;
+  font-family: var(--font-display);
+  font-size: 19px;
+}
+html[data-design="sketch"] .sk-hero__star {
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  stroke: var(--sk-ink);
+  fill: var(--sk-hl);
+  transform: rotate(12deg);
+}
+@media (min-width: 60rem) {
+  html[data-design="sketch"] .sk-hero__arrow {
+    display: block;
+  }
+  html[data-design="sketch"] .sk-hero__star {
+    top: 22%;
+    right: calc(var(--gutter) + 22rem + 1.5rem);
+  }
+}
+
+/* The one orchestrated moment: the highlighter swipes under the name, then
+   the margin arrow is drawn toward the photo. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-design="sketch"] .hero__name::after {
+    animation: sk-swipe 0.65s 0.3s cubic-bezier(0.3, 0.6, 0.3, 1) both;
+  }
+  html[data-design="sketch"] .sk-draw {
+    stroke-dasharray: 1;
+    animation: sk-draw 0.7s 1s ease-out both;
+  }
+  html[data-design="sketch"] .sk-draw--late {
+    animation-delay: 1.6s;
+    animation-duration: 0.3s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hackathon, .panel, .card, .embed-frame)::after {
+    transition: none;
+  }
+}
+@keyframes sk-swipe {
+  from {
+    transform: rotate(-1.4deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-1.4deg) scaleX(1);
+  }
+}
+@keyframes sk-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Theme dock and picker ---------- */
+html[data-design="sketch"] .theme-dock {
+  border: 2px solid var(--sk-ink);
+  border-radius: var(--sk-r-btn);
+  background: var(--surface);
+  box-shadow: 4px 5px 0 -1px rgb(36 39 45 / 0.18);
+  backdrop-filter: none;
+}
+html[data-design="sketch"] .theme-dock__open {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: var(--sk-r-btn);
+}
+html[data-design="sketch"] .theme-dock__shuffle {
+  border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
+}
+html[data-design="sketch"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
+  background: var(--sk-hl);
+}
+html[data-design="sketch"] .theme-picker {
+  border: 2px solid var(--sk-ink);
+  border-radius: var(--sk-r-card);
+  background-color: var(--bg);
+  background-image: var(--sk-dots);
+  background-size: 22px 22px;
+}
+html[data-design="sketch"] .theme-picker::backdrop {
+  background: rgb(36 39 45 / 0.4);
+}
+html[data-design="sketch"] .theme-picker__title {
+  font-size: 1.65rem;
+}
+html[data-design="sketch"] .theme-picker__foot {
+  border-top: 2px dashed #8b909a;
+}
+html[data-design="sketch"] .theme-option {
+  border: 2px dashed transparent;
+  border-radius: var(--sk-r-card);
+  background: var(--surface);
+}
+html[data-design="sketch"] .theme-option:hover {
+  border-color: #8b909a;
+}
+html[data-design="sketch"] .theme-option[aria-pressed="true"] {
+  border: 2px solid var(--sk-ink);
+  background: color-mix(in oklab, var(--sk-hl) 35%, var(--surface));
+}
+html[data-design="sketch"] .theme-option__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
 }

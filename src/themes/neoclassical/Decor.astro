@@ -1,0 +1,25 @@
+---
+// Carrara marble behind the page: soft mottling plus thin grey veins, drawn
+// once by SVG filters. Purely decorative; the wrapper is aria-hidden and has
+// pointer-events: none. Styles live in theme.css.
+---
+
+<svg class="neo-marble" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none" focusable="false">
+  <defs>
+    <filter id="neo-cloud" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0018 0.004" numOctaves="3" seed="11" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.43  0 0 0 0 0.45  0.7 0 0 0 -0.32" />
+    </filter>
+    <filter id="neo-veins" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.0012 0.0038" numOctaves="4" seed="4" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.34  0 0 0 0 0.35  0 0 0 0 0.38  -6 0 0 0 1" result="lines" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.0026" numOctaves="2" seed="9" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 0 0 0 -0.7" result="mask" />
+      <feComposite in="lines" in2="mask" operator="in" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#neo-cloud)" opacity="0.22" />
+  <g transform="rotate(-24)">
+    <rect x="-30%" y="-10%" width="160%" height="170%" filter="url(#neo-veins)" opacity="0.5" />
+  </g>
+</svg>

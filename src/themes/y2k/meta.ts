@@ -4,7 +4,9 @@ export default {
   id: "y2k",
   order: 11,
   name: "Y2K",
-  tagline: "Chrome, bubbles and shine",
+  tagline: "Liquid chrome, gel buttons and sparkles",
   scheme: "light",
-  preview: { bg: "#e9f1ff", surface: "#ffffff", accent: "#ff3fb4", text: "#1b1d4a" },
+  fonts:
+    "https://fonts.googleapis.com/css2?family=Michroma&family=Outfit:wght@400;500;600&display=swap",
+  preview: { bg: "#eef1fb", surface: "#ffffff", accent: "#1550e0", text: "#121845" },
 } satisfies ThemeMeta;

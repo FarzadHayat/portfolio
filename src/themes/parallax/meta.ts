@@ -4,7 +4,9 @@ export default {
   id: "parallax",
   order: 12,
   name: "Parallax",
-  tagline: "Layers that move as you scroll",
+  tagline: "Dusk hills that move as you scroll",
   scheme: "dark",
-  preview: { bg: "#141a33", surface: "#1f2747", accent: "#ffb86b", text: "#eef0ff" },
+  fonts:
+    "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600&family=Sofia+Sans+Extra+Condensed:wght@700&display=swap",
+  preview: { bg: "#141947", surface: "#151938", accent: "#ffb27a", text: "#eef0ff" },
 } satisfies ThemeMeta;

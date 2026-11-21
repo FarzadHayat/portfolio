@@ -4,7 +4,9 @@ export default {
   id: "sketch",
   order: 9,
   name: "Sketchbook",
-  tagline: "Pencil on paper",
+  tagline: "Pencil and marker on paper",
   scheme: "light",
-  preview: { bg: "#fbfaf4", surface: "#ffffff", accent: "#2f5fd0", text: "#2a2a2a" },
+  fonts:
+    "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap",
+  preview: { bg: "#fafaf6", surface: "#ffffff", accent: "#263aa8", text: "#24272d" },
 } satisfies ThemeMeta;

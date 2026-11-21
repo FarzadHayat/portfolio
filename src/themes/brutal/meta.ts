@@ -6,5 +6,6 @@ export default {
   name: "Neubrutalism",
   tagline: "Thick lines, loud color",
   scheme: "light",
-  preview: { bg: "#fff4d6", surface: "#ffffff", accent: "#ff5a5f", text: "#000000" },
+  fonts: "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap",
+  preview: { bg: "#f2efff", surface: "#ffd23f", accent: "#ff5c8a", text: "#000000" },
 } satisfies ThemeMeta;

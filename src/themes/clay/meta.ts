@@ -6,5 +6,7 @@ export default {
   name: "Clay",
   tagline: "Soft, squishy and round",
   scheme: "light",
-  preview: { bg: "#efe7ff", surface: "#ffffff", accent: "#7b5cff", text: "#2d2350" },
+  fonts:
+    "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Rubik:wght@400;500;600&display=swap",
+  preview: { bg: "#dfe6f7", surface: "#fbfcff", accent: "#5a4ff0", text: "#1e2149" },
 } satisfies ThemeMeta;

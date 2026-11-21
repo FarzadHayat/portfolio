@@ -4,7 +4,9 @@ export default {
   id: "skeuo",
   order: 5,
   name: "Skeuomorphic",
-  tagline: "Leather, metal and paper",
+  tagline: "Leather, steel and paper on a linen desk",
   scheme: "light",
-  preview: { bg: "#d9d4c7", surface: "#f7f3e8", accent: "#3f6fb5", text: "#2b2620" },
+  fonts:
+    "https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&family=Zilla+Slab:wght@600;700&display=swap",
+  preview: { bg: "#d2cfc5", surface: "#fbf9f3", accent: "#4b2b23", text: "#22252a" },
 } satisfies ThemeMeta;

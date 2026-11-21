@@ -6,5 +6,6 @@ export default {
   name: "Swiss",
   tagline: "Grid, type and one red",
   scheme: "light",
-  preview: { bg: "#f5f5f0", surface: "#ffffff", accent: "#e3120b", text: "#111111" },
+  fonts: "https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&display=swap",
+  preview: { bg: "#f1f0eb", surface: "#ffffff", accent: "#da0b14", text: "#000000" },
 } satisfies ThemeMeta;

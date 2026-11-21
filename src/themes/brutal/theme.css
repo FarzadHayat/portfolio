@@ -1,12 +1,811 @@
 /* Neubrutalism theme. Every rule is scoped to html[data-design="brutal"]. */
 html[data-design="brutal"] {
   color-scheme: light;
-  --bg: #fff4d6;
-  --bg-alt: color-mix(in oklab, #fff4d6 92%, #000000);
+
+  /* Block colors. Black text on each is 9:1 or better. */
+  --nb-ink: #000000;
+  --nb-paper: #f2efff;
+  --nb-yellow: #ffd23f;
+  --nb-pink: #ff90bc;
+  --nb-hot: #ff5c8a;
+  --nb-blue: #8db7ff;
+  --nb-mint: #8be3b9;
+  --nb-orange: #ffa26b;
+  --nb-lilac: #c9b3ff;
+  --nb-line: 3px;
+  --nb-off: 5px;
+
+  --bg: var(--nb-paper);
+  --bg-alt: var(--nb-yellow);
   --surface: #ffffff;
-  --surface-2: color-mix(in oklab, #ffffff 90%, #000000);
-  --text: #000000;
-  --text-muted: color-mix(in oklab, #000000 68%, #fff4d6);
-  --border: color-mix(in oklab, #000000 18%, #fff4d6);
-  --accent: #ff5a5f;
+  --surface-2: #f6f4ff;
+  --text: var(--nb-ink);
+  --text-muted: #34314a;
+  --border: var(--nb-ink);
+  --accent: var(--nb-hot);
+  --accent-ink: #000000;
+  --accent-2: var(--nb-yellow);
+  --link: var(--nb-ink);
+  --focus: #2848ff;
+  --selection: var(--nb-yellow);
+
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --body-size: 1.0625rem;
+  --body-leading: 1.6;
+  --display-weight: 900;
+  --display-tracking: -0.025em;
+  --display-leading: 0.95;
+  --heading-weight: 800;
+
+  --border-width: var(--nb-line);
+  --radius-lg: 14px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: var(--nb-off) var(--nb-off) 0 var(--nb-ink);
+  --shadow-lg: 8px 8px 0 var(--nb-ink);
+
+  --card-bg: var(--surface);
+  --card-border: var(--nb-line) solid var(--nb-ink);
+  --card-radius: var(--radius-lg);
+  --card-shadow: var(--shadow);
+  --btn-bg: #ffffff;
+  --btn-ink: #000000;
+  --btn-border: var(--nb-line) solid var(--nb-ink);
+  --btn-radius: var(--radius);
+  --btn-shadow: 4px 4px 0 var(--nb-ink);
+  --btn-primary-bg: var(--nb-hot);
+  --btn-primary-ink: #000000;
+  --chip-bg: #ffffff;
+  --chip-ink: #000000;
+  --chip-border: 2px solid var(--nb-ink);
+  --chip-radius: var(--radius-sm);
+
+  --ease: cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+/* ---------- Page ---------- */
+html[data-design="brutal"] body {
+  background-color: var(--bg);
+  background-image: radial-gradient(rgb(0 0 0 / 0.16) 1.1px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+html[data-design="brutal"] :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+html[data-design="brutal"] .skip-link {
+  background: var(--nb-yellow);
+  color: #000;
+  border: var(--nb-line) solid #000;
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 800;
+}
+
+/* Display type: Archivo pushed wide and black */
+html[data-design="brutal"] :is(.hero__name, .section__title, .page-head__title, .site-footer__title, .quiz__title, .error-page__code, .site-header__brand, .theme-picker__title) {
+  font-stretch: 125%;
+  font-weight: 900;
+}
+html[data-design="brutal"] :is(.project-card__title, .timeline__role, .entry__title, .hackathon__title, .referral__name, .quiz__question, .stack-panel__title) {
+  font-stretch: 112%;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Header ---------- */
+html[data-design="brutal"] .site-header {
+  background: #fff;
+  border-bottom: var(--nb-line) solid #000;
+}
+html[data-design="brutal"] .site-header__inner {
+  padding-block: 0.85rem;
+}
+html[data-design="brutal"] .site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.2rem 0.75rem;
+  background: var(--nb-yellow);
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 #000;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+html[data-design="brutal"] .site-nav__list {
+  gap: 0.35rem;
+}
+html[data-design="brutal"] .site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.85rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  color: #000;
+  font-weight: 700;
+}
+html[data-design="brutal"] .site-nav__link:hover {
+  background: var(--nb-mint);
+  border-color: #000;
+}
+
+/* ---------- Buttons: hard shadow, lift on hover, press into the shadow ---------- */
+html[data-design="brutal"] :is(.btn, .icon-btn) {
+  font-weight: 800;
+  transition:
+    transform 0.12s var(--ease),
+    box-shadow 0.12s var(--ease),
+    background-color 0.12s var(--ease);
+}
+html[data-design="brutal"] :is(.btn, .icon-btn):hover {
+  background: var(--nb-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+html[data-design="brutal"] :is(.btn, .icon-btn):active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #000;
+}
+html[data-design="brutal"] .btn--primary {
+  border-color: #000;
+}
+html[data-design="brutal"] .btn--primary:hover {
+  background: var(--nb-pink);
+}
+html[data-design="brutal"] .btn--ghost {
+  background: transparent;
+  border-color: #000;
+  box-shadow: none;
+}
+html[data-design="brutal"] .btn--sm {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+  box-shadow: 3px 3px 0 #000;
+}
+html[data-design="brutal"] .btn--sm.btn--ghost {
+  box-shadow: none;
+}
+html[data-design="brutal"] .btn--ghost:hover {
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+}
+html[data-design="brutal"] .btn--ghost:active {
+  box-shadow: none;
+}
+
+/* ---------- Chips and stickers ---------- */
+html[data-design="brutal"] .chip {
+  padding: 0.15rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+html[data-design="brutal"] .badge {
+  padding: 0.1rem 0.55rem;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: var(--radius-sm);
+  box-shadow: 2px 2px 0 #000;
+  font-weight: 800;
+  transform: rotate(-4deg);
+}
+
+/* ---------- Hero ---------- */
+html[data-design="brutal"] .hero {
+  padding-block: clamp(2.5rem, 7vw, 5rem) var(--section-space);
+}
+html[data-design="brutal"] .hero__greeting {
+  display: inline-block;
+  margin: 0 0 1.1rem;
+  padding: 0.25rem 0.85rem;
+  background: var(--nb-mint);
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 #000;
+  color: #000;
+  font-weight: 800;
+  font-size: 1.05rem;
+  transform: rotate(-3deg);
+}
+html[data-design="brutal"] .hero__name {
+  font-size: clamp(3rem, 12.5vw, 7rem);
+}
+html[data-design="brutal"] .hero__title {
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+html[data-design="brutal"] .hero__role {
+  padding: 0.3rem 0.75rem;
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-sm);
+  background: #000;
+  color: #fff;
+  font-weight: 750;
+}
+html[data-design="brutal"] .hero__role + .hero__role {
+  background: #fff;
+  color: #000;
+}
+html[data-design="brutal"] .hero__location {
+  margin-top: 1rem;
+  color: #000;
+  font-weight: 600;
+}
+html[data-design="brutal"] .hero__bio {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+}
+html[data-design="brutal"] .hero__actions {
+  gap: 0.9rem;
+}
+html[data-design="brutal"] .social-links {
+  gap: 0.65rem;
+}
+html[data-design="brutal"] .hero__links {
+  margin-top: 1.6rem;
+}
+html[data-design="brutal"] .hero__links .icon-btn {
+  box-shadow: 3px 3px 0 #000;
+}
+html[data-design="brutal"] .hero__portrait {
+  width: min(100% - 1rem, 21rem);
+  transform: rotate(2.5deg);
+}
+html[data-design="brutal"] .hero__photo {
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-lg);
+  /* Outlined pink block behind the photo, like a second sticker */
+  box-shadow:
+    14px 14px 0 -3px var(--nb-pink),
+    14px 14px 0 0 #000;
+  background: var(--nb-blue);
+}
+
+/* The one orchestrated moment: the stickers slap on when the page loads */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-design="brutal"] .hero__greeting {
+    animation: nb-slap 0.45s var(--ease) 0.1s both;
+  }
+  html[data-design="brutal"] .hero__portrait {
+    animation: nb-stamp 0.5s var(--ease) 0.25s both;
+  }
+}
+@keyframes nb-slap {
+  from {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-3deg) scale(1);
+  }
+}
+@keyframes nb-stamp {
+  from {
+    opacity: 0;
+    transform: rotate(10deg) scale(1.12) translate(-12px, -12px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(2.5deg) scale(1);
+  }
+}
+
+/* ---------- Sections ---------- */
+html[data-design="brutal"] .section {
+  --nb-tab: #fff;
+}
+html[data-design="brutal"] .section--alt {
+  background: var(--nb-yellow);
+  border-block: var(--nb-line) solid #000;
+}
+html[data-design="brutal"] .section--hackathons {
+  background: var(--nb-mint);
+}
+html[data-design="brutal"] .section--alt + .section--alt {
+  border-top: 0;
+}
+html[data-design="brutal"] .section--projects {
+  --nb-tab: var(--nb-pink);
+}
+html[data-design="brutal"] .section--blog,
+html[data-design="brutal"] .section--archive {
+  --nb-tab: var(--nb-orange);
+}
+html[data-design="brutal"] .section--about {
+  --nb-tab: var(--nb-lilac);
+}
+html[data-design="brutal"] .section--education {
+  --nb-tab: var(--nb-blue);
+}
+html[data-design="brutal"] .section--playlist {
+  --nb-tab: var(--nb-orange);
+}
+html[data-design="brutal"] .section__title {
+  display: inline-block;
+  padding: 0.12em 0.45em 0.16em;
+  background: var(--nb-tab);
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: clamp(1.6rem, 4.6vw, 2.75rem);
+  line-height: 1.05;
+}
+html[data-design="brutal"] .section__intro {
+  margin-top: 1.1rem;
+  color: #000;
+}
+html[data-design="brutal"] .section__more {
+  margin-top: 2.75rem;
+}
+
+/* ---------- Projects: one flat color per card, cycling ---------- */
+html[data-design="brutal"] .project-grid {
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+html[data-design="brutal"] .project-grid > li {
+  --nb-card: var(--nb-yellow);
+}
+html[data-design="brutal"] .project-grid > li:nth-child(5n + 2) {
+  --nb-card: var(--nb-pink);
+}
+html[data-design="brutal"] .project-grid > li:nth-child(5n + 3) {
+  --nb-card: var(--nb-blue);
+}
+html[data-design="brutal"] .project-grid > li:nth-child(5n + 4) {
+  --nb-card: var(--nb-mint);
+}
+html[data-design="brutal"] .project-grid > li:nth-child(5n + 5) {
+  --nb-card: var(--nb-orange);
+}
+html[data-design="brutal"] .project-card {
+  --text-muted: #1c1a28;
+  background: var(--nb-card, var(--nb-yellow));
+  transition:
+    transform 0.14s var(--ease),
+    box-shadow 0.14s var(--ease);
+}
+html[data-design="brutal"] .project-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 #000;
+}
+html[data-design="brutal"] .project-card:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 #000;
+}
+html[data-design="brutal"] .project-card:has(.project-card__links :active) {
+  transform: none;
+  box-shadow: var(--card-shadow);
+}
+html[data-design="brutal"] .project-card:has(.project-card__title a:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 5px;
+}
+html[data-design="brutal"] .project-card__media {
+  border-bottom: var(--nb-line) solid #000;
+  background: #fff;
+}
+html[data-design="brutal"] .project-card__body {
+  gap: 0.7rem;
+}
+html[data-design="brutal"] .project-card__meta {
+  color: #000;
+  font-weight: 600;
+}
+html[data-design="brutal"] .project-card__desc {
+  color: #000;
+}
+@media (min-width: 48rem) {
+  html[data-design="brutal"] .project-card--lead .project-card__media {
+    border-bottom: 0;
+    border-right: var(--nb-line) solid #000;
+  }
+}
+
+/* ---------- Experience timeline ---------- */
+html[data-design="brutal"] .timeline {
+  gap: 1.25rem;
+  padding-left: 2.25rem;
+}
+html[data-design="brutal"] .timeline::before {
+  left: 0.6rem;
+  width: var(--nb-line);
+  background: #000;
+}
+html[data-design="brutal"] .timeline__marker {
+  left: -2.25rem;
+  top: 1.35rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: var(--nb-line) solid #000;
+  border-radius: 4px;
+  background: var(--nb-hot);
+  box-shadow: none;
+  transform: rotate(45deg);
+}
+html[data-design="brutal"] .timeline__item:not(:first-child) .timeline__marker {
+  background: #fff;
+}
+html[data-design="brutal"] .timeline__org {
+  color: #000;
+  font-weight: 600;
+}
+html[data-design="brutal"] .timeline__date {
+  color: var(--text-muted);
+}
+html[data-design="brutal"] .timeline__summary {
+  min-height: 2.75rem;
+}
+html[data-design="brutal"] .timeline__details[open] .timeline__summary {
+  border-bottom: var(--nb-line) solid #000;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+}
+html[data-design="brutal"] .timeline__summary:hover .timeline__toggle {
+  background: var(--nb-pink);
+}
+html[data-design="brutal"] .timeline__toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-sm);
+  background: var(--nb-yellow);
+  box-shadow: 2px 2px 0 #000;
+}
+html[data-design="brutal"] .timeline__toggle svg {
+  stroke-width: 3;
+}
+html[data-design="brutal"] .timeline__body {
+  padding-top: 1.1rem;
+}
+html[data-design="brutal"] .timeline__link {
+  margin: 1.25rem 0 0;
+}
+
+/* ---------- Education ---------- */
+html[data-design="brutal"] .entry-list {
+  gap: 1.5rem;
+}
+html[data-design="brutal"] .entry-list > li:nth-child(even) .entry {
+  background: var(--nb-lilac);
+  --text-muted: #1c1a28;
+}
+html[data-design="brutal"] .entry__kind {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  padding: 0.05rem 0.5rem;
+  border: 2px solid #000;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+html[data-design="brutal"] .entry__subtitle {
+  color: #000;
+  font-weight: 600;
+}
+html[data-design="brutal"] .entry__title a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Hackathons ---------- */
+html[data-design="brutal"] .hackathon-list {
+  gap: 1.5rem;
+}
+html[data-design="brutal"] .hackathon__media {
+  border-bottom: var(--nb-line) solid #000;
+}
+@media (min-width: 40rem) {
+  html[data-design="brutal"] .hackathon__media {
+    border-bottom: 0;
+    border-right: var(--nb-line) solid #000;
+  }
+}
+html[data-design="brutal"] .hackathon__meta {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ---------- Long text and fields ---------- */
+html[data-design="brutal"] .prose {
+  --tw-prose-bullets: #000;
+  --tw-prose-quote-borders: #000;
+  --tw-prose-pre-bg: #fff;
+  --tw-prose-hr: #000;
+  --tw-prose-counters: #000;
+}
+html[data-design="brutal"] .prose :where(a):not(:where(.not-prose *)),
+html[data-design="brutal"] .page-head__intro a {
+  color: #000;
+  font-weight: 650;
+  text-decoration-color: var(--nb-hot);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+html[data-design="brutal"] .prose :where(a):not(:where(.not-prose *)):hover {
+  background: var(--nb-yellow);
+}
+html[data-design="brutal"] .prose :where(code):not(:where(pre code, .not-prose *)) {
+  padding: 0.05em 0.35em;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background: #fff;
+}
+html[data-design="brutal"] .prose :where(pre, img, blockquote):not(:where(.not-prose *)) {
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 #000;
+}
+html[data-design="brutal"] .prose :where(blockquote):not(:where(.not-prose *)) {
+  padding: 0.75rem 1.1rem;
+  background: var(--nb-yellow);
+  font-style: normal;
+}
+html[data-design="brutal"] .field {
+  border-width: var(--nb-line);
+  border-color: #000;
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 500;
+}
+html[data-design="brutal"] .field:focus-visible {
+  border-radius: var(--radius);
+  background: #fffbe8;
+}
+
+/* ---------- Subpages ---------- */
+html[data-design="brutal"] .page-head__title {
+  font-size: clamp(2.4rem, 8vw, 4.75rem);
+}
+html[data-design="brutal"] .page-head__intro {
+  color: #000;
+}
+html[data-design="brutal"] .page-head__meta {
+  color: #000;
+  font-weight: 600;
+}
+html[data-design="brutal"] .back-link {
+  min-height: 2.75rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.55rem;
+  border: 2px solid #000;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 3px 3px 0 #000;
+  color: #000;
+  font-weight: 700;
+}
+html[data-design="brutal"] .back-link:hover {
+  background: var(--nb-yellow);
+}
+html[data-design="brutal"] .cover-image {
+  box-shadow: var(--shadow-lg);
+}
+html[data-design="brutal"] .about__photo {
+  border: var(--nb-line) solid #000;
+  box-shadow: var(--shadow);
+}
+html[data-design="brutal"] .panel {
+  box-shadow: var(--shadow-lg);
+}
+html[data-design="brutal"] .error-page__code {
+  color: #000;
+  text-shadow: 0.06em 0.06em 0 var(--nb-hot);
+}
+
+/* ---------- Referrals ---------- */
+html[data-design="brutal"] .referrals__controls {
+  background: var(--bg);
+  backdrop-filter: none;
+  padding-block: 0.75rem 1.1rem;
+  border-bottom: var(--nb-line) solid #000;
+}
+html[data-design="brutal"] .referrals__list {
+  gap: 1.1rem;
+}
+html[data-design="brutal"] :is(.referral__category, .referral__code-label, .referrals__count) {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+html[data-design="brutal"] .referral__code {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border: 2px dashed #000;
+  border-radius: var(--radius-sm);
+  background: var(--nb-yellow);
+}
+
+/* ---------- Quiz ---------- */
+html[data-design="brutal"] .quiz__card {
+  background: #fff;
+}
+html[data-design="brutal"] .quiz__lead,
+html[data-design="brutal"] .quiz__top {
+  color: #000;
+}
+html[data-design="brutal"] .quiz__progress {
+  appearance: none;
+  height: 1rem;
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  overflow: hidden;
+}
+html[data-design="brutal"] .quiz__progress::-webkit-progress-bar {
+  background: #fff;
+}
+html[data-design="brutal"] .quiz__progress::-webkit-progress-value {
+  background: var(--nb-hot);
+}
+html[data-design="brutal"] .quiz__progress::-moz-progress-bar {
+  background: var(--nb-hot);
+}
+html[data-design="brutal"] .quiz__options {
+  gap: 0.85rem;
+}
+html[data-design="brutal"] .quiz__option {
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 650;
+  transition:
+    transform 0.12s var(--ease),
+    box-shadow 0.12s var(--ease);
+}
+html[data-design="brutal"] .quiz__option:hover {
+  border-color: #000;
+  background: var(--nb-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+html[data-design="brutal"] .quiz__option:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+html[data-design="brutal"] .quiz__verdict[data-result="correct"] {
+  color: #0b6b37;
+}
+html[data-design="brutal"] .quiz__verdict[data-result="wrong"] {
+  color: #b3122e;
+}
+html[data-design="brutal"] .quiz__answer {
+  border: var(--nb-line) solid #000;
+  background: var(--nb-mint);
+}
+html[data-design="brutal"] .quiz__fact {
+  color: #000;
+}
+html[data-design="brutal"] .quiz__label {
+  transform: rotate(-3deg);
+  background: var(--nb-yellow);
+}
+
+/* ---------- Embeds ---------- */
+html[data-design="brutal"] .embed-frame {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Footer: inverted black block ---------- */
+html[data-design="brutal"] .site-footer {
+  --focus: var(--nb-yellow);
+  background: #000;
+  color: #fff;
+  border-top: 0;
+}
+html[data-design="brutal"] .site-footer__title {
+  color: #fff;
+}
+html[data-design="brutal"] .site-footer__email {
+  color: var(--nb-yellow);
+  font-weight: 700;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+html[data-design="brutal"] .site-footer .btn {
+  box-shadow: 3px 3px 0 var(--nb-hot);
+}
+html[data-design="brutal"] .site-footer .btn:hover {
+  box-shadow: 6px 6px 0 var(--nb-hot);
+}
+html[data-design="brutal"] .site-footer .btn:active {
+  box-shadow: 0 0 0 var(--nb-hot);
+}
+html[data-design="brutal"] .site-footer__meta {
+  color: #d6d3e6;
+}
+html[data-design="brutal"] .site-footer__meta a {
+  color: #fff;
+}
+
+/* ---------- Theme dock and picker ---------- */
+html[data-design="brutal"] .theme-dock {
+  gap: 0.35rem;
+  padding: 0.3rem;
+  background: #fff;
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--nb-off) var(--nb-off) 0 var(--nb-hot), var(--nb-off) var(--nb-off) 0 var(--nb-line) #000;
+  backdrop-filter: none;
+}
+html[data-design="brutal"] :is(.theme-dock__open, .theme-dock__shuffle) {
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  color: #000;
+  font-weight: 800;
+}
+html[data-design="brutal"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
+  background: var(--nb-yellow);
+  border-color: #000;
+}
+html[data-design="brutal"] .theme-picker {
+  border: var(--nb-line) solid #000;
+  border-radius: var(--radius-lg);
+  box-shadow: 10px 10px 0 #000;
+}
+html[data-design="brutal"] .theme-picker::backdrop {
+  background: rgb(20 10 60 / 0.5);
+}
+html[data-design="brutal"] .theme-picker__head {
+  background: var(--nb-yellow);
+  border-bottom: var(--nb-line) solid #000;
+  padding-block: 0.85rem;
+}
+html[data-design="brutal"] .theme-picker__grid {
+  gap: 0.85rem;
+  padding-top: 1rem;
+}
+html[data-design="brutal"] .theme-picker__foot {
+  border-top: var(--nb-line) solid #000;
+}
+html[data-design="brutal"] .theme-option {
+  border: var(--nb-line) solid #000;
+  background: #fff;
+  box-shadow: 3px 3px 0 #000;
+  transition:
+    transform 0.12s var(--ease),
+    box-shadow 0.12s var(--ease);
+}
+html[data-design="brutal"] .theme-option:hover {
+  border-color: #000;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #000;
+}
+html[data-design="brutal"] .theme-option:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+html[data-design="brutal"] .theme-option[aria-pressed="true"] {
+  border-color: #000;
+  background: var(--nb-pink);
+}
+html[data-design="brutal"] .theme-option__thumb {
+  border: 2px solid #000;
+  box-shadow: none;
+}
+html[data-design="brutal"] .theme-option__check {
+  border: 2px solid #000;
+  background: var(--nb-yellow);
+  color: #000;
+}
+html[data-design="brutal"] .theme-option__name {
+  font-weight: 800;
+}
+html[data-design="brutal"] .theme-option__tagline {
+  color: #2a2738;
+}
+
+/* ---------- Reduced motion: state changes stay, movement goes ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-design="brutal"] :is(.btn, .icon-btn, .project-card, .quiz__option, .theme-option) {
+    transition: none;
+  }
+  html[data-design="brutal"] :is(.btn, .icon-btn, .project-card, .quiz__option, .theme-option):is(:hover, :active) {
+    transform: none;
+  }
 }

@@ -1,0 +1,12 @@
+/* Glass theme. Every rule is scoped to html[data-design="glass"]. */
+html[data-design="glass"] {
+  color-scheme: dark;
+  --bg: #0d1030;
+  --bg-alt: color-mix(in oklab, #0d1030 92%, #f4f6ff);
+  --surface: #2a2f6a;
+  --surface-2: color-mix(in oklab, #2a2f6a 90%, #f4f6ff);
+  --text: #f4f6ff;
+  --text-muted: color-mix(in oklab, #f4f6ff 68%, #0d1030);
+  --border: color-mix(in oklab, #f4f6ff 18%, #0d1030);
+  --accent: #8ee3ff;
+}

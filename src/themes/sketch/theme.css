@@ -1,0 +1,12 @@
+/* Sketchbook theme. Every rule is scoped to html[data-design="sketch"]. */
+html[data-design="sketch"] {
+  color-scheme: light;
+  --bg: #fbfaf4;
+  --bg-alt: color-mix(in oklab, #fbfaf4 92%, #2a2a2a);
+  --surface: #ffffff;
+  --surface-2: color-mix(in oklab, #ffffff 90%, #2a2a2a);
+  --text: #2a2a2a;
+  --text-muted: color-mix(in oklab, #2a2a2a 68%, #fbfaf4);
+  --border: color-mix(in oklab, #2a2a2a 18%, #fbfaf4);
+  --accent: #2f5fd0;
+}

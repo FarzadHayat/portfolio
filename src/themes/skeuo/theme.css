@@ -1,0 +1,12 @@
+/* Skeuomorphic theme. Every rule is scoped to html[data-design="skeuo"]. */
+html[data-design="skeuo"] {
+  color-scheme: light;
+  --bg: #d9d4c7;
+  --bg-alt: color-mix(in oklab, #d9d4c7 92%, #2b2620);
+  --surface: #f7f3e8;
+  --surface-2: color-mix(in oklab, #f7f3e8 90%, #2b2620);
+  --text: #2b2620;
+  --text-muted: color-mix(in oklab, #2b2620 68%, #d9d4c7);
+  --border: color-mix(in oklab, #2b2620 18%, #d9d4c7);
+  --accent: #3f6fb5;
+}

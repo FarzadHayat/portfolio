@@ -1,0 +1,12 @@
+/* Clay theme. Every rule is scoped to html[data-design="clay"]. */
+html[data-design="clay"] {
+  color-scheme: light;
+  --bg: #efe7ff;
+  --bg-alt: color-mix(in oklab, #efe7ff 92%, #2d2350);
+  --surface: #ffffff;
+  --surface-2: color-mix(in oklab, #ffffff 90%, #2d2350);
+  --text: #2d2350;
+  --text-muted: color-mix(in oklab, #2d2350 68%, #efe7ff);
+  --border: color-mix(in oklab, #2d2350 18%, #efe7ff);
+  --accent: #7b5cff;
+}

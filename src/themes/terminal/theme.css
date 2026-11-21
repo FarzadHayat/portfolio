@@ -1,0 +1,12 @@
+/* Terminal theme. Every rule is scoped to html[data-design="terminal"]. */
+html[data-design="terminal"] {
+  color-scheme: dark;
+  --bg: #0f1117;
+  --bg-alt: color-mix(in oklab, #0f1117 92%, #d6dbe5);
+  --surface: #161a23;
+  --surface-2: color-mix(in oklab, #161a23 90%, #d6dbe5);
+  --text: #d6dbe5;
+  --text-muted: color-mix(in oklab, #d6dbe5 68%, #0f1117);
+  --border: color-mix(in oklab, #d6dbe5 18%, #0f1117);
+  --accent: #7dd3a8;
+}

@@ -1,0 +1,12 @@
+/* Pixel Art theme. Every rule is scoped to html[data-design="pixel"]. */
+html[data-design="pixel"] {
+  color-scheme: dark;
+  --bg: #1b1f3b;
+  --bg-alt: color-mix(in oklab, #1b1f3b 92%, #f2f2f2);
+  --surface: #2b3168;
+  --surface-2: color-mix(in oklab, #2b3168 90%, #f2f2f2);
+  --text: #f2f2f2;
+  --text-muted: color-mix(in oklab, #f2f2f2 68%, #1b1f3b);
+  --border: color-mix(in oklab, #f2f2f2 18%, #1b1f3b);
+  --accent: #ffd23f;
+}

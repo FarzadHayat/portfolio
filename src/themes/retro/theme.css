@@ -1,0 +1,12 @@
+/* Retro 70s theme. Every rule is scoped to html[data-design="retro"]. */
+html[data-design="retro"] {
+  color-scheme: light;
+  --bg: #f6e6c8;
+  --bg-alt: color-mix(in oklab, #f6e6c8 92%, #3b2414);
+  --surface: #fff4dc;
+  --surface-2: color-mix(in oklab, #fff4dc 90%, #3b2414);
+  --text: #3b2414;
+  --text-muted: color-mix(in oklab, #3b2414 68%, #f6e6c8);
+  --border: color-mix(in oklab, #3b2414 18%, #f6e6c8);
+  --accent: #d9531e;
+}

@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from "astro:content";
+import { formatPeriod } from "../utils/dates";
+
+interface Props {
+  showEducation: boolean;
+  showCertifications: boolean;
+}
+const { showEducation, showCertifications } = Astro.props;
+
+const byStart = (a: any, b: any) => b.data.startDate.getTime() - a.data.startDate.getTime();
+const education = showEducation ? (await getCollection("education")).sort(byStart) : [];
+const certs = showCertifications ? (await getCollection("certifications")).sort(byStart) : [];
+
+const items = await Promise.all(
+  [
+    ...education.map((e) => ({ kind: "Degree", entry: e, valid: false })),
+    ...certs.map((e) => ({ kind: "Certification", entry: e, valid: true })),
+  ].map(async (item) => ({ ...item, Content: (await render(item.entry)).Content })),
+);
+---
+
+{
+  items.length > 0 && (
+    <section id="education" class="section section--education" aria-labelledby="education-title">
+      <div class="container">
+        <header class="section__head">
+          <h2 class="section__title" id="education-title">
+            {certs.length && education.length ? "Education and certification" : education.length ? "Education" : "Certification"}
+          </h2>
+        </header>
+        <ul class="entry-list">
+          {items.map(({ kind, entry, valid, Content }) => {
+            const d = entry.data;
+            return (
+              <li>
+                <article class="entry" data-kind={kind.toLowerCase()}>
+                  <p class="entry__kind">{kind}</p>
+                  <h3 class="entry__title">
+                    {d.link ? (
+                      <a href={d.link} target="_blank" rel="noopener noreferrer">{d.title}</a>
+                    ) : (
+                      d.title
+                    )}
+                  </h3>
+                  <p class="entry__subtitle">{d.subtitle}</p>
+                  <p class="entry__date">
+                    {valid && d.endDate
+                      ? `Earned ${d.startDate.toLocaleDateString("en-US", { month: "short", year: "numeric" })}, valid until ${d.endDate.toLocaleDateString("en-US", { month: "short", year: "numeric" })}`
+                      : formatPeriod(d.startDate, d.endDate)}
+                  </p>
+                  <div class="entry__body prose prose--compact">
+                    <Content />
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  )
+}

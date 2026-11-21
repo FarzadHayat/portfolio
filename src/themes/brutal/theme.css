@@ -1,0 +1,12 @@
+/* Neubrutalism theme. Every rule is scoped to html[data-design="brutal"]. */
+html[data-design="brutal"] {
+  color-scheme: light;
+  --bg: #fff4d6;
+  --bg-alt: color-mix(in oklab, #fff4d6 92%, #000000);
+  --surface: #ffffff;
+  --surface-2: color-mix(in oklab, #ffffff 90%, #000000);
+  --text: #000000;
+  --text-muted: color-mix(in oklab, #000000 68%, #fff4d6);
+  --border: color-mix(in oklab, #000000 18%, #fff4d6);
+  --accent: #ff5a5f;
+}

@@ -1,0 +1,12 @@
+/* Neoclassical theme. Every rule is scoped to html[data-design="neoclassical"]. */
+html[data-design="neoclassical"] {
+  color-scheme: light;
+  --bg: #f3efe6;
+  --bg-alt: color-mix(in oklab, #f3efe6 92%, #2a2723);
+  --surface: #fbf8f1;
+  --surface-2: color-mix(in oklab, #fbf8f1 90%, #2a2723);
+  --text: #2a2723;
+  --text-muted: color-mix(in oklab, #2a2723 68%, #f3efe6);
+  --border: color-mix(in oklab, #2a2723 18%, #f3efe6);
+  --accent: #8a6d2f;
+}

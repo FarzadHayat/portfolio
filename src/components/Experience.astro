@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from "astro:content";
+import { ChevronDown } from "@lucide/astro";
+import SkillBadge from "./SkillBadge.astro";
+import { formatPeriod, formatDuration } from "../utils/dates";
+
+const entries = (await getCollection("work")).sort(
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
+);
+const items = await Promise.all(
+  entries.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+---
+
+<section id="experience" class="section section--alt section--experience" aria-labelledby="experience-title">
+  <div class="container">
+    <header class="section__head">
+      <h2 class="section__title" id="experience-title">Experience</h2>
+    </header>
+    <ol class="timeline">
+      {
+        items.map(({ entry, Content }, i) => {
+          const d = entry.data;
+          const duration = formatDuration(d.startDate, d.endDate);
+          return (
+            <li class="timeline__item">
+              <span class="timeline__marker" aria-hidden="true" />
+              <details class="timeline__details" open={i === 0}>
+                <summary class="timeline__summary">
+                  <span class="timeline__role">{d.title}</span>
+                  <span class="timeline__org">
+                    {d.subtitle}
+                    {d.location && <span class="timeline__place">, {d.location}</span>}
+                  </span>
+                  <span class="timeline__date">
+                    {formatPeriod(d.startDate, d.endDate)}
+                    {duration && <span class="timeline__duration"> ({duration})</span>}
+                  </span>
+                  <span class="timeline__toggle" aria-hidden="true">
+                    <ChevronDown />
+                  </span>
+                </summary>
+                <div class="timeline__body">
+                  <div class="prose prose--compact">
+                    <Content />
+                  </div>
+                  {d.skills && d.skills.length > 0 && (
+                    <ul class="chip-list" aria-label="Skills">
+                      {d.skills.map((s) => <SkillBadge skill={s} />)}
+                    </ul>
+                  )}
+                  {d.link && (
+                    <p class="timeline__link">
+                      <a class="btn btn--sm" href={d.link} target="_blank" rel="noopener noreferrer">
+                        Visit {d.subtitle}
+                      </a>
+                    </p>
+                  )}
+                </div>
+              </details>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</section>

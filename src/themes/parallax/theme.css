@@ -1,0 +1,12 @@
+/* Parallax theme. Every rule is scoped to html[data-design="parallax"]. */
+html[data-design="parallax"] {
+  color-scheme: dark;
+  --bg: #141a33;
+  --bg-alt: color-mix(in oklab, #141a33 92%, #eef0ff);
+  --surface: #1f2747;
+  --surface-2: color-mix(in oklab, #1f2747 90%, #eef0ff);
+  --text: #eef0ff;
+  --text-muted: color-mix(in oklab, #eef0ff 68%, #141a33);
+  --border: color-mix(in oklab, #eef0ff 18%, #141a33);
+  --accent: #ffb86b;
+}

@@ -1,0 +1,12 @@
+/* Y2K theme. Every rule is scoped to html[data-design="y2k"]. */
+html[data-design="y2k"] {
+  color-scheme: light;
+  --bg: #e9f1ff;
+  --bg-alt: color-mix(in oklab, #e9f1ff 92%, #1b1d4a);
+  --surface: #ffffff;
+  --surface-2: color-mix(in oklab, #ffffff 90%, #1b1d4a);
+  --text: #1b1d4a;
+  --text-muted: color-mix(in oklab, #1b1d4a 68%, #e9f1ff);
+  --border: color-mix(in oklab, #1b1d4a 18%, #e9f1ff);
+  --accent: #ff3fb4;
+}

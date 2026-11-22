@@ -22,11 +22,14 @@ const siteName = "Farzad Hayat";
 interface Props {
   title?: string;
   description?: string;
+  /** Pin this page to one theme and hide the theme picker. */
+  design?: string;
 }
 
 const {
   title: pageTitle = siteName,
   description = "Farzad Hayat, agent-native software engineer in Brisbane.",
+  design: fixedDesign,
 } = Astro.props;
 
 const title =
@@ -38,7 +41,7 @@ const origin = Astro.url.origin;
 
 // Set by src/middleware.ts on server-rendered pages. Prerendered pages leave
 // it empty and the boot script below picks the theme before first paint.
-const theme = getTheme(Astro.locals.design);
+const theme = getTheme(fixedDesign ?? Astro.locals.design);
 
 const bootData = {
   cookie: THEME_COOKIE,
@@ -183,7 +186,7 @@ const bootData = {
       <SiteFooter />
     </div>
 
-    {general.enableThemeSelector && <ThemeDock />}
+    {general.enableThemeSelector && !fixedDesign && <ThemeDock />}
 
     <script is:inline type="application/json" id="theme-data" set:html={JSON.stringify(themes)} />
     <script>

@@ -196,10 +196,6 @@ export default config({
           label: "Show Certifications Section",
           defaultValue: true,
         }),
-        showServicesSection: fields.checkbox({
-          label: "Show Services Section",
-          defaultValue: true,
-        }),
         showHackathonsSection: fields.checkbox({
           label: "Show Hackathons Section",
           defaultValue: true,

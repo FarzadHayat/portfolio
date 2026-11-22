@@ -162,7 +162,6 @@ const general = defineCollection({
     showWorkSection: z.boolean(),
     showEducationSection: z.boolean(),
     showCertificationsSection: z.boolean(),
-    showServicesSection: z.boolean().default(true),
     showHackathonsSection: z.boolean(),
     showSpotifySection: z.boolean(),
     spotifyPlaylistUrl: z.string().url(),

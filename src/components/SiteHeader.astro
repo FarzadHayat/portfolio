@@ -4,7 +4,7 @@ import { Menu } from "@lucide/astro";
 const isHome = Astro.url.pathname === "/";
 const base = isHome ? "" : "/";
 const links = [
-  { href: `${base}#services`, label: "Services" },
+  { href: "/services", label: "Services" },
   { href: `${base}#projects`, label: "Projects" },
   { href: `${base}#experience`, label: "Experience" },
   { href: `${base}#hackathons`, label: "Hackathons" },

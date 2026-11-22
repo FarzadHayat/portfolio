@@ -19,7 +19,9 @@ export const onRequest = defineMiddleware((context, next) => {
     context.isPrerendered ||
     pathname.startsWith("/keystatic") ||
     pathname.startsWith("/api") ||
-    pathname.startsWith("/_")
+    pathname.startsWith("/_") ||
+    // Pinned to one theme (see services.astro); leave this visit's theme alone.
+    pathname === "/services"
   ) {
     return next();
   }

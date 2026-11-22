@@ -16,6 +16,7 @@ The first page of a visit (and the shuffle button) advances a shuffle bag so eve
 | --- | --- | --- |
 | `meta.ts` | yes | Name, tagline, light or dark, picker order, Google Fonts URL, preview colors. Picked up automatically. |
 | `theme.css` | yes | All styles. Every selector starts with `html[data-design="<id>"]`. Imported from `src/themes/index.css`. |
+| `favicon.svg` | yes | Tab icon for this theme, in `public/themes/<id>/`. Swapped in when the theme changes. |
 | `Decor.astro` | no | Fixed, full-page background layer behind the content. Shown only for this theme. |
 | `HeroDecor.astro` | no | Layer behind the hero section only. |
 | `script.ts` | no | `export function mount(): void \| (() => void)`. Runs when the theme becomes active; return a cleanup function. Loaded only for the active theme. |

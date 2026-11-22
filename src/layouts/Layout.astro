@@ -58,7 +58,7 @@ const bootData = {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content={theme?.preview.bg ?? "#f7f7f8"} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link id="theme-favicon" rel="icon" type="image/svg+xml" href={theme ? `/themes/${theme.id}/favicon.svg` : "/favicon.svg"} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
@@ -141,6 +141,8 @@ const bootData = {
         writeCookie(bootData.queueCookie, JSON.stringify(queue));
         root.dataset.design = t.id;
         root.dataset.scheme = t.scheme;
+        var icon = document.getElementById("theme-favicon");
+        if (icon) icon.setAttribute("href", "/themes/" + t.id + "/favicon.svg");
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute("content", t.bg);
         if (t.fonts) {

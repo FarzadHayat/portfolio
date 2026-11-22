@@ -111,6 +111,10 @@ function applyDom(theme: ThemeMeta) {
   }
 
   document
+    .getElementById("theme-favicon")
+    ?.setAttribute("href", `/themes/${theme.id}/favicon.svg`);
+
+  document
     .querySelector('meta[name="theme-color"]')
     ?.setAttribute("content", theme.preview.bg);
   syncUi(theme);

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
+import Services from "../components/Services.astro";
 import Projects from "../components/Projects.astro";
 import Blog from "../components/Blog.astro";
 import Experience from "../components/Experience.astro";
@@ -28,6 +29,7 @@ const general = (await getEntry("general", "index"))!.data;
       />
     )
   }
+  {general.showServicesSection && <Services />}
   {general.showProjectsSection && <Projects />}
   {general.showBlogSection && <Blog />}
   {general.showWorkSection && <Experience />}

@@ -18,6 +18,7 @@ extraLinks:
     label: Think you know me?
     displayOn: both
 showAboutSection: false
+showServicesSection: true
 showProjectsSection: true
 showBlogSection: false
 showWorkSection: true

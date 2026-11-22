@@ -196,6 +196,10 @@ export default config({
           label: "Show Certifications Section",
           defaultValue: true,
         }),
+        showServicesSection: fields.checkbox({
+          label: "Show Services Section",
+          defaultValue: true,
+        }),
         showHackathonsSection: fields.checkbox({
           label: "Show Hackathons Section",
           defaultValue: true,
@@ -673,6 +677,35 @@ export default config({
           label: "Full Description",
           description: "Detailed information about the hackathon and project",
           extension: "md",
+        }),
+      },
+    }),
+
+    services: collection({
+      label: "Services",
+      path: "src/content/services/*",
+      slugField: "title",
+      format: { data: "yaml" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Service Name" },
+        }),
+        order: fields.integer({
+          label: "Order",
+          description: "Lower numbers show first",
+          defaultValue: 0,
+        }),
+        summary: fields.text({
+          label: "Summary",
+          multiline: true,
+          description: "What the client gets",
+          validation: { isRequired: true },
+        }),
+        proof: fields.text({
+          label: "Done Before",
+          multiline: true,
+          description: "Past work that shows this result",
+          validation: { isRequired: true },
         }),
       },
     }),

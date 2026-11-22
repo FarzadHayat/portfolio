@@ -162,6 +162,7 @@ const general = defineCollection({
     showWorkSection: z.boolean(),
     showEducationSection: z.boolean(),
     showCertificationsSection: z.boolean(),
+    showServicesSection: z.boolean().default(true),
     showHackathonsSection: z.boolean(),
     showSpotifySection: z.boolean(),
     spotifyPlaylistUrl: z.string().url(),
@@ -218,6 +219,16 @@ const quiz = defineCollection({
 });
 
 // Referrals collection
+const services = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/services" }),
+  schema: z.object({
+    title: z.string(),
+    order: z.number().default(0),
+    summary: z.string(),
+    proof: z.string(),
+  }),
+});
+
 const referrals = defineCollection({
   loader: glob({
     pattern: "**/*.yaml",
@@ -251,4 +262,5 @@ export const collections = {
   certifications,
   quiz,
   referrals,
+  services,
 };

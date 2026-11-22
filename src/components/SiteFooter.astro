@@ -3,12 +3,18 @@ import { getEntry } from "astro:content";
 import { getIcon } from "../utils/iconMapper";
 import { getTheme } from "../themes/registry";
 
+interface Props {
+  /** Client-facing page: keep only email and professional profiles. */
+  focused?: boolean;
+}
+
+const { focused = false } = Astro.props;
 const hero = (await getEntry("hero", "index"))!.data;
 const general = (await getEntry("general", "index"))!.data;
 
 const email = hero.socialLinks.find((l) => l.url.startsWith("mailto:"));
-const social = hero.socialLinks.filter((l) => l !== email);
-const extra = general.extraLinksEnabled ? general.extraLinks : [];
+const social = hero.socialLinks.filter((l) => l !== email && !(focused && l.icon === "Sponsor"));
+const extra = general.extraLinksEnabled && !focused ? general.extraLinks : [];
 const theme = getTheme(Astro.locals.design);
 const isExternal = (url: string) => /^https?:/.test(url);
 ---
@@ -46,7 +52,7 @@ const isExternal = (url: string) => /^https?:/.test(url);
       }
     </ul>
     <p class="site-footer__meta">
-      © {new Date().getFullYear()} Farzad Hayat. Theme: <span data-theme-name>{theme?.name ?? ""}</span>.
+      © {new Date().getFullYear()} Farzad Hayat.{!focused && <> Theme: <span data-theme-name>{theme?.name ?? ""}</span>.</>}
     </p>
   </div>
 </footer>

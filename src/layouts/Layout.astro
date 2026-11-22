@@ -22,7 +22,7 @@ const siteName = "Farzad Hayat";
 interface Props {
   title?: string;
   description?: string;
-  /** Pin this page to one theme and hide the theme picker. */
+  /** Pin this page to one theme, hide the theme picker and trim the footer to work links. */
   design?: string;
 }
 
@@ -183,7 +183,7 @@ const bootData = {
       <main id="main" class="page__main" tabindex="-1">
         <slot />
       </main>
-      <SiteFooter />
+      <SiteFooter focused={Boolean(fixedDesign)} />
     </div>
 
     {general.enableThemeSelector && !fixedDesign && <ThemeDock />}

@@ -1,0 +1,52 @@
+---
+import { getEntry } from "astro:content";
+import { getIcon } from "../utils/iconMapper";
+import { getTheme } from "../themes/registry";
+
+const hero = (await getEntry("hero", "index"))!.data;
+const general = (await getEntry("general", "index"))!.data;
+
+const email = hero.socialLinks.find((l) => l.url.startsWith("mailto:"));
+const social = hero.socialLinks.filter((l) => l !== email);
+const extra = general.extraLinksEnabled ? general.extraLinks : [];
+const theme = getTheme(Astro.locals.design);
+const isExternal = (url: string) => /^https?:/.test(url);
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__contact">
+      <h2 class="site-footer__title">Get in touch</h2>
+      {
+        email && (
+          <a class="site-footer__email" href={email.url}>
+            {email.url.replace("mailto:", "")}
+          </a>
+        )
+      }
+    </div>
+    <ul class="site-footer__links">
+      {
+        [...social.map((l) => ({ url: l.url, icon: l.icon, label: l.label })),
+          ...extra.map((l) => ({ url: l.link, icon: l.icon, label: l.label }))].map((link) => {
+          const Icon = getIcon(link.icon as any);
+          return (
+            <li>
+              <a
+                class="btn btn--sm"
+                href={link.url}
+                {...(isExternal(link.url) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                {Icon && <Icon aria-hidden="true" />}
+                {link.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <p class="site-footer__meta">
+      © {new Date().getFullYear()} Farzad Hayat. Theme: <span data-theme-name>{theme?.name ?? ""}</span>.
+    </p>
+  </div>
+</footer>

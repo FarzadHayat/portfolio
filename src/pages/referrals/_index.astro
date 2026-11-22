@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ReferralsIndex from "../../components/ReferralsIndex";
+import { getCollection } from "astro:content";
+import { ArrowLeft } from "@lucide/astro";
+
+const items = (await getCollection("referrals"))
+  .filter((entry) => entry.data.active !== false)
+  .map((entry) => ({
+    id: entry.id,
+    name: entry.data.name,
+    category: entry.data.category,
+    benefit: entry.data.benefit,
+    code: entry.data.code,
+    url: entry.data.url,
+    keywords: entry.data.keywords,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout
+  title="Referrals"
+  description="Referral codes and signup links for services I use. Copy a code or open a link, and report anything that is broken."
+>
+  <div class="container article">
+    <header class="page-head">
+      <a class="back-link" href="/"><ArrowLeft aria-hidden="true" />Home</a>
+      <h1 class="page-head__title">Referrals</h1>
+      <p class="page-head__intro">
+        Codes and signup links for things I actually use. Search the list, copy a code or open a link, and
+        report anything that stops working.
+      </p>
+    </header>
+    {
+      items.length === 0 ? (
+        <p class="page-head__intro">No referrals yet.</p>
+      ) : (
+        <ReferralsIndex client:load items={items} />
+      )
+    }
+  </div>
+</Layout>

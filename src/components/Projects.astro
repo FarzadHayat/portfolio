@@ -3,44 +3,28 @@ import { getCollection } from "astro:content";
 import ProjectCard from "./ProjectCard.astro";
 import { sortProjects } from "../utils/sortProjects";
 
-const projectEntries = await getCollection("projects");
-
-// Show every project that is not archived, ongoing first
-const featuredProjects = sortProjects(
-  projectEntries.filter((project) => !project.data.archived)
-);
-const hasArchive = projectEntries.some((project) => project.data.archived);
+const entries = await getCollection("projects");
+const current = sortProjects(entries.filter((p) => !p.data.archived));
+const hasArchive = entries.some((p) => p.data.archived);
 ---
 
-<section id="projects" class="py-28 px-6 bg-base-200">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold mb-4">Check out my latest work</h2>
-    </div>
-
-    {
-      featuredProjects.length === 0 ? (
-        <div class="text-center py-12">
-          <p class="text-lg text-base-content/60">
-            No projects yet.
-          </p>
-        </div>
-      ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.map((project) => (
-            <ProjectCard project={project} />
-          ))}
-        </div>
-      )
-    }
-
+<section id="projects" class="section section--projects" aria-labelledby="projects-title">
+  <div class="container">
+    <header class="section__head">
+      <h2 class="section__title" id="projects-title">Projects</h2>
+    </header>
+    <ul class="project-grid">
+      {current.map((project, i) => (
+        <li class:list={{ "project-grid__lead": i === 0 }}>
+          <ProjectCard project={project} lead={i === 0} />
+        </li>
+      ))}
+    </ul>
     {
       hasArchive && (
-        <div class="text-center mt-10">
-          <a href="/projects" class="btn btn-primary btn-outline rounded-full px-8">
-            Earlier projects
-          </a>
-        </div>
+        <p class="section__more">
+          <a class="btn" href="/projects">Earlier projects</a>
+        </p>
       )
     }
   </div>

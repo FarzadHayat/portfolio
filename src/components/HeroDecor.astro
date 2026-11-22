@@ -1,0 +1,27 @@
+---
+// Same idea as ThemeDecor, scoped to the hero section.
+// A theme adds it by creating src/themes/<id>/HeroDecor.astro.
+const modules = import.meta.glob<{ default: any }>("../themes/*/HeroDecor.astro", {
+  eager: true,
+});
+const layers = Object.entries(modules).map(([path, mod]) => ({
+  id: path.split("/")[2],
+  Component: mod.default,
+}));
+const css = layers
+  .map(({ id }) => `html[data-design="${id}"] [data-hero-decor="${id}"]{display:block}`)
+  .join("");
+---
+
+{
+  layers.length > 0 && (
+    <div class="hero-decor" aria-hidden="true">
+      {layers.map(({ id, Component }) => (
+        <div class="hero-decor__layer" data-hero-decor={id}>
+          <Component />
+        </div>
+      ))}
+    </div>
+  )
+}
+<style is:inline set:html={css}></style>

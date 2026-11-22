@@ -113,13 +113,13 @@ export default config({
       path: "src/content/general/",
       schema: {
         enableThemeSelector: fields.checkbox({
-          label: "Enable Theme Selector",
-          description: "Show theme dropdown instead of toggle switch",
+          label: "Enable Theme Picker",
+          description: "Show the theme picker and shuffle button",
           defaultValue: true,
         }),
         extraLinksEnabled: fields.checkbox({
-          label: "Enable Extra Links FAB",
-          description: "Show floating action button with extra links",
+          label: "Enable Extra Links",
+          description: "Show extra links in the footer",
           defaultValue: true,
         }),
         extraLinks: fields.array(

@@ -81,8 +81,8 @@ export default function ReferralsIndex({
   }
 
   return (
-    <div className="space-y-6">
-      <div className="sticky top-0 z-10 -mx-2 bg-base-100/95 px-2 py-3 backdrop-blur supports-[backdrop-filter]:bg-base-100/80">
+    <div className="referrals">
+      <div className="referrals__controls">
         <label className="sr-only" htmlFor={searchId}>
           Search referrals
         </label>
@@ -92,19 +92,19 @@ export default function ReferralsIndex({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search by name, category, code…"
-          className="input input-bordered w-full"
+          className="field"
           autoComplete="off"
         />
 
         {categories.length > 1 && (
           <div
-            className="mt-3 flex flex-wrap gap-2"
+            className="referrals__filters"
             role="group"
             aria-label="Filter by category"
           >
             <button
               type="button"
-              className={`btn btn-sm rounded-full ${category === "all" ? "btn-primary" : "btn-ghost"}`}
+              className={`btn btn--sm ${category === "all" ? "btn--primary" : "btn--ghost"}`}
               aria-pressed={category === "all"}
               onClick={() => setCategory("all")}
             >
@@ -114,7 +114,7 @@ export default function ReferralsIndex({
               <button
                 key={cat}
                 type="button"
-                className={`btn btn-sm rounded-full ${category === cat ? "btn-primary" : "btn-ghost"}`}
+                className={`btn btn--sm ${category === cat ? "btn--primary" : "btn--ghost"}`}
                 aria-pressed={category === cat}
                 onClick={() => setCategory(cat)}
               >
@@ -125,18 +125,18 @@ export default function ReferralsIndex({
         )}
       </div>
 
-      <p className="text-sm text-base-content/60" aria-live="polite">
+      <p className="referrals__count" aria-live="polite">
         {filtered.length === items.length
           ? `${items.length} referral${items.length === 1 ? "" : "s"}`
           : `${filtered.length} of ${items.length} referrals`}
       </p>
 
       {filtered.length === 0 ? (
-        <p className="py-12 text-center text-lg text-base-content/60">
+        <p className="referrals__empty">
           No referrals match your search.
         </p>
       ) : (
-        <ul className="divide-y divide-base-300 border-y border-base-300">
+        <ul className="referrals__list">
           {filtered.map((item) => {
             const reportHref = buildReportMailto(reportEmail, item);
             const copied = copiedId === item.id;
@@ -144,29 +144,29 @@ export default function ReferralsIndex({
             return (
               <li
                 key={item.id}
-                className="flex flex-col gap-3 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+                className="referral card"
               >
-                <div className="min-w-0 flex-1 space-y-1">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h2 className="text-xl font-semibold">{item.name}</h2>
-                    <span className="text-sm text-base-content/55">
+                <div className="referral__info">
+                  <div className="referral__head">
+                    <h2 className="referral__name">{item.name}</h2>
+                    <span className="referral__category">
                       {item.category}
                     </span>
                   </div>
-                  <p className="text-base-content/80">{item.benefit}</p>
+                  <p className="referral__benefit">{item.benefit}</p>
                   {item.code && (
-                    <p className="font-mono text-sm">
-                      <span className="text-base-content/55">Code: </span>
+                    <p className="referral__code">
+                      <span className="referral__code-label">Code: </span>
                       <span>{item.code}</span>
                     </p>
                   )}
                 </div>
 
-                <div className="flex flex-wrap gap-2 sm:shrink-0 sm:justify-end">
+                <div className="referral__actions">
                   {item.code && (
                     <button
                       type="button"
-                      className="btn btn-sm btn-outline"
+                      className="btn btn--sm"
                       onClick={() => copyCode(item)}
                       aria-label={`Copy code for ${item.name}`}
                     >
@@ -176,7 +176,7 @@ export default function ReferralsIndex({
                   {item.url && (
                     <a
                       href={item.url}
-                      className="btn btn-sm btn-primary"
+                      className="btn btn--sm btn--primary"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -185,7 +185,7 @@ export default function ReferralsIndex({
                   )}
                   <a
                     href={reportHref}
-                    className="btn btn-sm btn-ghost"
+                    className="btn btn--sm btn--ghost"
                     aria-label={`Report broken referral for ${item.name}`}
                   >
                     Report

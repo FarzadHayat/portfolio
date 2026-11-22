@@ -1,0 +1,27 @@
+---
+// Y2K: a pearl backdrop with soft iridescent pools, two thin chrome orbit
+// rings and a few four-point sparkles. Static, styled in theme.css.
+const star = "M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z";
+---
+
+<div class="y2k-field">
+  <span class="y2k-pool y2k-pool--aqua"></span>
+  <span class="y2k-pool y2k-pool--lilac"></span>
+  <span class="y2k-pool y2k-pool--pink"></span>
+  <span class="y2k-pool y2k-pool--lime"></span>
+  <svg class="y2k-orbits" viewBox="0 0 1000 1000" preserveAspectRatio="none" focusable="false">
+    <defs>
+      <linearGradient id="y2k-orbit" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8fb4ff" />
+        <stop offset=".5" stop-color="#ffffff" />
+        <stop offset="1" stop-color="#d59cff" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="760" cy="230" rx="420" ry="120" transform="rotate(-14 760 230)" />
+    <ellipse cx="180" cy="820" rx="360" ry="96" transform="rotate(10 180 820)" />
+  </svg>
+  <svg class="y2k-spark y2k-spark--a" viewBox="0 0 24 24" focusable="false"><path d={star} /></svg>
+  <svg class="y2k-spark y2k-spark--b" viewBox="0 0 24 24" focusable="false"><path d={star} /></svg>
+  <svg class="y2k-spark y2k-spark--c" viewBox="0 0 24 24" focusable="false"><path d={star} /></svg>
+  <svg class="y2k-spark y2k-spark--d" viewBox="0 0 24 24" focusable="false"><path d={star} /></svg>
+</div>

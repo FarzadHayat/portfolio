@@ -1,0 +1,529 @@
+/*
+  Parallax: dusk over the Glass House Mountains.
+  A fixed, layered landscape (Decor.astro) whose layers rise at different
+  speeds through the first screen of scroll, so the sun sets behind the
+  hills as you start reading. Content sits on calm night-blue panels.
+  Every rule is scoped to html[data-design="parallax"].
+*/
+html[data-design="parallax"] {
+  color-scheme: dark;
+
+  --night: #0a0d28;
+  --panel: #151938;
+  --peach: #ffb27a;
+  --lilac: #c9c4ff;
+
+  --bg: var(--night);
+  --bg-alt: transparent;
+  --surface: var(--panel);
+  --surface-2: #20254d;
+  --text: #eef0ff;
+  --text-muted: #b3b7d9;
+  --border: #353b6c;
+  --accent: var(--peach);
+  --accent-ink: #1b1330;
+  --accent-2: var(--lilac);
+  --link: #ffc49a;
+  --focus: #ffd3ad;
+  --selection: rgb(255 178 122 / 0.35);
+
+  --font-body: "Atkinson Hyperlegible Next", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sofia Sans Extra Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
+  --body-size: 1.0625rem;
+  --body-leading: 1.65;
+  --display-weight: 700;
+  --display-tracking: 0.01em;
+  --display-leading: 0.9;
+  --heading-weight: 700;
+
+  --border-width: 1px;
+  --radius-lg: 16px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 0 rgb(255 196 150 / 0.12) inset, 0 22px 44px -26px rgb(2 3 16 / 0.9);
+  --shadow-lg: 0 1px 0 rgb(255 196 150 / 0.16) inset, 0 30px 60px -24px rgb(2 3 16 / 0.95);
+
+  --card-bg: color-mix(in oklab, var(--panel) 94%, transparent);
+  --card-border: 1px solid rgb(238 240 255 / 0.08);
+  --card-radius: var(--radius-lg);
+  --card-shadow: var(--shadow);
+  --btn-bg: rgb(21 25 56 / 0.7);
+  --btn-ink: var(--text);
+  --btn-border: 1px solid rgb(238 240 255 / 0.3);
+  --btn-radius: var(--radius);
+  --btn-primary-bg: var(--peach);
+  --btn-primary-ink: var(--accent-ink);
+  --chip-bg: rgb(201 196 255 / 0.1);
+  --chip-ink: #dcd9ff;
+  --chip-border: 1px solid rgb(201 196 255 / 0.18);
+  --chip-radius: var(--radius-sm);
+}
+
+/* ---------- The landscape ---------- */
+html[data-design="parallax"] .px-scene {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+}
+html[data-design="parallax"] .px-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #0a0d28 0%,
+    #141947 30%,
+    #2a2462 47%,
+    #533068 59%,
+    #86465f 68%,
+    #9a5160 78%
+  );
+}
+html[data-design="parallax"] .px-layer {
+  position: absolute;
+  inset-inline: 0;
+}
+html[data-design="parallax"] .px-stars {
+  top: 0;
+  height: 62%;
+}
+html[data-design="parallax"] .px-stars svg {
+  display: block;
+  width: 100%;
+  height: max(26rem, 56vh);
+}
+html[data-design="parallax"] .px-sun {
+  --sun: clamp(4rem, 10vmin, 7rem);
+  left: calc(62% - var(--sun) * 2);
+  right: auto;
+  top: calc(44% + 0.8 * max(28vh, 19.5vw) - var(--sun) * 2);
+  width: calc(var(--sun) * 4);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    #ffe2b8 0 24%,
+    rgb(255 178 122 / 0.45) 26%,
+    rgb(255 140 120 / 0.16) 52%,
+    transparent 100%
+  );
+}
+/* Each ridge: a silhouette crest (the SVG) with solid fill below it.
+   The fill runs past the bottom edge so a rising layer never shows a gap. */
+html[data-design="parallax"] .px-ridge {
+  top: var(--y);
+  bottom: -40vh;
+  background: linear-gradient(to bottom, transparent calc(var(--h) - 2px), var(--c) 0);
+}
+html[data-design="parallax"] .px-ridge svg {
+  display: block;
+  width: 100%;
+  height: var(--h);
+  fill: var(--c);
+}
+html[data-design="parallax"] .px-ridge--peaks {
+  --y: 44%;
+  --h: max(28vh, 19.5vw);
+  --c: #3a2b61;
+}
+html[data-design="parallax"] .px-ridge--range {
+  --y: 60%;
+  --h: 16vh;
+  --c: #29245a;
+}
+html[data-design="parallax"] .px-ridge--hills {
+  --y: 72%;
+  --h: 14vh;
+  --c: #1a1a46;
+}
+html[data-design="parallax"] .px-ridge--trees {
+  --y: 86%;
+  --h: max(13vh, 9vw);
+  --c: #0b0c24;
+}
+@media (max-width: 40rem) {
+  html[data-design="parallax"] .px-sun {
+    left: calc(80% - var(--sun) * 2);
+  }
+}
+
+/* Depth: each layer rises by its own --travel over the first screen of
+   scroll. Far layers move least. Native scroll-driven animation only;
+   script.ts covers browsers without it. No motion when reduced. */
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-design="parallax"] .px-layer {
+      will-change: transform;
+      animation: px-rise linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+}
+@keyframes px-rise {
+  to {
+    transform: translate3d(0, calc(var(--travel) * -1), 0);
+  }
+}
+
+/* ---------- Page frame ---------- */
+html[data-design="parallax"] body {
+  background: var(--night);
+}
+html[data-design="parallax"] .section--alt {
+  background: transparent;
+}
+html[data-design="parallax"] :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+html[data-design="parallax"] .skip-link {
+  border-radius: var(--radius);
+}
+
+/* ---------- Header ---------- */
+html[data-design="parallax"] .site-header__brand {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+html[data-design="parallax"] .site-nav__link {
+  position: relative;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .site-nav__link:hover {
+    background: transparent;
+    color: var(--text);
+  }
+}
+html[data-design="parallax"] .site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.3rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--peach);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s var(--ease);
+}
+html[data-design="parallax"] .site-nav__link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .site-nav__link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Display type ---------- */
+html[data-design="parallax"] .hero__name {
+  font-size: clamp(4.25rem, 14vw, 9.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-shadow: 0 2px 30px rgb(10 13 40 / 0.6);
+}
+html[data-design="parallax"] .section__title,
+html[data-design="parallax"] .page-head__title {
+  font-size: clamp(2.9rem, 7vw, 4.75rem);
+  line-height: 0.92;
+}
+html[data-design="parallax"] .page-head__title {
+  font-size: clamp(3.25rem, 10vw, 6rem);
+}
+html[data-design="parallax"] .section__title,
+html[data-design="parallax"] .page-head__title,
+html[data-design="parallax"] .site-footer__title {
+  text-shadow: 0 2px 24px rgb(10 13 40 / 0.7);
+}
+html[data-design="parallax"] .site-footer__title,
+html[data-design="parallax"] .quiz__title {
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+  line-height: 0.95;
+}
+html[data-design="parallax"] .project-card__title,
+html[data-design="parallax"] .hackathon__title {
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+html[data-design="parallax"] .timeline__role,
+html[data-design="parallax"] .entry__title,
+html[data-design="parallax"] .referral__name {
+  font-size: 1.6rem;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+}
+html[data-design="parallax"] .stack-panel__title,
+html[data-design="parallax"] .theme-picker__title {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+html[data-design="parallax"] .quiz__question {
+  font-size: 1.85rem;
+  line-height: 1.08;
+}
+html[data-design="parallax"] .quiz__verdict {
+  font-size: 2.4rem;
+}
+html[data-design="parallax"] .error-page__code {
+  font-size: clamp(6rem, 26vw, 13rem);
+  line-height: 0.85;
+}
+
+/* ---------- Hero ---------- */
+html[data-design="parallax"] .hero {
+  padding-block: clamp(2rem, 7vw, 5rem) clamp(5rem, 14vw, 10rem);
+}
+html[data-design="parallax"] .hero__greeting {
+  margin-bottom: 0.75rem;
+  color: var(--lilac);
+}
+html[data-design="parallax"] .hero__title {
+  margin-top: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+}
+html[data-design="parallax"] .hero__role + .hero__role {
+  color: var(--text-muted);
+}
+html[data-design="parallax"] .hero__bio {
+  max-width: 36rem;
+  text-shadow: 0 1px 14px rgb(10 13 40 / 0.85);
+}
+html[data-design="parallax"] .hero__portrait {
+  width: min(100%, 18rem);
+}
+@media (min-width: 60rem) {
+  html[data-design="parallax"] .hero__portrait {
+    width: min(100%, 21rem);
+  }
+}
+/* The portrait as a tall arched window onto the evening. */
+html[data-design="parallax"] .hero__photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  box-shadow:
+    0 0 0 1px rgb(255 196 150 / 0.28),
+    0 0 0 8px rgb(21 25 56 / 0.6),
+    0 40px 80px -30px rgb(2 3 16 / 0.95);
+}
+
+/* ---------- Buttons ---------- */
+html[data-design="parallax"] .btn {
+  min-height: 2.875rem;
+  padding-inline: 1.25rem;
+  font-weight: 600;
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .btn:hover,
+  html[data-design="parallax"] .icon-btn:hover {
+    background: rgb(238 240 255 / 0.1);
+    border-color: rgb(238 240 255 / 0.5);
+  }
+}
+html[data-design="parallax"] .btn--primary {
+  border-color: transparent;
+  box-shadow: 0 10px 30px -12px rgb(255 160 110 / 0.6);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .btn--primary:hover {
+    background: #ffc799;
+    border-color: transparent;
+  }
+}
+html[data-design="parallax"] .btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--lilac);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .btn--ghost:hover {
+    border-color: transparent;
+    color: var(--text);
+  }
+}
+html[data-design="parallax"] .btn--sm {
+  min-height: 2.75rem;
+}
+
+/* ---------- Sections ---------- */
+html[data-design="parallax"] .section__intro {
+  font-size: 1.1rem;
+}
+html[data-design="parallax"] .section__intro,
+html[data-design="parallax"] .page-head__intro {
+  color: #c4c7e4;
+}
+
+/* ---------- Panels ---------- */
+@media (hover: hover) {
+  html[data-design="parallax"] .project-card:hover {
+    border-color: rgb(255 196 150 / 0.3);
+  }
+}
+html[data-design="parallax"] .project-card__media,
+html[data-design="parallax"] .hackathon__media {
+  background: #0e1230;
+}
+html[data-design="parallax"] .project-card__meta,
+html[data-design="parallax"] .hackathon__meta,
+html[data-design="parallax"] .timeline__date,
+html[data-design="parallax"] .entry__date {
+  color: var(--lilac);
+}
+html[data-design="parallax"] .badge {
+  border-radius: var(--radius-sm);
+}
+
+/* Timeline: the line is a trail, each marker a small peak. */
+html[data-design="parallax"] .timeline::before {
+  width: 2px;
+  background: linear-gradient(to bottom, rgb(255 178 122 / 0.6), rgb(201 196 255 / 0.15));
+}
+html[data-design="parallax"] .timeline__marker {
+  width: 1rem;
+  height: 0.85rem;
+  border-radius: 0;
+  background: var(--peach);
+  box-shadow: none;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+html[data-design="parallax"] .timeline__summary {
+  min-height: 2.75rem;
+}
+html[data-design="parallax"] .timeline__toggle {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: rgb(201 196 255 / 0.12);
+}
+html[data-design="parallax"] .timeline__details[open] {
+  border-color: rgb(255 196 150 / 0.22);
+}
+
+html[data-design="parallax"] .entry__kind {
+  color: var(--peach);
+}
+
+/* ---------- Footer ---------- */
+html[data-design="parallax"] .site-footer {
+  border-top: 0;
+}
+html[data-design="parallax"] .site-footer__email {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+
+/* ---------- Subpages ---------- */
+html[data-design="parallax"] .back-link {
+  min-height: 2.75rem;
+  color: var(--lilac);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .back-link:hover {
+    color: var(--text);
+  }
+}
+html[data-design="parallax"] .page-head__meta {
+  color: var(--lilac);
+}
+html[data-design="parallax"] .article__body,
+html[data-design="parallax"] .stack-panel {
+  position: relative;
+}
+html[data-design="parallax"] .article .prose,
+html[data-design="parallax"] .article__body {
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+html[data-design="parallax"] .article__body {
+  max-width: none;
+}
+html[data-design="parallax"] .article__body .prose {
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+html[data-design="parallax"] .prose :where(h2, h3):not(:where(.not-prose *)) {
+  font-weight: 700;
+  line-height: 1;
+}
+html[data-design="parallax"] .prose :where(h2):not(:where(.not-prose *)) {
+  font-size: 2.1rem;
+}
+html[data-design="parallax"] .prose :where(h3):not(:where(.not-prose *)) {
+  font-size: 1.6rem;
+}
+html[data-design="parallax"] .field {
+  background: #10142f;
+  border-color: #4a5088;
+  border-radius: var(--radius);
+}
+
+/* ---------- Referrals and quiz ---------- */
+html[data-design="parallax"] .referrals__controls {
+  background: color-mix(in oklab, var(--night) 92%, transparent);
+}
+html[data-design="parallax"] .quiz__option {
+  border-color: #3d4377;
+  background: rgb(32 37 77 / 0.7);
+  transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .quiz__option:hover {
+    border-color: var(--peach);
+    background: #262c5a;
+  }
+}
+html[data-design="parallax"] .quiz__answer {
+  border-left-color: var(--peach);
+}
+
+/* ---------- Theme dock and picker ---------- */
+html[data-design="parallax"] .theme-dock {
+  border: 1px solid rgb(238 240 255 / 0.14);
+  border-radius: calc(var(--radius) + 0.35rem);
+  background: rgb(21 25 56 / 0.88);
+  box-shadow: var(--shadow-lg);
+}
+html[data-design="parallax"] .theme-dock__open,
+html[data-design="parallax"] .theme-dock__shuffle {
+  border-radius: var(--radius);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .theme-dock__open:hover,
+  html[data-design="parallax"] .theme-dock__shuffle:hover {
+    background: rgb(238 240 255 / 0.1);
+  }
+}
+html[data-design="parallax"] .theme-picker {
+  border: 1px solid rgb(238 240 255 / 0.12);
+  background: linear-gradient(to bottom, #1a1f45, var(--panel) 40%);
+}
+html[data-design="parallax"] .theme-picker::backdrop {
+  background: rgb(5 6 22 / 0.65);
+}
+html[data-design="parallax"] .theme-option {
+  border-radius: var(--radius);
+  background: rgb(238 240 255 / 0.05);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .theme-option:hover {
+    border-color: rgb(238 240 255 / 0.3);
+  }
+}
+html[data-design="parallax"] .theme-option[aria-pressed="true"] {
+  border-color: var(--peach);
+}
+html[data-design="parallax"] .theme-option__thumb {
+  border-radius: calc(var(--radius) - 4px);
+}

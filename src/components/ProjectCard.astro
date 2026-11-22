@@ -18,7 +18,7 @@ const href = `/projects/${project.id}`;
 
 <article class:list={["project-card", { "project-card--lead": lead }]}>
   <div class="project-card__media">
-    <Image src={data.image} alt="" width={lead ? 1200 : 640} height={lead ? 750 : 400} />
+    <Image src={data.image} alt="" width={lead ? 1200 : 640} />
   </div>
   <div class="project-card__body">
     <h3 class="project-card__title"><a href={href}>{data.title}</a></h3>

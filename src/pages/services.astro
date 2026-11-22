@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { getIcon } from "../utils/iconMapper";
 
 const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
 const bookingUrl = "https://cal.com/farzadhayat";
@@ -27,19 +28,25 @@ const email = "mailto:hello@farzadhayat.dev";
     </header>
     <ul class="project-grid">
       {
-        services.map(({ data }) => (
-          <li>
-            <article class="project-card">
-              <div class="project-card__body">
-                <h2 class="project-card__title">{data.title}</h2>
-                <p class="project-card__desc">{data.summary}</p>
-                <p class="project-card__meta">
-                  <span><strong>Done before:</strong> {data.proof}</span>
-                </p>
-              </div>
-            </article>
-          </li>
-        ))
+        services.map(({ data }) => {
+          const Icon = getIcon(data.icon);
+          return (
+            <li>
+              <article class="project-card">
+                <div class="project-card__body">
+                  <h2 class="project-card__title service-title">
+                    <span class="service-icon"><Icon aria-hidden="true" /></span>
+                    {data.title}
+                  </h2>
+                  <p class="project-card__desc">{data.summary}</p>
+                  <p class="project-card__meta">
+                    <span><strong>Done before:</strong> {data.proof}</span>
+                  </p>
+                </div>
+              </article>
+            </li>
+          );
+        })
       }
     </ul>
     <p class="section__more">

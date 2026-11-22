@@ -1,4 +1,5 @@
 title: Custom web apps
+icon: AppWindow
 order: 6
 summary: When ready-made tools do not fit, I build the app you need. I write tests for it, so it keeps working after each change.
 proof: I built Danzeira on my own, with payments, QR check-in and an Android app. I also spent 15 months in QA at Tiny Technologies.

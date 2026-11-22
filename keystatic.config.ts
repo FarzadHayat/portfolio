@@ -691,6 +691,18 @@ export default config({
           description: "Lower numbers show first",
           defaultValue: 0,
         }),
+        icon: fields.select({
+          label: "Icon",
+          options: [
+            { label: "Globe", value: "Globe" },
+            { label: "Bot", value: "Bot" },
+            { label: "Shield (ShieldCheck)", value: "ShieldCheck" },
+            { label: "Workflow", value: "Workflow" },
+            { label: "Cloud", value: "Cloud" },
+            { label: "App window (AppWindow)", value: "AppWindow" },
+          ],
+          defaultValue: "Globe",
+        }),
         summary: fields.text({
           label: "Summary",
           multiline: true,

@@ -24,6 +24,12 @@ import {
   Wrench,
   FolderCode,
   Award,
+  Globe,
+  Bot,
+  ShieldCheck,
+  Workflow,
+  Cloud,
+  AppWindow,
 } from "@lucide/astro";
 
 // Social media icon components
@@ -60,6 +66,12 @@ export type IconName =
   | "Wrench"
   | "FolderCode"
   | "Award"
+  | "Globe"
+  | "Bot"
+  | "ShieldCheck"
+  | "Workflow"
+  | "Cloud"
+  | "AppWindow"
   | "GitHub"
   | "LinkedIn"
   | "Twitter"
@@ -95,6 +107,12 @@ export const iconMap: Record<IconName, any> = {
   Wrench,
   FolderCode,
   Award,
+  Globe,
+  Bot,
+  ShieldCheck,
+  Workflow,
+  Cloud,
+  AppWindow,
   GitHub,
   LinkedIn,
   Twitter,

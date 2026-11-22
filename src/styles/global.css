@@ -620,6 +620,27 @@
     }
   }
 
+  /* Services page: icon beside each card heading */
+  .service-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .service-icon {
+    display: inline-grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius);
+    background: var(--chip-bg);
+    color: var(--accent);
+  }
+  .service-icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
   /* ---------- Timeline (work) ---------- */
   .timeline {
     position: relative;

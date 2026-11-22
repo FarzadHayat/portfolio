@@ -223,6 +223,7 @@ const services = defineCollection({
   schema: z.object({
     title: z.string(),
     order: z.number().default(0),
+    icon: z.enum(["Globe", "Bot", "ShieldCheck", "Workflow", "Cloud", "AppWindow"]),
     summary: z.string(),
     proof: z.string(),
   }),

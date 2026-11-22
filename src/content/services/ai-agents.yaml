@@ -1,4 +1,5 @@
 title: AI and agents for your business
+icon: Bot
 order: 2
 summary: I find the manual work that AI can do for you. Then I connect AI assistants to your tools and data, so they can do real tasks with safe limits.
 proof: I built an MCP server for Danzeira, so organisers can run their events from Claude or Cursor. I also built a Copilot workflow that turns Jira tickets into test cases.

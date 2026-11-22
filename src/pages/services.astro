@@ -1,8 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { getCollection, getEntry } from "astro:content";
 import { getIcon } from "../utils/iconMapper";
 
+const hero = (await getEntry("hero", "index"))!.data;
 const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
 const bookingUrl = "https://cal.com/farzadhayat";
 const email = "mailto:hello@farzadhayat.dev";
@@ -17,10 +19,13 @@ const email = "mailto:hello@farzadhayat.dev";
   <div class="container">
     <header class="page-head">
       <h1 class="page-head__title">Services</h1>
-      <p class="page-head__intro">
-        I take on projects for businesses. I use AI agents to work fast, and I check and test every change myself.
-        You get a fixed quote before any work starts.
-      </p>
+      <div class="service-intro">
+        <Image class="service-intro__photo" src={hero.avatar} alt="Farzad Hayat" width={192} height={192} />
+        <p class="page-head__intro">
+          I'm Farzad, a software engineer in Brisbane. I take on projects for businesses. I use AI agents to work
+          fast, and I check and test every change myself. You get a fixed quote before any work starts.
+        </p>
+      </div>
       <div class="page-head__actions">
         <a class="btn btn--primary" href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a free 30-minute call</a>
         <a class="btn" href={email}>Email me</a>

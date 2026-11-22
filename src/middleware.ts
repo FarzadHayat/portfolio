@@ -11,7 +11,8 @@ import {
 
 // Pick the theme on the server so the first paint is already themed.
 // - ?theme=<id> shows that theme (handy for sharing a look).
-// - Otherwise each page load advances a shuffle bag so refresh shows a new one.
+// - If the visitor already has a theme this visit, keep it across pages.
+// - Otherwise (first page of a visit) advance a shuffle bag to pick one.
 export const onRequest = defineMiddleware((context, next) => {
   const { pathname } = context.url;
   if (
@@ -33,17 +34,21 @@ export const onRequest = defineMiddleware((context, next) => {
   if (getTheme(fromQuery)) {
     design = fromQuery!;
     queue = removeFromQueue(queue, design);
+  } else if (getTheme(fromCookie)) {
+    design = fromCookie!;
   } else {
     const nextTheme = nextThemeFromBag(fromCookie, queue);
     design = nextTheme.id;
     queue = nextTheme.queue;
   }
 
-  context.cookies.set(THEME_COOKIE, design, { path: "/", sameSite: "lax" });
-  context.cookies.set(THEME_QUEUE_COOKIE, serializeThemeQueue(queue), {
-    path: "/",
-    sameSite: "lax",
-  });
+  if (design !== fromCookie) {
+    context.cookies.set(THEME_COOKIE, design, { path: "/", sameSite: "lax" });
+    context.cookies.set(THEME_QUEUE_COOKIE, serializeThemeQueue(queue), {
+      path: "/",
+      sameSite: "lax",
+    });
+  }
 
   context.locals.design = design;
   return next();

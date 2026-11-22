@@ -1,6 +1,6 @@
 # Themes
 
-Each page load (and the shuffle button) advances a shuffle bag so every theme shows before a repeat. The theme dock (bottom right) opens a picker. `?theme=<id>` on any URL shows that theme.
+The first page of a visit (and the shuffle button) advances a shuffle bag so every theme shows before a repeat. The theme then stays the same across pages and refreshes until the browser session ends. The theme dock (bottom right) opens a picker. `?theme=<id>` on any URL shows that theme.
 
 ## How it works
 

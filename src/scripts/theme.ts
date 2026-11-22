@@ -134,7 +134,7 @@ export function setTheme(id: string, { persist = true } = {}) {
   // Manual picks count as seen so shuffle/refresh do not revisit them early.
   dropFromQueue(theme.id);
 
-  // Drop ?theme= so a reload keeps advancing the bag instead of locking this URL.
+  // Drop ?theme= so the URL no longer forces this theme.
   const url = new URL(location.href);
   if (url.searchParams.has("theme")) {
     url.searchParams.delete("theme");

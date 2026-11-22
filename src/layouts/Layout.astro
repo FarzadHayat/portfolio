@@ -63,7 +63,7 @@ const bootData = {
     <title>{title}</title>
 
     <script is:inline define:vars={{ bootData }}>
-      // Prerendered pages: advance the shuffle bag before first paint.
+      // Prerendered pages: keep this visit's theme, or advance the shuffle bag, before first paint.
       (function () {
         var root = document.documentElement;
         if (root.dataset.design) return;
@@ -125,6 +125,8 @@ const bootData = {
         if (t) {
           var at = queue.indexOf(t.id);
           if (at >= 0) queue.splice(at, 1);
+        } else if (find(previous)) {
+          t = find(previous);
         } else {
           queue = fill(queue, previous ? [previous] : []);
           var pick = 0;

@@ -75,12 +75,13 @@ src/
 
 ## Resume Workflow
 
-Source is `resume.tex` at repo root. Do not edit `public/resume.pdf` directly.
+Source is `templates/resume.tex` in `~/Work/career-docs`. Do not edit `public/resume.pdf` directly.
 
 ```bash
-pdflatex resume.tex
-mv resume.pdf public/resume.pdf
+~/Work/career-docs/templates/build.sh
 ```
+
+The script builds the public version (no phone number) and moves it to `public/resume.pdf`. Commit it here afterwards.
 
 ## Writing Content
 

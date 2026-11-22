@@ -19,6 +19,11 @@ export default defineConfig({
     "/resume": "/resume.pdf",
   },
 
+  server: {
+    // Tailscale Serve forwards with the machine MagicDNS Host header.
+    allowedHosts: [".ts.net"],
+  },
+
   vite: {
     plugins: [tailwindcss()],
     build: {

@@ -13,9 +13,9 @@ extraLinks:
     icon: Award
     label: AWS Cloud Practitioner
     displayOn: both
-  - link: /referrals
-    icon: Link
-    label: Referrals
+  - link: /quiz
+    icon: User
+    label: Think you know me?
     displayOn: both
 showAboutSection: false
 showProjectsSection: true
@@ -27,4 +27,4 @@ showHackathonsSection: true
 showSpotifySection: true
 spotifyPlaylistUrl: "https://open.spotify.com/playlist/2JT2QwFoDrInYeZZ4T2DiH?si=hm7Px3_wRrqAZfhQc7r7hQ"
 showContactSection: false
-showQuizCta: true
+showQuizCta: false

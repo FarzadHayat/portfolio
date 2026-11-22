@@ -1,6 +1,6 @@
 # Themes
 
-Every visitor gets a random theme, kept for their browser session. The theme dock (bottom right) opens a picker and has a shuffle button. A pick is saved for a year. `?theme=<id>` on any URL shows that theme.
+Each page load (and the shuffle button) advances a shuffle bag so every theme shows before a repeat. The theme dock (bottom right) opens a picker. `?theme=<id>` on any URL shows that theme.
 
 ## How it works
 

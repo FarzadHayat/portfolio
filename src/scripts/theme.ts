@@ -3,11 +3,17 @@
 // sets html[data-design] before first paint. This module handles the picker,
 // the shuffle button, and each theme's optional script.ts.
 import type { ThemeMeta } from "../themes/types";
+import {
+  THEME_COOKIE,
+  THEME_QUEUE_COOKIE,
+  nextThemeFromBag,
+  parseThemeQueue,
+  removeFromQueue,
+  serializeThemeQueue,
+} from "../themes/registry";
 
 type ThemeModule = { mount?: () => void | (() => void) };
 
-const COOKIE = "design";
-const YEAR = 60 * 60 * 24 * 365;
 const loaders = import.meta.glob<ThemeModule>("../themes/*/script.ts");
 
 const root = document.documentElement;
@@ -19,6 +25,43 @@ let mountToken = 0;
 
 function current(): string {
   return root.dataset.design || "";
+}
+
+function readCookie(name: string): string | undefined {
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}=([^;]*)`),
+  );
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
+function writeCookie(name: string, value: string) {
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; samesite=lax`;
+}
+
+function readQueue(): string[] {
+  const fromCookie = parseThemeQueue(readCookie(THEME_QUEUE_COOKIE));
+  if (fromCookie.length) return fromCookie;
+  // Migrate an older sessionStorage bag once, then keep it in the cookie.
+  try {
+    const raw = sessionStorage.getItem(THEME_QUEUE_COOKIE);
+    const migrated = parseThemeQueue(raw);
+    if (migrated.length) {
+      writeCookie(THEME_QUEUE_COOKIE, serializeThemeQueue(migrated));
+      sessionStorage.removeItem(THEME_QUEUE_COOKIE);
+      return migrated;
+    }
+  } catch {
+    // Ignore storage errors.
+  }
+  return [];
+}
+
+function writeQueue(ids: string[]) {
+  writeCookie(THEME_QUEUE_COOKIE, serializeThemeQueue(ids));
+}
+
+function dropFromQueue(id: string) {
+  writeQueue(removeFromQueue(readQueue(), id));
 }
 
 async function mountScript(id: string) {
@@ -85,10 +128,13 @@ export function setTheme(id: string, { persist = true } = {}) {
   }
 
   if (persist) {
-    document.cookie = `${COOKIE}=${theme.id}; path=/; max-age=${YEAR}; samesite=lax`;
+    writeCookie(THEME_COOKIE, theme.id);
   }
 
-  // Drop ?theme= so a reload keeps the visitor's own choice.
+  // Manual picks count as seen so shuffle/refresh do not revisit them early.
+  dropFromQueue(theme.id);
+
+  // Drop ?theme= so a reload keeps advancing the bag instead of locking this URL.
   const url = new URL(location.href);
   if (url.searchParams.has("theme")) {
     url.searchParams.delete("theme");
@@ -102,9 +148,9 @@ export function setTheme(id: string, { persist = true } = {}) {
 }
 
 export function shuffleTheme() {
-  const others = themes.filter((t) => t.id !== current());
-  if (!others.length) return;
-  setTheme(others[Math.floor(Math.random() * others.length)].id);
+  const { id, queue } = nextThemeFromBag(current(), readQueue());
+  writeQueue(queue);
+  setTheme(id);
 }
 
 function initPicker() {

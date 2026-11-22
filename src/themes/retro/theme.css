@@ -116,8 +116,10 @@ html[data-design="retro"] .site-nav__link {
   color: var(--c-choc);
   font-weight: 500;
 }
-html[data-design="retro"] .site-nav__link:hover {
-  background: var(--c-butter);
+@media (hover: hover) {
+  html[data-design="retro"] .site-nav__link:hover {
+    background: var(--c-butter);
+  }
 }
 html[data-design="retro"] .site-nav__link[aria-current="page"] {
   background: var(--c-choc);
@@ -130,17 +132,21 @@ html[data-design="retro"] .btn {
   font-size: 1rem;
   padding-inline: 1.35rem;
 }
-html[data-design="retro"] .btn:hover,
-html[data-design="retro"] .icon-btn:hover {
-  background: var(--c-butter);
+@media (hover: hover) {
+  html[data-design="retro"] .btn:hover,
+  html[data-design="retro"] .icon-btn:hover {
+    background: var(--c-butter);
+  }
 }
 html[data-design="retro"] .btn--primary {
   border: 2px solid var(--c-rust);
   box-shadow: inset 0 -4px 0 rgb(59 29 14 / 0.35);
 }
-html[data-design="retro"] .btn--primary:hover {
-  background: var(--c-choc);
-  border-color: var(--c-choc);
+@media (hover: hover) {
+  html[data-design="retro"] .btn--primary:hover {
+    background: var(--c-choc);
+    border-color: var(--c-choc);
+  }
 }
 html[data-design="retro"] .btn--ghost {
   border-color: transparent;
@@ -296,8 +302,10 @@ html[data-design="retro"] .page-head__intro {
 }
 
 /* ---------- Cards ---------- */
-html[data-design="retro"] .project-card:hover {
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) {
+  html[data-design="retro"] .project-card:hover {
+    box-shadow: var(--shadow-lg);
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   html[data-design="retro"] .project-card:hover {
@@ -354,8 +362,10 @@ html[data-design="retro"] .timeline__marker {
   border: 3px solid var(--c-choc);
   box-shadow: 0 0 0 4px var(--bg-alt);
 }
-html[data-design="retro"] .timeline__summary:hover .timeline__toggle {
-  background: var(--c-mustard);
+@media (hover: hover) {
+  html[data-design="retro"] .timeline__summary:hover .timeline__toggle {
+    background: var(--c-mustard);
+  }
 }
 html[data-design="retro"] .timeline__toggle {
   width: 2.75rem;
@@ -422,9 +432,11 @@ html[data-design="retro"] .site-footer__title {
   font-size: clamp(2.25rem, 6vw, 3.5rem);
   color: #f0b03a;
 }
-html[data-design="retro"] .site-footer .btn:hover {
-  background: #f0b03a;
-  color: var(--c-choc);
+@media (hover: hover) {
+  html[data-design="retro"] .site-footer .btn:hover {
+    background: #f0b03a;
+    color: var(--c-choc);
+  }
 }
 html[data-design="retro"] .site-footer__meta {
   color: var(--text-muted);
@@ -439,8 +451,10 @@ html[data-design="retro"] .back-link {
   font-weight: 500;
   color: var(--c-choc);
 }
-html[data-design="retro"] .back-link:hover {
-  color: var(--c-rust);
+@media (hover: hover) {
+  html[data-design="retro"] .back-link:hover {
+    color: var(--c-rust);
+  }
 }
 html[data-design="retro"] .prose {
   --tw-prose-links: var(--c-rust);
@@ -485,9 +499,11 @@ html[data-design="retro"] .quiz__option {
   padding-inline: 1.35rem;
   font-weight: 500;
 }
-html[data-design="retro"] .quiz__option:hover {
-  border-color: var(--c-choc);
-  background: var(--c-butter);
+@media (hover: hover) {
+  html[data-design="retro"] .quiz__option:hover {
+    border-color: var(--c-choc);
+    background: var(--c-butter);
+  }
 }
 html[data-design="retro"] .quiz__verdict[data-result="correct"] {
   color: var(--c-avocado);
@@ -512,9 +528,11 @@ html[data-design="retro"] .theme-dock__open {
   font-weight: 600;
   font-size: 0.95rem;
 }
-html[data-design="retro"] .theme-dock__open:hover,
-html[data-design="retro"] .theme-dock__shuffle:hover {
-  background: var(--c-butter);
+@media (hover: hover) {
+  html[data-design="retro"] .theme-dock__open:hover,
+  html[data-design="retro"] .theme-dock__shuffle:hover {
+    background: var(--c-butter);
+  }
 }
 html[data-design="retro"] .theme-picker {
   border: 2px solid var(--c-choc);
@@ -539,8 +557,10 @@ html[data-design="retro"] .theme-option {
   border: 2px solid transparent;
   background: var(--surface-2);
 }
-html[data-design="retro"] .theme-option:hover {
-  border-color: var(--c-choc);
+@media (hover: hover) {
+  html[data-design="retro"] .theme-option:hover {
+    border-color: var(--c-choc);
+  }
 }
 html[data-design="retro"] .theme-option[aria-pressed="true"] {
   border-color: var(--c-rust);

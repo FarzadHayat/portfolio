@@ -7,7 +7,12 @@ import ThemeDecor from "../components/ThemeDecor.astro";
 import { getEntry } from "astro:content";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
-import { themes, getTheme, THEME_COOKIE } from "../themes/registry";
+import {
+  themes,
+  getTheme,
+  THEME_COOKIE,
+  THEME_QUEUE_COOKIE,
+} from "../themes/registry";
 
 const generalEntry = await getEntry("general", "index");
 const general = generalEntry!.data;
@@ -37,6 +42,7 @@ const theme = getTheme(Astro.locals.design);
 
 const bootData = {
   cookie: THEME_COOKIE,
+  queueCookie: THEME_QUEUE_COOKIE,
   themes: themes.map((t) => ({ id: t.id, scheme: t.scheme, fonts: t.fonts ?? "", bg: t.preview.bg })),
 };
 ---
@@ -57,7 +63,7 @@ const bootData = {
     <title>{title}</title>
 
     <script is:inline define:vars={{ bootData }}>
-      // Prerendered pages: choose the theme before first paint.
+      // Prerendered pages: advance the shuffle bag before first paint.
       (function () {
         var root = document.documentElement;
         if (root.dataset.design) return;
@@ -65,13 +71,72 @@ const bootData = {
         var find = function (id) {
           for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
         };
+        var readCookie = function (name) {
+          var match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+          return match ? decodeURIComponent(match[1]) : "";
+        };
+        var writeCookie = function (name, value) {
+          document.cookie = name + "=" + encodeURIComponent(value) + "; path=/; samesite=lax";
+        };
+        var parseQueue = function (raw) {
+          if (!raw) return [];
+          try {
+            var parsed = JSON.parse(raw);
+            if (!Array.isArray(parsed)) return [];
+            var valid = {};
+            for (var i = 0; i < list.length; i++) valid[list[i].id] = true;
+            return parsed.filter(function (id) {
+              return typeof id === "string" && valid[id];
+            });
+          } catch (e) {
+            return [];
+          }
+        };
+        var shuffle = function (ids) {
+          var next = ids.slice();
+          for (var i = next.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = next[i];
+            next[i] = next[j];
+            next[j] = tmp;
+          }
+          return next;
+        };
+        var ids = list.map(function (item) {
+          return item.id;
+        });
+        // Same rules as nextThemeFromBag in src/themes/registry.ts.
+        var fill = function (q, recent) {
+          q = q.slice();
+          while (q.length < ids.length) {
+            var tail = recent.concat(q).slice(-6);
+            var fresh = shuffle(ids);
+            q = q.concat(
+              fresh.filter(function (id) { return tail.indexOf(id) < 0; }),
+              fresh.filter(function (id) { return tail.indexOf(id) >= 0; }),
+            );
+          }
+          return q;
+        };
         var param = new URLSearchParams(location.search).get("theme");
-        var match = document.cookie.match(new RegExp("(?:^|; )" + bootData.cookie + "=([^;]*)"));
-        var t = find(param) || find(match && match[1]);
-        if (!t) {
-          t = list[Math.floor(Math.random() * list.length)];
-          document.cookie = bootData.cookie + "=" + t.id + "; path=/; samesite=lax";
+        var previous = readCookie(bootData.cookie);
+        var queue = parseQueue(readCookie(bootData.queueCookie));
+        var t = find(param);
+        if (t) {
+          var at = queue.indexOf(t.id);
+          if (at >= 0) queue.splice(at, 1);
+        } else {
+          queue = fill(queue, previous ? [previous] : []);
+          var pick = 0;
+          for (var k = 0; k < queue.length; k++) {
+            if (queue[k] !== previous) { pick = k; break; }
+          }
+          var nextId = queue.splice(pick, 1)[0];
+          queue = fill(queue, [nextId]);
+          t = find(nextId) || list[0];
         }
+        writeCookie(bootData.cookie, t.id);
+        writeCookie(bootData.queueCookie, JSON.stringify(queue));
         root.dataset.design = t.id;
         root.dataset.scheme = t.scheme;
         var meta = document.querySelector('meta[name="theme-color"]');

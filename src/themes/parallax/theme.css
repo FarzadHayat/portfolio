@@ -193,9 +193,11 @@ html[data-design="parallax"] .site-nav__link {
   border-radius: var(--radius-sm);
   color: var(--text-muted);
 }
-html[data-design="parallax"] .site-nav__link:hover {
-  background: transparent;
-  color: var(--text);
+@media (hover: hover) {
+  html[data-design="parallax"] .site-nav__link:hover {
+    background: transparent;
+    color: var(--text);
+  }
 }
 html[data-design="parallax"] .site-nav__link::after {
   content: "";
@@ -210,9 +212,13 @@ html[data-design="parallax"] .site-nav__link::after {
   transform-origin: left;
   transition: transform 0.2s var(--ease);
 }
-html[data-design="parallax"] .site-nav__link:hover::after,
 html[data-design="parallax"] .site-nav__link[aria-current="page"]::after {
   transform: scaleX(1);
+}
+@media (hover: hover) {
+  html[data-design="parallax"] .site-nav__link:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 /* ---------- Display type ---------- */
@@ -314,27 +320,33 @@ html[data-design="parallax"] .btn {
   padding-inline: 1.25rem;
   font-weight: 600;
 }
-html[data-design="parallax"] .btn:hover,
-html[data-design="parallax"] .icon-btn:hover {
-  background: rgb(238 240 255 / 0.1);
-  border-color: rgb(238 240 255 / 0.5);
+@media (hover: hover) {
+  html[data-design="parallax"] .btn:hover,
+  html[data-design="parallax"] .icon-btn:hover {
+    background: rgb(238 240 255 / 0.1);
+    border-color: rgb(238 240 255 / 0.5);
+  }
 }
 html[data-design="parallax"] .btn--primary {
   border-color: transparent;
   box-shadow: 0 10px 30px -12px rgb(255 160 110 / 0.6);
 }
-html[data-design="parallax"] .btn--primary:hover {
-  background: #ffc799;
-  border-color: transparent;
+@media (hover: hover) {
+  html[data-design="parallax"] .btn--primary:hover {
+    background: #ffc799;
+    border-color: transparent;
+  }
 }
 html[data-design="parallax"] .btn--ghost {
   background: transparent;
   border-color: transparent;
   color: var(--lilac);
 }
-html[data-design="parallax"] .btn--ghost:hover {
-  border-color: transparent;
-  color: var(--text);
+@media (hover: hover) {
+  html[data-design="parallax"] .btn--ghost:hover {
+    border-color: transparent;
+    color: var(--text);
+  }
 }
 html[data-design="parallax"] .btn--sm {
   min-height: 2.75rem;
@@ -350,8 +362,10 @@ html[data-design="parallax"] .page-head__intro {
 }
 
 /* ---------- Panels ---------- */
-html[data-design="parallax"] .project-card:hover {
-  border-color: rgb(255 196 150 / 0.3);
+@media (hover: hover) {
+  html[data-design="parallax"] .project-card:hover {
+    border-color: rgb(255 196 150 / 0.3);
+  }
 }
 html[data-design="parallax"] .project-card__media,
 html[data-design="parallax"] .hackathon__media {
@@ -410,8 +424,10 @@ html[data-design="parallax"] .back-link {
   min-height: 2.75rem;
   color: var(--lilac);
 }
-html[data-design="parallax"] .back-link:hover {
-  color: var(--text);
+@media (hover: hover) {
+  html[data-design="parallax"] .back-link:hover {
+    color: var(--text);
+  }
 }
 html[data-design="parallax"] .page-head__meta {
   color: var(--lilac);
@@ -427,6 +443,9 @@ html[data-design="parallax"] .article__body {
   border: var(--card-border);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
+}
+html[data-design="parallax"] .article__body {
+  max-width: none;
 }
 html[data-design="parallax"] .article__body .prose {
   padding: 0;
@@ -459,9 +478,11 @@ html[data-design="parallax"] .quiz__option {
   background: rgb(32 37 77 / 0.7);
   transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
 }
-html[data-design="parallax"] .quiz__option:hover {
-  border-color: var(--peach);
-  background: #262c5a;
+@media (hover: hover) {
+  html[data-design="parallax"] .quiz__option:hover {
+    border-color: var(--peach);
+    background: #262c5a;
+  }
 }
 html[data-design="parallax"] .quiz__answer {
   border-left-color: var(--peach);
@@ -478,9 +499,11 @@ html[data-design="parallax"] .theme-dock__open,
 html[data-design="parallax"] .theme-dock__shuffle {
   border-radius: var(--radius);
 }
-html[data-design="parallax"] .theme-dock__open:hover,
-html[data-design="parallax"] .theme-dock__shuffle:hover {
-  background: rgb(238 240 255 / 0.1);
+@media (hover: hover) {
+  html[data-design="parallax"] .theme-dock__open:hover,
+  html[data-design="parallax"] .theme-dock__shuffle:hover {
+    background: rgb(238 240 255 / 0.1);
+  }
 }
 html[data-design="parallax"] .theme-picker {
   border: 1px solid rgb(238 240 255 / 0.12);
@@ -493,8 +516,10 @@ html[data-design="parallax"] .theme-option {
   border-radius: var(--radius);
   background: rgb(238 240 255 / 0.05);
 }
-html[data-design="parallax"] .theme-option:hover {
-  border-color: rgb(238 240 255 / 0.3);
+@media (hover: hover) {
+  html[data-design="parallax"] .theme-option:hover {
+    border-color: rgb(238 240 255 / 0.3);
+  }
 }
 html[data-design="parallax"] .theme-option[aria-pressed="true"] {
   border-color: var(--peach);

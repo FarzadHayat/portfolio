@@ -202,20 +202,44 @@
     text-decoration: none;
     letter-spacing: var(--display-tracking);
   }
-  .site-nav {
-    display: none;
-  }
-  @media (min-width: 48rem) {
-    .site-nav {
-      display: block;
-    }
-  }
   .site-nav__list {
     display: flex;
     gap: 0.25rem;
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+  /* Phones: a menu button opens the list as a dropdown (native popover). */
+  .site-nav__toggle {
+    display: none;
+    anchor-name: --site-menu;
+  }
+  @media (max-width: 47.99rem) {
+    .site-nav__toggle {
+      display: inline-grid;
+    }
+    .site-nav__list:popover-open {
+      min-width: 12rem;
+      padding: 0.5rem;
+      border: var(--card-border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  /* Tablets and up: the list is a plain inline nav, not a popover. */
+  @media (min-width: 48rem) {
+    .site-nav__list[popover] {
+      position: static;
+      inset: auto;
+      width: auto;
+      height: auto;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      overflow: visible;
+    }
   }
   .site-nav__link {
     display: inline-block;
@@ -225,9 +249,11 @@
     text-decoration: none;
     color: var(--text-muted);
   }
-  .site-nav__link:hover {
-    color: var(--text);
-    background: var(--surface-2);
+  @media (hover: hover) {
+    .site-nav__link:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
   }
 
   /* ---------- Buttons ---------- */
@@ -254,8 +280,10 @@
       background-color 0.15s var(--ease),
       box-shadow 0.15s var(--ease);
   }
-  .btn:hover {
-    background: color-mix(in oklab, var(--btn-bg) 88%, var(--text));
+  @media (hover: hover) {
+    .btn:hover {
+      background: color-mix(in oklab, var(--btn-bg) 88%, var(--text));
+    }
   }
   .btn:active {
     transform: translateY(1px);
@@ -270,15 +298,19 @@
     color: var(--btn-primary-ink);
     border-color: transparent;
   }
-  .btn--primary:hover {
-    background: color-mix(in oklab, var(--btn-primary-bg) 88%, var(--text));
+  @media (hover: hover) {
+    .btn--primary:hover {
+      background: color-mix(in oklab, var(--btn-primary-bg) 88%, var(--text));
+    }
   }
   .btn--ghost {
     background: transparent;
     border-color: transparent;
   }
-  .btn--ghost:hover {
-    background: var(--surface-2);
+  @media (hover: hover) {
+    .btn--ghost:hover {
+      background: var(--surface-2);
+    }
   }
   .btn--sm {
     min-height: 2.25rem;
@@ -300,8 +332,10 @@
     text-decoration: none;
     transition: background-color 0.15s var(--ease), transform 0.15s var(--ease);
   }
-  .icon-btn:hover {
-    background: color-mix(in oklab, var(--btn-bg) 88%, var(--text));
+  @media (hover: hover) {
+    .icon-btn:hover {
+      background: color-mix(in oklab, var(--btn-bg) 88%, var(--text));
+    }
   }
   .icon-btn svg {
     width: 1.25rem;
@@ -486,8 +520,10 @@
     box-shadow: var(--card-shadow);
     transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
   }
-  .project-card:hover {
-    box-shadow: var(--shadow-lg);
+  @media (hover: hover) {
+    .project-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
   }
   .project-card:has(.project-card__title a:focus-visible) {
     outline: 3px solid var(--focus);
@@ -666,7 +702,8 @@
   .timeline__body {
     padding: 0 1.35rem 1.35rem;
   }
-  .timeline__body .chip-list {
+  .timeline__body .chip-list,
+  .timeline__link {
     margin-top: 1rem;
   }
 
@@ -706,8 +743,10 @@
   .entry__title a {
     text-decoration: none;
   }
-  .entry__title a:hover {
-    text-decoration: underline;
+  @media (hover: hover) {
+    .entry__title a:hover {
+      text-decoration: underline;
+    }
   }
   .entry__subtitle {
     margin: 0.25rem 0 0;
@@ -882,8 +921,10 @@
     color: var(--text-muted);
     text-decoration: none;
   }
-  .back-link:hover {
-    color: var(--text);
+  @media (hover: hover) {
+    .back-link:hover {
+      color: var(--text);
+    }
   }
   .back-link svg {
     width: 1.1rem;
@@ -1144,9 +1185,11 @@
     text-align: left;
     cursor: pointer;
   }
-  .quiz__option:hover {
-    border-color: var(--accent);
-    background: var(--surface-2);
+  @media (hover: hover) {
+    .quiz__option:hover {
+      border-color: var(--accent);
+      background: var(--surface-2);
+    }
   }
   .quiz__verdict {
     margin: 0;
@@ -1226,9 +1269,11 @@
     font-weight: 600;
     cursor: pointer;
   }
-  .theme-dock__open:hover,
-  .theme-dock__shuffle:hover {
-    background: var(--surface-2);
+  @media (hover: hover) {
+    .theme-dock__open:hover,
+    .theme-dock__shuffle:hover {
+      background: var(--surface-2);
+    }
   }
   .theme-dock__open svg,
   .theme-dock__shuffle svg {
@@ -1248,9 +1293,9 @@
   }
 
   .theme-picker {
-    width: min(100% - 1.5rem, 34rem);
-    max-height: min(100dvh - 2rem, 44rem);
-    margin: auto auto max(1rem, env(safe-area-inset-bottom));
+    width: min(100% - 1rem, 46rem);
+    max-height: min(100dvh - 1rem, 44rem);
+    margin: auto auto max(0.5rem, env(safe-area-inset-bottom));
     padding: 0;
     border: var(--card-border);
     border-radius: var(--radius-lg);
@@ -1282,36 +1327,55 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1rem 1rem 0.75rem 1.25rem;
+    padding: 0.5rem 0.5rem 0.25rem 1rem;
   }
   .theme-picker__title {
     margin: 0;
     font-family: var(--font-display);
     font-weight: var(--heading-weight);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
+  /* Compact grid: all 12 themes fit on one screen, even on a small phone.
+     3 columns on phones, 4 on wider phones, 6 (two rows) on tablets and up. */
   .theme-picker__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-    gap: 0.6rem;
+    grid-template-columns: repeat(var(--picker-cols, 3), minmax(0, 1fr));
+    gap: 0.4rem;
     overflow-y: auto;
     list-style: none;
     margin: 0;
-    padding: 0.25rem 1.25rem 1rem;
+    padding: 0.25rem 0.75rem 0.75rem;
+  }
+  @media (min-width: 30rem) {
+    .theme-picker__grid {
+      --picker-cols: 4;
+    }
+  }
+  @media (min-width: 44rem) {
+    .theme-picker__grid {
+      --picker-cols: 6;
+    }
   }
   .theme-picker__foot {
     display: flex;
     justify-content: flex-end;
-    padding: 0.75rem 1.25rem 1.1rem;
+    padding: 0.5rem 0.75rem;
     border-top: var(--border-width) solid var(--border);
+  }
+  /* Short screens (phones held sideways): flatter swatches. */
+  @media (max-height: 30rem) {
+    .theme-option__thumb {
+      aspect-ratio: 3 / 1;
+    }
   }
   .theme-option {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.3rem;
     width: 100%;
     height: 100%;
-    padding: 0.5rem 0.5rem 0.65rem;
+    min-height: 2.75rem;
+    padding: 0.3rem 0.3rem 0.4rem;
     border: 2px solid transparent;
     border-radius: var(--radius);
     background: var(--surface-2);
@@ -1320,8 +1384,10 @@
     text-align: left;
     cursor: pointer;
   }
-  .theme-option:hover {
-    border-color: var(--border);
+  @media (hover: hover) {
+    .theme-option:hover {
+      border-color: var(--border);
+    }
   }
   .theme-option[aria-pressed="true"] {
     border-color: var(--accent);
@@ -1329,7 +1395,7 @@
   .theme-option__thumb {
     position: relative;
     display: block;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     border-radius: calc(var(--radius) - 4px);
     background: var(--sw-bg);
     overflow: hidden;
@@ -1376,16 +1442,27 @@
   .theme-option[aria-pressed="true"] .theme-option__check {
     display: grid;
   }
+  .theme-option {
+    container-type: inline-size;
+  }
+  /* Shrinks long names such as "Neubrutalism" to fit narrow tiles. */
   .theme-option__name {
     font-weight: 650;
-    font-size: 0.95rem;
+    font-size: clamp(0.6875rem, 13cqi, 0.8rem);
     line-height: 1.2;
   }
+  /* Taglines only where there is room for them. */
   .theme-option__tagline {
-    margin-top: -0.25rem;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    display: none;
+    margin-top: -0.15rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
     color: var(--text-muted);
+  }
+  @media (min-width: 44rem) and (min-height: 40rem) {
+    .theme-option__tagline {
+      display: block;
+    }
   }
 }
 
@@ -1430,5 +1507,82 @@
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+  }
+}
+
+/*
+  Short screens (phones held sideways): the picker drops its footer, since the
+  dock already has a shuffle button, so all themes fit without scrolling.
+  Unlayered and after the theme imports so it wins over theme padding.
+*/
+@media (max-height: 30rem) {
+  html[data-design] .theme-picker__foot {
+    display: none;
+  }
+  html[data-design] .theme-picker__head {
+    padding-block: 0.35rem 0.15rem;
+  }
+}
+
+/*
+  Header dropdown on phones. Layout and position are unlayered and specific so
+  theme rules for the inline nav (rows, gaps, padding) cannot break the panel.
+  Themes may still restyle its colors and border.
+*/
+@media (min-width: 48rem) {
+  html[data-design] .site-nav__list[popover] {
+    display: flex;
+  }
+  html[data-design] .site-nav__toggle {
+    display: none;
+  }
+}
+@media (max-width: 47.99rem) {
+  html[data-design] .site-nav__list:not(:popover-open) {
+    display: none;
+  }
+  html[data-design] .site-nav__list:popover-open {
+    position: fixed;
+    inset: auto;
+    top: 4.5rem;
+    right: var(--gutter);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.125rem;
+    max-width: calc(100vw - 2 * var(--gutter));
+    /* Pill-shaped theme navs would turn the panel into a circle. */
+    border-radius: var(--radius-lg);
+  }
+  @supports (position-anchor: --a) {
+    html[data-design] .site-nav__list:popover-open {
+      position-anchor: --site-menu;
+      top: calc(anchor(bottom) + 0.5rem);
+      right: anchor(right);
+    }
+  }
+  html[data-design] .site-nav__list:popover-open .site-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    width: 100%;
+  }
+}
+
+/*
+  Phones and tablets (one-column hero): a smaller photo sits first, above the
+  greeting, in every theme, so visitors see a face without scrolling.
+  Unlayered and after the theme imports so it wins over theme placement.
+*/
+@media (max-width: 59.99rem) {
+  /* Swiss places every hero piece on fixed grid rows, and Neoclassical already
+     centres its cameo above the name; both handle this in their theme.css. */
+  html[data-design]:not([data-design="swiss"], [data-design="neoclassical"]) .hero__portrait {
+    order: -1;
+    grid-row: auto;
+    grid-column: auto;
+    justify-self: start;
+    width: min(55%, 12rem);
   }
 }

@@ -1,4 +1,6 @@
 ---
+import { Menu } from "@lucide/astro";
+
 const isHome = Astro.url.pathname === "/";
 const base = isHome ? "" : "/";
 const links = [
@@ -13,7 +15,11 @@ const links = [
   <div class="container site-header__inner">
     <a class="site-header__brand" href="/">Farzad Hayat</a>
     <nav class="site-nav" aria-label="Main">
-      <ul class="site-nav__list">
+      <!-- On phones the list becomes a dropdown (a native popover). -->
+      <button type="button" class="icon-btn site-nav__toggle" popovertarget="site-menu" aria-label="Menu">
+        <Menu aria-hidden="true" />
+      </button>
+      <ul id="site-menu" class="site-nav__list" popover>
         {
           links.map((link) => (
             <li>
@@ -27,3 +33,12 @@ const links = [
     </nav>
   </div>
 </header>
+
+<script>
+  // Close the dropdown after a link is picked (same-page links do not reload).
+  document.addEventListener("click", (event) => {
+    const link = (event.target as Element | null)?.closest("#site-menu a");
+    const menu = document.getElementById("site-menu");
+    if (link && menu?.matches(":popover-open")) menu.hidePopover();
+  });
+</script>

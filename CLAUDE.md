@@ -70,7 +70,7 @@ src/
 
 - Shared markup uses semantic classes styled in `src/styles/global.css`; Tailwind is for small utilities only.
 - Each theme lives in `src/themes/<id>/` and only overrides tokens and classes under `html[data-design="<id>"]`. Read `src/themes/README.md` before adding or changing a theme.
-- Visitors get a random theme per browser session (`src/middleware.ts`); `?theme=<id>` shows a specific one.
+- Each page load advances a shuffle bag so refresh shows a new theme (`src/middleware.ts`); `?theme=<id>` shows a specific one.
 - Only import `global.css` once (in `Layout.astro`).
 
 ## Resume Workflow

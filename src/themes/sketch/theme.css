@@ -130,9 +130,11 @@ html[data-design="sketch"] .prose a {
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 }
-html[data-design="sketch"] :is(.prose a, .site-footer__email, .entry__title a):hover {
-  background: var(--sk-hl);
-  color: var(--text);
+@media (hover: hover) {
+  html[data-design="sketch"] :is(.prose a, .site-footer__email, .entry__title a):hover {
+    background: var(--sk-hl);
+    color: var(--text);
+  }
 }
 
 /* ---------- Header ---------- */
@@ -150,9 +152,11 @@ html[data-design="sketch"] .site-nav__link {
   line-height: 1.4;
   color: var(--text);
 }
-html[data-design="sketch"] .site-nav__link:hover {
-  background: transparent;
-  border-color: var(--sk-ink);
+@media (hover: hover) {
+  html[data-design="sketch"] .site-nav__link:hover {
+    background: transparent;
+    border-color: var(--sk-ink);
+  }
 }
 
 /* ---------- Buttons, chips, fields ---------- */
@@ -164,21 +168,27 @@ html[data-design="sketch"] .btn {
   padding: 0.6rem 1.2rem 0.5rem;
   transition: transform 0.15s var(--ease), background-color 0.15s var(--ease);
 }
-html[data-design="sketch"] .btn:hover {
-  background: var(--sk-hl);
+@media (hover: hover) {
+  html[data-design="sketch"] .btn:hover {
+    background: var(--sk-hl);
+  }
 }
 html[data-design="sketch"] .btn--primary {
   border-color: var(--sk-ink);
 }
-html[data-design="sketch"] .btn--primary:hover {
-  background: #1b2a85;
+@media (hover: hover) {
+  html[data-design="sketch"] .btn--primary:hover {
+    background: #1b2a85;
+  }
 }
 html[data-design="sketch"] .btn--ghost {
   border-color: transparent;
 }
-html[data-design="sketch"] .btn--ghost:hover {
-  border-color: var(--sk-ink);
-  background: transparent;
+@media (hover: hover) {
+  html[data-design="sketch"] .btn--ghost:hover {
+    border-color: var(--sk-ink);
+    background: transparent;
+  }
 }
 html[data-design="sketch"] .btn--sm {
   min-height: 2.75rem;
@@ -193,8 +203,10 @@ html[data-design="sketch"] .btn--sm {
 html[data-design="sketch"] .icon-btn {
   border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
 }
-html[data-design="sketch"] .icon-btn:hover {
-  background: var(--sk-hl);
+@media (hover: hover) {
+  html[data-design="sketch"] .icon-btn:hover {
+    background: var(--sk-hl);
+  }
 }
 html[data-design="sketch"] .chip {
   font-size: 0.82rem;
@@ -242,11 +254,15 @@ html[data-design="sketch"] :is(.project-card, .timeline__details, .entry, .hacka
   filter: url(#sk-rough-2);
   transition: transform 0.2s var(--ease);
 }
-html[data-design="sketch"] .project-card:hover {
-  box-shadow: none;
+@media (hover: hover) {
+  html[data-design="sketch"] .project-card:hover {
+    box-shadow: none;
+  }
 }
-html[data-design="sketch"] .project-card:hover::after {
-  transform: translate(11px, 11px);
+@media (hover: hover) {
+  html[data-design="sketch"] .project-card:hover::after {
+    transform: translate(11px, 11px);
+  }
 }
 html[data-design="sketch"] .project-card:has(.project-card__title a:focus-visible) {
   outline-offset: 6px;
@@ -262,10 +278,12 @@ html[data-design="sketch"] .project-card__title {
   font-size: 1.45rem;
   line-height: 1.15;
 }
-html[data-design="sketch"] .project-card__title a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.15em;
+@media (hover: hover) {
+  html[data-design="sketch"] .project-card__title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+  }
 }
 html[data-design="sketch"] .project-card__desc {
   color: var(--text);
@@ -321,8 +339,10 @@ html[data-design="sketch"] .timeline__toggle {
   border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
   background: transparent;
 }
-html[data-design="sketch"] .timeline__summary:hover .timeline__toggle {
-  background: var(--sk-hl);
+@media (hover: hover) {
+  html[data-design="sketch"] .timeline__summary:hover .timeline__toggle {
+    background: var(--sk-hl);
+  }
 }
 
 /* ---------- Education ---------- */
@@ -416,6 +436,14 @@ html[data-design="sketch"] .cover-image::after {
   right: -1.2rem;
   transform: rotate(30deg);
 }
+@media (max-width: 40rem) {
+  html[data-design="sketch"] .cover-image::before {
+    left: -0.4rem;
+  }
+  html[data-design="sketch"] .cover-image::after {
+    right: -0.4rem;
+  }
+}
 html[data-design="sketch"] .about__photo {
   padding: 0.5rem;
   border-radius: 0;
@@ -433,9 +461,11 @@ html[data-design="sketch"] .quiz__option {
   border-radius: var(--sk-r-card);
   background: var(--surface);
 }
-html[data-design="sketch"] .quiz__option:hover {
-  border-color: var(--sk-ink);
-  background: var(--sk-hl);
+@media (hover: hover) {
+  html[data-design="sketch"] .quiz__option:hover {
+    border-color: var(--sk-ink);
+    background: var(--sk-hl);
+  }
 }
 html[data-design="sketch"] .quiz__answer {
   border: 2px dashed var(--sk-ink);
@@ -569,8 +599,10 @@ html[data-design="sketch"] .theme-dock__open {
 html[data-design="sketch"] .theme-dock__shuffle {
   border-radius: 48% 52% 44% 56% / 56% 44% 52% 48%;
 }
-html[data-design="sketch"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
-  background: var(--sk-hl);
+@media (hover: hover) {
+  html[data-design="sketch"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
+    background: var(--sk-hl);
+  }
 }
 html[data-design="sketch"] .theme-picker {
   border: 2px solid var(--sk-ink);
@@ -593,8 +625,10 @@ html[data-design="sketch"] .theme-option {
   border-radius: var(--sk-r-card);
   background: var(--surface);
 }
-html[data-design="sketch"] .theme-option:hover {
-  border-color: #8b909a;
+@media (hover: hover) {
+  html[data-design="sketch"] .theme-option:hover {
+    border-color: #8b909a;
+  }
 }
 html[data-design="sketch"] .theme-option[aria-pressed="true"] {
   border: 2px solid var(--sk-ink);
@@ -603,5 +637,5 @@ html[data-design="sketch"] .theme-option[aria-pressed="true"] {
 html[data-design="sketch"] .theme-option__name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: min(1.1rem, 15cqi);
 }

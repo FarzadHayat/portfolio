@@ -1,10 +1,17 @@
 import { defineMiddleware } from "astro:middleware";
-import { THEME_COOKIE, getTheme, randomThemeId } from "./themes/registry";
+import {
+  THEME_COOKIE,
+  THEME_QUEUE_COOKIE,
+  getTheme,
+  nextThemeFromBag,
+  parseThemeQueue,
+  removeFromQueue,
+  serializeThemeQueue,
+} from "./themes/registry";
 
 // Pick the theme on the server so the first paint is already themed.
 // - ?theme=<id> shows that theme (handy for sharing a look).
-// - Otherwise the visitor's cookie wins.
-// - A new visitor gets a random theme, kept for the browser session.
+// - Otherwise each page load advances a shuffle bag so refresh shows a new one.
 export const onRequest = defineMiddleware((context, next) => {
   const { pathname } = context.url;
   if (
@@ -18,20 +25,25 @@ export const onRequest = defineMiddleware((context, next) => {
 
   const fromQuery = context.url.searchParams.get("theme");
   const fromCookie = context.cookies.get(THEME_COOKIE)?.value;
+  let queue = parseThemeQueue(
+    context.cookies.get(THEME_QUEUE_COOKIE)?.value,
+  );
 
   let design: string;
   if (getTheme(fromQuery)) {
     design = fromQuery!;
-  } else if (getTheme(fromCookie)) {
-    design = fromCookie!;
+    queue = removeFromQueue(queue, design);
   } else {
-    design = randomThemeId();
+    const nextTheme = nextThemeFromBag(fromCookie, queue);
+    design = nextTheme.id;
+    queue = nextTheme.queue;
   }
 
-  if (design !== fromCookie) {
-    // Session cookie: a new browser session gets a new random theme.
-    context.cookies.set(THEME_COOKIE, design, { path: "/", sameSite: "lax" });
-  }
+  context.cookies.set(THEME_COOKIE, design, { path: "/", sameSite: "lax" });
+  context.cookies.set(THEME_QUEUE_COOKIE, serializeThemeQueue(queue), {
+    path: "/",
+    sameSite: "lax",
+  });
 
   context.locals.design = design;
   return next();

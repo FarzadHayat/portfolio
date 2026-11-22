@@ -116,15 +116,19 @@ html[data-design="terminal"] .site-nav__link {
   color: var(--text-muted);
   border-bottom: 2px solid transparent;
 }
-html[data-design="terminal"] .site-nav__link:hover {
-  color: var(--text);
-  background: var(--surface-2);
-  border-bottom-color: var(--t-green);
+@media (hover: hover) {
+  html[data-design="terminal"] .site-nav__link:hover {
+    color: var(--text);
+    background: var(--surface-2);
+    border-bottom-color: var(--t-green);
+  }
 }
 
 /* ---------- Shared pieces ---------- */
-html[data-design="terminal"] a:where(:not(.btn, .icon-btn, .site-nav__link, .site-header__brand)):hover {
-  text-decoration-color: var(--t-green);
+@media (hover: hover) {
+  html[data-design="terminal"] a:where(:not(.btn, .icon-btn, .site-nav__link, .site-header__brand)):hover {
+    text-decoration-color: var(--t-green);
+  }
 }
 html[data-design="terminal"] .btn {
   font-family: var(--font-body);
@@ -136,26 +140,34 @@ html[data-design="terminal"] .btn--sm {
   min-height: 2.75rem;
   font-size: 0.82rem;
 }
-html[data-design="terminal"] .btn:hover {
-  border-color: var(--text-muted);
+@media (hover: hover) {
+  html[data-design="terminal"] .btn:hover {
+    border-color: var(--text-muted);
+  }
 }
 html[data-design="terminal"] .btn--primary {
   border: 1px solid var(--t-green);
   font-weight: 600;
 }
-html[data-design="terminal"] .btn--primary:hover {
-  background: color-mix(in oklab, var(--t-green) 82%, white);
+@media (hover: hover) {
+  html[data-design="terminal"] .btn--primary:hover {
+    background: color-mix(in oklab, var(--t-green) 82%, white);
+  }
 }
 html[data-design="terminal"] .btn--ghost {
   border-color: transparent;
   color: var(--t-green);
 }
-html[data-design="terminal"] .btn--ghost:hover {
-  border-color: var(--border);
+@media (hover: hover) {
+  html[data-design="terminal"] .btn--ghost:hover {
+    border-color: var(--border);
+  }
 }
-html[data-design="terminal"] .icon-btn:hover {
-  border-color: var(--t-green);
-  color: var(--t-green);
+@media (hover: hover) {
+  html[data-design="terminal"] .icon-btn:hover {
+    border-color: var(--t-green);
+    color: var(--t-green);
+  }
 }
 html[data-design="terminal"] .chip {
   font-size: 0.78rem;
@@ -180,8 +192,13 @@ html[data-design="terminal"] .badge::before {
 html[data-design="terminal"] :is(.project-card, .entry, .hackathon, .panel, .card, .timeline__details, .embed-frame, .cover-image) {
   border: 1px solid var(--border);
 }
-html[data-design="terminal"] :is(.project-card, .entry, .hackathon, .panel, .card):is(:hover, :focus-within),
 html[data-design="terminal"] .timeline__details[open] {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+    linear-gradient(135deg, var(--t-cyan), var(--t-green)) border-box;
+}
+html[data-design="terminal"] :is(.project-card, .entry, .hackathon, .panel, .card):is(:hover, :focus-within) {
   border-color: transparent;
   background:
     linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
@@ -324,10 +341,17 @@ html[data-design="terminal"] .hero__photo {
   html[data-design="terminal"] .hero__inner {
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   }
+  /* Desktop: a compact window beside the text, not a full-height column. */
+  html[data-design="terminal"] .hero__portrait {
+    align-self: start;
+    justify-self: end;
+    max-width: 20rem;
+  }
   html[data-design="terminal"] .hero__photo {
-    aspect-ratio: auto;
+    flex: none;
+    aspect-ratio: 4 / 5;
     max-height: none;
-    height: 100%;
+    height: auto;
   }
 }
 
@@ -381,8 +405,10 @@ html[data-design="terminal"] .timeline__item:has(.timeline__details[open]) .time
 html[data-design="terminal"] .timeline__summary {
   min-height: 2.75rem;
 }
-html[data-design="terminal"] .timeline__summary:hover {
-  background: var(--surface-2);
+@media (hover: hover) {
+  html[data-design="terminal"] .timeline__summary:hover {
+    background: var(--surface-2);
+  }
 }
 html[data-design="terminal"] .timeline__role {
   font-family: var(--font-body);
@@ -475,8 +501,10 @@ html[data-design="terminal"] .prose :where(h3)::before {
 html[data-design="terminal"] .prose :where(a) {
   text-underline-offset: 3px;
 }
-html[data-design="terminal"] .prose :where(a):hover {
-  color: var(--t-green);
+@media (hover: hover) {
+  html[data-design="terminal"] .prose :where(a):hover {
+    color: var(--t-green);
+  }
 }
 html[data-design="terminal"] .prose :where(code)::before,
 html[data-design="terminal"] .prose :where(code)::after {
@@ -508,8 +536,10 @@ html[data-design="terminal"] .back-link {
   margin-bottom: 0.75rem;
   font-size: 0.9rem;
 }
-html[data-design="terminal"] .back-link:hover {
-  color: var(--t-green);
+@media (hover: hover) {
+  html[data-design="terminal"] .back-link:hover {
+    color: var(--t-green);
+  }
 }
 html[data-design="terminal"] .stack-panel__title::before {
   content: "# ";
@@ -651,8 +681,10 @@ html[data-design="terminal"] .theme-option {
   border-radius: var(--radius-sm);
   background: var(--t-bar);
 }
-html[data-design="terminal"] .theme-option:hover {
-  border-color: var(--text-muted);
+@media (hover: hover) {
+  html[data-design="terminal"] .theme-option:hover {
+    border-color: var(--text-muted);
+  }
 }
 html[data-design="terminal"] .theme-option[aria-pressed="true"] {
   border-color: var(--t-green);
@@ -663,7 +695,7 @@ html[data-design="terminal"] .theme-option__thumb {
 }
 html[data-design="terminal"] .theme-option__name {
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: clamp(0.6875rem, 11.5cqi, 0.88rem);
 }
 html[data-design="terminal"] .theme-option__tagline {
   font-size: 0.74rem;

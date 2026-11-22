@@ -127,9 +127,11 @@ html[data-design="brutal"] .site-nav__link {
   color: #000;
   font-weight: 700;
 }
-html[data-design="brutal"] .site-nav__link:hover {
-  background: var(--nb-mint);
-  border-color: #000;
+@media (hover: hover) {
+  html[data-design="brutal"] .site-nav__link:hover {
+    background: var(--nb-mint);
+    border-color: #000;
+  }
 }
 
 /* ---------- Buttons: hard shadow, lift on hover, press into the shadow ---------- */
@@ -140,10 +142,12 @@ html[data-design="brutal"] :is(.btn, .icon-btn) {
     box-shadow 0.12s var(--ease),
     background-color 0.12s var(--ease);
 }
-html[data-design="brutal"] :is(.btn, .icon-btn):hover {
-  background: var(--nb-yellow);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+@media (hover: hover) {
+  html[data-design="brutal"] :is(.btn, .icon-btn):hover {
+    background: var(--nb-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+  }
 }
 html[data-design="brutal"] :is(.btn, .icon-btn):active {
   transform: translate(4px, 4px);
@@ -152,8 +156,10 @@ html[data-design="brutal"] :is(.btn, .icon-btn):active {
 html[data-design="brutal"] .btn--primary {
   border-color: #000;
 }
-html[data-design="brutal"] .btn--primary:hover {
-  background: var(--nb-pink);
+@media (hover: hover) {
+  html[data-design="brutal"] .btn--primary:hover {
+    background: var(--nb-pink);
+  }
 }
 html[data-design="brutal"] .btn--ghost {
   background: transparent;
@@ -169,9 +175,11 @@ html[data-design="brutal"] .btn--sm {
 html[data-design="brutal"] .btn--sm.btn--ghost {
   box-shadow: none;
 }
-html[data-design="brutal"] .btn--ghost:hover {
-  background: #fff;
-  box-shadow: 4px 4px 0 #000;
+@media (hover: hover) {
+  html[data-design="brutal"] .btn--ghost:hover {
+    background: #fff;
+    box-shadow: 4px 4px 0 #000;
+  }
 }
 html[data-design="brutal"] .btn--ghost:active {
   box-shadow: none;
@@ -370,9 +378,11 @@ html[data-design="brutal"] .project-card {
     transform 0.14s var(--ease),
     box-shadow 0.14s var(--ease);
 }
-html[data-design="brutal"] .project-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 #000;
+@media (hover: hover) {
+  html[data-design="brutal"] .project-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 #000;
+  }
 }
 html[data-design="brutal"] .project-card:active {
   transform: translate(3px, 3px);
@@ -445,8 +455,10 @@ html[data-design="brutal"] .timeline__details[open] .timeline__summary {
   border-bottom: var(--nb-line) solid #000;
   border-radius: var(--card-radius) var(--card-radius) 0 0;
 }
-html[data-design="brutal"] .timeline__summary:hover .timeline__toggle {
-  background: var(--nb-pink);
+@media (hover: hover) {
+  html[data-design="brutal"] .timeline__summary:hover .timeline__toggle {
+    background: var(--nb-pink);
+  }
 }
 html[data-design="brutal"] .timeline__toggle {
   width: 2.5rem;
@@ -529,8 +541,10 @@ html[data-design="brutal"] .page-head__intro a {
   text-decoration-thickness: 3px;
   text-underline-offset: 3px;
 }
-html[data-design="brutal"] .prose :where(a):not(:where(.not-prose *)):hover {
-  background: var(--nb-yellow);
+@media (hover: hover) {
+  html[data-design="brutal"] .prose :where(a):not(:where(.not-prose *)):hover {
+    background: var(--nb-yellow);
+  }
 }
 html[data-design="brutal"] .prose :where(code):not(:where(pre code, .not-prose *)) {
   padding: 0.05em 0.35em;
@@ -580,8 +594,10 @@ html[data-design="brutal"] .back-link {
   color: #000;
   font-weight: 700;
 }
-html[data-design="brutal"] .back-link:hover {
-  background: var(--nb-yellow);
+@media (hover: hover) {
+  html[data-design="brutal"] .back-link:hover {
+    background: var(--nb-yellow);
+  }
 }
 html[data-design="brutal"] .cover-image {
   box-shadow: var(--shadow-lg);
@@ -658,11 +674,13 @@ html[data-design="brutal"] .quiz__option {
     transform 0.12s var(--ease),
     box-shadow 0.12s var(--ease);
 }
-html[data-design="brutal"] .quiz__option:hover {
-  border-color: #000;
-  background: var(--nb-yellow);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+@media (hover: hover) {
+  html[data-design="brutal"] .quiz__option:hover {
+    border-color: #000;
+    background: var(--nb-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+  }
 }
 html[data-design="brutal"] .quiz__option:active {
   transform: translate(4px, 4px);
@@ -710,8 +728,10 @@ html[data-design="brutal"] .site-footer__email {
 html[data-design="brutal"] .site-footer .btn {
   box-shadow: 3px 3px 0 var(--nb-hot);
 }
-html[data-design="brutal"] .site-footer .btn:hover {
-  box-shadow: 6px 6px 0 var(--nb-hot);
+@media (hover: hover) {
+  html[data-design="brutal"] .site-footer .btn:hover {
+    box-shadow: 6px 6px 0 var(--nb-hot);
+  }
 }
 html[data-design="brutal"] .site-footer .btn:active {
   box-shadow: 0 0 0 var(--nb-hot);
@@ -739,9 +759,11 @@ html[data-design="brutal"] :is(.theme-dock__open, .theme-dock__shuffle) {
   color: #000;
   font-weight: 800;
 }
-html[data-design="brutal"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
-  background: var(--nb-yellow);
-  border-color: #000;
+@media (hover: hover) {
+  html[data-design="brutal"] :is(.theme-dock__open, .theme-dock__shuffle):hover {
+    background: var(--nb-yellow);
+    border-color: #000;
+  }
 }
 html[data-design="brutal"] .theme-picker {
   border: var(--nb-line) solid #000;
@@ -771,10 +793,12 @@ html[data-design="brutal"] .theme-option {
     transform 0.12s var(--ease),
     box-shadow 0.12s var(--ease);
 }
-html[data-design="brutal"] .theme-option:hover {
-  border-color: #000;
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 #000;
+@media (hover: hover) {
+  html[data-design="brutal"] .theme-option:hover {
+    border-color: #000;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #000;
+  }
 }
 html[data-design="brutal"] .theme-option:active {
   transform: translate(3px, 3px);
@@ -795,6 +819,15 @@ html[data-design="brutal"] .theme-option__check {
 }
 html[data-design="brutal"] .theme-option__name {
   font-weight: 800;
+}
+@media (max-width: 30rem) {
+  html[data-design="brutal"] .theme-picker__grid {
+    gap: 0.5rem;
+  }
+  html[data-design="brutal"] .theme-option__name {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
 }
 html[data-design="brutal"] .theme-option__tagline {
   color: #2a2738;

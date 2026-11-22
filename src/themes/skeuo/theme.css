@@ -446,7 +446,8 @@ html[data-design="skeuo"] .timeline::before {
 html[data-design="skeuo"] .timeline__marker {
   left: -2.15rem;
   top: 1.35rem;
-  width: 3.3rem;
+  /* Long enough that the ring's end loops around the punched hole */
+  width: 3.85rem;
   height: 1.15rem;
   border-radius: 999px;
   background: transparent;

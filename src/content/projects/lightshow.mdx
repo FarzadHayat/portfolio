@@ -1,0 +1,46 @@
+---
+featured: false
+title: "lightshow"
+description: "Turn an audience's phones into a synchronised crowd light show. No app install and no wristbands."
+image: "../../assets/projects/lightshow.webp"
+startDate: 2026-11-20
+endDate: 2026-11-22
+skills: ['Next.js', 'TypeScript', 'React', 'Node.js', 'WebSockets', 'SQLite', 'Vitest', 'Playwright']
+demoLink: "https://lightshow.party"
+sourceLink: "https://github.com/wetsocksnsleeves/lightshow"
+---
+
+import { Image } from "astro:assets";
+import phoneScan from "../../assets/projects/lightshow/phone-scan.webp";
+import phoneFound from "../../assets/projects/lightshow/phone-found.webp";
+
+[lightshow](https://lightshow.party) turns a crowd's phones into one big light show. We built it in a team of five at the **Tanda Hackathon 2026** in Brisbane.
+
+A host draws the venue, adds an audio track and paints light effects onto a timeline. They can also generate a full show from the music. At the event, people scan a QR code on the big screen and the show opens in their phone browser. There is nothing to install.
+
+![The big screen, with the join QR code in the centre and four corner anchors for the phone camera](../../assets/projects/lightshow/big-screen.webp)
+
+Each phone needs to know where it is in the room. Nobody types a row or seat number. You point your phone camera at the big screen for a second. The four corner anchors and a grid of about 300 dots give the phone enough points to work out its position in metres. You check your spot on the room map and tap Ready.
+
+<div class="my-6 grid grid-cols-2 gap-4">
+  <Image src={phoneScan} alt="Phone camera locking onto the corner anchors on the big screen" class="rounded-xl" />
+  <Image src={phoneFound} alt="Seat found on the room map, 3.4 m from the screen and 1.2 m left of centre" class="rounded-xl" />
+</div>
+
+Every phone then syncs its clock with the server over WebSockets and downloads its own light schedule. The schedule is computed in advance from the show and the seat, so all phones play in time without live commands.
+
+Before the event, the host can simulate a crowd joining and watch the whole venue play back in 3D.
+
+<div class="my-6 rounded-xl overflow-hidden aspect-video">
+  <video
+    src="/videos/lightshow-mock-3d-live.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    aria-label="3D view of a simulated crowd playing back a light show"
+    class="w-full h-full"
+  ></video>
+</div>
+
+My part was the stage lighting and motion for our pitch deck, and a built-in demo show with its own track. Etao built the sync engine, the schedule compiler and the audio-reactive generator. William built camera seat finding and the rooms editor. Chloe designed the host room and the branding. Lliam built the 3D crowd viewer.

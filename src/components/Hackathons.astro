@@ -30,12 +30,20 @@ const entries = (await getCollection("hackathons")).sort(
                   <span class="hackathon__place">, {data.location}</span>
                 </p>
                 <p class="hackathon__desc">{data.description}</p>
-                {data.sourceLink && (
+                {data.project ? (
                   <p class="hackathon__links">
-                    <a class="btn btn--sm" href={data.sourceLink} target="_blank" rel="noopener noreferrer">
-                      View the code<span class="sr-only"> for {data.title}</span>
+                    <a class="btn btn--sm" href={`/projects/${data.project.id}`}>
+                      View project<span class="sr-only"> from {data.title}</span>
                     </a>
                   </p>
+                ) : (
+                  data.sourceLink && (
+                    <p class="hackathon__links">
+                      <a class="btn btn--sm" href={data.sourceLink} target="_blank" rel="noopener noreferrer">
+                        View the code<span class="sr-only"> for {data.title}</span>
+                      </a>
+                    </p>
+                  )
                 )}
               </div>
             </article>

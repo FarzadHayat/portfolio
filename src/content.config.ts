@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 // Hero singleton
@@ -102,6 +102,7 @@ const hackathons = defineCollection({
       endDate: z.coerce.date().optional(),
       logo: image().optional(),
       sourceLink: z.string().url().optional(),
+      project: reference("projects").optional(),
     }),
 });
 

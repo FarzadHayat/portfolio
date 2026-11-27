@@ -669,6 +669,11 @@ export default config({
           label: "Project Link",
           description: "GitHub repo or project URL (optional)",
         }),
+        project: fields.relationship({
+          label: "Project Page",
+          collection: "projects",
+          description: "Links to this project page instead of the code (optional)",
+        }),
         content: fields.markdoc({
           label: "Full Description",
           description: "Detailed information about the hackathon and project",

@@ -6,4 +6,5 @@ startDate: "2023-08-25"
 endDate: "2023-08-27"
 logo: "../../assets/hackathons/uqcs-hackathon-2023.jpg"
 sourceLink: "https://github.com/FarzadHayat/empathese"
+project: "empathese"
 ---

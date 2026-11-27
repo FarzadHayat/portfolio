@@ -16,6 +16,18 @@ import phoneFound from "../../assets/projects/lightshow/phone-found.webp";
 
 [lightshow](https://lightshow.party) turns a crowd's phones into one big light show. We built it in a team of five at the **Tanda Hackathon 2026** in Brisbane.
 
+<div class="my-6 mx-auto max-w-xs rounded-xl overflow-hidden aspect-[9/16]">
+  <video
+    src="/videos/lightshow-demo.mp4"
+    poster="/videos/lightshow-demo-poster.webp"
+    controls
+    playsinline
+    preload="metadata"
+    aria-label="26 second demo of lightshow: the live crowd at the Tanda Hackathon holding up lit phones, a phone finding its seat from the big screen, the show editor, the 3D preview and the whole room lighting up in sync"
+    class="w-full h-full"
+  ></video>
+</div>
+
 A host draws the venue, adds an audio track and paints light effects onto a timeline. They can also generate a full show from the music. At the event, people scan a QR code on the big screen and the show opens in their phone browser. There is nothing to install.
 
 ![The host's editor, with the effects library, the room with its ready seats, and a multi-track timeline over the music](../../assets/projects/lightshow/editor.webp)
@@ -32,17 +44,5 @@ Each phone needs to know where it is in the room. Nobody types a row or seat num
 Every phone then syncs its clock with the server over WebSockets and downloads its own light schedule. The schedule is computed in advance from the show and the seat, so all phones play in time without live commands.
 
 Before the event, the host can simulate a crowd joining and watch the whole venue play back in 3D.
-
-<div class="my-6 rounded-xl overflow-hidden aspect-video">
-  <video
-    src="/videos/lightshow-mock-3d-live.mp4"
-    autoplay
-    loop
-    muted
-    playsinline
-    aria-label="3D view of a simulated crowd playing back a light show"
-    class="w-full h-full"
-  ></video>
-</div>
 
 My part was the stage lighting and motion for our pitch deck, and a built-in demo show with its own track. Etao built the sync engine, the schedule compiler and the audio-reactive generator. William built camera seat finding and the rooms editor. Chloe designed the host room and the branding. Lliam built the 3D crowd viewer.

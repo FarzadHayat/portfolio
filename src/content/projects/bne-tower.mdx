@@ -9,11 +9,19 @@ demoLink: "https://bne.farzadhayat.dev"
 skills: ['TypeScript', 'three.js', 'Vite', 'Node.js', 'Oracle Cloud', 'Cloudflare', 'Vitest', 'Playwright', 'Claude Code']
 ---
 
-import YouTube from '../../components/YouTube.astro';
-
 [BNE Tower](https://bne.farzadhayat.dev) shows every aircraft at Brisbane Airport (YBBN) as it moves, in 3D, over real aerial imagery of the airport. If you are waiting at the gate or sitting on board, you can search your flight and watch your plane taxi in.
 
-<YouTube id="_dq4sRQc3Kc" />
+<div class="my-6 rounded-xl overflow-hidden aspect-video">
+  <video
+    src="/videos/bne-tower-demo.mp4"
+    poster="/videos/bne-tower-demo-poster.webp"
+    controls
+    playsinline
+    preload="metadata"
+    aria-label="30 second demo of BNE Tower: orbiting Brisbane Airport, following an arriving Qantas jet, the tower view, TV mode and the surface radar"
+    class="w-full h-full"
+  ></video>
+</div>
 
 It has a few ways to watch:
 

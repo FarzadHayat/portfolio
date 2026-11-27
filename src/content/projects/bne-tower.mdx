@@ -1,0 +1,25 @@
+---
+featured: true
+title: "BNE Tower"
+description: "Brisbane Airport live in 3D. Real planes moving over the real airport, right now. Search your flight and watch your plane taxi in."
+image: "../../assets/projects/bne-tower.webp"
+startDate: 2026-11-25
+demoLink: "https://bne.farzadhayat.dev"
+skills: ['TypeScript', 'three.js', 'Vite', 'Node.js', 'Oracle Cloud', 'Cloudflare', 'Vitest', 'Playwright', 'Claude Code']
+---
+
+[BNE Tower](https://bne.farzadhayat.dev) shows every aircraft at Brisbane Airport (YBBN) as it moves, in 3D, over real aerial imagery of the airport. If you are waiting at the gate or sitting on board, you can search your flight and watch your plane taxi in.
+
+It has a few ways to watch:
+
+- **Explore:** fly around the airport freely, with a label on every aircraft showing its flight, type and speed.
+- **Follow:** a chase camera that sits behind one plane and swings with its turns.
+- **Tower:** look out over the runways from the tower cab.
+- **TV:** an automatic director picks the most interesting plane, frames it, then cuts to the next.
+- **Radar:** a flat surface radar view, on a chart or on aerial imagery.
+
+A side panel lists live traffic and the day's arrivals and departures. It also shows the weather and which runways are likely in use, with the reason in plain words (for example, a tailwind too strong for the other direction). There are also links to live tower radio and airport video streams.
+
+Aircraft positions come from [adsb.fi](https://adsb.fi). The airport layout is built from OpenStreetMap, and the imagery is from the Queensland Government. Everything is drawn in the browser with three.js. A small Node server collects the feeds and runs on Oracle Cloud behind a Cloudflare Tunnel.
+
+I built it in a few days with Claude Code, inspired by [Sumukh Sridhara](https://x.com/sumukhsridhara)'s live airport viewer. It is a personal, non-commercial project.

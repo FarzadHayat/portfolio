@@ -1,0 +1,33 @@
+---
+featured: false
+title: "Passo"
+description: "A hands-free groovebox for Brazilian Zouk and Lambada practice. It plays the beat, the breaks and the tempo you need. Works offline."
+image: "../../assets/projects/passo.webp"
+startDate: 2026-11-28
+skills: ['React', 'TypeScript', 'Vite', 'Web Audio API', 'Zustand', 'PWA', 'Cloudflare Workers', 'Vitest']
+demoLink: "https://passo.farzadhayat.dev"
+sourceLink: "https://github.com/FarzadHayat/passo"
+---
+
+[Passo](https://passo.farzadhayat.dev) is a groovebox for Brazilian Zouk and Lambada. You pick a groove, set the tempo, press Play and dance.
+
+<div class="my-6 mx-auto max-w-xs rounded-xl overflow-hidden aspect-[9/16]">
+  <video
+    src="/videos/passo-demo.mp4"
+    poster="/videos/passo-demo-poster.webp"
+    controls
+    playsinline
+    preload="metadata"
+    aria-label="30 second demo of Passo on a phone: Play starts a Club Zouk groove, then a switch to Classic Lambada, tempo nudges up, Tempo Ramp turns on, and the beat display shows a break and a drop"
+    class="w-full h-full"
+  ></video>
+</div>
+
+I teach Lambada, and I train Zouk and Lambada. I was tired of searching for a song with the right energy and tempo for each class and each practice. So I built a tool that makes the music for me.
+
+Passo has six grooves, from slow Lyrical Flow at 68 BPM to Classic Lambada at 94 BPM. Each one is synthesized live in the browser with the Web Audio API, so there are no audio files to download. I tuned the patterns and tempos against tracks from my own Zouk and Lambada libraries.
+
+A scrolling display shows every boom, chick and phrase event, with an 8-count step strip under it. You can set breaks and drops every 16 or 32 counts, or at random, to practise phrasing. Tempo Ramp makes each phrase a little faster, up to a limit you set. You can change the tempo by 1 BPM or tap it in.
+
+Passo installs as an offline app on phones and laptops. It keeps the screen awake while it plays. The dance styles live in one registry, so I can add other partner dances without changes to the audio engine.
+

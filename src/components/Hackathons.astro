@@ -20,7 +20,7 @@ const entries = (await getCollection("hackathons")).sort(
             <article class="hackathon">
               {data.logo && (
                 <figure class="hackathon__media">
-                  <Image src={data.logo} alt="" width={480} height={360} />
+                  <Image src={data.logo} alt="" width={480} />
                 </figure>
               )}
               <div class="hackathon__body">

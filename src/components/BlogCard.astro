@@ -12,7 +12,7 @@ const date = post.data.publishDate.toLocaleDateString("en-US", { month: "long", 
 
 <article class="project-card post-card">
   <div class="project-card__media">
-    <Image src={post.data.image} alt="" width={640} height={400} />
+    <Image src={post.data.image} alt="" width={640} />
   </div>
   <div class="project-card__body">
     <h3 class="project-card__title"><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>

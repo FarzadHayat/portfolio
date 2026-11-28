@@ -20,7 +20,7 @@ const { title, photo, Content, link } = Astro.props;
           (typeof photo === "string" ? (
             <img class="about__photo" src={photo} alt="" loading="lazy" />
           ) : (
-            <Image class="about__photo" src={photo} alt="" width={320} height={320} />
+            <Image class="about__photo" src={photo} alt="" width={320} />
           ))
       }
       <div class="about__body">
